@@ -19,7 +19,7 @@ class Standbuilder extends Model
         'logo',
         'cover_image',
         'services',
-        'services_countries',
+        'services_continents',
         'priorty',
         'status',
         'author_id'

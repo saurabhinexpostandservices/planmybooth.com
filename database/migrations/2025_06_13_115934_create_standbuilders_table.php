@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('title');
-            $table->lognText('description');
+            $table->longText('description');
             $table->string('founded_year');
             $table->foreignId('country_id')->constrained('countries')->onDelete('cascade');
             $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('cover_image')->nullable();
             $table->json('services')->nullable();
-            $table->json('services_countries')->nullable();
+            $table->json('services_continents')->nullable();
             $table->string('priorty')->default('0');
             $table->enum('status', ['draft', 'published'])->default('published');
             $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
