@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Standbuilder extends Model
 {
+    use HasFactory;
+    
     protected $fillable = [
         'username',
         'title',
@@ -24,4 +27,10 @@ class Standbuilder extends Model
         'status',
         'author_id'
     ];
+
+    protected $casts = [
+        'services' => 'array',
+        'services_continents' => 'array',
+    ];
+
 }
