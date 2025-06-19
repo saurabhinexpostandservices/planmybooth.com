@@ -4,6 +4,6 @@
     <x-slot name="featured_image"></x-slot>
 
     @php
-        dd($standbuilders);
+        dd($standbuilder);
     @endphp
 </x-layout.public>
