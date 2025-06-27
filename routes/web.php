@@ -16,9 +16,17 @@ Route::get('/', function() {
     return view('home');
 })->name('home');
 
+Route::get('/custom-exhibition-stand', function() {
+    return view('custom-exhibition-stand');
+})->name('custom-exhibition-stand');
+
 Route::get('/about-us', function() {
     return view('about-us');
 })->name('about-us');
+
+Route::get('/vendor-registration', function() {
+    return view('vendor-registration');
+})->name('vendor-registration');
 
 Route::get('/contact-us', function() {
     return view('contact-us');
@@ -29,8 +37,16 @@ Route::get('/privacy-policy', function() {
 })->name('privacy-policy');
 
 Route::get('/login', function() {
-    return view('login');
+    return view('auth.login');
 })->name('login');
+
+Route::get('/register', function() {
+    return view('auth.register');
+})->name('register');
+
+Route::get('/forgot-password', function() {
+    return view('auth.forgot-password');
+})->name('forgot-password');
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
 
@@ -49,4 +65,5 @@ Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.inner'
 Route::get('/trade-shows/{slug}', [ShowController::class, 'show'])->name('shows.inner');
 Route::get('/stand-builders/{username}', [StandbuilderController::class, 'show'])->name('stand-builder.show');
 
+Route::post('/lead/create', [\App\Http\Controllers\LeadController::class, 'create'])->name('api.lead.create');
 
