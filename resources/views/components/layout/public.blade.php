@@ -76,8 +76,8 @@
         }
     }
 
-    .animate-slide-in-left,
-    .animate-slide-in-right {
+    .,
+    . {
         opacity: 0;
     }
 
@@ -107,9 +107,9 @@
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    if (entry.target.classList.contains('animate-slide-in-left')) {
+                    if (entry.target.classList.contains('')) {
                         entry.target.classList.add('animate-left');
-                    } else if (entry.target.classList.contains('animate-slide-in-right')) {
+                    } else if (entry.target.classList.contains('')) {
                         entry.target.classList.add('animate-right');
                     }
                     obs.unobserve(entry
@@ -120,7 +120,7 @@
             threshold: 0.2 // Adjust threshold as needed
         });
 
-        document.querySelectorAll('.animate-slide-in-left, .animate-slide-in-right').forEach(el => {
+        document.querySelectorAll('., .').forEach(el => {
             observer.observe(el);
         });
     </script>

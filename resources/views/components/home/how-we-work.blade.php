@@ -1,7 +1,7 @@
-<div class="px-[5%] py-10 mt-[90%] md:mt-[2%] lg:pt-10 font-poppins bg-[#124E65]">
-    <div class="animate-slide-in-left">
+<div class="px-[5%] py-10 mt-[2%] lg:pt-10 font-poppins bg-[#124E65]">
+    <div class="">
         <h2
-            class="text-white text-xl md:text-3xl lg:text-4xl pt-10 font-semibold w-full md:w-[80%] text-center mx-auto">
+            class="text-white text-xl md:text-3xl lg:text-4xl pt-10 font-semibold w-full md:w-[80%] text-center mx-auto font-serif">
             Our
             4-Step
             Process to
@@ -14,7 +14,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 py-20 pb-10">
         <!-- Service Item Template -->
-        <div class="text-center animate-slide-in-right">
+        <div class="text-center ">
             <div class="mx-auto w-24 h-24 mb-5 rounded-full flex justify-center items-center"
                 style="perspective: 1000px;">
                 <img class="mx-auto animate-rotateY hover-rotateY"
@@ -29,7 +29,7 @@
             </p>
         </div>
         <!-- Repeat for other items -->
-        <div class="text-center animate-slide-in-left">
+        <div class="text-center ">
              <div class="mx-auto w-24 h-24 mb-5 rounded-full flex justify-center items-center"
                 style="perspective: 1000px;">
                 <img class=" mx-auto animate-rotateY hover-rotateY"
@@ -43,7 +43,7 @@
                 Compare Top Stand Builders
             </p>
         </div>
-        <div class="text-center animate-slide-in-right">
+        <div class="text-center ">
             <div class="mx-auto w-24 h-24 mb-5 rounded-full flex justify-center items-center"
                 style="perspective: 1000px;">
                 <img class=" mx-auto animate-rotateY hover-rotateY"
@@ -57,7 +57,7 @@
                 Connect with Experts
             </p>
         </div>
-        <div class="text-center animate-slide-in-left">
+        <div class="text-center ">
             <div class="mx-auto w-24 h-24 mb-5 rounded-full flex justify-center items-center"
                 style="perspective: 1000px;">
                 <img class=" mx-auto animate-rotateY hover-rotateY"

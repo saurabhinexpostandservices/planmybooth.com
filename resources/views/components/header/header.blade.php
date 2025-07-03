@@ -45,7 +45,7 @@
                             </a>
                         @else
                             <a href="{{ route('login') }}"
-                                class="bg-[#DAFFFB] font-semibold text-black text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-3">
+                                class="bg-white font-semibold text-[#145D76] text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-3">
                                 Log In
                             </a>
                         @endif
@@ -56,7 +56,7 @@
                 <div class="flex items-center text-sm">
                     <a href="#" class="hidden md:block">
                         <button
-                            class="bg-[#DAFFFB] text-black font-semibold text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-3">
+                            class="bg-white text-[#145D76] font-semibold text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-3">
                             Get free quotations
                         </button>
                     </a>
@@ -132,8 +132,9 @@
 @push('scripts')
     <script>
         // header dropdown effect 
-        window.addEventListener('scroll', function() {
+        function updateHeaderBg() {
             const header = document.getElementById('main-header');
+            if (!header) return;
             if (window.scrollY > 50) {
                 header.classList.remove('bg-transparent');
                 header.classList.add('bg-[#145D76]'); // Change 'bg-white' to your original background color class
@@ -141,7 +142,9 @@
                 header.classList.remove('bg-[#145D76]');
                 header.classList.add('bg-transparent');
             }
-        });
+        }
+        window.addEventListener('scroll', updateHeaderBg);
+        window.addEventListener('DOMContentLoaded', updateHeaderBg);
 
 
         // Mobile Menu 

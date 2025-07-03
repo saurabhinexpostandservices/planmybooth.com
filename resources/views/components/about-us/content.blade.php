@@ -1,5 +1,5 @@
   <div class="container mx-auto p-5 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 md:px-10 justify-center items-center gap-5 animate-slide-in-right">
+        <div class="grid grid-cols-1 md:grid-cols-2 md:px-10 justify-center items-center gap-5 ">
             <div class="flex flex-col">
                 <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Who We Are</h3>
                 <p>
@@ -22,14 +22,14 @@
                 </div>
             </div>
 
-            {{-- <div class="flex justify-center items-center animate-slide-in-left">
+            {{-- <div class="flex justify-center items-center ">
                 <img class="p-5" src="{{ asset('assets/about-us/about-1.avif') }}" alt="why-choose-us" width="500"
                     height="500">
             </div> --}}
             
         </div>
 
-        <div class="flex flex-col md:flex-row-reverse md:px-10 justify-center items-center gap-5 animate-slide-in-left">
+        <div class="flex flex-col md:flex-row-reverse md:px-10 justify-center items-center gap-5 ">
             <div class="flex flex-col md:w-[50%]">
                 <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">What We Do</h3>
                 <p>
@@ -67,12 +67,12 @@
                         src="{{ asset('assets/about-us/about-3.avif') }}" alt="why-choose-us">
                 </div>
             </div>
-            {{-- <div class="flex justify-center items-center animate-slide-in-left md:w-[50%]">
+            {{-- <div class="flex justify-center items-center  md:w-[50%]">
                 <img class="p-5" src="{{ asset('assets/about-us/about-3.avif') }}" alt="why-choose-us">
             </div> --}}
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 md:px-10 justify-center items-center gap-5 animate-slide-in-right">
+        <div class="grid grid-cols-1 md:grid-cols-2 md:px-10 justify-center items-center gap-5 ">
             <div class="flex flex-col">
                 <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Why We Do It
                 </h3>
@@ -98,13 +98,13 @@
             </div>
 
 
-            {{-- <div class="flex justify-center items-center animate-slide-in-left">
+            {{-- <div class="flex justify-center items-center ">
                 <img class="p-5" src="{{ asset('assets/about-us/about-2.avif') }}" alt="why-choose-us" width="500"
                     height="500">
             </div> --}}
         </div>
         <div class="grid grid-cols-1 md:p-10 justify-center items-center gap-5">
-            <div class="flex flex-col animate-slide-in-right">
+            <div class="flex flex-col ">
                 <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Our Mission
                 </h3>
                 <p>
@@ -117,7 +117,7 @@
                 </p>
             </div>
 
-            <div class="animate-slide-in-left">
+            <div class="">
                 <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Our Values</h3>
                 <ul class="list-disc ml-4">
                     <li>Transparency: We guarantee open communication and fair business practices between exhibitors &
@@ -138,7 +138,7 @@
                 </ul>
             </div>
 
-            <div class="animate-slide-in-right">
+            <div class="">
                 <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Why Join Plan
                     My
                     Booth?</h3>

@@ -1,6 +1,6 @@
 <div class="px-4 sm:px-6 md:px-10 lg:px-20 py-10 font-poppins">
     <div class="text-center">
-        <h2 class="text-xl sm:text-2xl md:text-3xl xl:text-4xl font-semibold text-[#124E65] pb-3 pt-5">
+        <h2 class="text-xl sm:text-2xl md:text-3xl xl:text-4xl font-semibold font-serif text-[#124E65] pb-3 pt-5">
             Latest Leads For Europe
         </h2>
         <p class="text-sm sm:text-base md:text-lg text-gray-700 pb-5">

@@ -2,8 +2,8 @@
     <!-- Container for centering the text -->
     <div class="flex flex-col gap-5 p-5 py-10 md:pt-16 md:w-[90%] justify-center items-center min-h-[25rem] mx-auto">
 
-        <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold">
-            Custom Exhibition Stand Builders Worldwide
+        <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-serif">
+            Custom Exhibition <span class="bg-[#64CCC5] text-white px-2">Stand Builders</span> Worldwide
         </h2>
         <div>
             <p class="text-base md:text-lg text-gray-700">

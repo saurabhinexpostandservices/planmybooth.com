@@ -20,33 +20,77 @@
 
         {{-- Card-section --}}
         <section id="blogs-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 m-5 md:m-10 lg:m-20">
-            @foreach ($posts as $item)
-                <a href="{{ route('public.blog-page', $item->slug) }}"
-                    class="group overflow-hidden duration-500 text-white block">
-                    <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
-                        <img src="{{ $item->featureImageUrl }}"
-                            class="transition-all duration-300 ease-in-out transform group-hover:scale-110 w-full">
+            <a href="#"
+                class="group overflow-hidden duration-500 text-white block">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="{{ asset('assets/trade-shows/ex1.webp') }}"
+                        class="transition-all duration-300 ease-in-out transform group-hover:scale-110 w-full" alt="Blog Image">
+                </div>
+                <div
+                    class="flex flex-col p-4 h-fit bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-500 ease-in-out">
+                    <div class="flex justify-between gap-2 items-center">
+                        <span
+                            class="text-xs p-1 px-2 text-white bg-[#2896CB] group-hover:bg-[#1F4A5A] rounded-2xl">By: John Doe</span>
+                        <span class="text-xs text-white">Published on: 01 Jan, 2024</span>
                     </div>
-                    <div
-                        class="flex flex-col p-4 h-36 bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-300 ease-in-out">
-                        <div class="flex justify-between gap-2 items-center">
-                            <span
-                                class="text-xs p-1 px-2 text-white bg-[#2896CB] group-hover:bg-[#1F4A5A] rounded-2xl">By:
-                                {{ $item->author->name }}</span>
-                            <span class="text-xs text-white">Published on:
-                                {{ date('d M, Y', strtotime($item->created_at)) }}</span>
-                        </div>
-                        <h2
-                            class="text-lg font-bold mt-2 group-hover:text-white transition-all duration-300 ease-in-out">
-                            {{ \Illuminate\Support\Str::words($item->title, 4, '...') }}
-                        </h2>
-                        <p
-                            class="text-sm mt-2 group-hover:text-white opacity-90 group-hover:opacity-100 transition-all duration-300 ease-in-out">
-                            {{ \Illuminate\Support\Str::words($item->meta_description, 10, '...') }}
-                        </p>
+                    <h2
+                        class="text-lg font-bold mt-2 group-hover:text-white transition-all duration-300 ease-in-out">
+                        How to Plan Your Next Event
+                    </h2>
+                    <p
+                        class="text-sm mt-2 group-hover:text-white opacity-90 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                        Discover essential tips and tricks to make your next event a success with our comprehensive guide...
+                    </p>
+                </div>
+            </a>
+
+               <a href="#"
+                class="group overflow-hidden duration-500 text-white block">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="{{ asset('assets/trade-shows/ex2.webp') }}"
+                        class="transition-all duration-300 ease-in-out transform group-hover:scale-110 w-full" alt="Blog Image">
+                </div>
+                <div
+                    class="flex flex-col p-4 h-fit bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-500 ease-in-out">
+                    <div class="flex justify-between gap-2 items-center">
+                        <span
+                            class="text-xs p-1 px-2 text-white bg-[#2896CB] group-hover:bg-[#1F4A5A] rounded-2xl">By: John Doe</span>
+                        <span class="text-xs text-white">Published on: 01 Jan, 2024</span>
                     </div>
-                </a>
-            @endforeach
+                    <h2
+                        class="text-lg font-bold mt-2 group-hover:text-white transition-all duration-300 ease-in-out">
+                        How to Plan Your Next Event
+                    </h2>
+                    <p
+                        class="text-sm mt-2 group-hover:text-white opacity-90 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                        Discover essential tips and tricks to make your next event a success with our comprehensive guide...
+                    </p>
+                </div>
+            </a>
+
+               <a href="#"
+                class="group overflow-hidden duration-500 text-white block">
+                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                    <img src="{{ asset('assets/trade-shows/ex3.webp') }}"
+                        class="transition-all duration-300 ease-in-out transform group-hover:scale-110 w-full" alt="Blog Image">
+                </div>
+                <div
+                    class="flex flex-col p-4 h-fit bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-500 ease-in-out">
+                    <div class="flex justify-between gap-2 items-center">
+                        <span
+                            class="text-xs p-1 px-2 text-white bg-[#2896CB] group-hover:bg-[#1F4A5A] rounded-2xl">By: John Doe</span>
+                        <span class="text-xs text-white">Published on: 01 Jan, 2024</span>
+                    </div>
+                    <h2
+                        class="text-lg font-bold mt-2 group-hover:text-white transition-all duration-300 ease-in-out">
+                        How to Plan Your Next Event
+                    </h2>
+                    <p
+                        class="text-sm mt-2 group-hover:text-white opacity-90 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                        Discover essential tips and tricks to make your next event a success with our comprehensive guide...
+                    </p>
+                </div>
+            </a>
         </section>
 
         {{-- Pagination Controls --}}

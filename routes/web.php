@@ -54,7 +54,6 @@ Route::get('/stand-builders', [StandbuilderController::class, 'index'])->name('s
 
 Route::get('/trade-shows', [ShowController::class, 'index'])->name('shows');
 
-
 /**
  * /////////////////////////////////////////////////////////
  * ====================== Dynamic Routes ===================

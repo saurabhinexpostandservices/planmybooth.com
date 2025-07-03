@@ -23,7 +23,7 @@
             <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
                 <!-- Pricing Card 1 - Bronze-->
                 <div
-                    class="flex flex-col mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 dark:text-gray-800 dark:bg-white pb-5 animate-slide-in-right">
+                    class="flex flex-col mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 dark:text-gray-800 dark:bg-white pb-5 ">
                     <div class="mb-4 p-4 font-semibold bg-[#64CCC5] relative h-40 m-8">
                         <div><img class="w-1/3 mx-auto rounded-full absolute -right-8 -top-8 rotate-[45] animate-bounce"
                                 src="/assets/icons/bronze.png" alt="bronze" />
@@ -34,7 +34,7 @@
                         </h3>
                     </div>
 
-                    <h4 class=" px-2 text-xl md:text-2xl font-serif">FREE</h4>
+                    <h4 class=" px-2 text-xl md:text-2xl font-semibold font-serif">FREE</h4>
                     <p class="font-semibold text-gray-500 sm:text-lg dark:text-gray-400">Basic features to try
                         for
                         yourself
@@ -215,7 +215,7 @@
 
                 <!-- Pricing Card 2 - Silver -->
                 <div
-                    class="flex flex-col mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 dark:text-gray-800 dark:bg-white pb-5 animate-slide-in-left">
+                    class="flex flex-col mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 dark:text-gray-800 dark:bg-white pb-5 ">
                     <div class="mb-4 p-4 font-semibold bg-[#64CCC5] relative h-40 m-8">
                         <div><img class="w-1/3 mx-auto rounded-full absolute -right-8 -top-8 rotate-[45] animate-bounce"
                                 src="/assets/icons/silver.png" alt="silver" />
@@ -477,7 +477,7 @@
 
                 <!-- Pricing Card 3 - Gold -->
                 <div
-                    class="flex flex-col mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 dark:text-gray-800 dark:bg-white pb-5 animate-slide-in-right">
+                    class="flex flex-col mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 dark:text-gray-800 dark:bg-white pb-5 ">
                     <div class="mb-4 p-4 font-semibold bg-[#64CCC5] relative h-40 m-8">
                         <div><img class="w-1/3 mx-auto rounded-full absolute -right-8 -top-8 rotate-[45] animate-bounce"
                                 src="/assets/icons/gold.png" alt="gold" />

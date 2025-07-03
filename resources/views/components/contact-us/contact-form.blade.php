@@ -1,5 +1,5 @@
 <form action="{{ route('api.lead.create') }}" method="POST" enctype="multipart/form-data"
-    class="space-y-2 w-full bg-[#1A6D88] p-8 rounded-lg shadow-md animate-slide-in-left">
+    class="space-y-2 w-full bg-[#1A6D88] p-8 rounded-lg shadow-md ">
     @csrf
 
     <!-- Success Message -->

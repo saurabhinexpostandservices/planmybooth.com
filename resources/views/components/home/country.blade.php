@@ -1,9 +1,9 @@
 <div class="relative bg-bottom bg-no-repeat font-poppins">
     <div class="px-[5%] py-10 md:py-20">
-        <div class="animate-slide-in-left">
+        <div class="">
             <h2
-                class="text-[#124E65] text-2xl md:text-3xl lg:text-4xl font-semibold text-center w-full md:w-[80%] mx-auto">
-                Choose a Country to Find Your Ideal Stand Builder
+                class="text-[#124E65] text-2xl md:text-3xl lg:text-4xl font-semibold text-center w-full md:w-[80%] mx-auto font-serif">
+                Choose a Country to <span class="bg-[#64CCC5] text-white px-2">Find Your Ideal Stand</span> Builder
             </h2>
             <p class="text-center text-base md:text-xl py-5">
                 Explore top exhibition stand builders in more than 50 countries
@@ -12,12 +12,12 @@
 
         <!-- Country Cards -->
         <div id="country-cards"
-            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-x-8 gap-x-5 gap-y-5 md:gap-y-8 py-10 md:px-10 justify-center animate-slide-in-right">
+            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-x-8 gap-x-5 gap-y-5 md:gap-y-8 py-10 md:px-10 justify-center ">
 
             <!-- 20 Static Country Cards -->
             <!-- You can update flags and names if needed -->
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm">
                 <span class="font-semibold py-3">United States</span>
@@ -30,7 +30,7 @@
 
             <!-- Repeat for more countries -->
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Germany</span><img src="https://flagcdn.com/de.svg" alt="Germany"
@@ -40,7 +40,7 @@
                     Germany</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">India</span><img src="https://flagcdn.com/in.svg" alt="India"
@@ -50,7 +50,7 @@
                     India</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">France</span><img src="https://flagcdn.com/fr.svg" alt="France"
@@ -60,7 +60,7 @@
                     France</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Italy</span><img src="https://flagcdn.com/it.svg" alt="Italy"
@@ -70,7 +70,7 @@
                     Italy</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">UK</span><img src="https://flagcdn.com/gb.svg" alt="UK"
@@ -80,7 +80,7 @@
                     United Kingdom</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Canada</span><img src="https://flagcdn.com/ca.svg" alt="Canada"
@@ -90,7 +90,7 @@
                     Canada</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Australia</span><img src="https://flagcdn.com/au.svg" alt="Australia"
@@ -100,7 +100,7 @@
                     Australia</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Japan</span><img src="https://flagcdn.com/jp.svg" alt="Japan"
@@ -110,7 +110,7 @@
                     Japan</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Brazil</span><img src="https://flagcdn.com/br.svg" alt="Brazil"
@@ -120,7 +120,7 @@
                     Brazil</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Spain</span><img src="https://flagcdn.com/es.svg" alt="Spain"
@@ -130,7 +130,7 @@
                     Spain</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">UAE</span><img src="https://flagcdn.com/ae.svg" alt="UAE"
@@ -140,7 +140,7 @@
                     UAE</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Netherlands</span><img src="https://flagcdn.com/nl.svg" alt="Netherlands"
@@ -150,7 +150,7 @@
                     Netherlands</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Russia</span><img src="https://flagcdn.com/ru.svg" alt="Russia"
@@ -160,7 +160,7 @@
                     Russia</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">China</span><img src="https://flagcdn.com/cn.svg" alt="China"
@@ -170,7 +170,7 @@
                     China</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Mexico</span><img src="https://flagcdn.com/mx.svg" alt="Mexico"
@@ -180,7 +180,7 @@
                     Mexico</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Turkey</span><img src="https://flagcdn.com/tr.svg" alt="Turkey"
@@ -190,7 +190,7 @@
                     Turkey</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">South Korea</span><img src="https://flagcdn.com/kr.svg"
@@ -200,7 +200,7 @@
                     South Korea</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">Switzerland</span><img src="https://flagcdn.com/ch.svg"
@@ -210,7 +210,7 @@
                     Switzerland</div>
             </a>
             <a href="#"
-                class="relative group country-card flex items-center justify-between px-4 py-2 hover:-translate-y-[6px] rounded-lg 
+                class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                 text-white text-center uppercase transition-all duration-700 ease-in-out text-sm"><span
                     class="font-semibold py-3">South Africa</span><img src="https://flagcdn.com/za.svg"

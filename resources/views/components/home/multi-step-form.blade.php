@@ -224,8 +224,6 @@
             /* Reusing the primary blue hover for consistency */
         }
 
-
-
           @media (max-width: 768px) {
             .progress-bar-container {
                 flex-direction: column;
@@ -248,7 +246,7 @@
 <body class="font-poppins">
     <div class="bg-[#124E65] py-5 md:py-10">
           <div class="form-container">
-        <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto">Your Stand Request</h2>
+        <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">Your Stand Request</h2>
 
         <!-- Progress Bar -->
         <div class="progress-bar-container">
@@ -317,9 +315,9 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Stand Request Features</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
-                        <label for="stand_city">In which city do you need the stand?</label>
-                        <input type="text" id="stand_city" name="stand_city" placeholder="Noida" required>
-                        <p class="error-message" id="stand_city-error"></p>
+                        <label for="booth_number">Booth Number</label>
+                        <input type="text" id="booth_number" name="booth_number" placeholder="e.g., A12">
+                        <p class="error-message" id="booth_number-error"></p>
                     </div>
                     <div class="form-field-group">
                         <label for="stand_size">Stand size (m²)</label>
@@ -378,8 +376,8 @@
                         <p class="error-message" id="full_name-error"></p>
                     </div>
                     <div class="form-field-group">
-                        <label for="email">Your email</label>
-                        <input type="email" id="email" name="email" placeholder="Your email">
+                        <label for="email">Your email <span class="text-red-600">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Your email" required>
                         <p class="error-message" id="email-error"></p>
                     </div>
                     <div class="form-field-group">
@@ -406,6 +404,48 @@
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
             </div>
+            <script>
+                // Email filter for public domains
+                document.getElementById('email').addEventListener('input', function () {
+                    const emailInput = this.value.trim();
+                    const errorElement = document.getElementById('email-error');
+                    // List of common public email domains
+                    const publicDomains = [
+                        'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com',
+                        'rediffmail.com', 'protonmail.com', 'zoho.com', 'mail.com', 'gmx.com', 'yandex.com',
+                        'msn.com', 'live.com', 'ymail.com', 'rocketmail.com', 'inbox.com', 'fastmail.com'
+                    ];
+                    errorElement.textContent = '';
+                    if (emailInput.length > 0) {
+                        const domain = emailInput.split('@')[1]?.toLowerCase();
+                        if (publicDomains.includes(domain)) {
+                            errorElement.textContent = 'Please use your company or custom email address, not a public provider.';
+                        }
+                    }
+                });
+
+                // Prevent public domain emails on validation
+                const originalValidateStep = window.validateStep;
+                window.validateStep = function(stepIndex) {
+                    let isValid = originalValidateStep(stepIndex);
+                    if (stepIndex === 2) {
+                        const emailInput = document.getElementById('email');
+                        const errorElement = document.getElementById('email-error');
+                        const publicDomains = [
+                            'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com', 'icloud.com',
+                            'rediffmail.com', 'protonmail.com', 'zoho.com', 'mail.com', 'gmx.com', 'yandex.com',
+                            'msn.com', 'live.com', 'ymail.com', 'rocketmail.com', 'inbox.com', 'fastmail.com'
+                        ];
+                        const value = emailInput.value.trim();
+                        const domain = value.split('@')[1]?.toLowerCase();
+                        if (value.length > 0 && publicDomains.includes(domain)) {
+                            errorElement.textContent = 'Please use your company or custom email address, not a public provider.';
+                            isValid = false;
+                        }
+                    }
+                    return isValid;
+                };
+            </script>
 
             <!-- Step 4: Price Range -->
             <div class="form-step" data-step="4">
@@ -553,7 +593,6 @@
         </form>
     </div>  
     </div>
-
 
     <script>
         const form = document.getElementById('multiStepForm');

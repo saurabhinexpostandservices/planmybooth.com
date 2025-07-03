@@ -4,7 +4,7 @@
             <div class="flex flex-col md:flex-row flex-wrap gap-10 md:gap-5 justify-between">
                 <!-- Column 1 -->
                 <div class="w-full md:w-[30%] lg:w-[35%]">
-                    
+
                     <div class="footer-col1">
                         <div class="flex items-center justify-center md:justify-start md:ml-5">
                             <a href="{{ route('home') }}">
@@ -26,10 +26,12 @@
                         <h4 class="text-white font-serif">Quick Links</h4>
                         <ul class="flex flex-col gap-2 py-5 md:p-5 text-sm text-start pl-10">
                             <li><a class="hover:text-[#DAE7EB]" href="/">Home</a></li>
-                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('custom-exhibition-stand')}}">Custom Exhibition Stand</a></li>
-                            <li><a class="hover:text-[#DAE7EB]" href="#">Privacy Policy</a></li>
-                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('about-us')}}">About Us</a></li>
-                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('contact-us')}}">Contact Us</a></li>
+                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('custom-exhibition-stand') }}">Custom
+                                    Exhibition Stand</a></li>
+                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('privacy-policy') }}">Privacy
+                                    Policy</a></li>
+                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('about-us') }}">About Us</a></li>
+                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('contact-us') }}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -40,17 +42,20 @@
                         <h4 class="text-white font-serif">Reach Us</h4>
                         <ul class="flex flex-col gap-2 text-center py-5 md:p-5 text-sm">
                             <li>
-                                <a href="#" class="flex gap-2 items-center justify-start pl-10 md:pl-5 xl:pl-16 hover:text-[#DAE7EB]">
+                                <a href="#"
+                                    class="flex gap-2 items-center justify-start pl-10 md:pl-5 xl:pl-16 hover:text-[#DAE7EB]">
                                     <i class="fas fa-envelope text-2xl"></i> enquiry@planmybooth.com
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="flex gap-2 items-center justify-start pl-10 md:pl-5 xl:pl-16 hover:text-[#DAE7EB]">
+                                <a href="#"
+                                    class="flex gap-2 items-center justify-start pl-10 md:pl-5 xl:pl-16 hover:text-[#DAE7EB]">
                                     <i class="fas fa-globe text-2xl"></i> planmybooth.com
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="flex gap-2 justify-start pl-10 md:pl-5 xl:pl-16 hover:text-[#DAE7EB]">
+                                <a href="#"
+                                    class="flex gap-2 justify-start pl-10 md:pl-5 xl:pl-16 hover:text-[#DAE7EB]">
                                     <i class="fas fa-map-marker-alt text-2xl"></i>
                                     orębandowo 13a, Jaraczewo, <br>wielkopolskie 63-233, Poland
                                 </a>
@@ -61,7 +66,7 @@
             </div>
         </div>
     </div>
- <div class="footer"></div>
+    <div class="footer"></div>
     <!-- Social Media -->
     <div class="social-menu">
         <ul class="flex space-x-2">
