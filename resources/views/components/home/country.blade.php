@@ -37,8 +37,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Germany</div>
+                    Germany
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -47,8 +49,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    India</div>
+                    India
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -57,8 +61,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    France</div>
+                    France
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -67,8 +73,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Italy</div>
+                    Italy
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -77,8 +85,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    United Kingdom</div>
+                    United Kingdom
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -87,8 +97,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Canada</div>
+                    Canada
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -97,8 +109,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Australia</div>
+                    Australia
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -107,8 +121,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Japan</div>
+                    Japan
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -117,8 +133,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Brazil</div>
+                    Brazil
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -127,8 +145,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Spain</div>
+                    Spain
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -137,8 +157,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    UAE</div>
+                    UAE
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -147,8 +169,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Netherlands</div>
+                    Netherlands
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -157,8 +181,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Russia</div>
+                    Russia
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -167,8 +193,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    China</div>
+                    China
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -177,8 +205,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Mexico</div>
+                    Mexico
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -187,8 +217,10 @@
                     class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Turkey</div>
+                    Turkey
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -197,8 +229,10 @@
                     alt="South Korea" class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    South Korea</div>
+                    South Korea
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -207,8 +241,10 @@
                     alt="Switzerland" class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    Switzerland</div>
+                    Switzerland
+                </div>
             </a>
+
             <a href="#"
                 class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                 bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
@@ -217,16 +253,18 @@
                     alt="South Africa" class="w-7 h-5">
                 <div
                     class="absolute -right-20 left-16 md:left-1/2 -translate-x-1/2 bottom-full mb-1 w-max px-3 py-1 bg-black text-white text-xs rounded opacity-0 invisible transition-opacity duration-300 ease-in-out group-hover:opacity-100 group-hover:visible whitespace-nowrap">
-                    South Africa</div>
+                    South Africa
+                </div>
             </a>
+            
         </div>
 
         <!-- Vendor Registration Button -->
         <div class="mx-auto text-center p-5 px-16">
-              <a href="#"
-                    class="bg-[#176B87] text-white rounded-lg px-8 py-3 font-semibold hover:bg-[#64CCC5] hover:text-black transition duration-500">
-                     Vendor Registration
-                </a>
+            <a href="#"
+                class="bg-[#176B87] text-white rounded-lg px-8 py-3 font-semibold hover:bg-[#64CCC5] hover:text-black transition duration-500">
+                Vendor Registration
+            </a>
         </div>
     </div>
 </div>

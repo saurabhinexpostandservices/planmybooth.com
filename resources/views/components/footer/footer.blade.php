@@ -8,7 +8,7 @@
                     <div class="footer-col1">
                         <div class="flex items-center justify-center md:justify-start md:ml-5">
                             <a href="{{ route('home') }}">
-                                <img class="rounded-t-3xl" src="{{ asset('./assets/images/logo.svg') }}"
+                                 <img class="rounded-t-3xl" src="{{ asset('./assets/images/logo.svg') }}"
                                     alt="planmybooth-header-logo" width="150" height="100">
                             </a>
                         </div>
