@@ -3,7 +3,5 @@
     <x-slot name="meta_description"></x-slot>
     <x-slot name="featured_image"></x-slot>
 
-    @php
-        dd($standbuilder);
-    @endphp
+ 
 </x-layout.public>

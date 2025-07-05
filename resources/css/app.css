@@ -9,3 +9,23 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+@layer base {
+    :root {
+        --font-figtree: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+        --font-poppins: 'Poppins', sans-serif;
+        --font-lato: 'Lato', sans-serif;
+        --font-roboto: 'Roboto', sans-serif;
+    }
+    .font-poppins {
+        font-family: var(--font-poppins);
+    }
+    .font-lato {
+        font-family: var(--font-lato);
+    }
+    .font-roboto {
+        font-family: var(--font-roboto);
+    }
+    .font-figtree {
+        font-family: var(--font-figtree);
+    }
+}
