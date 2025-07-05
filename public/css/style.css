@@ -1,0 +1,64 @@
+ /* ******How-We-Work Section-css****** */
+ body {
+     /* padding-top: 122px; */
+     /* Adjust this based on your actual header height */
+ }
+
+ /* Add hover animation for 3D rotation */
+ .hover-rotateY:hover {
+     transform: rotateY(180deg);
+ }
+
+ .animate-rotateY {
+     transform: rotateY(0);
+     transition: transform 0.5s ease-in-out;
+ }
+
+
+
+ /* *****Country Section-css***** */
+
+ .flag-icon {
+     display: inline-block;
+     width: 1.333em;
+     height: 1em;
+     background-size: contain;
+     background-position: 50%;
+     background-repeat: no-repeat;
+ }
+
+
+
+
+ @media (min-width: 768px) {
+     /* Large screens */
+
+     body {
+         /* padding-top: 120px; */
+         /* Adjust based on header height */
+     }
+ }
+
+ @media (max-width: 767px) {
+     /* Mobile screens */
+
+     body {
+         /* padding-top: 58px; */
+         /* Remove extra space */
+     }
+ }
+
+ /* for text editor */
+
+ body {
+     font-family: Arial, sans-serif;
+ }
+
+ p {
+     font-size: 1rem;
+     /* Standard font size for paragraphs */
+     line-height: 1.6;
+     margin-bottom: 1.2rem;
+     /* Adds spacing after paragraphs */
+ }
+

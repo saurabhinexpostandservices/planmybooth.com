@@ -3,7 +3,5 @@
     <x-slot name="meta_description">Discover top stand builders for exhibitions and trade shows. Find reliable experts to design, build, and install custom exhibition stands for your next event.</x-slot>
     <x-slot name="featured_image"></x-slot>
 
-    @php
-        dd($standbuilders)
-    @endphp
+ ghg
 </x-layout.public>

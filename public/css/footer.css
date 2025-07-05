@@ -1,0 +1,129 @@
+.footer {
+    background-color: #145D76;
+    /* Fallback for gradient */
+    background-image: linear-gradient(to bottom, #145D76 70%, #748C92 51%, #DAFFFB 100%);
+    background-size: 200% auto;
+    clip-path: polygon(0 0, 50% 50px, 100% 0, 100% 100%, 0 100%);
+    margin: -114px 0px -1px 0px;
+    height: 10rem;
+}
+
+.footer-content {
+    background-color: #145D76;
+    color: white;
+    opacity: 0.8;
+    z-index: 1;
+    padding: 10px;
+    border-radius: 34px 34px 0 0;
+    border: 3px solid white;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.33);
+    /* Reduced opacity for better blending */
+    position: relative;
+}
+
+.footer-content h4 {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+    margin: 0;
+    padding: 16px 10px;
+    font-size: 1.5rem;
+    /* Adjust for responsiveness */
+}
+
+.social-menu {
+    background-color: #145D76;
+    /* Fallback */
+    background-image: linear-gradient(to bottom, #145D76 0%, #748C92 0%, #DAFFFB 100%);
+    background-size: 200% auto;
+}
+
+.social-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0 20px;
+    gap: 40px;
+    margin: 0;
+    flex-wrap: wrap;
+    /* For better responsiveness */
+}
+
+.social-menu li {
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.6s, background-color 0.3s;
+    /* Smooth transitions */
+    cursor: pointer;
+}
+
+.social-menu svg {
+    color: black;
+    transition: color 0.3s;
+}
+
+.social-menu ul a:hover svg,
+.social-menu ul a:focus svg {
+    color: white;
+    /* For better accessibility */
+}
+
+.social-menu ul a:nth-child(1) li:hover,
+.social-menu ul a:nth-child(1) li:focus {
+    background-color: #3B5998;
+}
+
+.social-menu ul a:nth-child(2) li:hover,
+.social-menu ul a:nth-child(2) li:focus {
+    background-color: #E4405F;
+}
+
+.social-menu ul a:nth-child(3) li:hover,
+.social-menu ul a:nth-child(3) li:focus {
+    background-color: #0077b5;
+}
+
+.social-menu ul a:nth-child(4) li:hover,
+.social-menu ul a:nth-child(4) li:focus {
+    background-color: rgb(51, 50, 50);
+}
+
+.copyrigt {
+    text-align: center;
+    color: white;
+    background-color: #145D76;
+    /* Fallback */
+    /* background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%); */
+    background-size: 200% auto;
+}
+
+.copyrigt p {
+    margin: 0;
+    padding: 24px 0 18px;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.37);
+    width: 90%;
+    margin: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        height: 8rem;
+    }
+
+    .footer-content h4 {
+        font-size: 1.2rem;
+    }
+
+    .social-menu ul {
+        gap: 20px;
+    }
+
+    .footer-cities ul {
+        font-size: 0.9rem;
+    }
+}
