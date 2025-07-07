@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('meta_title');
             $table->string('meta_description');
             $table->json('markup_schema')->nullable();
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('logo');
             $table->string('title');
             $table->string('content');

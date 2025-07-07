@@ -20,7 +20,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li class="text-[15px] hover:text-white font-semibold">
-                        <a href="{{ route('custom-exhibition-stand') }}">Custom Exhibition Stand</a>
+                        <a href="{{ route('stand-builders') }}">Custom Exhibition Stand</a>
                     </li>
                     <li class="text-[15px] hover:text-white font-semibold">
                         <a href="{{ route('shows') }}">Trade Shows</a>
@@ -95,7 +95,7 @@
                 </li>
 
                 <li class="text-lg hover:text-sky-600">
-                    <a href="{{ route('custom-exhibition-stand') }}" onclick="closeMobileMenu()">
+                    <a href="{{ route('stand-builders') }}" onclick="closeMobileMenu()">
                         Custom Exhibition Stand
                     </a>
                 </li>

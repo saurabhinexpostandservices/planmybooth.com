@@ -9,6 +9,6 @@
     <x-home.global-presence-section />
     <x-home.why-choose-us />
     <x-home.how-we-work />
-    <x-home.country />
+    <x-home.country :countries="$countries" />
     <x-home.multi-step-form />
 </x-layout.public>

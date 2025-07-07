@@ -15,7 +15,7 @@ class StandbuilderController extends Controller
         try {
             $query = Standbuilder::where('status', 'published');
             $standbuilders = $query->paginate(10);
-            return view('stand-builders', compact('standbuilders'));
+            return view('custom-exhibition-stand', compact('standbuilders'));
         } catch (\Throwable $th) {
             abort(404);
         }
@@ -43,8 +43,10 @@ class StandbuilderController extends Controller
     public function show(string $username)
     {
         try {
+            
             $standbuilder = Standbuilder::where('status', 'published')->where('username', $username)->firstOrFail();
             return view('stand-builder-inner', compact('standbuilder'));
+
         } catch (\Throwable $th) {
             abort(404);
         }

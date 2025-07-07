@@ -42,7 +42,7 @@
 
                 <div class="md:hidden font-semibold text-gray-500">Category:</div>
                 <div class="text-xs xl:text-sm">
-                    <a href="{{ route('public.trade-show-page', $item->slug) }}"
+                    <a href=""
                         class="bg-[#315F72] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3">
                         Details
                     </a>

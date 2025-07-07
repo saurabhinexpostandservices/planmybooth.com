@@ -7,7 +7,7 @@
     <div>
         <x-custom-exhibition-stand.banner-section />
         <x-custom-exhibition-stand.about-section />
-        <x-custom-exhibition-stand.card-section />
+        <x-custom-exhibition-stand.card-section :standbuilders="$standbuilders" />
         <x-custom-exhibition-stand.dought-section />
         <x-home.multi-step-form />
     </div>
