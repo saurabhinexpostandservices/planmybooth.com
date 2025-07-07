@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Country;
+use App\Models\City;
+
+
 
 class Show extends Model
 {
@@ -46,5 +50,15 @@ class Show extends Model
     // {
     //     return asset('storage/' . $this->logo); // Assuming you store images in the 'public/storage' directory
     // }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 
 }

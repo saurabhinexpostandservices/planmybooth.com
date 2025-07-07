@@ -26,7 +26,7 @@
 
                 <div class="md:hidden font-semibold text-gray-500">Event Name:</div>
                 <div class="flex items-center space-x-2 md:col-span-1">
-                    <img src="{{ $item->featureImageUrl }}" alt="{{ $item->title }} logo"
+                    <img src="{{ $item->logo }}" alt="{{ $item->title }} logo"
                         class="w-10 h-10 rounded-full" />
                     <span class="text-sm xl:text-base truncate">{{ Str::limit(strip_tags($item->title), 30) }}</span>
                 </div>
@@ -38,11 +38,11 @@
                 </div>
 
                 <div class="md:hidden font-semibold text-gray-500">Place:</div>
-                <div class="text-sm xl:text-base text-gray-700 truncate">{{ $item->city }}, {{ $item->country }}</div>
+                <div class="text-sm xl:text-base text-gray-700 truncate">{{ $item?->city?->name }}, {{ $item?->country?->name }}</div>
 
-                <div class="md:hidden font-semibold text-gray-500">Category:</div>
+                <div class="md:hidden font-semibold text-gray-500">Action:</div>
                 <div class="text-xs xl:text-sm">
-                    <a href=""
+                    <a href="{{ route('shows.inner', $item?->slug)}}"
                         class="bg-[#315F72] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3">
                         Details
                     </a>

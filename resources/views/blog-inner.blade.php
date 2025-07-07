@@ -9,13 +9,13 @@
         <div class="flex flex-col lg:flex-row p-5 gap-5">
             <!-- Main Blog Section -->
             <section class="w-full lg:w-2/3 mx-auto">
-                <img class="w-full" src="{{ $post->featureImageUrl }}" alt="why-choose-us">
+                <img class="w-full" src="{{ $post->featured_image }}" alt="why-choose-us">
 
                 <!-- Blog Content -->
                 <section>
                     <ul class="text-xs md:text-sm flex pt-5 gap-5">
                         <li class="flex items-center">
-                            <a href="{{ route('public.blogs') }}">Blog</a> <span class="ml-2">&rarr;</span>
+                            <a href="{{ route('blogs') }}">Blog</a> <span class="ml-2">&rarr;</span>
                         </li>
                         <li>
                             <a href="{{ route('blogs.inner', $post->slug) }}">{{ $post->meta_title }}</a>
@@ -33,8 +33,8 @@
 
             <!-- Sidebar Section -->
             <section class="w-full flex flex-col gap-5 mx-auto lg:w-80">
-                <x-inside-blog-page.latest-post :recentPosts="$recentPosts" />
-                <x-inside-blog-page.sidebar-form />
+                {{-- <x-inside-blog-page.latest-post :recentPosts="$recentPosts" /> --}}
+                {{-- <x-inside-blog-page.sidebar-form /> --}}
             </section>
         </div>
     </div>
