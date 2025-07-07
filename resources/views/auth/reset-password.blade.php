@@ -3,6 +3,7 @@
         <div class="w-full max-w-md">
             <div class="bg-[#d3e4ec] shadow-md rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-center mb-4">{{ __('Reset Password') }}</h2>
+              
                 <form method="POST" action="{{ route('password.update') }}" class="space-y-4">
                     @csrf
 
@@ -50,6 +51,7 @@
                         </button>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>

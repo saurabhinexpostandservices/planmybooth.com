@@ -47,7 +47,7 @@
 
 
 
-    {{-- @push('scripts')
+    @push('scripts')
         <script>
             let cities = [];
             const suggestionBox = document.getElementById("suggestion-box");
@@ -55,8 +55,20 @@
 
             const fetchCities = async () => {
                 try {
-                    const res = await fetch("{{ route('api.get-cities') }}").then(res => res.json());
-                    cities = res;
+                    // Static list of cities
+                    cities = [
+                        { city: "New York", slug: "new-york" },
+                        { city: "London", slug: "london" },
+                        { city: "Paris", slug: "paris" },
+                        { city: "Dubai", slug: "dubai" },
+                        { city: "Mumbai", slug: "mumbai" },
+                        { city: "Berlin", slug: "berlin" },
+                        { city: "Singapore", slug: "singapore" },
+                        { city: "Tokyo", slug: "tokyo" },
+                        { city: "Sydney", slug: "sydney" },
+                        { city: "Barcelona", slug: "barcelona" }
+                        // Add more cities as needed
+                    ];
                 } catch (error) {
                     console.error("Error fetching cities:", error);
                 }
@@ -114,5 +126,5 @@
                 return false;
             }
         </script>
-    @endpush --}}
+    @endpush
 </div>
