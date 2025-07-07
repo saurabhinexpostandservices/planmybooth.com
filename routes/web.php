@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\StandbuilderController;
 use App\Http\Controllers\ShowController;
+use App\Http\Controllers\PublicController;
 
 
 /**
@@ -65,4 +66,13 @@ Route::get('/trade-shows/{slug}', [ShowController::class, 'show'])->name('shows.
 Route::get('/stand-builders/{username}', [StandbuilderController::class, 'show'])->name('stand-builder.show');
 
 Route::post('/lead/create', [\App\Http\Controllers\LeadController::class, 'create'])->name('api.lead.create');
+
+
+/**
+ * /////////////////////////////////////////////////////////
+ * ======================= Api Routes ======================
+ * /////////////////////////////////////////////////////////
+ */
+
+Route::get('/api/pages', [PublicController::class, 'fetch_city_for_search'])->name('api.search');
 

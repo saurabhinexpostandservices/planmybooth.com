@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Country;
+use App\Models\City;
+
 
 class Page extends Model
 {
@@ -23,10 +26,20 @@ class Page extends Model
         'city_id',
         'author_id'
     ];
-
+    
     protected $casts = [
         'markup_schema' => 'array',
     ];
 
-    
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+ 
 }

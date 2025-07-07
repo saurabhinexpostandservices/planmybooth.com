@@ -16,7 +16,7 @@ class BlogController extends Controller
             $posts = Post::where('status', 'published')->orderBy('created_at', 'desc')->paginate(9);
             return view('blogs', compact('posts'));
         } catch (\Exception $e) {
-            // Log the exception or handle it as needed
+               // Log the exception o0 handle it as needed
             return back()->withErrors(['error' => 'Unable to load blog posts.']);
         }
     }
