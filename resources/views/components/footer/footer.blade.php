@@ -18,6 +18,7 @@
                             hiring the perfect exhibition stand design company in your city.
                         </p>
                     </div>
+                    
                 </div>
 
                 <!-- Column 2 -->

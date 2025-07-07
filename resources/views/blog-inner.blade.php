@@ -3,7 +3,6 @@
     <x-slot name="meta_description">{{ $post->meta_description }}</x-slot>
     <x-slot name="featured_image">{{ $post->featured_image }}</x-slot>
 
-
  <div class="relative bg-bottom bg-no-repeat bg-fixed md:mx-10 xl:mx-20 font-poppins" id="blogPage"
     style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
     <div class="container mx-auto mb-10 md:mb-5 flex flex-col gap-3 bg-[#EFEFEF] bg-opacity-50">
