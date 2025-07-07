@@ -13,13 +13,9 @@ use App\Http\Controllers\PublicController;
  * //////////////////////////////////////////////////////////
  */
 
-Route::get('/', function() {
-    return view('home');
-})->name('home');
+Route::get('/', [PublicController::class, 'home'])->name('home');
 
-Route::get('/custom-exhibition-stand', function() {
-    return view('custom-exhibition-stand');
-})->name('custom-exhibition-stand');
+Route::get('/stand-builders', [StandbuilderController::class, 'index'])->name('stand-builders');
 
 Route::get('/about-us', function() {
     return view('about-us');
@@ -64,7 +60,6 @@ Route::get('/trade-shows', [ShowController::class, 'index'])->name('shows');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.inner');
 Route::get('/trade-shows/{slug}', [ShowController::class, 'show'])->name('shows.inner');
 Route::get('/stand-builders/{username}', [StandbuilderController::class, 'show'])->name('stand-builder.show');
-
 Route::post('/lead/create', [\App\Http\Controllers\LeadController::class, 'create'])->name('api.lead.create');
 
 
@@ -75,4 +70,4 @@ Route::post('/lead/create', [\App\Http\Controllers\LeadController::class, 'creat
  */
 
 Route::get('/api/pages', [PublicController::class, 'fetch_city_for_search'])->name('api.search');
-
+Route::get('/api/countries', [PublicController::class, 'fetch_country_for_home'])->name('api.home-countries');

@@ -27,7 +27,7 @@
                         <h4 class="text-white font-serif">Quick Links</h4>
                         <ul class="flex flex-col gap-2 py-5 md:p-5 text-sm text-start pl-10">
                             <li><a class="hover:text-[#DAE7EB]" href="/">Home</a></li>
-                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('custom-exhibition-stand') }}">Custom
+                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('stand-builders') }}">Custom
                                     Exhibition Stand</a></li>
                             <li><a class="hover:text-[#DAE7EB]" href="{{ route('privacy-policy') }}">Privacy
                                     Policy</a></li>

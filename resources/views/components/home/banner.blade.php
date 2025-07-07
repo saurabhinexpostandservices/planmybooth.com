@@ -56,19 +56,8 @@
             const fetchCities = async () => {
                 try {
                     // Static list of cities
-                    cities = [
-                        { city: "New York", slug: "new-york" },
-                        { city: "London", slug: "london" },
-                        { city: "Paris", slug: "paris" },
-                        { city: "Dubai", slug: "dubai" },
-                        { city: "Mumbai", slug: "mumbai" },
-                        { city: "Berlin", slug: "berlin" },
-                        { city: "Singapore", slug: "singapore" },
-                        { city: "Tokyo", slug: "tokyo" },
-                        { city: "Sydney", slug: "sydney" },
-                        { city: "Barcelona", slug: "barcelona" }
-                        // Add more cities as needed
-                    ];
+                    const response = await fetch('{{ route('api.search') }}');
+                    cities = await response.json();
                 } catch (error) {
                     console.error("Error fetching cities:", error);
                 }

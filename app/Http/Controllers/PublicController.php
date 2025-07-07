@@ -8,10 +8,15 @@ use App\Models\Page;
 class PublicController extends Controller
 {
     public function fetch_city_for_search(Request $request){
-        $pages = Page::with(['city:id,name'])
-        ->where('status', 'published')
+        $pages = Page::where('status', 'published')
+        ->where('type', 'city')
         ->select('slug', 'city_id')
+        ->with(['city' => function ($query) {
+            $query->select('id', 'name');
+        }])
         ->get()
+        ->sortBy(fn($page) => $page->city?->name)
+        ->values()
         ->map(function ($page) {
             return [
                 'slug' => $page->slug,
@@ -19,7 +24,48 @@ class PublicController extends Controller
             ];
         });
 
+        return $pages;
+    }
+
+    public function fetch_country_for_home(Request $request) {
+        $pages = Page::where('status', 'published')
+        ->where('type', 'country')
+        ->select('slug', 'country_id', 'featured_image')
+        ->with(['country' => function ($query) {
+            $query->select('id', 'name')->orderBy('name');
+        }])
+        ->get()
+        ->sortBy(fn($page) => $page->country?->name)
+        ->values()
+        ->map(function ($page) {
+            return [
+                'slug' => $page->slug,
+                'country' => $page->country?->name,
+                'featured_image' => $page->featured_image
+            ];
+        });
 
         return $pages;
+    }
+
+    public function home(Request $request) {
+        $countries = Page::where('status', 'published')
+        ->where('type', 'country')
+        ->select('slug', 'country_id', 'featured_image')
+        ->with(['country' => function ($query) {
+            $query->select('id', 'name')->orderBy('name');
+        }])
+        ->get()
+        ->sortBy(fn($page) => $page->country?->name)
+        ->values()
+        ->map(function ($page) {
+            return [
+                'slug' => $page->slug,
+                'country' => $page->country?->name,
+                'featured_image' => $page->featured_image
+            ];
+        });
+
+        return view('home', compact('countries'));
     }
 }
