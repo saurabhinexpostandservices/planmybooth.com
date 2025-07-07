@@ -3,10 +3,12 @@
     <!-- Container for centering the text -->
     <div
         class="flex flex-col items-center justify-center gap-5 md:gap-10 min-h-120 md:min-h-160 text-center bg-[#176B87]/70 duration-300">
+
         <div class="text-white px-5">
             <h1 class="w-full md:w-[80%] mx-auto text-2xl md:text-3xl lg:text-4xl xl:text-5xl [text-shadow:4px_4px_black] font-serif font-bold">
                 Searching for Top Exhibition Stand Builders?
             </h1>
+
             <p class="text-xl md:text-2xl pt-5 text-white">
                 Get proposals right away from proven and verified suppliers
             </p>
@@ -39,13 +41,10 @@
                         class="fas fa-search-location w-2 h-2 md:w-6 md:h-6 text-3xl absolute top-1 md:top-3 right-6 md:right-4">
                     </li>
                 </button>
-                
             </div>
         </form>
 
     </div>
-
-
 
     @push('scripts')
         <script>
