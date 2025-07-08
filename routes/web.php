@@ -73,4 +73,7 @@ Route::post('/lead/create', [\App\Http\Controllers\LeadController::class, 'creat
 
 Route::get('/api/pages', [PublicController::class, 'fetch_city_for_search'])->name('api.search');
 Route::get('/api/countries', [PublicController::class, 'fetch_country_for_home'])->name('api.home-countries');
+Route::get('/api/get-cities', [PublicController::class, 'get_cities'])->name('api.get-cities');
+Route::get('/api/get-shows', [PublicController::class, 'get_shows'])->name('api.get-shows');
+
 

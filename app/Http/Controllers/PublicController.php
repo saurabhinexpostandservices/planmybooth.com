@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\Country;
+use App\Models\City;
 use App\Models\Standbuilder;
+use App\Models\Show;
+
 
 class PublicController extends Controller
 {
@@ -120,6 +123,26 @@ class PublicController extends Controller
         $standbuilders = Standbuilder::whereJsonContains('services_continents', [(string)$country->continent_id])->paginate(10);
         
         return view('city', compact('page', 'standbuilders'));
+    }
+
+    public function get_cities(){
+        try {
+            $cities = City::select('name', 'id')->distinct()->orderBy('name')->get();
+            return $cities;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return [];
+        }
+    }
+
+    public function get_shows(){
+       try {
+         $shows = Show::select('title', 'id')->distinct()->orderBy('title')->get();
+         return $shows;
+       } catch (\Throwable $th) {
+        //throw $th;
+         return [];
+       }
     }
 
 }

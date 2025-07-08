@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Step Form</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+@push('styles')
     <style>
         .form-container {
             background-color: white;
@@ -241,9 +231,8 @@
         }
 
     </style>
-</head>
+@endpush
 
-<body class="font-poppins">
     <div class="bg-[#124E65] py-5 md:py-10">
           <div class="form-container">
         <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">Your Stand Request</h2>
@@ -309,7 +298,9 @@
                         // Static city autocomplete
                         const cityInput = document.getElementById('city');
                         const suggestionsBox = document.getElementById('city-suggestions');
-                        const cities = [
+                        
+                        //  use this api route route('api.get-cities')
+                        const cities_form = [
                             "Berlin, Germany",
                             "Paris, France",
                             "Madrid, Spain",
@@ -337,7 +328,7 @@
                             if (query.length < 2) return;
 
                             debounceTimeout = setTimeout(() => {
-                                const filtered = cities.filter(city =>
+                                const filtered = cities_form.filter(city =>
                                     city.toLowerCase().includes(query)
                                 ).slice(0, 5);
 
@@ -407,6 +398,8 @@
                     // Static trade show autocomplete
                     const tradeShowInput = document.getElementById('trade_show_event');
                     const tradeShowSuggestions = document.getElementById('trade-show-suggestions');
+                    
+                     //  use this api route route('api.get-shows')
                     const tradeShows = [
                         "IFA Berlin",
                         "Mobile World Congress Barcelona",
@@ -718,6 +711,8 @@
     </div>  
     </div>
 
+
+@push('scripts')
     <script>
         const form = document.getElementById('multiStepForm');
         const formSteps = document.querySelectorAll('.form-step');
@@ -846,7 +841,5 @@
 
         // Initialize form by showing the first step
         showStep(0);
-    </script>
-</body>
-
-</html>
+    </script>   
+@endpush

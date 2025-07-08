@@ -90,6 +90,8 @@
     }
 </style>
 
+@stack('styles')
+
 <body>
     <header id="main-header" class="sticky top-0 z-50">
         <x-header class="sticky top-0 z-50" />
