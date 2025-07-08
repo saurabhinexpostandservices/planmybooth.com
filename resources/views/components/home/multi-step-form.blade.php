@@ -301,9 +301,71 @@
                     </div>
                     <div class="form-field-group">
                         <label for="city">Where do you need it? (City Name)</label>
-                        <input type="text" id="city" name="city" placeholder="City">
+                        <input type="text" id="city" name="city" placeholder="City" autocomplete="off" class="relative">
+                        <div id="city-suggestions" class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden"></div>
                         <p class="error-message" id="city-error"></p>
                     </div>
+                    <script>
+                        // Static city autocomplete
+                        const cityInput = document.getElementById('city');
+                        const suggestionsBox = document.getElementById('city-suggestions');
+                        const cities = [
+                            "Berlin, Germany",
+                            "Paris, France",
+                            "Madrid, Spain",
+                            "London, United Kingdom",
+                            "Rome, Italy",
+                            "Amsterdam, Netherlands",
+                            "Barcelona, Spain",
+                            "Frankfurt, Germany",
+                            "Munich, Germany",
+                            "Vienna, Austria",
+                            "Milan, Italy",
+                            "Brussels, Belgium",
+                            "Zurich, Switzerland",
+                            "Lisbon, Portugal",
+                            "Prague, Czech Republic"
+                        ];
+
+                        let debounceTimeout = null;
+
+                        cityInput.addEventListener('input', function () {
+                            const query = this.value.trim().toLowerCase();
+                            suggestionsBox.innerHTML = '';
+                            suggestionsBox.classList.add('hidden');
+                            if (debounceTimeout) clearTimeout(debounceTimeout);
+                            if (query.length < 2) return;
+
+                            debounceTimeout = setTimeout(() => {
+                                const filtered = cities.filter(city =>
+                                    city.toLowerCase().includes(query)
+                                ).slice(0, 5);
+
+                                if (filtered.length > 0) {
+                                    suggestionsBox.innerHTML = filtered.map(city =>
+                                        `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-city="${city.split(',')[0]}">${city}</div>`
+                                    ).join('');
+                                    suggestionsBox.classList.remove('hidden');
+                                }
+                            }, 200);
+                        });
+
+                        suggestionsBox.addEventListener('click', function (e) {
+                            if (e.target && e.target.dataset.city) {
+                                cityInput.value = e.target.dataset.city;
+                                suggestionsBox.innerHTML = '';
+                                suggestionsBox.classList.add('hidden');
+                            }
+                        });
+
+                        // Hide suggestions when clicking outside
+                        document.addEventListener('click', function (e) {
+                            if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                                suggestionsBox.innerHTML = '';
+                                suggestionsBox.classList.add('hidden');
+                            }
+                        });
+                    </script>
                 </div>
                 <div class="flex justify-end mt-8">
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
@@ -335,11 +397,73 @@
                         <p class="error-message" id="stand_size-error"></p>
                     </div>
                 </div>
-                <div class="form-field-group">
+                <div class="form-field-group" style="position: relative;">
                     <label for="trade_show_event">In which trade show do you exhibit?</label>
-                    <input type="text" id="trade_show_event" name="trade_show_event" placeholder="Select an event" required>
+                    <input type="text" id="trade_show_event" name="trade_show_event" placeholder="Select an event" required autocomplete="off">
+                    <div id="trade-show-suggestions" class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden"></div>
                     <p class="error-message" id="trade_show_event-error"></p>
                 </div>
+                <script>
+                    // Static trade show autocomplete
+                    const tradeShowInput = document.getElementById('trade_show_event');
+                    const tradeShowSuggestions = document.getElementById('trade-show-suggestions');
+                    const tradeShows = [
+                        "IFA Berlin",
+                        "Mobile World Congress Barcelona",
+                        "ITB Berlin",
+                        "CPhI Worldwide",
+                        "Automechanika Frankfurt",
+                        "Gamescom Cologne",
+                        "Medica Düsseldorf",
+                        "Light + Building Frankfurt",
+                        "Hannover Messe",
+                        "Drupa Düsseldorf",
+                        "Fruit Logistica Berlin",
+                        "ProWein Düsseldorf",
+                        "EuroShop Düsseldorf",
+                        "Bauma Munich",
+                        "InnoTrans Berlin"
+                    ];
+
+                    let tradeShowDebounce = null;
+
+                    tradeShowInput.addEventListener('input', function () {
+                        const query = this.value.trim().toLowerCase();
+                        tradeShowSuggestions.innerHTML = '';
+                        tradeShowSuggestions.classList.add('hidden');
+                        if (tradeShowDebounce) clearTimeout(tradeShowDebounce);
+                        if (query.length < 2) return;
+
+                        tradeShowDebounce = setTimeout(() => {
+                            const filtered = tradeShows.filter(show =>
+                                show.toLowerCase().includes(query)
+                            ).slice(0, 5);
+
+                            if (filtered.length > 0) {
+                                tradeShowSuggestions.innerHTML = filtered.map(show =>
+                                    `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-show="${show}">${show}</div>`
+                                ).join('');
+                                tradeShowSuggestions.classList.remove('hidden');
+                            }
+                        }, 200);
+                    });
+
+                    tradeShowSuggestions.addEventListener('click', function (e) {
+                        if (e.target && e.target.dataset.show) {
+                            tradeShowInput.value = e.target.dataset.show;
+                            tradeShowSuggestions.innerHTML = '';
+                            tradeShowSuggestions.classList.add('hidden');
+                        }
+                    });
+
+                    // Hide suggestions when clicking outside
+                    document.addEventListener('click', function (e) {
+                        if (!tradeShowInput.contains(e.target) && !tradeShowSuggestions.contains(e.target)) {
+                            tradeShowSuggestions.innerHTML = '';
+                            tradeShowSuggestions.classList.add('hidden');
+                        }
+                    });
+                </script>
                 <div class="form-field-group">
                     <div class="radio-group">
                         <label class="block">

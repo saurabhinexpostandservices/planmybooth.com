@@ -15,7 +15,7 @@
             class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-x-8 gap-x-5 gap-y-5 md:gap-y-8 py-10 md:px-10 justify-center ">
 
             @foreach ($countries as $country)
-                <a href="{{ $country['slug'] }}"
+                <a href="{{ route('page.country', $country['slug']) }}"
                     class="relative group country-card flex items-center justify-between px-4 py-2 rounded-lg 
                     bg-[#145D76] bg-[length:200%_auto] hover:bg-[position:right_center] 
                     text-white text-center uppercase transition-all duration-700 ease-in-out text-sm">

@@ -57,6 +57,8 @@ Route::get('/trade-shows', [ShowController::class, 'index'])->name('shows');
  * /////////////////////////////////////////////////////////
  */
 
+Route::get('/country/{slug}', [PublicController::class, 'country'])->name('page.country');
+Route::get('/city/{slug}', [PublicController::class, 'city'])->name('page.city');
 Route::get('/blogs/{slug}', [BlogController::class, 'show'])->name('blogs.inner');
 Route::get('/trade-shows/{slug}', [ShowController::class, 'show'])->name('shows.inner');
 Route::get('/stand-builders/{username}', [StandbuilderController::class, 'show'])->name('stand-builder.show');
@@ -71,3 +73,4 @@ Route::post('/lead/create', [\App\Http\Controllers\LeadController::class, 'creat
 
 Route::get('/api/pages', [PublicController::class, 'fetch_city_for_search'])->name('api.search');
 Route::get('/api/countries', [PublicController::class, 'fetch_country_for_home'])->name('api.home-countries');
+

@@ -9,7 +9,7 @@
         <div class="flex flex-col lg:flex-row p-5 gap-5">
             <!-- Main Blog Section -->
             <section class="w-full lg:w-2/3 mx-auto">
-                <img class="w-full" src="{{ $post->featured_image }}" alt="why-choose-us">
+                <img class="w-full" src="http://localhost:8002/{{ $post->featured_image }}" alt="why-choose-us">
 
                 <!-- Blog Content -->
                 <section>

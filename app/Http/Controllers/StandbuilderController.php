@@ -15,7 +15,7 @@ class StandbuilderController extends Controller
         try {
             $query = Standbuilder::where('status', 'published');
             $standbuilders = $query->paginate(10);
-            return view('custom-exhibition-stand', compact('standbuilders'));
+            return view('stand-builders', compact('standbuilders'));
         } catch (\Throwable $th) {
             abort(404);
         }

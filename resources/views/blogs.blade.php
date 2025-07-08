@@ -24,7 +24,7 @@
             <a href="{{ route('blogs.inner', $item?->slug) }}"
                 class="group overflow-hidden duration-500 text-white block">
                 <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
-                    <img src="{{ $item?->featured_image }}"
+                    <img src="http://localhost:8002/{{$item?->featured_image}}"
                         class="transition-all duration-300 ease-in-out transform group-hover:scale-110 w-full" alt="Blog Image">
                 </div>
                 <div

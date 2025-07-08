@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'account_url' => env('ACCOUNT_URL', 'http://localhost:8002'),
 
     /*
     |--------------------------------------------------------------------------
