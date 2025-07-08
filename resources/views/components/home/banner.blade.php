@@ -80,7 +80,7 @@
                         li.classList.add("py-2", "px-3", "hover:bg-gray-300", "cursor-pointer");
 
                         let a = document.createElement('a');
-                        a.href = `/${city.slug}`;
+                        a.href = `/city/${city.slug}`;
                         a.innerText = city.city;
                         li.append(a);
                         li.addEventListener("click", function() {

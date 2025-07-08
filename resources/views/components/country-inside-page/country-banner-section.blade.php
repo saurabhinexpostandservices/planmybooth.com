@@ -1,9 +1,12 @@
-<div class="bg-[#2F556A] flex flex-col md:flex-row gap-5 p-5 md:p-10 lg:p-20 justify-center items-center font-lato">
+
+<div class="relative bg-bottom bg-no-repeat bg-fixed font-poppins" id="blogPage"
+    style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
+<div class="bg-[#2F556A] flex flex-col mt-[-80px] min-h-[30rem] md:min-h-[50rem] md:flex-row gap-5 md:p-10 lg:p-20 justify-center items-center font-lato">
     <!-- First Section -->
     <section class="w-full md:w-[90%] mx-auto flex flex-col justify-center items-center">
         <h1 class="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-wide text-center font-bold">
-            {{ $page->h1 }}
-            <p class="text-[#EF4444]">{{ $page->country }}</p>
+            {{ $page->title }}
+            <p class="text-[#EF4444]">{{ $page?->country?->name }}</p>
         </h1>
 
         <div class="w-full md:w-[80%]">
@@ -42,7 +45,7 @@
         </div>
         <div>
             {{-- <x-inside-tradeshow-page.three-step-form /> --}}
-            <a href="{{ route('public.free-quotation-form') }}">
+            <a href="">
                 <button
                     class="mt-4 px-2 xl:px-4 py-1 xl:py-2 duration-500 bg-[#269BD2] border-2 border-[#2791C4] text-white text-xs xl:text-sm font-medium rounded hover:bg-[#305468]">
                     Request Quotes
@@ -50,6 +53,5 @@
             </a>
         </div>
     </section>
-
-
+</div>
 </div>

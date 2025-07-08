@@ -32,12 +32,12 @@
                 </div>
 
                 <!-- Select City -->
-                <div class="flex flex-col">
+                {{-- <div class="flex flex-col">
                     <x-country-city.city-select />
                     @error('city')
                         <p class="my-1 text-red-500">{{ $message }}</p>
                     @enderror
-                </div>
+                </div> --}}
             </div>
 
             <!-- Section 2: Stand Details -->
@@ -201,7 +201,7 @@
                     </div>
 
                     <!-- Select Country -->
-                    <x-country-city.country-select />
+                    {{-- <x-country-city.country-select /> --}}
                 </div>
 
                 <!-- Submit Button -->
