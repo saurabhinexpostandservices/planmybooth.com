@@ -45,6 +45,7 @@ Route::get('/forgot-password', function() {
     return view('auth.forgot-password');
 })->name('forgot-password');
 
+
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
 
 Route::get('/stand-builders', [StandbuilderController::class, 'index'])->name('stand-builders');
