@@ -33,6 +33,14 @@ Route::get('/privacy-policy', function() {
     return view('privacy-policy');
 })->name('privacy-policy');
 
+Route::get('/profile', function() {
+    return view('profile');
+})->name('profile');
+
+Route::get('/profile-request', function() {
+    return view('profile-request');
+})->name('profile.request');
+
 Route::get('/login', function() {
     return view('auth.login');
 })->name('login');
@@ -44,6 +52,7 @@ Route::get('/register', function() {
 Route::get('/forgot-password', function() {
     return view('auth.forgot-password');
 })->name('forgot-password');
+
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
 

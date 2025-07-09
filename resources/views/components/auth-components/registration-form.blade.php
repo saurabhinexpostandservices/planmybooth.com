@@ -16,19 +16,7 @@
                  <span class="block sm:inline">{{ session('success') }}</span>
              </div>
          @endif
-         <div class="mb-4">
-             <label for="account_type" class="block text-sm font-medium mb-1">Account Type</label>
-             <select id="account_type" name="whoim"
-                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                 required>
-                 <option value="" disabled selected>Select account type</option>
-                 <option value="organizer">Organizer</option>
-                 <option value="standbuilder">Stand Builder</option>
-             </select>
-             @error('whoim')
-                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
-             @enderror
-         </div>
+    
          <div class="mb-4">
              <label for="name" class="block text-sm font-medium mb-1">Fullname</label>
              <input type="text" id="fullname" name="name"
