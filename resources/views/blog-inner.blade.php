@@ -3,9 +3,20 @@
     <x-slot name="meta_description">{{ $post->meta_description }}</x-slot>
     <x-slot name="featured_image">{{ $post->featured_image }}</x-slot>
 
- <div class="relative bg-bottom bg-no-repeat bg-fixed md:mx-10 xl:mx-20 font-poppins" id="blogPage"
+ <div class="relative bg-bottom bg-no-repeat bg-fixed font-poppins" id="blogPage"
     style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
-    <div class="container mx-auto mb-10 md:mb-5 flex flex-col gap-3 bg-[#EFEFEF] bg-opacity-50">
+
+
+ <!-- Banner Section -->
+  <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10 font-lato"
+      style="background-image: url('/assets/banner/home_banner.webp')">
+     <div
+            class="bg-[#176B87]/90 flex justify-center items-center min-h-[20rem] mt-[-80px] sm:min-h-[20rem] md:min-h-[25rem] text-center transition-all px-3 sm:px-5">
+      </div>
+  </div>
+
+
+    <div class=" mb-10 md:mb-5 flex flex-col gap-3 md:m-10 xl:mx-20 bg-[#EFEFEF] bg-opacity-50">
         <div class="flex flex-col lg:flex-row p-5 gap-5">
             <!-- Main Blog Section -->
             <section class="w-full lg:w-2/3 mx-auto">

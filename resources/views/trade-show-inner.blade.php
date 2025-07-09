@@ -7,7 +7,7 @@
     <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10 font-lato"
         style="background-image: url('/assets/banner/home_banner.webp')">
         <div
-            class="flex justify-center items-center min-h-[30rem] mt-[-80px] sm:min-h-[30rem] md:min-h-[40rem] text-center relative bg-black bg-opacity-70 transition-all px-3 sm:px-5">
+            class="bg-[#176B87]/90 flex justify-center items-center min-h-[30rem] mt-[-80px] sm:min-h-[30rem] md:min-h-[40rem] text-center transition-all px-3 sm:px-5">
             <div class="text-white max-w-[90%] md:max-w-[75%] mx-auto">
                 <h1
                     class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-md font-bold break-words whitespace-normal leading-tight">
