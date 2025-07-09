@@ -1,7 +1,7 @@
  <!-- Login Form -->
  <div id="login-form" class="p-8 bg-white rounded shadow-lg w-96 md:w-1/2 mx-auto mt-10 border">
      <h1 class="text-2xl font-semibold mb-6 text-center">Login</h1>
-     <form id="login" action={{ route('login') }} method="POST">
+     <form id="login" action={{ route('auth.login') }} method="POST">
          @csrf
          @if (session('error'))
              <div class="bg-red-100 mb-4 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">

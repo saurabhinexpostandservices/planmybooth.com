@@ -1,3 +1,3 @@
 <x-layout.public>
-   <x-profile-page.request-content/>
+   <x-profile-page.request-content :leads="$leads" />
 </x-layout.public>

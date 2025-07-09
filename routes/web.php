@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\StandbuilderController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\UserController;
 
 
 /**
@@ -37,9 +38,7 @@ Route::get('/profile', function() {
     return view('profile');
 })->name('profile');
 
-Route::get('/profile-request', function() {
-    return view('profile-request');
-})->name('profile.request');
+Route::get('/profile-request', [UserController::class, 'fetch_my_leads'])->name('profile.request');
 
 Route::get('/login', function() {
     return view('auth.login');
@@ -86,3 +85,15 @@ Route::get('/api/get-cities', [PublicController::class, 'get_cities'])->name('ap
 Route::get('/api/get-shows', [PublicController::class, 'get_shows'])->name('api.get-shows');
 
 
+/**
+ * //////////////////////////////////////////////////////////
+ * ======================= Auth Routes ======================
+ * //////////////////////////////////////////////////////////
+ */
+
+Route::post('/auth/register', [UserController::class, 'register'])->name('auth.register');
+Route::post('/auth/login', [UserController::class, 'login'])->name('auth.login');
+Route::get('/auth/logout', [UserController::class, 'logout'])->name('auth.logout');
+Route::post('/auth/forgot-pass', [UserController::class, 'generate_new_pass'])->name('auth.forgot-password');
+Route::post('/auth/update-user', [UserController::class, 'update_user_info'])->name('auth.update-user');
+Route::post('/auth/change-password', [UserController::class, 'update_pass'])->name('auth.change-password');
