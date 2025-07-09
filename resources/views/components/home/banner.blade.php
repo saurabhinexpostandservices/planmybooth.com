@@ -19,14 +19,14 @@
             <label for="default-search"
                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div class="relative flex justify-center">
-                <div
-                    class="absolute top-1 md:top-2 left-0 text-xl flex justify-center items-center p-3 pointer-events-none">
-                    <i class="fas fa-location-dot w-4 h-10 text-gray-500 dark:text-gray-400"></i>
-                </div>
+                {{-- <div
+                    class="absolute top-[-1] -left-4 text-xl flex justify-center items-center p-3  pointer-events-none">
+                    <i class="fas fa-location-dot w-2 h-2 text-gray-500 dark:text-gray-400"></i>
+                </div> --}}
 
                 <!-- Search Input -->
                 <input type="text" id="default-search" name="query"
-                    class="shadow-lg shadow-black duration-500 block md:w-[25rem] w-[15rem] py-4 md:py-5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="shadow-lg shadow-black hover:shadow-lg duration-500 block md:w-[26rem] w-[15rem] h-[3rem] text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Search city" required onkeyup="showSuggestions(this.value)" autocomplete="off"
                     onblur="handelOnSearchBlur()" />
 
@@ -36,9 +36,9 @@
                 </ul>
 
                 <button type="submit"
-                    class="absolute w-10 h-10 md:w-14 md:h-14 border-none cursor-pointer text-white rounded-[74%] bg-[#748C92] transition-all ease-in-out duration-300 hover:text-white top-2 md:top-1 end-1 font-medium text-sm ">
+                    class="absolute w-10 h-10 border-none cursor-pointer text-white rounded-[74%] bg-[#748C92] transition-all ease-in-out duration-300 hover:text-white top-1 end-1 font-medium text-sm ">
                     <li
-                        class="fas fa-search-location w-2 h-2 md:w-6 md:h-6 text-3xl absolute top-1 md:top-3 right-6 md:right-4">
+                        class="fas fa-search-location w-2 h-2 text-3xl absolute top-2 right-6">
                     </li>
                 </button>
             </div>

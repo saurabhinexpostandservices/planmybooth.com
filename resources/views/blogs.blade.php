@@ -28,14 +28,14 @@
                         class="transition-all duration-300 ease-in-out transform group-hover:scale-110 w-full" alt="Blog Image">
                 </div>
                 <div
-                    class="flex flex-col p-4 h-fit bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-500 ease-in-out">
+                    class="flex flex-col p-4 h-60 bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-500 ease-in-out">
                     <div class="flex justify-between gap-2 items-center">
                         <span
                             class="text-xs p-1 px-2 text-white bg-[#2896CB] group-hover:bg-[#1F4A5A] rounded-2xl">By: {{ $item?->author?->name }}</span>
-                        <span class="text-xs text-white">Published on: {{ date('d M, Y', strtotime($item->created_at)) }}</span>
+                        <span class="text-xs text-white">Published on:<br>{{ date('d M, Y', strtotime($item->created_at)) }}</br> </span>
                     </div>
                     <h2
-                        class="text-lg font-bold mt-2 group-hover:text-white transition-all duration-300 ease-in-out">
+                        class="text-lg font-bold mt-5 group-hover:text-white transition-all duration-300 ease-in-out">
                         {{ $item?->title }}
                     </h2>
                     <p
