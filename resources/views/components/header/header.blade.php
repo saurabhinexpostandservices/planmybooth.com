@@ -39,30 +39,15 @@
                 <div class="flex justify-end items-center py-2 text-sm">
                     <a href="#">
                         @if (Auth::check())
-                            <a href="#"
-                                class="bg-[#D2E9E3] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3">
-                                Dashboard
-                            </a>
-                        @else
-                            <a href="{{ route('login') }}"
-                                class="bg-white font-semibold text-[#145D76] text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-3">
-                                Log In
-                            </a>
-                        @endif
-
-                    </a>
-                </div>
-
-
-
-                <!-- Profile Dropdown Start -->
+                            <!-- Profile Dropdown Start -->
                 <div class="relative inline-block text-left">
                     <!-- Profile Button -->
                     <button onclick="toggleDropdown()" id="profileButton"
                         class="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow hover:bg-gray-100 transition">
                         <div
                             class="w-8 h-8 rounded-full bg-[#64CCC5] flex items-center justify-center text-sm font-semibold text-white">
-                            di
+                            {{ strtoupper(Auth::user()->name[0]) }}
+
                         </div>
                         <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2"
                             viewBox="0 0 24 24">
@@ -86,26 +71,39 @@
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8m-4-4v8" />
                             </svg>
-                            My Requests
-                        </a>
-                        <a href="{{ route('profile') }}" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M5.121 17.804A8.966 8.966 0 0112 15c2.21 0 4.21.805 5.879 2.132M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            My Profile
-                        </a>
-                        <a href="/logout" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m0-8V7a2 2 0 114 0v1" />
-                            </svg>
-                            Logout
-                        </a>
+                                My Requests
+                            </a>
+                            <a href="{{ route('profile') }}" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M5.121 17.804A8.966 8.966 0 0112 15c2.21 0 4.21.805 5.879 2.132M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                My Profile
+                            </a>
+                            <a href="{{ route('auth.logout')}}" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m0-8V7a2 2 0 114 0v1" />
+                                </svg>
+                                Logout
+                            </a>
+                        </div>
                     </div>
+                        @else
+                            <a href="{{ route('login') }}"
+                                class="bg-white font-semibold text-[#145D76] text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-3">
+                                Log In
+                            </a>
+                        @endif
+
+                    </a>
                 </div>
+
+
+
+                
 
                 <script>
                     function toggleDropdown() {

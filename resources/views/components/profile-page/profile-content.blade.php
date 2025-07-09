@@ -1,6 +1,21 @@
 <div class="relative bg-fixed bg-[#176B87]/70  mt-[-80px] min-h-screen p-10 py-20 md:py-10">
 
     <div class="max-w-3xl mx-auto my-20 md:my-28 bg-white rounded-lg shadow-lg p-6 font-poppins">
+        @if (session('message'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
+            {{ session('message') }}
+        </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+                <ul class="list-disc list-inside">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <!-- Header Section -->
         <div class="flex border-b border-gray-200">
@@ -18,9 +33,9 @@
             <!-- My Profile -->
             <div id="myProfileSection">
                 <h2 class="text-lg font-semibold mb-4">Contact data</h2>
-                <p class="text-gray-700">John Doe</p>
-                <p class="text-gray-700">johndoe@gmail.com</p>
-                <p class="text-gray-700">+91 9876543210</p>
+                <p class="text-gray-700">{{ auth()?->user()?->name }}</p>
+                <p class="text-gray-700">{{ auth()?->user()?->email }}</p>
+                <p class="text-gray-700">{{ auth()?->user()?->phone }}</p>
                 <button class="mt-4 px-4 py-2 bg-[#0087B8] text-white border rounded  hover:bg-[#006b91]"
                     onclick="document.getElementById('editProfileBtn').click();">Edit »</button>
             </div>
@@ -28,22 +43,31 @@
             <!-- Edit Profile -->
             <div id="editProfileSection" class="hidden">
                 <h2 class="text-lg font-semibold mb-4">Contact Information</h2>
-                <div class="grid grid-cols- gap-4">
-                    <input type="text" placeholder="Full Name" class="border p-2 rounded">
-                    <input type="email" placeholder="Email" class="border p-2 rounded">
-                    <input type="text" placeholder="Phone" class="border p-2 rounded">
+                <form method="POST" action="{{route('auth.update-user')}}" class="grid grid-cols- gap-4">
+                    @csrf
+                    <input type="text" name="name" placeholder="Full Name" class="border p-2 rounded"
+                        value="{{ old('name', auth()->user()->name) }}">
 
-                </div>
-                <button class="mt-6 px-6 py-2 bg-[#0087B8] text-white border rounded  hover:bg-[#006b91]">Save »</button>
+                    <input type="email" name="email" placeholder="Email" class="border p-2 rounded"
+                        value="{{ old('email', auth()->user()->email) }}">
+
+                    <input type="text" name="phone" placeholder="Phone" class="border p-2 rounded"
+                        value="{{ old('phone', auth()->user()->phone) }}">
+
+
+                    <button type="submit" class="mt-6 px-6 py-2 bg-[#0087B8] text-white border rounded  hover:bg-[#006b91]">Save »</button>
+                </form>
             </div>
 
             <!-- Change Password -->
-            <div id="changePasswordSection" class="hidden">
+            <form method="POST" action="{{ route('auth.change-password')}}" id="changePasswordSection" class="hidden">
+                @csrf
                 <h2 class="text-lg font-semibold mb-4">Change Password</h2>
-                <input type="password" placeholder="New Password" class="border p-2 rounded w-full mb-4">
-                <input type="password" placeholder="Repeat Password" class="border p-2 rounded w-full mb-4">
-                <button class="px-6 py-2 bg-[#0087B8] text-white border rounded  hover:bg-[#006b91]">Save »</button>
-            </div>
+                <input type="password" name="current_password" placeholder="Current Password" class="border p-2 rounded w-full mb-4" required>
+                <input name="new_password" type="password" placeholder="New Password" class="border p-2 rounded w-full mb-4" required>
+                <input name="new_password_confirmation" type="password" placeholder="Repeat Password" class="border p-2 rounded w-full mb-4" required>
+                <button type="submit" class="px-6 py-2 bg-[#0087B8] text-white border rounded  hover:bg-[#006b91]">Save »</button>
+            </form>
 
         </div>
 
