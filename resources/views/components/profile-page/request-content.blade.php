@@ -14,36 +14,40 @@
                  </tr>
              </thead>
              <tbody>
-                 <tr class="block md:table-row hover:bg-gray-50 border-b md:border-0">
-                     <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
-                         data-label="Ref.">
-                         <span class="md:hidden font-semibold text-gray-600">Ref.: </span>
-                         <a href="#">3056037</a>
-                     </td>
-                     <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Type">
-                         <span class="md:hidden font-semibold text-gray-600">Type: </span>
-                         Stands
-                     </td>
-                     <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Trade Show">
-                         <span class="md:hidden font-semibold text-gray-600">Trade Show: </span>
-                         GITEX
-                     </td>
-                     <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="City">
-                         <span class="md:hidden font-semibold text-gray-600">City: </span>
-                         Atlanta
-                     </td>
-                     <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Year">
-                         <span class="md:hidden font-semibold text-gray-600">Year: </span>
-                         2025
-                     </td>
-                     <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
-                         data-label="Supplier">
-                         <span class="md:hidden font-semibold text-gray-600">Supplier: </span>
-                         <a href="#">Incomplete request</a>
-                     </td>
-                 </tr>
-                 <!-- Add more rows as needed, following the same structure -->
-             </tbody>
+                @foreach ($leads as $lead)
+                    <tr class="block md:table-row hover:bg-gray-50 border-b md:border-0">
+                        <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
+                            data-label="Ref.">
+                            <span class="md:hidden font-semibold text-gray-600">Ref.: </span>
+                            <a href="#">{{ $lead->reference_id ?? '-' }}</a>
+                        </td>
+                        <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Type">
+                            <span class="md:hidden font-semibold text-gray-600">Type: </span>
+                            {{ $lead->type ?? '-' }}
+                        </td>
+                        <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Trade Show">
+                            <span class="md:hidden font-semibold text-gray-600">Trade Show: </span>
+                            {{ $lead->trade_show ?? '-' }}
+                        </td>
+                        <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="City">
+                            <span class="md:hidden font-semibold text-gray-600">City: </span>
+                            {{ $lead->city ?? '-' }}
+                        </td>
+                        <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Year">
+                            <span class="md:hidden font-semibold text-gray-600">Year: </span>
+                            {{ $lead->year ?? '-' }}
+                        </td>
+                        <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
+                            data-label="Supplier">
+                            <span class="md:hidden font-semibold text-gray-600">Supplier: </span>
+                            <a href="#">
+                                {{ $lead->supplier_status ?? 'Incomplete request' }}
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+
          </table>
      </div>
  </div>
