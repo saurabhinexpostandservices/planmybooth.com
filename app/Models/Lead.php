@@ -3,6 +3,9 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Show;
+use App\Models\City;
 
 class Lead extends Model
 {
@@ -27,4 +30,13 @@ class Lead extends Model
         'require_elements' => 'array',
     ];
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function show()
+    {
+        return $this->belongsTo(Show::class);
+    }
 }

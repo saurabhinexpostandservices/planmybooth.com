@@ -236,44 +236,79 @@
     <div class="bg-[#124E65] py-5 md:py-10">
           <div class="form-container">
         <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">Your Stand Request</h2>
+        @if (session('contact_message'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
+            {{ session('contact_message') }}
+        </div>
+        @endif
 
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+                <ul class="list-disc list-inside">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Progress Bar -->
+        @php $step = 1; @endphp
+
         <div class="progress-bar-container">
             <div class="progress-step-wrapper">
-                <div class="progress-step active" data-step="1">1</div>
+                <div class="progress-step active" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Basic Info</span>
             </div>
+
+            @php $step++; @endphp
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="2">2</div>
+                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Features</span>
             </div>
+
+            @guest
+                @php $step++; @endphp
+                <div class="progress-step-wrapper">
+                    <div class="progress-step" data-step="{{ $step }}" data-step-label="Contact Info">{{ $step }}</div>
+                    <span class="progress-text">Contact Info</span>
+                </div>
+            @endguest
+
+
+            @php $step++; @endphp
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="3">3</div>
-                <span class="progress-text">Contact Info</span>
-            </div>
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="4">4</div>
+                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Price Range</span>
             </div>
+
+            @php $step++; @endphp
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="5">5</div>
+                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Elements</span>
             </div>
+
+            @php $step++; @endphp
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="6">6</div>
+                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Employees</span>
             </div>
+
+            @php $step++; @endphp
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="7">7</div>
+                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Design Upload</span>
             </div>
+
+            @php $step++; @endphp
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="8">8</div>
+                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>
 
-        <form id="multiStepForm" action="#" method="POST" onsubmit="return false;">
+
+        <form method="POST" id="multiStepForm" action="{{ route('api.lead-store')}}" enctype="multipart/form-data" >
+            @csrf
             <!-- Step 1: Basic Information -->
             <div class="form-step active" data-step="1">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">What do you need?</h3>
@@ -350,11 +385,20 @@
 
                         suggestionsBox.addEventListener('click', function (e) {
                             if (e.target && e.target.dataset.city) {
-                                cityInput.value = e.target.dataset.city;
+                                const selectedCity = e.target.dataset.city;
+                                cityInput.value = selectedCity;
+
+                                // 💡 Set city_id from map
+                                const matchedId = cities_map[selectedCity];
+                                if (matchedId) {
+                                    cityIdInput.value = matchedId;
+                                }
+
                                 suggestionsBox.innerHTML = '';
                                 suggestionsBox.classList.add('hidden');
                             }
                         });
+
 
                         // Hide suggestions when clicking outside
                         document.addEventListener('click', function (e) {
@@ -384,10 +428,10 @@
                         <div class="flex items-center gap-2">
                               <input type="number" id="stand_size" name="stand_size" placeholder="0 m²" required
                         class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
-                    <select id="standUnit" name="stand_unit" class="px-2 py-1.5 border rounded" required>
-                        <option value="m²" {{ old('stand_unit') == 'm²' ? 'selected' : '' }}>m²
+                    <select id="standUnit" name="stand_size_measurement_unit" class="px-2 py-1.5 border rounded" required>
+                        <option value="msq" {{ old('stand_unit') == 'm²' ? 'selected' : '' }}>m²
                         </option>
-                        <option value="ft²" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
+                        <option value="fsq" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
                         </option>
                     </select>
                         </div>
@@ -428,7 +472,7 @@
                         tradeShowIdInput = document.createElement('input');
                         tradeShowIdInput.type = 'hidden';
                         tradeShowIdInput.id = 'trade_show_id';
-                        tradeShowIdInput.name = 'trade_show_id';
+                        tradeShowIdInput.name = 'show_id';
                         tradeShowInput.parentNode.appendChild(tradeShowIdInput);
                     }
 
@@ -457,11 +501,20 @@
 
                     tradeShowSuggestions.addEventListener('click', function (e) {
                         if (e.target && e.target.dataset.show) {
-                            tradeShowInput.value = e.target.dataset.show;
+                            const selectedShow = e.target.dataset.show;
+                            tradeShowInput.value = selectedShow;
+
+                            // 💡 Set trade_show_id from map
+                            const matchedShowId = tradeShowsMap[selectedShow];
+                            if (matchedShowId) {
+                                tradeShowIdInput.value = matchedShowId;
+                            }
+
                             tradeShowSuggestions.innerHTML = '';
                             tradeShowSuggestions.classList.add('hidden');
                         }
                     });
+
 
                     // Hide suggestions when clicking outside
                     document.addEventListener('click', function (e) {
@@ -474,17 +527,17 @@
                 <div class="form-field-group">
                     <div class="radio-group">
                         <label class="block">
-                            <input type="radio" name="stand_design_type" value="design_construction"
+                            <input type="radio" name="services" value="design_and_construction"
                                 class="form-radio" checked>
                             I need the stand design, construction and assembly
                         </label>
                         <label class="block">
-                            <input type="radio" name="stand_design_type" value="construction_only"
+                            <input type="radio" name="services" value="construction"
                                 class="form-radio">
                             I already have a stand design, I just need the construction and assembly
                         </label>
                         <label class="block">
-                            <input type="radio" name="stand_design_type" value="others" class="form-radio">
+                            <input type="radio" name="services" value="other" class="form-radio">
                             Others
                         </label>
                     </div>
@@ -497,13 +550,14 @@
                 </div>
             </div>
 
-            <!-- Step 3: Contact Information -->
+            @guest
+                <!-- Step 3: Contact Information -->
             <div class="form-step" data-step="3">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
                         <label for="full_name">Your name</label>
-                        <input type="text" id="full_name" name="full_name" placeholder="Your name">
+                        <input type="text" id="full_name" name="name" placeholder="Your name">
                         <p class="error-message" id="full_name-error"></p>
                     </div>
                     <div class="form-field-group">
@@ -513,7 +567,7 @@
                     </div>
                     <div class="form-field-group">
                         <label for="phone_number">Your phone number</label>
-                        <input type="tel" id="phone_number" name="phone_number" placeholder="Your phone number">
+                        <input type="tel" id="phone_number" name="phone" placeholder="Your phone number">
                         <p class="error-message" id="phone_number-error"></p>
                     </div>
                 </div>
@@ -535,6 +589,7 @@
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
             </div>
+            @endguest
             <script>
                 // Email filter for public domains
                 document.getElementById('email').addEventListener('input', function () {
@@ -613,58 +668,60 @@
 
             <!-- Step 5: Elements Needed -->
             <div class="form-step" data-step="5">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
-                </h3>
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?</h3>
                 <p class="text-gray-600 mb-6">Select as many as you need</p>
+
                 <div class="grid-options">
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="counter">
+                        <input type="checkbox" name="elements_needed[]" value="counter">
                         <span class="icon">💻</span>
                         <span>Counter</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="furniture">
+                        <input type="checkbox" name="elements_needed[]" value="furniture">
                         <span class="icon">🪑</span>
                         <span>Furniture</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="multimedia">
+                        <input type="checkbox" name="elements_needed[]" value="multimedia">
                         <span class="icon">📺</span>
                         <span>Multimedia</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="closed_meeting_room">
+                        <input type="checkbox" name="elements_needed[]" value="closed_meeting_room">
                         <span class="icon">🔒</span>
                         <span>Closed meeting room</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="open_meeting_room">
+                        <input type="checkbox" name="elements_needed[]" value="open_meeting_room">
                         <span class="icon">🔓</span>
                         <span>Open meeting room</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="space_storage">
+                        <input type="checkbox" name="elements_needed[]" value="space_storage">
                         <span class="icon">📦</span>
                         <span>Space storage</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="catering_area">
+                        <input type="checkbox" name="elements_needed[]" value="catering_area">
                         <span class="icon">☕</span>
                         <span>Catering area</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="hanging_elements">
+                        <input type="checkbox" name="elements_needed[]" value="hanging_elements">
                         <span class="icon">💡</span>
                         <span>Hanging elements</span>
                     </label>
                 </div>
+
                 <p class="error-message" id="elements_needed-error"></p>
+
                 <div class="flex justify-between mt-8">
-                    <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
-                        Previous</button>
+                    <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr; Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
             </div>
+
 
             <!-- Step 6: Employees in Stand -->
             <div class="form-step" data-step="6">
@@ -674,7 +731,7 @@
                     to be in the stand. This information is helpful for designing the stand. Example: manager + 3 sales
                     person + hostesses</p>
                 <div class="form-field-group">
-                    <textarea id="employees_info" name="employees_info" rows="6"
+                    <textarea id="employees_info" name="employee_onsite_avilable" rows="6"
                         placeholder="e.g., 1 Manager, 3 Sales Persons, 2 Hostesses"></textarea>
                     <p class="error-message" id="employees_info-error"></p>
                 </div>
@@ -702,7 +759,7 @@
                         <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
                         <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
                             file)</span>
-                        <input type="file" id="design_upload" name="design_upload" class="sr-only">
+                        <input type="file" id="design_upload" name="design_attachments" class="sr-only">
                     </label>
                     <p class="error-message" id="design_upload-error"></p>
                 </div>
@@ -716,8 +773,8 @@
             <!-- Step 8: Thank You Page -->
             <div class="form-step" data-step="8">
                 <div class="text-center py-20">
-                    <h3 class="text-4xl font-bold text-gray-800 mb-4">Thank you!</h3>
-                    <p class="text-xl text-gray-600">In 48h we will send you a selection of the best proposals</p>
+                    <h3 class="text-4xl font-bold text-gray-800 mb-4">Waiting...</h3>
+                    <p class="text-xl text-gray-600"> Hold on tight! 🚀 We're processing your request...</p>
                 </div>
             </div>
 
@@ -813,10 +870,19 @@
 
             // Specific validation for step 3
             if (stepIndex === 2) {
-                const privacyCheckbox = document.getElementById('privacy_policy');
-                if (!privacyCheckbox.checked) {
-                    isValid = false;
-                    document.getElementById('privacy_policy-error').textContent = 'You must accept the privacy policy.';
+                // Check if Contact Info step exists (guest only)
+                const contactStep = document.querySelector('[data-step-label="Contact Info"]');
+                const isGuest = contactStep !== null;
+
+                // Step index to validate Contact Info (step 3 for guest, skipped if logged in)
+                const contactInfoStepIndex = isGuest ? 2 : null;
+
+                if (isGuest && stepIndex === contactInfoStepIndex) {
+                    const privacyCheckbox = document.getElementById('privacy_policy');
+                    if (!privacyCheckbox?.checked) {
+                        isValid = false;
+                        document.getElementById('privacy_policy-error').textContent = 'You must accept the privacy policy.';
+                    }
                 }
             }
 
