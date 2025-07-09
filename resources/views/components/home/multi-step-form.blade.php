@@ -299,24 +299,31 @@
                         const cityInput = document.getElementById('city');
                         const suggestionsBox = document.getElementById('city-suggestions');
                         
-                        //  use this api route route('api.get-cities')
-                        const cities_form = [
-                            "Berlin, Germany",
-                            "Paris, France",
-                            "Madrid, Spain",
-                            "London, United Kingdom",
-                            "Rome, Italy",
-                            "Amsterdam, Netherlands",
-                            "Barcelona, Spain",
-                            "Frankfurt, Germany",
-                            "Munich, Germany",
-                            "Vienna, Austria",
-                            "Milan, Italy",
-                            "Brussels, Belgium",
-                            "Zurich, Switzerland",
-                            "Lisbon, Portugal",
-                            "Prague, Czech Republic"
-                        ];
+                        // Dynamically fetch cities from API and select city ID
+                        let cities_form = [];
+                        let cities_map = {}; // { "Berlin, Germany": 123, ... }
+
+                        // Fetch cities from API on page load
+                        fetch("{{ route('api.get-cities') }}")
+                            .then(response => response.json())
+                            .then(data => {
+                                // Assuming API returns [{id: 1, name: "Berlin", country: "Germany"}, ...]
+                                cities_form = data.map(city => `${city.name}`);
+                                cities_map = {};
+                                data.forEach(city => {
+                                    cities_map[`${city.name}`] = city.id;
+                                });
+                            });
+
+                        // Store selected city ID in a hidden input
+                        let cityIdInput = document.getElementById('city_id');
+                        if (!cityIdInput) {
+                            cityIdInput = document.createElement('input');
+                            cityIdInput.type = 'hidden';
+                            cityIdInput.id = 'city_id';
+                            cityIdInput.name = 'city_id';
+                            cityInput.parentNode.appendChild(cityIdInput);
+                        }
 
                         let debounceTimeout = null;
 
@@ -398,25 +405,32 @@
                     // Static trade show autocomplete
                     const tradeShowInput = document.getElementById('trade_show_event');
                     const tradeShowSuggestions = document.getElementById('trade-show-suggestions');
-                    
-                     //  use this api route route('api.get-shows')
-                    const tradeShows = [
-                        "IFA Berlin",
-                        "Mobile World Congress Barcelona",
-                        "ITB Berlin",
-                        "CPhI Worldwide",
-                        "Automechanika Frankfurt",
-                        "Gamescom Cologne",
-                        "Medica Düsseldorf",
-                        "Light + Building Frankfurt",
-                        "Hannover Messe",
-                        "Drupa Düsseldorf",
-                        "Fruit Logistica Berlin",
-                        "ProWein Düsseldorf",
-                        "EuroShop Düsseldorf",
-                        "Bauma Munich",
-                        "InnoTrans Berlin"
-                    ];
+
+                    // Fetch trade shows from API and store as array of { id, name }
+                    let tradeShows = [];
+                    let tradeShowsMap = {}; // { "IFA Berlin": 123, ... }
+
+                    fetch("{{ route('api.get-shows') }}")
+                        .then(response => response.json())
+                        .then(data => {
+                            // Assuming API returns [{id: 1, name: "IFA Berlin"}, ...]
+                            tradeShows = data.map(show => show.title);
+                            tradeShowsMap = {};
+                            data.forEach(show => {
+                                tradeShowsMap[show.title] = show.id;
+                            });
+                        });
+                        console.log(tradeShows);
+
+                    // Store selected trade show ID in a hidden input
+                    let tradeShowIdInput = document.getElementById('trade_show_id');
+                    if (!tradeShowIdInput) {
+                        tradeShowIdInput = document.createElement('input');
+                        tradeShowIdInput.type = 'hidden';
+                        tradeShowIdInput.id = 'trade_show_id';
+                        tradeShowIdInput.name = 'trade_show_id';
+                        tradeShowInput.parentNode.appendChild(tradeShowIdInput);
+                    }
 
                     let tradeShowDebounce = null;
 
