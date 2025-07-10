@@ -23,7 +23,7 @@
                     class="flex flex-col md:flex-row bg-white md:p-5 hover:scale-95 transition duration-500 ease-in-out">
                     <div class="px-5 md:px-0 flex justify-center items-center">
                         <img class="w-[200px] h-[150px] md:w-[250px] md:h-[180px] object-contain"
-                            src="{{ $standbuilder?->logo }}" alt="{{ $standbuilder?->title }}" />
+                            src="http://127.0.0.1:8002/{{ $standbuilder?->logo }}" alt="{{ $standbuilder?->title }}" />
                     </div>
                     <div class="w-full px-5 flex flex-col gap-3 md:w-[70%]">
                         <div class="flex flex-col">
@@ -35,16 +35,16 @@
                                 <span
                                     class="w-full md:w-fit px-3 pt-2 bg-blue-100 text-blue-800 hover:bg-blue-300 hover:text-white text-sm rounded-md duration-500 ease-in-out cursor-pointer capitalize">
                                     @if ($page?->type == 'city')
-                                    {{ $page?->city?->name  }},{{ $page?->country?->name }}
+                                        {{ $page?->city?->name  }},{{ $page?->country?->name }}
                                     @else
-                                        {{ $page?->country }}
+                                        {{ $page?->country->name }}
                                     @endif
                                 </span>
                             </div>
                             <h4 class="text-xs md:text-sm text-red-600">{{ $standbuilder?->title }}</h4>
                         </div>
                         <p class="text-zinc-500 text-xs md:text-sm">
-                            {{ Str::limit(strip_tags($standbuilder?->description), 300) }}</p>
+                            {{ Str::limit(strip_tags($standbuilder?->description), 200) }}</p>
                         <p class="text-zinc-900">Scince : {{ $standbuilder?->founded_year }}</p>
                         <div class="flex flex-col md:flex-row justify-between gap-3 py-5 md:py-0">
                             <a href="{{ route('stand-builder.show', $standbuilder?->username) }}"
