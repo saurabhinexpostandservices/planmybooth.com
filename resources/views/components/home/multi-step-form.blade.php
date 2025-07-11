@@ -100,7 +100,7 @@
             border: 0.5px solid #5b6475;
             border-radius: 5px;
             margin-bottom: 2px;
-            
+
         }
 
         .error-message {
@@ -214,7 +214,7 @@
             /* Reusing the primary blue hover for consistency */
         }
 
-          @media (max-width: 768px) {
+        @media (max-width: 768px) {
             .progress-bar-container {
                 flex-direction: column;
                 align-items: center;
@@ -229,13 +229,14 @@
                 transform: translateX(-50%);
             }
         }
-
     </style>
 @endpush
 
-    <div class="bg-[#124E65] py-5 md:py-10">
-          <div class="form-container">
-        <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">Your Stand Request</h2>
+<div class="bg-[#124E65] py-5 md:py-10">
+    <div class="form-container">
+        <h2
+            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">
+            Your Stand Request</h2>
 
         <!-- Progress Bar -->
         <div class="progress-bar-container">
@@ -251,24 +252,24 @@
                 <div class="progress-step" data-step="3">3</div>
                 <span class="progress-text">Contact Info</span>
             </div>
-            <div class="progress-step-wrapper">
+            {{-- <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="4">4</div>
                 <span class="progress-text">Price Range</span>
-            </div>
+            </div> --}}
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="5">5</div>
+                <div class="progress-step" data-step="4">4</div>
                 <span class="progress-text">Elements</span>
             </div>
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="6">6</div>
+                <div class="progress-step" data-step="5">5</div>
                 <span class="progress-text">Employees</span>
             </div>
-            <div class="progress-step-wrapper">
+            {{-- <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="7">7</div>
                 <span class="progress-text">Design Upload</span>
-            </div>
+            </div> --}}
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="8">8</div>
+                <div class="progress-step" data-step="6">6</div>
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>
@@ -279,7 +280,7 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">What do you need?</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
-                        <label for="needs">What do you need?</label>
+                        <label for="needs">What do you need? <span class="text-red-600">*</span></label>
                         <select id="needs" name="needs"
                             class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#0087b8] focus:border-[#0087b8] sm:text-sm">
                             <option value="">Select an option</option>
@@ -289,16 +290,19 @@
                         <p class="error-message" id="needs-error"></p>
                     </div>
                     <div class="form-field-group">
-                        <label for="city">Where do you need it? (City Name)</label>
-                        <input type="text" id="city" name="city" placeholder="City" autocomplete="off" class="relative">
-                        <div id="city-suggestions" class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden"></div>
+                        <label for="city">Where do you need it? (City Name) <span class="text-red-600">*</span></label>
+                        <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
+                            class="relative">
+                        <div id="city-suggestions"
+                            class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                        </div>
                         <p class="error-message" id="city-error"></p>
                     </div>
                     <script>
                         // Static city autocomplete
                         const cityInput = document.getElementById('city');
                         const suggestionsBox = document.getElementById('city-suggestions');
-                        
+
                         // Dynamically fetch cities from API and select city ID
                         let cities_form = [];
                         let cities_map = {}; // { "Berlin, Germany": 123, ... }
@@ -327,7 +331,7 @@
 
                         let debounceTimeout = null;
 
-                        cityInput.addEventListener('input', function () {
+                        cityInput.addEventListener('input', function() {
                             const query = this.value.trim().toLowerCase();
                             suggestionsBox.innerHTML = '';
                             suggestionsBox.classList.add('hidden');
@@ -348,7 +352,7 @@
                             }, 200);
                         });
 
-                        suggestionsBox.addEventListener('click', function (e) {
+                        suggestionsBox.addEventListener('click', function(e) {
                             if (e.target && e.target.dataset.city) {
                                 cityInput.value = e.target.dataset.city;
                                 suggestionsBox.innerHTML = '';
@@ -357,7 +361,7 @@
                         });
 
                         // Hide suggestions when clicking outside
-                        document.addEventListener('click', function (e) {
+                        document.addEventListener('click', function(e) {
                             if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
                                 suggestionsBox.innerHTML = '';
                                 suggestionsBox.classList.add('hidden');
@@ -375,30 +379,33 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Stand Request Features</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
-                        <label for="booth_number">Booth Number</label>
-                        <input type="text" id="booth_number" name="booth_number" placeholder="e.g., A12">
-                        <p class="error-message" id="booth_number-error"></p>
-                    </div>
-                    <div class="form-field-group">
-                        <label for="stand_size">Stand size (m²)</label>
+                        <label for="stand_size">Stand size (m²) <span class="text-red-600">*</span></label>
                         <div class="flex items-center gap-2">
-                              <input type="number" id="stand_size" name="stand_size" placeholder="0 m²" required
-                        class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
-                    <select id="standUnit" name="stand_unit" class="px-2 py-1.5 border rounded" required>
-                        <option value="m²" {{ old('stand_unit') == 'm²' ? 'selected' : '' }}>m²
-                        </option>
-                        <option value="ft²" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
-                        </option>
-                    </select>
+                            <input type="number" id="stand_size" name="stand_size" placeholder="0 m²" required
+                                class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
+                            <select id="standUnit" name="stand_unit" class="px-2 py-1.5 border rounded" required>
+                                <option value="m²" {{ old('stand_unit') == 'm²' ? 'selected' : '' }}>m²
+                                </option>
+                                <option value="ft²" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
+                                </option>
+                            </select>
                         </div>
-                       
                         <p class="error-message" id="stand_size-error"></p>
+                    </div>
+
+                    <div class="form-field-group">
+                        <label for="budget">Budget <span class="text-red-600">*</span></label>
+                        <input type="text" id="budget" name="budget" placeholder="e.g., 50 dollars" required>
+                        <p class="error-message" id="budget-error"></p>
                     </div>
                 </div>
                 <div class="form-field-group" style="position: relative;">
-                    <label for="trade_show_event">In which trade show do you exhibit?</label>
-                    <input type="text" id="trade_show_event" name="trade_show_event" placeholder="Select an event" required autocomplete="off">
-                    <div id="trade-show-suggestions" class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden"></div>
+                    <label for="trade_show_event">In which trade show do you exhibit? <span class="text-red-600">*</span></label>
+                    <input type="text" id="trade_show_event" name="trade_show_event"
+                        placeholder="Select an event" required autocomplete="off">
+                    <div id="trade-show-suggestions"
+                        class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                    </div>
                     <p class="error-message" id="trade_show_event-error"></p>
                 </div>
                 <script>
@@ -420,7 +427,7 @@
                                 tradeShowsMap[show.title] = show.id;
                             });
                         });
-                        console.log(tradeShows);
+                    console.log(tradeShows);
 
                     // Store selected trade show ID in a hidden input
                     let tradeShowIdInput = document.getElementById('trade_show_id');
@@ -434,7 +441,7 @@
 
                     let tradeShowDebounce = null;
 
-                    tradeShowInput.addEventListener('input', function () {
+                    tradeShowInput.addEventListener('input', function() {
                         const query = this.value.trim().toLowerCase();
                         tradeShowSuggestions.innerHTML = '';
                         tradeShowSuggestions.classList.add('hidden');
@@ -455,7 +462,7 @@
                         }, 200);
                     });
 
-                    tradeShowSuggestions.addEventListener('click', function (e) {
+                    tradeShowSuggestions.addEventListener('click', function(e) {
                         if (e.target && e.target.dataset.show) {
                             tradeShowInput.value = e.target.dataset.show;
                             tradeShowSuggestions.innerHTML = '';
@@ -464,7 +471,7 @@
                     });
 
                     // Hide suggestions when clicking outside
-                    document.addEventListener('click', function (e) {
+                    document.addEventListener('click', function(e) {
                         if (!tradeShowInput.contains(e.target) && !tradeShowSuggestions.contains(e.target)) {
                             tradeShowSuggestions.innerHTML = '';
                             tradeShowSuggestions.classList.add('hidden');
@@ -502,29 +509,32 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
-                        <label for="full_name">Your name</label>
-                        <input type="text" id="full_name" name="full_name" placeholder="Your name">
-                        <p class="error-message" id="full_name-error"></p>
+                        <label for="contact_name">Contact Name <span class="text-red-600">*</span></label>
+                        <input type="text" id="contact_name" name="contact_name" placeholder="contact name" required>
+                        <p class="error-message" id="contact_name-error"></p>
                     </div>
                     <div class="form-field-group">
-                        <label for="email">Your email <span class="text-red-600">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="Your email" required>
+                        <label for="email">Email <span class="text-red-600">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="email" required>
                         <p class="error-message" id="email-error"></p>
                     </div>
                     <div class="form-field-group">
-                        <label for="phone_number">Your phone number</label>
-                        <input type="tel" id="phone_number" name="phone_number" placeholder="Your phone number">
+                        <label for="company_name">Company Name <span class="text-red-600">*</span></label>
+                        <input type="text" id="company_name" name="contact_name" placeholder="company name" required>
+                        <p class="error-message" id="company_name-error"></p>
+                    </div>
+                    <div class="form-field-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="tel" id="phone_number" name="phone_number" placeholder="phone number">
                         <p class="error-message" id="phone_number-error"></p>
                     </div>
                 </div>
-                <div class="form-field-group">
-                    <label for="additional_comments">Additional comments</label>
-                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments"></textarea>
-                </div>
+
                 <div class="form-field-group">
                     <label class="inline-flex items-center">
                         <input type="checkbox" id="privacy_policy" name="privacy_policy" class="form-checkbox">
-                        <span class="ml-2 text-gray-700 text-sm">I have read and accept the <a href="#"
+                        <span class="ml-2 text-gray-700 text-sm">I have read and accept the <a
+                                href="{{ route('privacy-policy') }}" target="_blank"
                                 class="text-[#0087b8] hover:underline">Privacy Policy</a></span>
                     </label>
                     <p class="error-message" id="privacy_policy-error"></p>
@@ -537,7 +547,7 @@
             </div>
             <script>
                 // Email filter for public domains
-                document.getElementById('email').addEventListener('input', function () {
+                document.getElementById('email').addEventListener('input', function() {
                     const emailInput = this.value.trim();
                     const errorElement = document.getElementById('email-error');
                     // List of common public email domains
@@ -550,7 +560,8 @@
                     if (emailInput.length > 0) {
                         const domain = emailInput.split('@')[1]?.toLowerCase();
                         if (publicDomains.includes(domain)) {
-                            errorElement.textContent = 'Please use your company or custom email address, not a public provider.';
+                            errorElement.textContent =
+                                'Please use your company or custom email address, not a public provider.';
                         }
                     }
                 });
@@ -570,7 +581,8 @@
                         const value = emailInput.value.trim();
                         const domain = value.split('@')[1]?.toLowerCase();
                         if (value.length > 0 && publicDomains.includes(domain)) {
-                            errorElement.textContent = 'Please use your company or custom email address, not a public provider.';
+                            errorElement.textContent =
+                                'Please use your company or custom email address, not a public provider.';
                             isValid = false;
                         }
                     }
@@ -579,7 +591,7 @@
             </script>
 
             <!-- Step 4: Price Range -->
-            <div class="form-step" data-step="4">
+            {{-- <div class="form-step" data-step="4">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Price Range</h3>
                 <p class="text-gray-600 mb-6">To select the right materials for the design and construction of your
                     stand please let us know which price range works best for you.</p>
@@ -609,10 +621,10 @@
                         Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
-            </div>
+            </div> --}}
 
-            <!-- Step 5: Elements Needed -->
-            <div class="form-step" data-step="5">
+            <!-- Step 4: Elements Needed -->
+            <div class="form-step" data-step="4">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
                 </h3>
                 <p class="text-gray-600 mb-6">Select as many as you need</p>
@@ -659,6 +671,31 @@
                     </label>
                 </div>
                 <p class="error-message" id="elements_needed-error"></p>
+
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Do you want to attach some design, idea or
+                    concept of how your stand should be?</h3>
+                <p class="text-gray-600 mb-6">This would help us to understand better what do you have in mind.</p>
+                <div class="form-field-group">
+                    <label for="design_upload"
+                        class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#0087b8] hover:bg-[#e0f2f7] transition-colors duration-200">
+                        <svg class="w-12 h-12 text-[#0087b8] mb-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 0115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v8">
+                            </path>
+                        </svg>
+                        <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
+                        <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
+                            file)</span>
+                        <input type="file" id="design_upload" name="design_upload" class="sr-only">
+                    </label>
+                    <p class="error-message" id="design_upload-error"></p>
+                </div>
+
+                <div class="form-field-group">
+                    <label for="additional_comments">Additional comments</label>
+                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments"></textarea>
+                </div>
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
@@ -666,8 +703,8 @@
                 </div>
             </div>
 
-            <!-- Step 6: Employees in Stand -->
-            <div class="form-step" data-step="6">
+            <!-- Step 5: Employees in Stand -->
+            <div class="form-step" data-step="5">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">How many employees will be in the stand during
                     the event?</h3>
                 <p class="text-gray-600 mb-6">Specify the number of employees, what position they have, that are going
@@ -685,8 +722,8 @@
                 </div>
             </div>
 
-            <!-- Step 7: Design Upload -->
-            <div class="form-step" data-step="7">
+            <!-- Step 6: Design Upload -->
+            {{-- <div class="form-step" data-step="6">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Do you want to attach some design, idea or
                     concept of how your stand should be?</h3>
                 <p class="text-gray-600 mb-6">This would help us to understand better what do you have in mind.</p>
@@ -711,10 +748,10 @@
                         Previous</button>
                     <button type="submit" class="btn-next px-6 py-3 rounded-md font-semibold">Submit Form</button>
                 </div>
-            </div>
+            </div> --}}
 
-            <!-- Step 8: Thank You Page -->
-            <div class="form-step" data-step="8">
+            <!-- Step 6: Thank You Page -->
+            <div class="form-step" data-step="6">
                 <div class="text-center py-20">
                     <h3 class="text-4xl font-bold text-gray-800 mb-4">Thank you!</h3>
                     <p class="text-xl text-gray-600">In 48h we will send you a selection of the best proposals</p>
@@ -722,8 +759,8 @@
             </div>
 
         </form>
-    </div>  
     </div>
+</div>
 
 
 @push('scripts')
@@ -855,5 +892,5 @@
 
         // Initialize form by showing the first step
         showStep(0);
-    </script>   
+    </script>
 @endpush
