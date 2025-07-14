@@ -323,7 +323,8 @@
                         <p class="error-message" id="needs-error"></p>
                     </div>
                     <div class="form-field-group">
-                        <label for="city">Where do you need it? (City Name) <span class="text-red-600">*</span></label>
+                        <label for="city">Where do you need it? (City Name) <span
+                                class="text-red-600">*</span></label>
                         <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
                             class="relative">
                         <div id="city-suggestions"
@@ -442,7 +443,8 @@
                     </div>
                 </div>
                 <div class="form-field-group" style="position: relative;">
-                    <label for="trade_show_event">In which trade show do you exhibit? <span class="text-red-600">*</span></label>
+                    <label for="trade_show_event">In which trade show do you exhibit? <span
+                            class="text-red-600">*</span></label>
                     <input type="text" id="trade_show_event" name="trade_show_event"
                         placeholder="Select an event" required autocomplete="off">
                     <div id="trade-show-suggestions"
@@ -561,9 +563,7 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
-                        <label for="full_name">Your name</label>
-                        <input type="text" id="full_name" name="name" placeholder="Your name">
-                        <p class="error-message" id="full_name-error"></p>
+
                     </div>
                     <div class="form-field-group">
                         <label for="email">Email <span class="text-red-600">*</span></label>
@@ -571,8 +571,7 @@
                         <p class="error-message" id="email-error"></p>
                     </div>
                     <div class="form-field-group">
-                        <label for="phone_number">Your phone number</label>
-                        <input type="tel" id="phone_number" name="phone" placeholder="Your phone number">
+
                         <p class="error-message" id="phone_number-error"></p>
                     </div>
                 </div>
@@ -676,48 +675,6 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?</h3>
                 <p class="text-gray-600 mb-6">Select as many as you need</p>
 
-                <div class="grid-options">
-                    <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed[]" value="counter">
-                        <span class="icon">💻</span>
-                        <span>Counter</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed[]" value="furniture">
-                        <span class="icon">🪑</span>
-                        <span>Furniture</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed[]" value="multimedia">
-                        <span class="icon">📺</span>
-                        <span>Multimedia</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed[]" value="closed_meeting_room">
-                        <span class="icon">🔒</span>
-                        <span>Closed meeting room</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed[]" value="open_meeting_room">
-                        <span class="icon">🔓</span>
-                        <span>Open meeting room</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed[]" value="space_storage">
-                        <span class="icon">📦</span>
-                        <span>Space storage</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed[]" value="catering_area">
-                        <span class="icon">☕</span>
-                        <span>Catering area</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed[]" value="hanging_elements">
-                        <span class="icon">💡</span>
-                        <span>Hanging elements</span>
-                    </label>
-                </div>
 
                 <p class="error-message" id="elements_needed-error"></p>
 
