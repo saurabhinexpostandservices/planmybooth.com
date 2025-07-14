@@ -43,8 +43,10 @@ class StandbuilderController extends Controller
     public function show(string $username)
     {
         try {
+            
             $standbuilder = Standbuilder::where('status', 'published')->where('username', $username)->firstOrFail();
             return view('stand-builder-inner', compact('standbuilder'));
+
         } catch (\Throwable $th) {
             abort(404);
         }
