@@ -6,6 +6,7 @@ use App\Http\Controllers\StandbuilderController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LeadsController;
 
 
 /**
@@ -97,3 +98,4 @@ Route::get('/auth/logout', [UserController::class, 'logout'])->name('auth.logout
 Route::post('/auth/forgot-pass', [UserController::class, 'generate_new_pass'])->name('auth.forgot-password');
 Route::post('/auth/update-user', [UserController::class, 'update_user_info'])->name('auth.update-user');
 Route::post('/auth/change-password', [UserController::class, 'update_pass'])->name('auth.change-password');
+Route::post('/api/lead-store', [LeadsController::class, 'store'])->name('api.lead-store');

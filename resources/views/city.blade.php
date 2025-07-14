@@ -12,5 +12,5 @@
     <x-country-inside-page.country-banner-section :page="$page" />
     <x-country-inside-page.country-about-section :page="$page" />
     <x-country-inside-page.country-card-section :page="$page"  :standbuilders="$standbuilders" />
-    <x-country-inside-page.country-detail-section :page="$page" />
+    {{-- <x-country-inside-page.country-detail-section :page="$page" /> --}}
 </x-layout.public>
