@@ -4,7 +4,6 @@
         your events more effectively.</x-slot>
     <x-slot name="featured_image"></x-slot>
 
-
     <div class="relative bg-bottom bg-no-repeat bg-fixed font-poppins"
         style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
         {{-- heading-section --}}
