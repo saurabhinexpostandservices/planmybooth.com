@@ -35,7 +35,7 @@
                 <!-- Feature Image -->
                 <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
                     <img class="shadow-sm shadow-[#9eb9c6] hover:shadow-[#2792C5] rounded-full w-20 h-20 sm:w-20 sm:h-20 md:w-28 md:h-28"
-                        src="{{ $show?->logo }}" alt="{{ $show->title }}">
+                        src="http://127.0.0.1:8002/{{ $show?->logo }}" alt="{{ $show->title }}">
                 </div>
             </div>
         </div>
