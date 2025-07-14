@@ -290,7 +290,8 @@
                         <p class="error-message" id="needs-error"></p>
                     </div>
                     <div class="form-field-group">
-                        <label for="city">Where do you need it? (City Name) <span class="text-red-600">*</span></label>
+                        <label for="city">Where do you need it? (City Name) <span
+                                class="text-red-600">*</span></label>
                         <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
                             class="relative">
                         <div id="city-suggestions"
@@ -400,7 +401,8 @@
                     </div>
                 </div>
                 <div class="form-field-group" style="position: relative;">
-                    <label for="trade_show_event">In which trade show do you exhibit? <span class="text-red-600">*</span></label>
+                    <label for="trade_show_event">In which trade show do you exhibit? <span
+                            class="text-red-600">*</span></label>
                     <input type="text" id="trade_show_event" name="trade_show_event"
                         placeholder="Select an event" required autocomplete="off">
                     <div id="trade-show-suggestions"
@@ -510,7 +512,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
                         <label for="contact_name">Contact Name <span class="text-red-600">*</span></label>
-                        <input type="text" id="contact_name" name="contact_name" placeholder="contact name" required>
+                        <input type="text" id="contact_name" name="contact_name" placeholder="contact name"
+                            required>
                         <p class="error-message" id="contact_name-error"></p>
                     </div>
                     <div class="form-field-group">
@@ -520,7 +523,8 @@
                     </div>
                     <div class="form-field-group">
                         <label for="company_name">Company Name <span class="text-red-600">*</span></label>
-                        <input type="text" id="company_name" name="contact_name" placeholder="company name" required>
+                        <input type="text" id="company_name" name="contact_name" placeholder="company name"
+                            required>
                         <p class="error-message" id="company_name-error"></p>
                     </div>
                     <div class="form-field-group">
@@ -628,48 +632,90 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
                 </h3>
                 <p class="text-gray-600 mb-6">Select as many as you need</p>
-                <div class="grid-options">
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="counter">
-                        <span class="icon">💻</span>
+                        <div class=" flex items-center gap-5">
+                            <input type="checkbox" name="elements_needed[]" value="counter">
+                            <span class="icon">
+                                <img src="{{ asset('assets/stand-element/Counter.svg') }}" class="w-10 h-10"
+                                    alt="Counter">
+                            </span>
+                        </div>
                         <span>Counter</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="furniture">
-                        <span class="icon">🪑</span>
+                        <div class=" flex items-center gap-5">
+                            <input type="checkbox" name="elements_needed[]" value="furniture">
+                            <span class="icon">
+                                <img src="{{ asset('assets/stand-element/furniture.svg') }}" class="w-10 h-10"
+                                    alt="Furniture">
+                            </span>
+                        </div>
                         <span>Furniture</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="multimedia">
-                        <span class="icon">📺</span>
+                        <div class=" flex items-center gap-5">
+                            <input type="checkbox" name="elements_needed[]" value="multimedia">
+                            <span class="icon">
+                                <img src="{{ asset('assets/stand-element/multimedia-rent.svg') }}" class="w-10 h-10"
+                                    alt="Multimedia">
+                            </span>
+                        </div>
                         <span>Multimedia</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="closed_meeting_room">
-                        <span class="icon">🔒</span>
+                        <div class=" flex items-center gap-5">
+                            <input type="checkbox" name="elements_needed[]" value="closed_meeting_room">
+                            <span class="icon">
+                                <img src="{{ asset('assets/stand-element/closed-meeting-room.svg') }}"
+                                    class="w-10 h-10" alt="Closed meeting room">
+                            </span>
+                        </div>
+
                         <span>Closed meeting room</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="open_meeting_room">
-                        <span class="icon">🔓</span>
+                        <div class=" flex items-center gap-5">
+                            <input type="checkbox" name="elements_needed[]" value="open_meeting_room">
+                            <span class="icon">
+                                <img src="{{ asset('assets/stand-element/open-meeting-room.svg') }}"
+                                    class="w-10 h-10" alt="Open meeting room">
+                            </span>
+                        </div>
                         <span>Open meeting room</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="space_storage">
-                        <span class="icon">📦</span>
+                        <div class=" flex items-center gap-5">
+                            <input type="checkbox" name="elements_needed[]" value="space_storage">
+                            <span class="icon">
+                                <img src="{{ asset('assets/stand-element/space-storage.svg') }}" class="w-10 h-10"
+                                    alt="Space storage">
+                            </span>
+                        </div>
                         <span>Space storage</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="catering_area">
-                        <span class="icon">☕</span>
+                        <div class=" flex items-center gap-5">
+                            <input type="checkbox" name="elements_needed[]" value="catering_area">
+                            <span class="icon">
+                                <img src="{{ asset('assets/stand-element/catering-area.svg') }}" class="w-10 h-10"
+                                    alt="Catering area">
+                            </span>
+                        </div>
                         <span>Catering area</span>
                     </label>
                     <label class="grid-option-item">
-                        <input type="checkbox" name="elements_needed" value="hanging_elements">
-                        <span class="icon">💡</span>
+                        <div class=" flex items-center gap-5">
+                            <input type="checkbox" name="elements_needed[]" value="hanging_elements">
+                            <span class="icon">
+                                <img src="{{ asset('assets/stand-element/hanging-elements.svg') }}" class="w-10 h-10"
+                                    alt="Hanging elements">
+                            </span>
+                        </div>
                         <span>Hanging elements</span>
                     </label>
                 </div>
+
                 <p class="error-message" id="elements_needed-error"></p>
 
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Do you want to attach some design, idea or
