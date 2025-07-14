@@ -27,9 +27,9 @@
 
             <!-- Name -->
             <div class="flex flex-col">
-                <label for="name" class="block text-white font-semibold mb-2">Your Name <span
+                <label for="name" class="block text-white font-semibold mb-2">Contact Name <span
                         class="text-red-500 font-bold">*</span></label>
-                <input type="text" id="name" name="fullname" placeholder="Enter your full name" required
+                <input type="text" id="contact_name" name="contact_name" placeholder="contact name" required
                     class="p-2 border rounded bg-white" value="{{ old('name') }}">
                 @error('fullname')
                     <p class="my-1 text-red-500">{{ $message }}</p>
@@ -40,107 +40,206 @@
             <div class="flex flex-col">
                 <label for="email" class="block text-white font-semibold mb-2">Email <span
                         class="text-red-500 font-bold">*</span></label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required
+                <input type="email" id="email" name="email" placeholder="email" required
                     class="p-2 border rounded bg-white" value="{{ old('email') }}">
                 @error('email')
                     <p class="my-1 text-red-500">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Phone Number -->
-            <div class="flex flex-col">
-                <label for="phone" class="block text-white font-semibold mb-2">Phone Number <span
-                        class="text-red-500 font-bold">*</span></label>
-                <div class="flex">
-                    <select name="countryCode" class=" p-2 border rounded bg-white">
-                        <option value="+1">+1</option>
-                        <option value="+91">+91</option>
-                        <option value="+44">+44</option>
-                        <option value="+61">+61</option>
-                        <option value="+81">+81</option>
-                        <option value="+33">+33</option>
-                        <option value="+49">+49</option>
-                        <option value="+86">+86</option>
-                        <option value="+971">+971</option>
-                        <option value="+55">+55</option>
-                        <option value="+7">+7</option>
-                        <option value="+82">+82</option>
-                        <option value="+39">+39</option>
-                        <option value="+34">+34</option>
-                        <option value="+64">+64</option>
-                        <option value="+60">+60</option>
-                        <option value="+62">+62</option>
-                        <option value="+63">+63</option>
-                        <option value="+66">+66</option>
-                        <option value="+20">+20</option>
-                        <option value="+27">+27</option>
-                        <option value="+52">+52</option>
-                        <option value="+31">+31</option>
-                        <option value="+46">+46</option>
-                        <option value="+41">+41</option>
-                        <option value="+65">+65</option>
-                        <option value="+98">+98</option>
-                        <option value="+234">+234</option>
-                        <option value="+977">+977</option>
-                        <option value="+90">+90</option>
-
-                        <!-- Add more country codes -->
-                    </select>
-                    <input type="tel" id="phone" name="phone" placeholder="Your phone number"
-                        class="w-full px-4 p-2 border rounded bg-white" value="{{ old('phone') }}" required />
-                </div>
-
-                @error('phone')
-                    <p class="my-1 text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-
             <!-- Company Name -->
             <div class="flex flex-col">
-                <label for="address" class="block text-white font-semibold mb-2">Company Name</label>
-                <input type="text" id="address" name="company_name" placeholder="Enter company name"
+                <label for="address" class="block text-white font-semibold mb-2">Company Name <span
+                        class="text-red-500 font-bold">*</span></label>
+                <input type="text" id="company_name" name="contact_name" placeholder="company name" required
                     class="p-2 border rounded bg-white" value="{{ old('company_name') }}">
                 @error('company_name')
                     <p class="my-1 text-red-500">{{ $message }}</p>
                 @enderror
             </div>
 
-            <!-- Company Website -->
+            <!-- Phone Number -->
             <div class="flex flex-col">
-                <label for="country" class="block text-white font-semibold mb-2">Company Website</label>
-                <input type="text" id="country" name="website" placeholder="Enter company website"
-                    class="p-2 border rounded bg-white" value="{{ old('website') }}">
-                @error('website')
+                <label for="phone" class="block text-white font-semibold mb-2">Phone Number </label>
+
+                <input type="tel" id="phone_number" name="phone_number" placeholder="phone number"
+                    class="w-full px-4 p-2 border rounded bg-white" value="{{ old('phone') }}" />
+
+                @error('phone')
                     <p class="my-1 text-red-500">{{ $message }}</p>
                 @enderror
             </div>
-
-            <!-- Select Country -->
-            <x-contact-us.country-select />
         </div>
     </div>
 
     <!-- Section 2: Event Details -->
     <div>
-        <h2 class="text-xl font-serif font-semibold mb-4 bg-[#64CCC5] p-2">Tell us about your Event</h2>
+        <h2 class="text-xl font-serif font-semibold mb-4 bg-[#64CCC5] p-2 mt-7">Tell us about your Event</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <!-- Name of Event -->
             <div class="flex flex-col mb-2">
                 <label for="eventName" class="block text-white font-semibold mb-2">Name of Event <span
                         class="text-red-500 font-bold">*</span></label>
-                <input type="text" id="eventName" name="event_name" placeholder="Enter event name" required
-                    class="p-2 border rounded bg-white" value="{{ old('event_name') }}" />
-                @error('event_name')
-                    <p class="my-1 text-red-500">{{ $message }}</p>
-                @enderror
+                <input type="text" id="trade_show_event" name="trade_show_event" placeholder="Select an event"
+                    required class="p-2 border rounded bg-white" value="{{ old('event_name') }}" />
+                <div id="trade-show-suggestions"
+                    class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                </div>
+                <p class="error-message" id="trade_show_event-error"></p>
             </div>
+            <script>
+                // Static trade show autocomplete
+                const tradeShowInput = document.getElementById('trade_show_event');
+                const tradeShowSuggestions = document.getElementById('trade-show-suggestions');
+
+                // Fetch trade shows from API and store as array of { id, name }
+                let tradeShows = [];
+                let tradeShowsMap = {}; // { "IFA Berlin": 123, ... }
+
+                fetch("{{ route('api.get-shows') }}")
+                    .then(response => response.json())
+                    .then(data => {
+                        // Assuming API returns [{id: 1, name: "IFA Berlin"}, ...]
+                        tradeShows = data.map(show => show.title);
+                        tradeShowsMap = {};
+                        data.forEach(show => {
+                            tradeShowsMap[show.title] = show.id;
+                        });
+                    });
+                console.log(tradeShows);
+
+                // Store selected trade show ID in a hidden input
+                let tradeShowIdInput = document.getElementById('trade_show_id');
+                if (!tradeShowIdInput) {
+                    tradeShowIdInput = document.createElement('input');
+                    tradeShowIdInput.type = 'hidden';
+                    tradeShowIdInput.id = 'trade_show_id';
+                    tradeShowIdInput.name = 'trade_show_id';
+                    tradeShowInput.parentNode.appendChild(tradeShowIdInput);
+                }
+
+                let tradeShowDebounce = null;
+
+                tradeShowInput.addEventListener('input', function() {
+                    const query = this.value.trim().toLowerCase();
+                    tradeShowSuggestions.innerHTML = '';
+                    tradeShowSuggestions.classList.add('hidden');
+                    if (tradeShowDebounce) clearTimeout(tradeShowDebounce);
+                    if (query.length < 2) return;
+
+                    tradeShowDebounce = setTimeout(() => {
+                        const filtered = tradeShows.filter(show =>
+                            show.toLowerCase().includes(query)
+                        ).slice(0, 5);
+
+                        if (filtered.length > 0) {
+                            tradeShowSuggestions.innerHTML = filtered.map(show =>
+                                `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-show="${show}">${show}</div>`
+                            ).join('');
+                            tradeShowSuggestions.classList.remove('hidden');
+                        }
+                    }, 200);
+                });
+
+                tradeShowSuggestions.addEventListener('click', function(e) {
+                    if (e.target && e.target.dataset.show) {
+                        tradeShowInput.value = e.target.dataset.show;
+                        tradeShowSuggestions.innerHTML = '';
+                        tradeShowSuggestions.classList.add('hidden');
+                    }
+                });
+
+                // Hide suggestions when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!tradeShowInput.contains(e.target) && !tradeShowSuggestions.contains(e.target)) {
+                        tradeShowSuggestions.innerHTML = '';
+                        tradeShowSuggestions.classList.add('hidden');
+                    }
+                });
+            </script>
 
             <!-- Select City -->
-            <x-contact-us.city-select />
-            @error('city')
-                <p class="mt-1 text-red-500">{{ $message }}</p>
-            @enderror
+            <div id="city-select" class="flex flex-col mb-2 relative">
+                <label for="citySearch" class="block text-white font-bold mb-2">Select City </label>
+                <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
+                    class="p-2 border rounded mb-2 bg-white">
+                <div id="city-suggestions"
+                    class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                </div>
+                <p class="error-message" id="city-error"></p>
+            </div>
+
+            <script>
+                // Static city autocomplete
+                const cityInput = document.getElementById('city');
+                const suggestionsBox = document.getElementById('city-suggestions');
+
+                // Dynamically fetch cities from API and select city ID
+                let cities_form = [];
+                let cities_map = {}; // { "Berlin, Germany": 123, ... }
+
+                // Fetch cities from API on page load
+                fetch("{{ route('api.get-cities') }}")
+                    .then(response => response.json())
+                    .then(data => {
+                        // Assuming API returns [{id: 1, name: "Berlin", country: "Germany"}, ...]
+                        cities_form = data.map(city => `${city.name}`);
+                        cities_map = {};
+                        data.forEach(city => {
+                            cities_map[`${city.name}`] = city.id;
+                        });
+                    });
+
+                // Store selected city ID in a hidden input
+                let cityIdInput = document.getElementById('city_id');
+                if (!cityIdInput) {
+                    cityIdInput = document.createElement('input');
+                    cityIdInput.type = 'hidden';
+                    cityIdInput.id = 'city_id';
+                    cityIdInput.name = 'city_id';
+                    cityInput.parentNode.appendChild(cityIdInput);
+                }
+
+                let debounceTimeout = null;
+
+                cityInput.addEventListener('input', function() {
+                    const query = this.value.trim().toLowerCase();
+                    suggestionsBox.innerHTML = '';
+                    suggestionsBox.classList.add('hidden');
+                    if (debounceTimeout) clearTimeout(debounceTimeout);
+                    if (query.length < 2) return;
+
+                    debounceTimeout = setTimeout(() => {
+                        const filtered = cities_form.filter(city =>
+                            city.toLowerCase().includes(query)
+                        ).slice(0, 5);
+
+                        if (filtered.length > 0) {
+                            suggestionsBox.innerHTML = filtered.map(city =>
+                                `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-city="${city.split(',')[0]}">${city}</div>`
+                            ).join('');
+                            suggestionsBox.classList.remove('hidden');
+                        }
+                    }, 200);
+                });
+
+                suggestionsBox.addEventListener('click', function(e) {
+                    if (e.target && e.target.dataset.city) {
+                        cityInput.value = e.target.dataset.city;
+                        suggestionsBox.innerHTML = '';
+                        suggestionsBox.classList.add('hidden');
+                    }
+                });
+
+                // Hide suggestions when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                        suggestionsBox.innerHTML = '';
+                        suggestionsBox.classList.add('hidden');
+                    }
+                });
+            </script>
         </div>
     </div>
 
@@ -153,16 +252,10 @@
             <div class="flex flex-col">
                 <label for="standSize" class="block text-white font-semibold mb-2">Stand Size <span
                         class="text-red-500 font-bold">*</span></label>
-                <div class="flex space-x-2">
-                    <input type="number" id="standSize" name="stand_size" placeholder="Stand Size" required
-                        class="p-2 border rounded w-full bg-white" value="{{ old('stand_size') }}">
-                    <select id="standUnit" name="stand_unit" class="p-2 border rounded bg-white" required>
-                        <option value="SQFT" {{ old('stand_unit') == 'SQFT' ? 'selected' : '' }}>SQFT
-                        </option>
-                        <option value="SQMT" {{ old('stand_unit') == 'SQMT' ? 'selected' : '' }}>SQMT
-                        </option>
-                    </select>
-                </div>
+
+                <input type="text" id="stand_size" name="stand_size" placeholder="0 msq" required
+                    class="p-2 border rounded w-full bg-white" value="{{ old('stand_size') }}">
+
                 @error('stand_size')
                     <p class="my-1 text-red-500">{{ $message }}</p>
                 @enderror
@@ -171,32 +264,33 @@
             <!-- Budget -->
             <div class="flex flex-col">
                 <label for="budget" class="block text-white font-semibold mb-2">Budget </label>
-                <div class="flex space-x-2">
-                    <input type="number" id="budget" name="budget" placeholder="Budget"
-                        class="p-2 border rounded w-full bg-white" value="{{ old('budget') }}">
-                    <select id="budgetCurrency" name="budget_currency" class="p-2 border rounded bg-white">
-                        <option value="USD" {{ old('budget_currency') == 'USD' ? 'selected' : '' }}>USD
-                        </option>
-                        <option value="EUR" {{ old('budget_currency') == 'EUR' ? 'selected' : '' }}>EUR
-                        </option>
-                        <option value="GBP" {{ old('budget_currency') == 'GBP' ? 'selected' : '' }}>GBP
-                        </option>
-                    </select>
-                </div>
+
+                <input type="text" id="budget" name="budget" placeholder="Budget"
+                    class="p-2 border rounded w-full bg-white" value="{{ old('budget') }}">
+
                 @error('budget')
                     <p class="my-1 text-red-500">{{ $message }}</p>
                 @enderror
             </div>
-
-            <!-- File Upload -->
-            <div class="flex flex-col pt-3">
-                <label for="fileUpload" class="block text-white font-semibold mb-2">File Upload</label>
-                <input type="file" id="fileUpload" name="attachment" class="p-2 border rounded bg-white">
-                @error('attachment')
-                    <p class="my-1 text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
         </div>
+    </div>
+
+    <!-- File Upload -->
+    <div class="flex flex-col pt-3">
+        <label for="fileUpload" class="block text-white font-semibold mb-2">File Upload</label>
+        <label for="design_upload"
+            class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#0087b8] bg-white transition-colors duration-200">
+            <svg class="w-12 h-12 text-[#0087b8] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 0115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v8">
+                </path>
+            </svg>
+            <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
+            <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
+                file)</span>
+            <input type="file" id="design_upload" name="design_upload" class="sr-only">
+        </label>
     </div>
 
     <!-- Section 4: Message -->
