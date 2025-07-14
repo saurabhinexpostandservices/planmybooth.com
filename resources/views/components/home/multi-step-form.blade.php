@@ -232,13 +232,6 @@
     </style>
 @endpush
 
-<<<<<<< HEAD
-<div class="bg-[#124E65] py-5 md:py-10">
-    <div class="form-container">
-        <h2
-            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">
-            Your Stand Request</h2>
-=======
     <div class="bg-[#124E65] py-5 md:py-10">
           <div class="form-container">
         <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">Your Stand Request</h2>
@@ -247,7 +240,6 @@
             {{ session('contact_message') }}
         </div>
         @endif
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
 
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
@@ -284,17 +276,6 @@
 
             @php $step++; @endphp
             <div class="progress-step-wrapper">
-<<<<<<< HEAD
-                <div class="progress-step" data-step="3">3</div>
-                <span class="progress-text">Contact Info</span>
-            </div>
-            {{-- <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="4">4</div>
-                <span class="progress-text">Price Range</span>
-            </div> --}}
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="4">4</div>
-=======
                 <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Price Range</span>
             </div>
@@ -302,23 +283,11 @@
             @php $step++; @endphp
             <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
                 <span class="progress-text">Elements</span>
             </div>
 
             @php $step++; @endphp
             <div class="progress-step-wrapper">
-<<<<<<< HEAD
-                <div class="progress-step" data-step="5">5</div>
-                <span class="progress-text">Employees</span>
-            </div>
-            {{-- <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="7">7</div>
-                <span class="progress-text">Design Upload</span>
-            </div> --}}
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="6">6</div>
-=======
                 <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Employees</span>
             </div>
@@ -332,7 +301,6 @@
             @php $step++; @endphp
             <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>
@@ -455,16 +423,6 @@
                     <div class="form-field-group">
                         <label for="stand_size">Stand size (m²) <span class="text-red-600">*</span></label>
                         <div class="flex items-center gap-2">
-<<<<<<< HEAD
-                            <input type="number" id="stand_size" name="stand_size" placeholder="0 m²" required
-                                class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
-                            <select id="standUnit" name="stand_unit" class="px-2 py-1.5 border rounded" required>
-                                <option value="m²" {{ old('stand_unit') == 'm²' ? 'selected' : '' }}>m²
-                                </option>
-                                <option value="ft²" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
-                                </option>
-                            </select>
-=======
                               <input type="number" id="stand_size" name="stand_size" placeholder="0 m²" required
                         class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
                     <select id="standUnit" name="stand_size_measurement_unit" class="px-2 py-1.5 border rounded" required>
@@ -473,7 +431,6 @@
                         <option value="fsq" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
                         </option>
                     </select>
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
                         </div>
                         <p class="error-message" id="stand_size-error"></p>
                     </div>
@@ -604,15 +561,9 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
-<<<<<<< HEAD
-                        <label for="contact_name">Contact Name <span class="text-red-600">*</span></label>
-                        <input type="text" id="contact_name" name="contact_name" placeholder="contact name" required>
-                        <p class="error-message" id="contact_name-error"></p>
-=======
                         <label for="full_name">Your name</label>
                         <input type="text" id="full_name" name="name" placeholder="Your name">
                         <p class="error-message" id="full_name-error"></p>
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
                     </div>
                     <div class="form-field-group">
                         <label for="email">Email <span class="text-red-600">*</span></label>
@@ -620,18 +571,8 @@
                         <p class="error-message" id="email-error"></p>
                     </div>
                     <div class="form-field-group">
-<<<<<<< HEAD
-                        <label for="company_name">Company Name <span class="text-red-600">*</span></label>
-                        <input type="text" id="company_name" name="contact_name" placeholder="company name" required>
-                        <p class="error-message" id="company_name-error"></p>
-                    </div>
-                    <div class="form-field-group">
-                        <label for="phone_number">Phone Number</label>
-                        <input type="tel" id="phone_number" name="phone_number" placeholder="phone number">
-=======
                         <label for="phone_number">Your phone number</label>
                         <input type="tel" id="phone_number" name="phone" placeholder="Your phone number">
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
                         <p class="error-message" id="phone_number-error"></p>
                     </div>
                 </div>
@@ -730,16 +671,9 @@
                 </div>
             </div> --}}
 
-<<<<<<< HEAD
-            <!-- Step 4: Elements Needed -->
-            <div class="form-step" data-step="4">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
-                </h3>
-=======
             <!-- Step 5: Elements Needed -->
             <div class="form-step" data-step="5">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?</h3>
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
                 <p class="text-gray-600 mb-6">Select as many as you need</p>
 
                 <div class="grid-options">
@@ -787,47 +721,15 @@
 
                 <p class="error-message" id="elements_needed-error"></p>
 
-<<<<<<< HEAD
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Do you want to attach some design, idea or
-                    concept of how your stand should be?</h3>
-                <p class="text-gray-600 mb-6">This would help us to understand better what do you have in mind.</p>
-                <div class="form-field-group">
-                    <label for="design_upload"
-                        class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#0087b8] hover:bg-[#e0f2f7] transition-colors duration-200">
-                        <svg class="w-12 h-12 text-[#0087b8] mb-4" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 0115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v8">
-                            </path>
-                        </svg>
-                        <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
-                        <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
-                            file)</span>
-                        <input type="file" id="design_upload" name="design_upload" class="sr-only">
-                    </label>
-                    <p class="error-message" id="design_upload-error"></p>
-                </div>
-
-                <div class="form-field-group">
-                    <label for="additional_comments">Additional comments</label>
-                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments"></textarea>
-                </div>
-=======
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr; Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
             </div>
 
-<<<<<<< HEAD
-            <!-- Step 5: Employees in Stand -->
-            <div class="form-step" data-step="5">
-=======
 
             <!-- Step 6: Employees in Stand -->
             <div class="form-step" data-step="6">
->>>>>>> f286b69e3c3591e52a536e97ed7f9bd7dfa05ed9
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">How many employees will be in the stand during
                     the event?</h3>
                 <p class="text-gray-600 mb-6">Specify the number of employees, what position they have, that are going
