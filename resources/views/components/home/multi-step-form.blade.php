@@ -100,7 +100,6 @@
             border: 0.5px solid #5b6475;
             border-radius: 5px;
             margin-bottom: 2px;
-
         }
 
         .error-message {
@@ -260,16 +259,16 @@
                 <div class="progress-step" data-step="4">4</div>
                 <span class="progress-text">Elements</span>
             </div>
-            <div class="progress-step-wrapper">
+            {{-- <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="5">5</div>
                 <span class="progress-text">Employees</span>
-            </div>
+            </div> --}}
             {{-- <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="7">7</div>
                 <span class="progress-text">Design Upload</span>
             </div> --}}
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="6">6</div>
+                <div class="progress-step" data-step="5">5</div>
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>
@@ -286,6 +285,7 @@
                             <option value="">Select an option</option>
                             <option value="stands">Stands</option>
                             <option value="hostesses">Hostesses</option>
+                            <option value="stand_with_hostesses">Stands with Hostesses</option>
                         </select>
                         <p class="error-message" id="needs-error"></p>
                     </div>
@@ -381,16 +381,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
                         <label for="stand_size">Stand size (m²) <span class="text-red-600">*</span></label>
-                        <div class="flex items-center gap-2">
-                            <input type="number" id="stand_size" name="stand_size" placeholder="0 m²" required
-                                class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
-                            <select id="standUnit" name="stand_unit" class="px-2 py-1.5 border rounded" required>
-                                <option value="m²" {{ old('stand_unit') == 'm²' ? 'selected' : '' }}>m²
-                                </option>
-                                <option value="ft²" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
-                                </option>
-                            </select>
-                        </div>
+                        <input type="text" id="stand_size" name="stand_size" placeholder="0 m²" required
+                            class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
+
                         <p class="error-message" id="stand_size-error"></p>
                     </div>
 
@@ -403,8 +396,8 @@
                 <div class="form-field-group" style="position: relative;">
                     <label for="trade_show_event">In which trade show do you exhibit? <span
                             class="text-red-600">*</span></label>
-                    <input type="text" id="trade_show_event" name="trade_show_event"
-                        placeholder="Select an event" required autocomplete="off">
+                    <input type="text" id="trade_show_event" name="trade_show_event" placeholder="Select an event"
+                        required autocomplete="off">
                     <div id="trade-show-suggestions"
                         class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
                     </div>
@@ -480,7 +473,7 @@
                         }
                     });
                 </script>
-                <div class="form-field-group">
+                {{-- <div class="form-field-group">
                     <div class="radio-group">
                         <label class="block">
                             <input type="radio" name="stand_design_type" value="design_construction"
@@ -498,7 +491,7 @@
                         </label>
                     </div>
                     <p class="error-message" id="stand_design_type-error"></p>
-                </div>
+                </div> --}}
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
@@ -629,7 +622,7 @@
 
             <!-- Step 4: Elements Needed -->
             <div class="form-step" data-step="4">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
+                {{-- <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
                 </h3>
                 <p class="text-gray-600 mb-6">Select as many as you need</p>
                 <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -716,10 +709,9 @@
                     </label>
                 </div>
 
-                <p class="error-message" id="elements_needed-error"></p>
+                <p class="error-message" id="elements_needed-error"></p> --}}
 
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Do you want to attach some design, idea or
-                    concept of how your stand should be?</h3>
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Floor Plan</h3>
                 <p class="text-gray-600 mb-6">This would help us to understand better what do you have in mind.</p>
                 <div class="form-field-group">
                     <label for="design_upload"
@@ -750,7 +742,7 @@
             </div>
 
             <!-- Step 5: Employees in Stand -->
-            <div class="form-step" data-step="5">
+            {{-- <div class="form-step" data-step="5">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">How many employees will be in the stand during
                     the event?</h3>
                 <p class="text-gray-600 mb-6">Specify the number of employees, what position they have, that are going
@@ -766,7 +758,7 @@
                         Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Step 6: Design Upload -->
             {{-- <div class="form-step" data-step="6">
@@ -797,7 +789,7 @@
             </div> --}}
 
             <!-- Step 6: Thank You Page -->
-            <div class="form-step" data-step="6">
+            <div class="form-step" data-step="5">
                 <div class="text-center py-20">
                     <h3 class="text-4xl font-bold text-gray-800 mb-4">Thank you!</h3>
                     <p class="text-xl text-gray-600">In 48h we will send you a selection of the best proposals</p>
