@@ -19,23 +19,23 @@
                         <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
                             data-label="Ref.">
                             <span class="md:hidden font-semibold text-gray-600">Ref.: </span>
-                            <a href="#">{{ $lead->reference_id ?? '-' }}</a>
+                            <a href="#">PMB101{{ $lead->id ?? '-' }}</a>
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Type">
                             <span class="md:hidden font-semibold text-gray-600">Type: </span>
-                            {{ $lead->type ?? '-' }}
+                            {{ $lead->services ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Trade Show">
                             <span class="md:hidden font-semibold text-gray-600">Trade Show: </span>
-                            {{ $lead->trade_show ?? '-' }}
+                            {{ $lead->show->title ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="City">
                             <span class="md:hidden font-semibold text-gray-600">City: </span>
-                            {{ $lead->city ?? '-' }}
+                            {{ $lead->city->name ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Year">
-                            <span class="md:hidden font-semibold text-gray-600">Year: </span>
-                            {{ $lead->year ?? '-' }}
+                            <span class="md:hidden font-semibold text-gray-600">Date: </span>
+                            {{ $lead->created_at ? $lead->created_at->format('d M, Y') : '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
                             data-label="Supplier">

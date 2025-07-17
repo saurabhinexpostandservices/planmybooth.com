@@ -14,7 +14,7 @@
                         class="flex flex-col md:flex-row gap-5 group hover:scale-105 duration-500 bg-[#EFEFEF] border border-gray-200 rounded-lg shadow p-5">
                         <!-- Image Section -->
                         <div class="relative w-full md:w-1/3 p-5 flex justify-center items-center">
-                            <img src="{{ $standbuilder->logo }}" alt="{{ $standbuilder->title }}"
+                            <img src="http://127.0.0.1:8002/{{ $standbuilder->logo }}" alt="{{ $standbuilder->title }}"
                                 class="w-full h-fit object-cover rounded-t-lg" />
                         </div>
 
