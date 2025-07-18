@@ -231,13 +231,15 @@
     </style>
 @endpush
 
-    <div class="bg-[#124E65] py-5 md:py-10">
-          <div class="form-container">
-        <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">Your Stand Request</h2>
+<div class="bg-[#124E65] py-5 md:py-10">
+    <div class="form-container">
+        <h2
+            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">
+            Your Stand Request</h2>
         @if (session('contact_message'))
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
-            {{ session('contact_message') }}
-        </div>
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
+                {{ session('contact_message') }}
+            </div>
         @endif
 
         @if ($errors->any())
@@ -250,56 +252,43 @@
             </div>
         @endif
         <!-- Progress Bar -->
-        @php $step = 1; @endphp
-
-        <div class="progress-bar-container">
+       <div class="progress-bar-container">
             <div class="progress-step-wrapper">
-                <div class="progress-step active" data-step="{{ $step }}">{{ $step }}</div>
+                <div class="progress-step active" data-step="1">1</div>
                 <span class="progress-text">Basic Info</span>
             </div>
-
-            @php $step++; @endphp
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
+                <div class="progress-step" data-step="2">2</div>
                 <span class="progress-text">Features</span>
             </div>
-
-            @guest
-                @php $step++; @endphp
-                <div class="progress-step-wrapper">
-                    <div class="progress-step" data-step="{{ $step }}" data-step-label="Contact Info">{{ $step }}</div>
-                    <span class="progress-text">Contact Info</span>
-                </div>
-            @endguest
-
-
-            @php $step++; @endphp
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
-                <span class="progress-text">Price Range</span>
-            </div>
-
-            @php $step++; @endphp
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
-                <span class="progress-text">Elements</span>
+                <div class="progress-step" data-step="3">3</div>
+                <span class="progress-text">Contact Info</span>
             </div>
             {{-- <div class="progress-step-wrapper">
+                <div class="progress-step" data-step="4">4</div>
+                <span class="progress-text">Price Range</span>
+            </div> --}}
+            {{-- <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="5">5</div>
+                <span class="progress-text">Elements</span>
+            </div> --}}
+            {{-- <div class="progress-step-wrapper">
+                <div class="progress-step" data-step="6">6</div>
                 <span class="progress-text">Employees</span>
             </div> --}}
-            {{-- <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="7">7</div>
-                <span class="progress-text">Design Upload</span>
-            </div> --}}
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="5">5</div>
+                <div class="progress-step" data-step="7">4</div>
+                <span class="progress-text">Design Upload</span>
+            </div>
+            <div class="progress-step-wrapper">
+                <div class="progress-step" data-step="8">5</div>
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>
 
 
-        <form method="POST" id="multiStepForm" action="{{ route('api.lead-store')}}" enctype="multipart/form-data" >
+        <form method="POST" id="multiStepForm" action="{{ route('api.lead-store') }}" enctype="multipart/form-data">
             @csrf
             <!-- Step 1: Basic Information -->
             <div class="form-step active" data-step="1">
@@ -432,8 +421,8 @@
                 <div class="form-field-group" style="position: relative;">
                     <label for="trade_show_event">In which trade show do you exhibit? <span
                             class="text-red-600">*</span></label>
-                    <input type="text" id="trade_show_event" name="trade_show_event" placeholder="Select an event"
-                        required autocomplete="off">
+                    <input type="text" id="trade_show_event" name="trade_show_event"
+                        placeholder="Select an event" required autocomplete="off">
                     <div id="trade-show-suggestions"
                         class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
                     </div>
@@ -518,25 +507,7 @@
                         }
                     });
                 </script>
-                {{-- <div class="form-field-group">
-                    <div class="radio-group">
-                        <label class="block">
-                            <input type="radio" name="services" value="design_and_construction"
-                                class="form-radio" checked>
-                            I need the stand design, construction and assembly
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="services" value="construction"
-                                class="form-radio">
-                            I already have a stand design, I just need the construction and assembly
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="services" value="other" class="form-radio">
-                            Others
-                        </label>
-                    </div>
-                    <p class="error-message" id="stand_design_type-error"></p>
-                </div> --}}
+       
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
@@ -546,38 +517,48 @@
 
             @guest
                 <!-- Step 3: Contact Information -->
-            <div class="form-step" data-step="3">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="form-field-group">
-
+                <div class="form-step" data-step="3">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="form-field-group">
+                            <label for="company_name">Contact name <span class="text-red-600">*</span></label>
+                            <input type="text" id="contact_name" name="contact_name" placeholder="Contact name" required>
+                            <p class="error-message" id="contact_name-error"></p>
+                        </div>
+                        <div class="form-field-group">
+                            <label for="email">Email <span class="text-red-600">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="email" required>
+                            <p class="error-message" id="email-error"></p>
+                        </div>
+                             <div class="form-field-group">
+                            <label for="company_name">Company name <span class="text-red-600">*</span></label>
+                            <input type="text" id="company_name" name="company_name" placeholder="Company name" required>
+                            <p class="error-message" id="company_name-error"></p>
+                        </div>
+                        <div class="form-field-group">
+                            <label for="phone_number">Phone number <span class="text-red-600">*</span></label>
+                            <input type="tel" id="phone_number" name="phone_number" placeholder="Phone number"
+                                required>
+                            <p class="error-message" id="phone_number-error"></p>
+                        </div>
+                    
                     </div>
-                    <div class="form-field-group">
-                        <label for="email">Email <span class="text-red-600">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="email" required>
-                        <p class="error-message" id="email-error"></p>
-                    </div>
-                    <div class="form-field-group">
 
-                        <p class="error-message" id="phone_number-error"></p>
+                    <div class="form-field-group">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" id="privacy_policy" name="privacy_policy" class="form-checkbox">
+                            <span class="ml-2 text-gray-700 text-sm">I have read and accept the <a
+                                    href="{{ route('privacy-policy') }}" target="_blank"
+                                    class="text-[#0087b8] hover:underline">Privacy Policy</a></span>
+                        </label>
+                        <p class="error-message" id="privacy_policy-error"></p>
+                    </div>
+                    <div class="flex justify-between mt-8">
+                        <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
+                            Previous</button>
+                        <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                     </div>
                 </div>
-
-                <div class="form-field-group">
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" id="privacy_policy" name="privacy_policy" class="form-checkbox">
-                        <span class="ml-2 text-gray-700 text-sm">I have read and accept the <a
-                                href="{{ route('privacy-policy') }}" target="_blank"
-                                class="text-[#0087b8] hover:underline">Privacy Policy</a></span>
-                    </label>
-                    <p class="error-message" id="privacy_policy-error"></p>
-                </div>
-                <div class="flex justify-between mt-8">
-                    <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
-                        Previous</button>
-                    <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
-                </div>
-            </div>
             @endguest
             <script>
                 // Email filter for public domains
@@ -690,7 +671,8 @@
                     <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments"></textarea>
                 </div>
                 <div class="flex justify-between mt-8">
-                    <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr; Previous</button>
+                    <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
+                        Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
             </div>
@@ -742,14 +724,13 @@
                 </div>
             </div> --}}
 
-            <!-- Step 6: Thank You Page -->
+            <!-- Step 5: Thank You Page -->
             <div class="form-step" data-step="5">
                 <div class="text-center py-20">
-                    <h3 class="text-4xl font-bold text-gray-800 mb-4">Waiting...</h3>
-                    <p class="text-xl text-gray-600"> Hold on tight! 🚀 We're processing your request...</p>
+                    <h3 class="text-4xl font-bold text-gray-800 mb-4">Thank you!</h3>
+                    <p class="text-xl text-gray-600">In 48h we will send you a selection of the best proposals</p>
                 </div>
             </div>
-
         </form>
     </div>
 </div>
