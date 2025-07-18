@@ -284,7 +284,6 @@
                 <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
                 <span class="progress-text">Elements</span>
             </div>
-<<<<<<< HEAD
             {{-- <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="5">5</div>
                 <span class="progress-text">Employees</span>
@@ -295,24 +294,6 @@
             </div> --}}
             <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="5">5</div>
-=======
-
-            @php $step++; @endphp
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
-                <span class="progress-text">Employees</span>
-            </div>
-
-            @php $step++; @endphp
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
-                <span class="progress-text">Design Upload</span>
-            </div>
-
-            @php $step++; @endphp
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="{{ $step }}">{{ $step }}</div>
->>>>>>> 7ffed6b522c140d8389dfa5e398f5fe070579ea1
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>
@@ -436,22 +417,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
                         <label for="stand_size">Stand size (m²) <span class="text-red-600">*</span></label>
-<<<<<<< HEAD
                         <input type="text" id="stand_size" name="stand_size" placeholder="0 m²" required
                             class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
 
-=======
-                        <div class="flex items-center gap-2">
-                              <input type="number" id="stand_size" name="stand_size" placeholder="0 m²" required
-                        class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
-                    <select id="standUnit" name="stand_size_measurement_unit" class="px-2 py-1.5 border rounded" required>
-                        <option value="msq" {{ old('stand_unit') == 'm²' ? 'selected' : '' }}>m²
-                        </option>
-                        <option value="fsq" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
-                        </option>
-                    </select>
-                        </div>
->>>>>>> 7ffed6b522c140d8389dfa5e398f5fe070579ea1
                         <p class="error-message" id="stand_size-error"></p>
                     </div>
 
@@ -689,22 +657,15 @@
                 </div>
             </div> --}}
 
-<<<<<<< HEAD
             <!-- Step 4: Elements Needed -->
             <div class="form-step" data-step="4">
                 {{-- <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
                 </h3>
-=======
-            <!-- Step 5: Elements Needed -->
-            <div class="form-step" data-step="5">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?</h3>
->>>>>>> 7ffed6b522c140d8389dfa5e398f5fe070579ea1
                 <p class="text-gray-600 mb-6">Select as many as you need</p>
 
 
                 <p class="error-message" id="elements_needed-error"></p> --}}
 
-<<<<<<< HEAD
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Floor Plan</h3>
                 <p class="text-gray-600 mb-6">This would help us to understand better what do you have in mind.</p>
                 <div class="form-field-group">
@@ -728,22 +689,14 @@
                     <label for="additional_comments">Additional comments</label>
                     <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments"></textarea>
                 </div>
-=======
->>>>>>> 7ffed6b522c140d8389dfa5e398f5fe070579ea1
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr; Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
             </div>
 
-<<<<<<< HEAD
             <!-- Step 5: Employees in Stand -->
             {{-- <div class="form-step" data-step="5">
-=======
-
-            <!-- Step 6: Employees in Stand -->
-            <div class="form-step" data-step="6">
->>>>>>> 7ffed6b522c140d8389dfa5e398f5fe070579ea1
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">How many employees will be in the stand during
                     the event?</h3>
                 <p class="text-gray-600 mb-6">Specify the number of employees, what position they have, that are going
