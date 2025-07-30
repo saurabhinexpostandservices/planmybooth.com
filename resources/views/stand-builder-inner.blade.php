@@ -8,7 +8,5 @@
     <x-slot name="featured_image">
         {{ $standbuilder?->logo}}
     </x-slot>
-
-   
     <x-inside-custom-exhibition-page.inside-custom-page :standbuilder="$standbuilder" />
 </x-layout.public>

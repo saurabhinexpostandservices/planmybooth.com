@@ -16,6 +16,9 @@
                         <div class="relative w-full md:w-1/3 p-5 flex justify-center items-center">
                             <img src="http://127.0.0.1:8002/{{ $standbuilder->logo }}" alt="{{ $standbuilder->title }}"
                                 class="w-full h-fit object-cover rounded-t-lg" />
+                                <img
+                                    class="w-1/3 mx-auto rounded-full absolute -right-8 -top-8 rotate-[45] animate-bounce"
+                                    src="/assets/icons/bronze.png" alt="bronze" />
                         </div>
 
                         <!-- Content Section -->
@@ -24,7 +27,26 @@
                             <span class="text-xs p-1 text-white bg-[#AE2333] rounded-2xl px-2">Founded :
                                 {{ $standbuilder?->founded_year }}</span>
                             <p class="text-sm text-gray-600 my-5"><i class="fa fa-map-marker text-[#AE2333]"
-                                    aria-hidden="true"></i> {{ $standbuilder?->city?->name }}, {{ $standbuilder?->country?->name }}</p>
+                                    aria-hidden="true"></i> {{ $standbuilder?->city?->name }},
+                                {{ $standbuilder?->country?->name }}</p>
+                            <span class="flex items-center my-2">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= ($standbuilder->rating ?? 0))
+                                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                                            <polygon
+                                                points="9.9,1.1 7.6,6.6 1.6,7.5 6,11.9 4.8,17.8 9.9,14.9 15,17.8 13.8,11.9 18.2,7.5 12.2,6.6 " />
+                                        </svg>
+                                    @else
+                                        <svg class="w-4 h-4 text-gray-300 fill-current" viewBox="0 0 20 20">
+                                            <polygon
+                                                points="9.9,1.1 7.6,6.6 1.6,7.5 6,11.9 4.8,17.8 9.9,14.9 15,17.8 13.8,11.9 18.2,7.5 12.2,6.6 " />
+                                        </svg>
+                                    @endif
+                                @endfor
+                                <span class="ml-2 text-sm text-gray-600">
+                                    | ({{ $standbuilder->review_count ?? 0 }}) Reviews
+                                </span>
+                            </span>
                         </div>
                     </div>
 
@@ -53,23 +75,39 @@
                         </div>
                     </div>
 
-                    {{-- <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>
+                    <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>
                         <h3
                             class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-semibold">
-                            LOCATION</h3>
+                            Portfolio
+                        </h3>
                         <div>
-                            <ul class="grid grid-cols-2 gap-5">
-                                @foreach ($standbuilder->service_cities as $location)
-                                    <li class="capitalize"><i class="fa fa-map-marker text-[#AE2333]"
-                                            aria-hidden="true"></i> {{ $location }}</li>
-                                @endforeach
-                            </ul>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                                <img src="https://via.placeholder.com/400x300?text=Portfolio+1" alt="Portfolio 1" class="w-full h-48 object-cover rounded-lg shadow" />
+                                <img src="https://via.placeholder.com/400x300?text=Portfolio+2" alt="Portfolio 2" class="w-full h-48 object-cover rounded-lg shadow" />
+                                <img src="https://via.placeholder.com/400x300?text=Portfolio+3" alt="Portfolio 3" class="w-full h-48 object-cover rounded-lg shadow" />
+                                <img src="https://via.placeholder.com/400x300?text=Portfolio+4" alt="Portfolio 4" class="w-full h-48 object-cover rounded-lg shadow" />
+                                <img src="https://via.placeholder.com/400x300?text=Portfolio+5" alt="Portfolio 5" class="w-full h-48 object-cover rounded-lg shadow" />
+                                <img src="https://via.placeholder.com/400x300?text=Portfolio+6" alt="Portfolio 6" class="w-full h-48 object-cover rounded-lg shadow" />
+                            </div>
                         </div>
-                    </div> --}}
+                    </div>
+
+                    <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>
+                        <h3
+                            class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-semibold">
+                            Video
+                        </h3>
+                        <div class="w-full flex justify-center">
+                            <video controls class="w-full max-w-xl rounded-lg shadow">
+                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section class='w-full flex flex-col gap-5 mx-auto lg:w-80'>
-                {{-- <x-inside-blog-page.sidebar-form /> --}}
+                <x-inside-blog-page.sidebar-form />
             </section>
         </div>
     </div>

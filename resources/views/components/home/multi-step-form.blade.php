@@ -605,48 +605,8 @@
                 };
             </script>
 
-            <!-- Step 4: Price Range -->
-            {{-- <div class="form-step" data-step="4">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Price Range</h3>
-                <p class="text-gray-600 mb-6">To select the right materials for the design and construction of your
-                    stand please let us know which price range works best for you.</p>
-                <div class="form-field-group">
-                    <div class="radio-group">
-                        <label class="block">
-                            <input type="radio" name="price_range" value="less_than_13000" class="form-radio">
-                            Less than &euro;13,000
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="price_range" value="13000_17000" class="form-radio">
-                            Between &euro;13,000 and &euro;17,000
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="price_range" value="17000_22000" class="form-radio">
-                            Between &euro;17,000 and &euro;22,000
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="price_range" value="more_than_22000" class="form-radio">
-                            More than &euro;22,000
-                        </label>
-                    </div>
-                    <p class="error-message" id="price_range-error"></p>
-                </div>
-                <div class="flex justify-between mt-8">
-                    <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
-                        Previous</button>
-                    <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
-                </div>
-            </div> --}}
-
             <!-- Step 4: Elements Needed -->
             <div class="form-step" data-step="4">
-                {{-- <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
-                </h3>
-                <p class="text-gray-600 mb-6">Select as many as you need</p>
-
-
-                <p class="error-message" id="elements_needed-error"></p> --}}
-
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Floor Plan</h3>
                 <p class="text-gray-600 mb-6">This would help us to understand better what do you have in mind.</p>
                 <div class="form-field-group">
