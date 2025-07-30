@@ -236,6 +236,23 @@
         <h2
             class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">
             Your Stand Request</h2>
+        @if (session('contact_message'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
+                {{ session('contact_message') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+                <ul class="list-disc list-inside">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <!-- Progress Bar -->
+       <div class="progress-bar-container">
             <div class="progress-step-wrapper">
                 <div class="progress-step active" data-step="1">1</div>
                 <span class="progress-text">Basic Info</span>
@@ -252,10 +269,27 @@
                 <div class="progress-step" data-step="4">4</div>
                 <span class="progress-text">Price Range</span>
             </div> --}}
+            {{-- <div class="progress-step-wrapper">
+                <div class="progress-step" data-step="5">5</div>
+                <span class="progress-text">Elements</span>
+            </div> --}}
+            {{-- <div class="progress-step-wrapper">
+                <div class="progress-step" data-step="6">6</div>
+                <span class="progress-text">Employees</span>
+            </div> --}}
+            <div class="progress-step-wrapper">
+                <div class="progress-step" data-step="7">4</div>
+                <span class="progress-text">Design Upload</span>
+            </div>
+            <div class="progress-step-wrapper">
+                <div class="progress-step" data-step="8">5</div>
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>
 
+
+        <form method="POST" id="multiStepForm" action="{{ route('api.lead-store') }}" enctype="multipart/form-data">
+            @csrf
             <!-- Step 1: Basic Information -->
             <div class="form-step active" data-step="1">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">What do you need?</h3>
@@ -337,11 +371,20 @@
 
                         suggestionsBox.addEventListener('click', function(e) {
                             if (e.target && e.target.dataset.city) {
-                                cityInput.value = e.target.dataset.city;
+                                const selectedCity = e.target.dataset.city;
+                                cityInput.value = selectedCity;
+
+                                // 💡 Set city_id from map
+                                const matchedId = cities_map[selectedCity];
+                                if (matchedId) {
+                                    cityIdInput.value = matchedId;
+                                }
+
                                 suggestionsBox.innerHTML = '';
                                 suggestionsBox.classList.add('hidden');
                             }
                         });
+
 
                         // Hide suggestions when clicking outside
                         document.addEventListener('click', function(e) {
@@ -363,6 +406,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
                         <label for="stand_size">Stand size (m²) <span class="text-red-600">*</span></label>
+                        <input type="text" id="stand_size" name="stand_size" placeholder="0 m²" required
+                            class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
 
                         <p class="error-message" id="stand_size-error"></p>
                     </div>
@@ -410,7 +455,7 @@
                         tradeShowIdInput = document.createElement('input');
                         tradeShowIdInput.type = 'hidden';
                         tradeShowIdInput.id = 'trade_show_id';
-                        tradeShowIdInput.name = 'trade_show_id';
+                        tradeShowIdInput.name = 'show_id';
                         tradeShowInput.parentNode.appendChild(tradeShowIdInput);
                     }
 
@@ -439,11 +484,20 @@
 
                     tradeShowSuggestions.addEventListener('click', function(e) {
                         if (e.target && e.target.dataset.show) {
-                            tradeShowInput.value = e.target.dataset.show;
+                            const selectedShow = e.target.dataset.show;
+                            tradeShowInput.value = selectedShow;
+
+                            // 💡 Set trade_show_id from map
+                            const matchedShowId = tradeShowsMap[selectedShow];
+                            if (matchedShowId) {
+                                tradeShowIdInput.value = matchedShowId;
+                            }
+
                             tradeShowSuggestions.innerHTML = '';
                             tradeShowSuggestions.classList.add('hidden');
                         }
                     });
+
 
                     // Hide suggestions when clicking outside
                     document.addEventListener('click', function(e) {
@@ -453,6 +507,7 @@
                         }
                     });
                 </script>
+       
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
@@ -460,7 +515,33 @@
                 </div>
             </div>
 
-
+            @guest
+                <!-- Step 3: Contact Information -->
+                <div class="form-step" data-step="3">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="form-field-group">
+                            <label for="company_name">Contact name <span class="text-red-600">*</span></label>
+                            <input type="text" id="contact_name" name="contact_name" placeholder="Contact name" required>
+                            <p class="error-message" id="contact_name-error"></p>
+                        </div>
+                        <div class="form-field-group">
+                            <label for="email">Email <span class="text-red-600">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="email" required>
+                            <p class="error-message" id="email-error"></p>
+                        </div>
+                             <div class="form-field-group">
+                            <label for="company_name">Company name <span class="text-red-600">*</span></label>
+                            <input type="text" id="company_name" name="company_name" placeholder="Company name" required>
+                            <p class="error-message" id="company_name-error"></p>
+                        </div>
+                        <div class="form-field-group">
+                            <label for="phone_number">Phone number <span class="text-red-600">*</span></label>
+                            <input type="tel" id="phone_number" name="phone_number" placeholder="Phone number"
+                                required>
+                            <p class="error-message" id="phone_number-error"></p>
+                        </div>
+                    
                     </div>
 
                     <div class="form-field-group">
@@ -472,7 +553,13 @@
                         </label>
                         <p class="error-message" id="privacy_policy-error"></p>
                     </div>
-
+                    <div class="flex justify-between mt-8">
+                        <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
+                            Previous</button>
+                        <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
+                    </div>
+                </div>
+            @endguest
             <script>
                 // Email filter for public domains
                 document.getElementById('email').addEventListener('input', function() {
@@ -548,14 +635,17 @@
                         Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
+            </div>
 
+            <!-- Step 5: Employees in Stand -->
+            {{-- <div class="form-step" data-step="5">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">How many employees will be in the stand during
                     the event?</h3>
                 <p class="text-gray-600 mb-6">Specify the number of employees, what position they have, that are going
                     to be in the stand. This information is helpful for designing the stand. Example: manager + 3 sales
                     person + hostesses</p>
                 <div class="form-field-group">
-                    <textarea id="employees_info" name="employees_info" rows="6"
+                    <textarea id="employees_info" name="employee_onsite_avilable" rows="6"
                         placeholder="e.g., 1 Manager, 3 Sales Persons, 2 Hostesses"></textarea>
                     <p class="error-message" id="employees_info-error"></p>
                 </div>
@@ -583,7 +673,7 @@
                         <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
                         <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
                             file)</span>
-                        <input type="file" id="design_upload" name="design_upload" class="sr-only">
+                        <input type="file" id="design_upload" name="design_attachments" class="sr-only">
                     </label>
                     <p class="error-message" id="design_upload-error"></p>
                 </div>
@@ -693,10 +783,19 @@
 
             // Specific validation for step 3
             if (stepIndex === 2) {
-                const privacyCheckbox = document.getElementById('privacy_policy');
-                if (!privacyCheckbox.checked) {
-                    isValid = false;
-                    document.getElementById('privacy_policy-error').textContent = 'You must accept the privacy policy.';
+                // Check if Contact Info step exists (guest only)
+                const contactStep = document.querySelector('[data-step-label="Contact Info"]');
+                const isGuest = contactStep !== null;
+
+                // Step index to validate Contact Info (step 3 for guest, skipped if logged in)
+                const contactInfoStepIndex = isGuest ? 2 : null;
+
+                if (isGuest && stepIndex === contactInfoStepIndex) {
+                    const privacyCheckbox = document.getElementById('privacy_policy');
+                    if (!privacyCheckbox?.checked) {
+                        isValid = false;
+                        document.getElementById('privacy_policy-error').textContent = 'You must accept the privacy policy.';
+                    }
                 }
             }
 
