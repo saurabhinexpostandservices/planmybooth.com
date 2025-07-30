@@ -8,8 +8,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LeadsController;
 
-
-/**
+/*
  * //////////////////////////////////////////////////////////
  * ====================== Static Routes =====================
  * //////////////////////////////////////////////////////////

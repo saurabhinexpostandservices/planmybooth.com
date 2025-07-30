@@ -100,7 +100,6 @@
             border: 0.5px solid #5b6475;
             border-radius: 5px;
             margin-bottom: 2px;
-
         }
 
         .error-message {
@@ -237,9 +236,6 @@
         <h2
             class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">
             Your Stand Request</h2>
-
-        <!-- Progress Bar -->
-        <div class="progress-bar-container">
             <div class="progress-step-wrapper">
                 <div class="progress-step active" data-step="1">1</div>
                 <span class="progress-text">Basic Info</span>
@@ -256,25 +252,10 @@
                 <div class="progress-step" data-step="4">4</div>
                 <span class="progress-text">Price Range</span>
             </div> --}}
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="4">4</div>
-                <span class="progress-text">Elements</span>
-            </div>
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="5">5</div>
-                <span class="progress-text">Employees</span>
-            </div>
-            {{-- <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="7">7</div>
-                <span class="progress-text">Design Upload</span>
-            </div> --}}
-            <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="6">6</div>
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>
 
-        <form id="multiStepForm" action="#" method="POST" onsubmit="return false;">
             <!-- Step 1: Basic Information -->
             <div class="form-step active" data-step="1">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">What do you need?</h3>
@@ -286,6 +267,7 @@
                             <option value="">Select an option</option>
                             <option value="stands">Stands</option>
                             <option value="hostesses">Hostesses</option>
+                            <option value="stand_with_hostesses">Stands with Hostesses</option>
                         </select>
                         <p class="error-message" id="needs-error"></p>
                     </div>
@@ -381,16 +363,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
                         <label for="stand_size">Stand size (m²) <span class="text-red-600">*</span></label>
-                        <div class="flex items-center gap-2">
-                            <input type="number" id="stand_size" name="stand_size" placeholder="0 m²" required
-                                class="p-2 border rounded w-full" value="{{ old('stand_size') }}">
-                            <select id="standUnit" name="stand_unit" class="px-2 py-1.5 border rounded" required>
-                                <option value="m²" {{ old('stand_unit') == 'm²' ? 'selected' : '' }}>m²
-                                </option>
-                                <option value="ft²" {{ old('stand_unit') == 'ft²' ? 'selected' : '' }}>ft²
-                                </option>
-                            </select>
-                        </div>
+
                         <p class="error-message" id="stand_size-error"></p>
                     </div>
 
@@ -480,25 +453,6 @@
                         }
                     });
                 </script>
-                <div class="form-field-group">
-                    <div class="radio-group">
-                        <label class="block">
-                            <input type="radio" name="stand_design_type" value="design_construction"
-                                class="form-radio" checked>
-                            I need the stand design, construction and assembly
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="stand_design_type" value="construction_only"
-                                class="form-radio">
-                            I already have a stand design, I just need the construction and assembly
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="stand_design_type" value="others" class="form-radio">
-                            Others
-                        </label>
-                    </div>
-                    <p class="error-message" id="stand_design_type-error"></p>
-                </div>
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
@@ -506,49 +460,19 @@
                 </div>
             </div>
 
-            <!-- Step 3: Contact Information -->
-            <div class="form-step" data-step="3">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="form-field-group">
-                        <label for="contact_name">Contact Name <span class="text-red-600">*</span></label>
-                        <input type="text" id="contact_name" name="contact_name" placeholder="contact name"
-                            required>
-                        <p class="error-message" id="contact_name-error"></p>
-                    </div>
-                    <div class="form-field-group">
-                        <label for="email">Email <span class="text-red-600">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="email" required>
-                        <p class="error-message" id="email-error"></p>
-                    </div>
-                    <div class="form-field-group">
-                        <label for="company_name">Company Name <span class="text-red-600">*</span></label>
-                        <input type="text" id="company_name" name="contact_name" placeholder="company name"
-                            required>
-                        <p class="error-message" id="company_name-error"></p>
-                    </div>
-                    <div class="form-field-group">
-                        <label for="phone_number">Phone Number</label>
-                        <input type="tel" id="phone_number" name="phone_number" placeholder="phone number">
-                        <p class="error-message" id="phone_number-error"></p>
-                    </div>
-                </div>
 
-                <div class="form-field-group">
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" id="privacy_policy" name="privacy_policy" class="form-checkbox">
-                        <span class="ml-2 text-gray-700 text-sm">I have read and accept the <a
-                                href="{{ route('privacy-policy') }}" target="_blank"
-                                class="text-[#0087b8] hover:underline">Privacy Policy</a></span>
-                    </label>
-                    <p class="error-message" id="privacy_policy-error"></p>
-                </div>
-                <div class="flex justify-between mt-8">
-                    <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
-                        Previous</button>
-                    <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
-                </div>
-            </div>
+                    </div>
+
+                    <div class="form-field-group">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" id="privacy_policy" name="privacy_policy" class="form-checkbox">
+                            <span class="ml-2 text-gray-700 text-sm">I have read and accept the <a
+                                    href="{{ route('privacy-policy') }}" target="_blank"
+                                    class="text-[#0087b8] hover:underline">Privacy Policy</a></span>
+                        </label>
+                        <p class="error-message" id="privacy_policy-error"></p>
+                    </div>
+
             <script>
                 // Email filter for public domains
                 document.getElementById('email').addEventListener('input', function() {
@@ -594,132 +518,9 @@
                 };
             </script>
 
-            <!-- Step 4: Price Range -->
-            {{-- <div class="form-step" data-step="4">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Price Range</h3>
-                <p class="text-gray-600 mb-6">To select the right materials for the design and construction of your
-                    stand please let us know which price range works best for you.</p>
-                <div class="form-field-group">
-                    <div class="radio-group">
-                        <label class="block">
-                            <input type="radio" name="price_range" value="less_than_13000" class="form-radio">
-                            Less than &euro;13,000
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="price_range" value="13000_17000" class="form-radio">
-                            Between &euro;13,000 and &euro;17,000
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="price_range" value="17000_22000" class="form-radio">
-                            Between &euro;17,000 and &euro;22,000
-                        </label>
-                        <label class="block">
-                            <input type="radio" name="price_range" value="more_than_22000" class="form-radio">
-                            More than &euro;22,000
-                        </label>
-                    </div>
-                    <p class="error-message" id="price_range-error"></p>
-                </div>
-                <div class="flex justify-between mt-8">
-                    <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
-                        Previous</button>
-                    <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
-                </div>
-            </div> --}}
-
             <!-- Step 4: Elements Needed -->
             <div class="form-step" data-step="4">
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">What elements do you need in the stand?
-                </h3>
-                <p class="text-gray-600 mb-6">Select as many as you need</p>
-                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <label class="grid-option-item">
-                        <div class=" flex items-center gap-5">
-                            <input type="checkbox" name="elements_needed[]" value="counter">
-                            <span class="icon">
-                                <img src="{{ asset('assets/stand-element/Counter.svg') }}" class="w-10 h-10"
-                                    alt="Counter">
-                            </span>
-                        </div>
-                        <span>Counter</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <div class=" flex items-center gap-5">
-                            <input type="checkbox" name="elements_needed[]" value="furniture">
-                            <span class="icon">
-                                <img src="{{ asset('assets/stand-element/furniture.svg') }}" class="w-10 h-10"
-                                    alt="Furniture">
-                            </span>
-                        </div>
-                        <span>Furniture</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <div class=" flex items-center gap-5">
-                            <input type="checkbox" name="elements_needed[]" value="multimedia">
-                            <span class="icon">
-                                <img src="{{ asset('assets/stand-element/multimedia-rent.svg') }}" class="w-10 h-10"
-                                    alt="Multimedia">
-                            </span>
-                        </div>
-                        <span>Multimedia</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <div class=" flex items-center gap-5">
-                            <input type="checkbox" name="elements_needed[]" value="closed_meeting_room">
-                            <span class="icon">
-                                <img src="{{ asset('assets/stand-element/closed-meeting-room.svg') }}"
-                                    class="w-10 h-10" alt="Closed meeting room">
-                            </span>
-                        </div>
-
-                        <span>Closed meeting room</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <div class=" flex items-center gap-5">
-                            <input type="checkbox" name="elements_needed[]" value="open_meeting_room">
-                            <span class="icon">
-                                <img src="{{ asset('assets/stand-element/open-meeting-room.svg') }}"
-                                    class="w-10 h-10" alt="Open meeting room">
-                            </span>
-                        </div>
-                        <span>Open meeting room</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <div class=" flex items-center gap-5">
-                            <input type="checkbox" name="elements_needed[]" value="space_storage">
-                            <span class="icon">
-                                <img src="{{ asset('assets/stand-element/space-storage.svg') }}" class="w-10 h-10"
-                                    alt="Space storage">
-                            </span>
-                        </div>
-                        <span>Space storage</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <div class=" flex items-center gap-5">
-                            <input type="checkbox" name="elements_needed[]" value="catering_area">
-                            <span class="icon">
-                                <img src="{{ asset('assets/stand-element/catering-area.svg') }}" class="w-10 h-10"
-                                    alt="Catering area">
-                            </span>
-                        </div>
-                        <span>Catering area</span>
-                    </label>
-                    <label class="grid-option-item">
-                        <div class=" flex items-center gap-5">
-                            <input type="checkbox" name="elements_needed[]" value="hanging_elements">
-                            <span class="icon">
-                                <img src="{{ asset('assets/stand-element/hanging-elements.svg') }}" class="w-10 h-10"
-                                    alt="Hanging elements">
-                            </span>
-                        </div>
-                        <span>Hanging elements</span>
-                    </label>
-                </div>
-
-                <p class="error-message" id="elements_needed-error"></p>
-
-                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Do you want to attach some design, idea or
-                    concept of how your stand should be?</h3>
+                <h3 class="text-2xl font-semibold text-gray-700 mb-6">Floor Plan</h3>
                 <p class="text-gray-600 mb-6">This would help us to understand better what do you have in mind.</p>
                 <div class="form-field-group">
                     <label for="design_upload"
@@ -747,10 +548,7 @@
                         Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
-            </div>
 
-            <!-- Step 5: Employees in Stand -->
-            <div class="form-step" data-step="5">
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">How many employees will be in the stand during
                     the event?</h3>
                 <p class="text-gray-600 mb-6">Specify the number of employees, what position they have, that are going
@@ -766,7 +564,7 @@
                         Previous</button>
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Step 6: Design Upload -->
             {{-- <div class="form-step" data-step="6">
@@ -796,14 +594,13 @@
                 </div>
             </div> --}}
 
-            <!-- Step 6: Thank You Page -->
-            <div class="form-step" data-step="6">
+            <!-- Step 5: Thank You Page -->
+            <div class="form-step" data-step="5">
                 <div class="text-center py-20">
                     <h3 class="text-4xl font-bold text-gray-800 mb-4">Thank you!</h3>
                     <p class="text-xl text-gray-600">In 48h we will send you a selection of the best proposals</p>
                 </div>
             </div>
-
         </form>
     </div>
 </div>
