@@ -20,7 +20,7 @@
         <div class="flex flex-col lg:flex-row p-5 gap-5">
             <!-- Main Blog Section -->
             <section class="w-full lg:w-2/3 mx-auto">
-                <img class="w-full" src="http://localhost:8002/{{ $post->featured_image }}" alt="why-choose-us">
+                <img class="w-full" src="{{ $post->featured_image }}" alt="{{ $post->meta_title}}">
 
                 <!-- Blog Content -->
                 <section>
@@ -45,7 +45,7 @@
             <!-- Sidebar Section -->
             <section class="w-full flex flex-col gap-5 mx-auto lg:w-80">
                 {{-- <x-inside-blog-page.latest-post :recentPosts="$recentPosts" /> --}}
-                {{-- <x-inside-blog-page.sidebar-form /> --}}
+                <x-inside-blog-page.sidebar-form />
             </section>
         </div>
     </div>

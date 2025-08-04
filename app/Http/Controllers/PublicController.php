@@ -74,18 +74,19 @@ class PublicController extends Controller
         return view('home', compact('countries'));
     }
 
-    public function country($slug){
+    public function country($slug)
+    {
         /**
-         * first fetch the country page data
-         * second fetch the continent id from country data
-         * third find the standbuilder which provides the services in that continents
-         * @return $page, $standbuiders data
+         * Goal:
+         * - Load the country page
+         * - Find all cities in that country
+         * - Return standbuilders who provide services in any of those cities
          */
 
         $page = Page::where('slug', $slug)
-        ->where('status', 'published')
-        ->where('type', 'country')
-        ->first();
+            ->where('status', 'published')
+            ->where('type', 'country')
+            ->first();
 
         if (!$page) {
             abort(404, 'Page not found');
@@ -97,31 +98,43 @@ class PublicController extends Controller
             abort(404, 'Country not found');
         }
 
-        $standbuilders = Standbuilder::whereJsonContains('services_continents', [(string)$country->continent_id])->paginate(10);
-        
-        return view('country', compact('page', 'standbuilders'));
+        // Fetch all city IDs in this country
+        $cityIds = City::where('country_id', $country->id)->pluck('id')->toArray();
 
+        // Fetch all standbuilders that provide service in any of these cities
+        $standbuilders = Standbuilder::where('status', 'published')
+            ->where(function ($query) use ($cityIds) {
+            foreach ($cityIds as $cityId) {
+                $query->orWhereJsonContains('services_cities', (string)$cityId);
+            }
+            })
+            ->paginate(10);
+
+        return view('country', compact('page', 'standbuilders'));
     }
+
 
     public function city($slug){
 
         $page = Page::where('slug', $slug)
-        ->where('status', 'published')
-        ->where('type', 'city')
-        ->first();
+            ->where('status', 'published')
+            ->where('type', 'city')
+            ->first();
 
         if (!$page) {
             abort(404, 'Page not found');
         }
 
-        $country = Country::find($page->country_id);
+        $city = City::find($page->city_id);
 
-        if (!$country) {
-            abort(404, 'Country not found');
+        if (!$city) {
+            abort(404, 'City not found');
         }
 
-        $standbuilders = Standbuilder::whereJsonContains('services_continents', [(string)$country->continent_id])->paginate(10);
-        
+        $standbuilders = Standbuilder::where('status', 'published')
+            ->whereJsonContains('services_cities', (string)$city->id)
+            ->paginate(10);
+
         return view('city', compact('page', 'standbuilders'));
     }
 

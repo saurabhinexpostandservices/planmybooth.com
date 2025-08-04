@@ -26,7 +26,7 @@
 
                 <div class="md:hidden font-semibold text-gray-500">Event Name:</div>
                 <div class="flex items-center space-x-2 md:col-span-1">
-                    <img src="http://127.0.0.1:8002/{{ $item->logo }}" alt="{{ $item->title }} logo"
+                    <img src="{{ $item->logo }}" alt="{{ $item->title }} logo"
                         class="w-10 h-10 rounded-full" />
                     <span class="text-sm xl:text-base truncate">{{ Str::limit(strip_tags($item->title), 30) }}</span>
                 </div>

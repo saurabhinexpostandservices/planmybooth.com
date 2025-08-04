@@ -23,7 +23,7 @@
                     class="flex flex-col md:flex-row bg-white md:p-5 hover:scale-95 transition duration-500 ease-in-out">
                     <div class="px-5 md:px-0 flex justify-center items-center">
                         <img class="w-[200px] h-[150px] md:w-[250px] md:h-[180px] object-contain"
-                            src="http://127.0.0.1:8002/{{ $standbuilder?->logo }}" alt="{{ $standbuilder?->title }}" />
+                            src="{{ $standbuilder?->logo }}" alt="{{ $standbuilder?->title }}" />
                     </div>
                     <div class="w-full px-5 flex flex-col gap-3 md:w-[70%]">
                         <div class="flex flex-col">
@@ -53,7 +53,7 @@
                             </a>
                             <button
                                 class="uppercase bg-[#2792C5] hover:bg-white text-white hover:text-[#2792C5] p-1 border-2 border-[#2792C5] w-full md:w-[40%] text-sm font-semibold rounded-lg transition duration-500 ease-in-out">
-                                <a href=""> Request for booth quotations </a>
+                                <a href="{{ route('stand-builder.show', $standbuilder?->username) }}"> Request for booth quotations </a>
                             </button>
                         </div>
                     </div>
