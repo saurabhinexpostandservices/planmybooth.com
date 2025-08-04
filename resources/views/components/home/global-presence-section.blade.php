@@ -23,7 +23,6 @@
            }
        </script>
 
-
        <div class="relative py-10 md:pb-20 xl:py-0 h-auto font-poppins">
            <section class="overflow-hidden py-12 px-4 sm:px-10 text-white h-[150vh] md:h-[90vh]"
                style="background: linear-gradient(45deg, #145D76, #145D76); clip-path: polygon(0% 30%, 100% 20%, 100% 80%, 0% 100%);">
@@ -45,7 +44,6 @@
                        Global Presence
                    </button>
                </div>
-
 
                <!-- Tab Contents -->
                <div id="tab1"

@@ -1,5 +1,5 @@
  <!-- Create Account Form -->
- <div id="create-account-form" class="p-8 bg-white rounded shadow-lg w-96 md:w-1/2 mx-auto mt-10 border">
+ <div id="create-account-form" class="p-8 bg-white rounded shadow-lg w-80 md:w-1/2 mx-auto mt-10 border">
      <h1 class="text-2xl font-semibold mb-6 text-center">Create Account</h1>
      <form id="register" method="POST" action="{{ route('auth.register') }}">
          @csrf

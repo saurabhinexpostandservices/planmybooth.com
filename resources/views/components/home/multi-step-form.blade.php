@@ -287,7 +287,6 @@
             </div>
         </div>
 
-
         <form method="POST" id="multiStepForm" action="{{ route('api.lead-store') }}" enctype="multipart/form-data">
             @csrf
             <!-- Step 1: Basic Information -->
@@ -694,7 +693,6 @@
         </form>
     </div>
 </div>
-
 
 @push('scripts')
     <script>

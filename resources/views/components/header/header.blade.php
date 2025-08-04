@@ -170,7 +170,7 @@
                 </li>
 
                 <li class="text-lg hover:text-sky-600">
-                    <a href="#" onclick="closeMobileMenu()">Vendor Registration</a>
+                    <a href="{{ route('vendor-registration') }}" onclick="closeMobileMenu()">Vendor Registration</a>
                 </li>
 
                 <li>
