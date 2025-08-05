@@ -1,4 +1,4 @@
-<form action="{{ route('api.lead.create') }}" method="POST" enctype="multipart/form-data"
+<form action="{{ route('api.lead-store') }}" method="POST" enctype="multipart/form-data"
     class="space-y-2 w-full bg-[#1A6D88] p-8 rounded-lg shadow-md ">
     @csrf
 
@@ -51,7 +51,7 @@
             <div class="flex flex-col">
                 <label for="address" class="block text-white font-semibold mb-2">Company Name <span
                         class="text-red-500 font-bold">*</span></label>
-                <input type="text" id="company_name" name="contact_name" placeholder="company name" required
+                <input type="text" id="company_name" name="company_name" placeholder="company name" required
                     class="p-2 border rounded bg-white" value="{{ old('company_name') }}">
                 @error('company_name')
                     <p class="my-1 text-red-500">{{ $message }}</p>

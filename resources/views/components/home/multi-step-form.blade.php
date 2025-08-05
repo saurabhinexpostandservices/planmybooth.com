@@ -522,7 +522,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="form-field-group">
                             <label for="company_name">Contact name <span class="text-red-600">*</span></label>
-                            <input type="text" id="contact_name" name="contact_name" placeholder="Contact name" required>
+                            <input type="text" id="contact_name" name="name" placeholder="Contact name" required>
                             <p class="error-message" id="contact_name-error"></p>
                         </div>
                         <div class="form-field-group">
@@ -537,7 +537,7 @@
                         </div>
                         <div class="form-field-group">
                             <label for="phone_number">Phone number <span class="text-red-600">*</span></label>
-                            <input type="tel" id="phone_number" name="phone_number" placeholder="Phone number"
+                            <input type="tel" id="phone_number" name="phone" placeholder="Phone number"
                                 required>
                             <p class="error-message" id="phone_number-error"></p>
                         </div>
@@ -630,10 +630,13 @@
                     <label for="additional_comments">Additional comments</label>
                     <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments"></textarea>
                 </div>
+                <input type="hidden" name="page_url" value="{{ request()->url() }}" />
+                <input type="hidden" name="ip" value="{{ request()->ip() }}" />
+            
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
-                    <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next &rarr;</button>
+                    <button type="submit" class="btn-next px-6 py-3 rounded-md font-semibold">Submit &rarr;</button>
                 </div>
             </div>
 

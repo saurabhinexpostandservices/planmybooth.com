@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
+            $table->string('company_name')->nullable();
             $table->enum('role',['user', 'vendor', 'maliklog'])->default('user');
             $table->enum('is_active', ['true', 'false'])->default('true');
             $table->timestamp('email_verified_at')->nullable();

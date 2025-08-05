@@ -4,14 +4,15 @@
     <x-slot name="featured_image"></x-slot>
     <div class=" font-poppins">
         <x-contact-us.contact-banner />
-        <div
-            class='grid grid-cols-1 md:grid-cols-2 gap-5 p-5 md:p-10 lg:py-20  transition-[background_0.3s,_border-radius_0.3s,_opacity_0.3s]'>
-            <div>
+        <div>
+            <div class="flex justify-center items-center">
                 <x-contact-us.contact-detail-section />
             </div>
             <div>
-                <x-contact-us.contact-form/>
+                {{-- <x-contact-us.contact-form/> --}}
+                <x-home.multi-step-form />
             </div>
+            
         </div>
     </div>
 

@@ -12,15 +12,12 @@ class Lead extends Model
     use HasFactory;
 
     protected $fillable = [
-        'show_id',
-        'city_id',
+        'show',
+        'city',
         'stand_size',
-        'company_name',
-        'price_range',
-        'services',
-        'design_attachments',
-        'require_elements',
-        'employee_onsite_avilable',
+        'budget',
+        'service',
+        'attachments',
         'message',
         'page_url',
         'ip',

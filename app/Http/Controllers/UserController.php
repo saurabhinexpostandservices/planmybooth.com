@@ -24,12 +24,17 @@ class UserController extends Controller
             $request->validate([
                 'name' => 'required|string',
                 'phone' => 'sometimes|nullable|string',
+                'company_name' => 'sometimes|string'
             ]);
 
             $user = auth()->user();
             $user->name = $request->name;
             if ($request->has('phone')) {
                 $user->phone = $request->phone;
+            }
+
+            if ($request->has('company_name')) {
+                $user->company_name = $request->company_name;
             }
             $user->save();
 
@@ -46,6 +51,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'sometimes|nullable|string',
+            'company_name' => 'required|string'
         ]);
 
         try {
@@ -54,6 +60,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'phone' => $request->phone,
+            'company_name' => $request->company_name,
             ]);
 
             // Optionally log the user in

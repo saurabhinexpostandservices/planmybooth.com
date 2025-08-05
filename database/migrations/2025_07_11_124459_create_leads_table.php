@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('show_id')->constrained('shows')->onDelete('cascade');
-            $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
+            $table->string('service')->nullable();
+            $table->string('show');
+            $table->string('city');
             $table->string('stand_size');
-            $table->enum('services', ['design_and_construction','construction', 'other']);
-            $table->string('company_name');
-            $table->string('price_range');
-            $table->json('design_attachments')->nullable();
-            $table->json('require_elements')->nullable();
-            $table->string('employee_onsite_avilable')->nullable();
+            $table->string('budget');
+            $table->json('attachments')->nullable();
             $table->string('message')->nullable();
             $table->string('page_url')->nullable();                         
             $table->string('ip')->nullable();

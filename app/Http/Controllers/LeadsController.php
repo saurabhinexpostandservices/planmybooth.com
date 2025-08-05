@@ -45,6 +45,7 @@ class LeadsController extends Controller
                 'email' => 'required|email|unique:users,email',
                 'name' => 'required|string|max:255',
                 'phone' => 'nullable|string|max:20',
+                'company_name' => 'required|string|max:255'
             ]);
 
             $password = Str::random(10); // or you can send this in email
@@ -53,6 +54,7 @@ class LeadsController extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phone' => $request->input('phone'), // optional
+                'company_name' =>  $request->input('company_name'),
                 'password' => Hash::make($password),
             ]);
 
@@ -81,17 +83,15 @@ class LeadsController extends Controller
         // Save lead
         $lead = Lead::create([
             'author_id' => $user->id,
-            'show_id' => $request->input('show_id'),
-            'city_id' => $request->input('city_id'),
+            'show' => $request->input('trade_show_event'),
+            'city' => $request->input('city'), 
             'stand_size' => $request->input('stand_size'),
-            'stand_size_measurement_unit' => $request->input('stand_size_measurement_unit'),
-            'services' => $request->input('services'),
-            'price_range' => json_encode([
-                'price' => $request->input('price_range')
-            ]),
-            'require_elements' => json_encode($request->input('elements_needed', [])),
-            'design_attachments' => !empty($designAttachments) ? json_encode($designAttachments) : null,
-            'employee_onsite_avilable' => $request->input('employee_onsite_avilable'),
+            'service' => $request->input('needs'),
+            'message' => $request->input('additional_comments'),
+            'page_url' => $request->input('page_url'),
+            'ip' => $request->input('ip'),
+            'budget' => $request->input('budget'),
+            'attachments' => !empty($designAttachments) ? json_encode($designAttachments) : null,
         ]);
 
         return redirect()->back()->with('contact_message', 'Submitted successfully.');

@@ -1,6 +1,6 @@
 <div class="max-w-4xl w-full p-6 bg-white rounded shadow font-poppins">
 
-    <form action="{{ route('api.lead.create') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
+    <form action="{{ route('api.lead-store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
         @csrf
         <!-- Success Message -->
         @if (session('success'))
@@ -21,15 +21,26 @@
             <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Tell us about your Event</h2>
             <div class="grid grid-cols-1 gap-4 p">
                 <!-- Name of Event -->
-                <div class="flex flex-col mb-4">
+                <div class="flex flex-col">
                     <label for="eventName" class="block text-gray-700 font-semibold mb-2">Name of Event <span
                             class="text-red-500 font-bold">*</span></label>
                     <input class="p-2 border rounded w-full bg-white" type="text" id="trade_show_event" name="trade_show_event" placeholder="Select an event"
                         required autocomplete="off">
                     <div id="trade-show-suggestions"
                         class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
-                    </div>
+                    </div> 
                     <p class="error-message" id="trade_show_event-error"></p>
+                </div>
+                 <!-- Name of City -->
+                <div class="flex flex-col">
+                    <label for="cityName" class="block text-gray-700 font-semibold mb-2">City<span
+                            class="text-red-500 font-bold">*</span></label>
+                    <input class="p-2 border rounded w-full bg-white" type="text" id="city" name="city" placeholder="City"
+                        required autocomplete="off">
+                    <div id="city-suggestions"
+                        class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                    </div>
+                    <p class="error-message" id="city-error"></p>
                 </div>
                 <script>
                     // Static trade show autocomplete
@@ -148,7 +159,7 @@
                         <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
                         <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
                             file)</span>
-                        <input type="file" id="design_upload" name="design_upload" class="sr-only">
+                        <input type="file" id="design_upload" name="attachment" class="sr-only">
                     </label>
                 </div>
             </div>
@@ -158,7 +169,7 @@
 
         <div class="my-6 flex flex-col">
             <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Enter your message..."
+            <textarea id="message" name="additional_comments" rows="4" placeholder="Enter your message..."
                 class="mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200">{{ old('message') }}</textarea>
             @error('message')
                 <p class="my-1 text-red-500">{{ $message }}</p>
@@ -173,7 +184,7 @@
                 <div class="flex flex-col">
                     <label for="name" class="block text-gray-700 font-semibold mb-2">Contact Name <span
                             class="text-red-500 font-bold">*</span></label>
-                      <input type="text" id="contact_name" name="contact_name" placeholder="contact name" required
+                      <input type="text" id="contact_name" name="name" placeholder="contact name" required
                         class="p-2 border rounded" value="{{ old('name') }}">
                     @error('fullname')
                         <p class="my-1 text-red-500">{{ $message }}</p>
@@ -196,7 +207,7 @@
                     <label for="phone" class="block text-gray-700 font-semibold mb-2">Phone Number <span
                             class="text-red-500 font-bold">*</span></label>
                    
-                        <input type="tel" id="phone_number" name="phone_number" class="p-2 border rounded" placeholder="phone number">
+                        <input type="tel" id="phone_number" name="phone" class="p-2 border rounded" placeholder="phone number">
 
                     @error('phone')
                         <p class="my-1 text-red-500">{{ $message }}</p>
@@ -206,7 +217,7 @@
                 <!-- Company Name -->
                 <div class="flex flex-col">
                     <label for="address" class="block text-gray-700 font-semibold mb-2">Company Name</label>
-                    <input type="text" id="company_name" name="contact_name" placeholder="company name"
+                    <input type="text" id="company_name" name="company_name" placeholder="company name"
                         class="p-2 border rounded" value="{{ old('company_name') }}">
                     @error('company_name')
                         <p class="my-1 text-red-500">{{ $message }}</p>
