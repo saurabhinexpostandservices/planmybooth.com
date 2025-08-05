@@ -621,7 +621,7 @@
                         <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
                         <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
                             file)</span>
-                        <input type="file" id="design_upload" name="design_upload" class="sr-only">
+                        <input type="file" id="design_upload" name="attachment[]" class="sr-only" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.zip,.cad,image/*">
                     </label>
                     <p class="error-message" id="design_upload-error"></p>
                 </div>

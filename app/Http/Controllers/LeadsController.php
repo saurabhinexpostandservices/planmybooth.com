@@ -64,19 +64,19 @@ class LeadsController extends Controller
         $designAttachments = [];
 
         // Handle file uploads if present
-        if ($request->hasFile('design_attachments')) {
-            $file = $request->file('design_attachments');
+        if ($request->hasFile('attachment')) {
+            $files = $request->file('attachment');
 
             // Handle multiple files if it's an array
-            if (is_array($file)) {
-                foreach ($file as $f) {
-                    $path = $f->store('uploads', 'public');
-                    $designAttachments[] = $path;
+            if (is_array($files)) {
+                foreach ($files as $file) {
+                    $path = $file->store('uploads', 's3');
+                    $designAttachments[] = Storage::disk('s3')->url($path); // Optional: get full URL
                 }
             } else {
                 // Single file upload
-                $path = $file->store('uploads', 'public');
-                $designAttachments[] = $path;
+                $path = $files->store('uploads', 's3');
+                $designAttachments[] = Storage::disk('s3')->url($path); // Optional: get full URL
             }
         }
 

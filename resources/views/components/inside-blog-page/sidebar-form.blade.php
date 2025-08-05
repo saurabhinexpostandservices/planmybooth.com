@@ -3,10 +3,10 @@
     <form action="{{ route('api.lead-store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
         @csrf
         <!-- Success Message -->
-        @if (session('success'))
+        @if (session('contact_message'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                 <strong class="font-bold">Success!</strong>
-                <span class="block sm:inline">{{ session('success') }}</span>
+                <span class="block sm:inline">{{ session('contact_message') }}</span>
             </div>
         @endif
         <!-- Error Message -->
@@ -159,7 +159,7 @@
                         <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
                         <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
                             file)</span>
-                        <input type="file" id="design_upload" name="attachment" class="sr-only">
+                        <input type="file" id="design_upload" name="attachment[]" class="sr-only" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.zip,.cad,image/*">
                     </label>
                 </div>
             </div>
@@ -224,7 +224,8 @@
                     @enderror
                 </div>
             </div>
-
+            <input type="hidden" name="page_url" value="{{ request()->url() }}" />
+            <input type="hidden" name="ip" value="{{ request()->ip() }}" />
             <!-- Submit Button -->
             <div class="flex justify-center py-5">
                 <button type="submit"
