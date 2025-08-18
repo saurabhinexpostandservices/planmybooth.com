@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('logo');
             $table->string('title');
-            $table->string('content');
+            $table->longText('content');
             $table->enum('status', ['draft', 'published'])->default('draft');
             $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('set null');
             $table->foreignId('city_id')->constrained('cities')->onDelete('cascade')->nullable();
