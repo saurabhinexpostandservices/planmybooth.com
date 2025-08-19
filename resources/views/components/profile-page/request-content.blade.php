@@ -23,15 +23,15 @@
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Type">
                             <span class="md:hidden font-semibold text-gray-600">Type: </span>
-                            {{ $lead->services ?? '-' }}
+                            {{ $lead->service ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Trade Show">
                             <span class="md:hidden font-semibold text-gray-600">Trade Show: </span>
-                            {{ $lead->show->title ?? '-' }}
+                            {{ $lead->show ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="City">
                             <span class="md:hidden font-semibold text-gray-600">City: </span>
-                            {{ $lead->city->name ?? '-' }}
+                            {{ $lead->city ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Year">
                             <span class="md:hidden font-semibold text-gray-600">Date: </span>
