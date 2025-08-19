@@ -23,12 +23,12 @@
             <a href="{{ route('blogs.inner', $item?->slug) }}"
                 class="group overflow-hidden duration-500 text-white block">
                 <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
-                    <img src="http://localhost:8002/{{$item?->featured_image}}"
+                    <img src="{{$item?->featured_image}}"
                         class="transition-all duration-300 ease-in-out transform group-hover:scale-110 w-full" alt="Blog Image">
                 </div>
                 <div
                     class="flex flex-col p-4 h-60 bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-500 ease-in-out">
-                    <div class="flex justify-between gap-2 items-center">
+                    <div class="flex justify-between items-center">
                         <span
                             class="text-xs p-1 px-2 text-white bg-[#2896CB] group-hover:bg-[#1F4A5A] rounded-2xl">By: {{ $item?->author?->name }}</span>
                         <span class="text-xs text-white">Published on:<br>{{ date('d M, Y', strtotime($item->created_at)) }}</br> </span>

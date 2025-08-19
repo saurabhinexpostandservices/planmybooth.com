@@ -14,7 +14,7 @@
                         class="flex flex-col md:flex-row gap-5 group hover:scale-105 duration-500 bg-[#EFEFEF] border border-gray-200 rounded-lg shadow p-5">
                         <!-- Image Section -->
                         <div class="relative w-full md:w-1/3 p-5 flex justify-center items-center">
-                            <img src="http://127.0.0.1:8002/{{ $standbuilder->logo }}" alt="{{ $standbuilder->title }}"
+                            <img src="{{ $standbuilder->logo }}" alt="{{ $standbuilder->title }}"
                                 class="w-full h-fit object-cover rounded-t-lg" />
                                 <img
                                     class="w-1/3 mx-auto rounded-full absolute -right-8 -top-8 rotate-[45] animate-bounce"
@@ -82,12 +82,16 @@
                         </h3>
                         <div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                                <img src="https://via.placeholder.com/400x300?text=Portfolio+1" alt="Portfolio 1" class="w-full h-48 object-cover rounded-lg shadow" />
-                                <img src="https://via.placeholder.com/400x300?text=Portfolio+2" alt="Portfolio 2" class="w-full h-48 object-cover rounded-lg shadow" />
-                                <img src="https://via.placeholder.com/400x300?text=Portfolio+3" alt="Portfolio 3" class="w-full h-48 object-cover rounded-lg shadow" />
-                                <img src="https://via.placeholder.com/400x300?text=Portfolio+4" alt="Portfolio 4" class="w-full h-48 object-cover rounded-lg shadow" />
-                                <img src="https://via.placeholder.com/400x300?text=Portfolio+5" alt="Portfolio 5" class="w-full h-48 object-cover rounded-lg shadow" />
-                                <img src="https://via.placeholder.com/400x300?text=Portfolio+6" alt="Portfolio 6" class="w-full h-48 object-cover rounded-lg shadow" />
+                                @php
+                                    $galleryImages = json_decode($standbuilder->gallery, true);
+                                @endphp
+
+                                @if (!empty($galleryImages) && is_array($galleryImages))
+                                    @foreach ($galleryImages as $image)
+                                        <img src="{{ $image }}" alt="Portfolio Image" class="w-full h-48 object-cover rounded-lg shadow" />
+                                    @endforeach
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -98,10 +102,16 @@
                             Video
                         </h3>
                         <div class="w-full flex justify-center">
-                            <video controls class="w-full max-w-xl rounded-lg shadow">
-                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                            <iframe
+                                width="560" 
+                                height="315"
+                                src="{{$standbuilder->video}}"
+                                title="YouTube Video"
+                                className="w-full h-full"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
                         </div>
                     </div>
                 </section>

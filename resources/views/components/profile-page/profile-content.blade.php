@@ -36,6 +36,7 @@
                 <p class="text-gray-700">{{ auth()?->user()?->name }}</p>
                 <p class="text-gray-700">{{ auth()?->user()?->email }}</p>
                 <p class="text-gray-700">{{ auth()?->user()?->phone }}</p>
+                <p class="text-gray-700">{{ auth()?->user()?->company_name }}</p>
                 <button class="mt-4 px-4 py-2 bg-[#0087B8] text-white border rounded  hover:bg-[#006b91]"
                     onclick="document.getElementById('editProfileBtn').click();">Edit »</button>
             </div>
@@ -53,6 +54,8 @@
 
                     <input type="text" name="phone" placeholder="Phone" class="border p-2 rounded"
                         value="{{ old('phone', auth()->user()->phone) }}">
+                    <input type="text" name="company_name" placeholder="Company" class="border p-2 rounded"
+                        value="{{ old('company_name', auth()->user()->company_name) }}">
 
 
                     <button type="submit" class="mt-6 px-6 py-2 bg-[#0087B8] text-white border rounded  hover:bg-[#006b91]">Save »</button>
