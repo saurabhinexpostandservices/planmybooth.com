@@ -31,7 +31,7 @@
 
         <!-- Vendor Registration Button -->
         <div class="mx-auto text-center p-5 px-16">
-            <a href="http://localhost:5173/auth/register"
+            <a href="{{ route('vendor-registration') }}"
                 class="bg-[#176B87] text-white rounded-lg px-8 py-3 font-semibold hover:bg-[#64CCC5] hover:text-black transition duration-500">
                 Vendor Registration
             </a>

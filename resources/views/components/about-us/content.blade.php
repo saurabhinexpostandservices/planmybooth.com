@@ -23,9 +23,9 @@
             </div>
 
             {{-- <div class="flex justify-center items-center ">
-                <img class="p-5" src="{{ asset('assets/about-us/about-1.avif') }}" alt="why-choose-us" width="500"
+                  <img class="p-5" src="{{ asset('assets/about-us/about-1.avif') }}" alt="why-choose-us" width="500"
                     height="500">
-            </div> --}}
+                 </div> --}}
             
         </div>
 
