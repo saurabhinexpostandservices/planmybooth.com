@@ -19,18 +19,18 @@
                // Highlight the active tab button
                const activeTab = document.querySelector(`[data-tab="${tabId}"]`);
                activeTab.classList.remove('bg-white', 'text-blue-600');
-               activeTab.classList.add('bg-[#145D76]', 'text-white','border-[#145D76]e');
+               activeTab.classList.add('bg-[#145D76]', 'text-white','border-slate-400', 'border-2');
            }
        </script>
 
-       <div class="relative py-10 md:pb-20 xl:py-0 h-auto font-poppins">
-           <section class="overflow-hidden py-12 px-4 sm:px-10 text-white h-[150vh] md:h-[90vh]"
+       <div class="relative py-10 md:pb-20 xl:py-5 h-auto font-poppins">
+           <section class="overflow-hidden py-12 px-4 sm:px-10 text-white h-[120vh] md:h-[50vh] xl:h-[90vh]"
                style="background: linear-gradient(45deg, #145D76, #145D76); clip-path: polygon(0% 30%, 100% 20%, 100% 80%, 0% 100%);">
            </section>
 
            <div class="absolute inset-0">
                <!-- Tab Buttons -->
-               <div class="grid grid-cols-1 md:grid-cols-3 md:w-[80%] mx-auto justify-center gap-4 my-10 md:mb-0 p-5">
+               <div class="grid grid-cols-1 md:grid-cols-3 md:w-[80%] mx-auto justify-center gap-4 mt-[10%] xl:mt-0 p-5">
                    <button onclick="switchTab('tab1')" data-tab="tab1"
                        class="tab-btn px-5 py-3 rounded-md transition hover:bg-[#145D76] text-white hover:text-white border border-[#124E65]">
                        Exhibition Stand Design & Build
