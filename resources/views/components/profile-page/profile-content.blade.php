@@ -57,7 +57,6 @@
                     <input type="text" name="company_name" placeholder="Company" class="border p-2 rounded"
                         value="{{ old('company_name', auth()->user()->company_name) }}">
 
-
                     <button type="submit" class="mt-6 px-6 py-2 bg-[#0087B8] text-white border rounded  hover:bg-[#006b91]">Save »</button>
                 </form>
             </div>
