@@ -84,7 +84,7 @@
                         li.append(a);
                         li.addEventListener("click", function() {
                             searchInput.value = city.city;
-                            window.location.href = `/${city.slug}`;
+                            window.location.href = `/city/${city.slug}`;
                         });
 
                         suggestionBox.append(li);

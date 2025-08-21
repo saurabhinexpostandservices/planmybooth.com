@@ -15,7 +15,6 @@
  }
 
 
-
  /* *****Country Section-css***** */
 
  .flag-icon {
@@ -28,8 +27,6 @@
  }
 
 
-
-
  @media (min-width: 768px) {
      /* Large screens */
 
@@ -38,15 +35,46 @@
          /* Adjust based on header height */
      }
  }
+@media (max-width: 767px) {
+  /* Mobile screens */
 
- @media (max-width: 767px) {
-     /* Mobile screens */
+  body {
+    /* padding-top: 58px; */
+    /* Remove extra space */
+  }
+  h1 {
+    font-size: 2rem !important;   /* ~32px */
+    font-weight: 700;
+    text-align: center !important;
+  }
 
-     body {
-         /* padding-top: 58px; */
-         /* Remove extra space */
-     }
- }
+  h2 {
+    font-size: 1.5rem !important;     /* ~24px */
+    font-weight: 600;
+    text-align: start !important;
+  }
+
+  h3 {
+    font-size: 1.25rem;  /* ~20px */
+    font-weight: 600;
+    text-align: center !important;
+  }
+
+  h4 {
+    font-size: 1rem;   /* ~16px */
+    font-weight: 500;
+  }
+
+  h5 {
+    font-size: 0.875rem;  /* ~14px */
+    font-weight: 500;
+  }
+
+  h6 {
+    font-size: 0.75rem;     /* ~12px */
+    font-weight: 500;
+  }
+}
 
  /* for text editor */
 
