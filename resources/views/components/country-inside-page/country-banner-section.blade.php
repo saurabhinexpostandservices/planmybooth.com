@@ -45,7 +45,7 @@
         </div>
         <div>
             {{-- <x-inside-tradeshow-page.three-step-form /> --}}
-            <a href="">
+            <a href="{{ route('contact-us') }}">
                 <button
                     class="mt-4 px-2 xl:px-4 py-1 xl:py-2 duration-500 bg-[#269BD2] border-2 border-[#2791C4] text-white text-xs xl:text-sm font-medium rounded hover:bg-[#305468]">
                     Request Quotes
