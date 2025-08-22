@@ -18,7 +18,7 @@
                                 class="w-full h-fit object-cover rounded-t-lg" />
                                 <img
                                     class="w-1/3 mx-auto rounded-full absolute -right-8 -top-8 rotate-[45] animate-bounce"
-                                    src="/assets/icons/bronze.png" alt="bronze" />
+                                    src="/assets/icons/gold.png" alt="gold" />
                         </div>
 
                         <!-- Content Section -->
@@ -76,44 +76,47 @@
                     </div>
 
                     <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>
-                        <h3
-                            class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-semibold">
-                            Portfolio
-                        </h3>
-                        <div>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                       
                                 @php
                                     $galleryImages = json_decode($standbuilder->gallery, true);
                                 @endphp
 
                                 @if (!empty($galleryImages) && is_array($galleryImages))
-                                    @foreach ($galleryImages as $image)
-                                        <img src="{{ $image }}" alt="Portfolio Image" class="w-full h-48 object-cover rounded-lg shadow" />
-                                    @endforeach
+                                     <h3
+                                        class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-semibold">
+                                        Portfolio
+                                    </h3>
+                                    <div>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                                        @foreach ($galleryImages as $image)
+                                            <img src="{{ $image }}" alt="Portfolio Image" class="w-full h-48 object-cover rounded-lg shadow" />
+                                        @endforeach
+                                        </div>
+                                    </div>
                                 @endif
-
+                    </div>
+                  
+                        <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>  
+                            @if(!empty($standbuilder->video))
+                            <h3
+                                class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-semibold">
+                                Video
+                            </h3>
+                            <div class="w-full flex justify-center">
+                                <iframe
+                                    width="560" 
+                                    height="315"
+                                    src="{{$standbuilder->video}}"
+                                    title="YouTube Video"
+                                    className="w-full h-full"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                ></iframe>
                             </div>
+                            @endif
                         </div>
-                    </div>
-
-                    <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>
-                        <h3
-                            class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-semibold">
-                            Video
-                        </h3>
-                        <div class="w-full flex justify-center">
-                            <iframe
-                                width="560" 
-                                height="315"
-                                src="{{$standbuilder->video}}"
-                                title="YouTube Video"
-                                className="w-full h-full"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
-                    </div>
+                    
                 </section>
             </section>
             <section class='w-full flex flex-col gap-5 mx-auto lg:w-80'>

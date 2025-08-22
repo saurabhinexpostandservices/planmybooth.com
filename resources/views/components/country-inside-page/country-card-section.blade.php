@@ -35,13 +35,13 @@
                                 <span
                                     class="w-full md:w-fit px-3 pt-2 bg-blue-100 text-blue-800 hover:bg-blue-300 hover:text-white text-sm rounded-md duration-500 ease-in-out cursor-pointer capitalize">
                                     @if ($page?->type == 'city')
-                                        {{ $page?->city?->name  }},{{ $page?->country?->name }}
+                                        {{ $page?->city?->name  }} , {{ $page?->country?->name }}
                                     @else
                                         {{ $page?->country->name }}
                                     @endif
                                 </span>
                             </div>
-                            <h4 class="text-xs md:text-sm text-red-600">{{ $standbuilder?->title }}</h4>
+                            {{-- <h4 class="text-xs md:text-sm text-red-600">@ {{ $standbuilder?->username }}</h4> --}}
                         </div>
                         <p class="text-zinc-500 text-xs md:text-sm">
                             {{ Str::limit(strip_tags($standbuilder?->description), 200) }}</p>
