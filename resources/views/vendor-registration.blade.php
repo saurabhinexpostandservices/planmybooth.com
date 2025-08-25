@@ -156,7 +156,7 @@
                             </li>
 
                         </ul>
-                        <a href="http://localhost:5173/auth/register"
+                        <a href="https://account.planmybooth.com/auth/register"
                             class="bg-[#124E65] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3 w-fit mx-auto font-semibold">Select
                             Plan</a>
                     </div>
@@ -390,7 +390,7 @@
                         </li> --}}
 
                         </ul>
-                        <a href="http://localhost:5173/auth/register"
+                        <a href="https://account.planmybooth.com/auth/register"
                             class="bg-[#124E65] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3 w-fit mx-auto font-semibold">Select
                             Plan</a>
                     </div>
@@ -689,7 +689,7 @@
                             <span>Upload videos to profile</span>
                         </li> --}}
                         </ul>
-                        <a href="http://localhost:5173/auth/register"
+                        <a href="https://account.planmybooth.com/auth/register"
                             class="bg-[#124E65] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3 w-fit mx-auto font-semibold">
                             Select Plan
                         </a>
