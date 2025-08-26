@@ -1,4 +1,4 @@
-<div class="footer-wrapper font-lato">
+<div class="footer-wrapper font-poppins">
     <div class="px-[5%] pt-[10%] md:pt-[5%]">
         <div class="footer-content">
             <div class="flex flex-col md:flex-row flex-wrap gap-10 md:gap-5 justify-between">

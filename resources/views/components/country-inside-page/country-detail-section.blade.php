@@ -1,9 +1,9 @@
-<div class="relative bg-cover bg-center bg-fixed font-poppines" style="background-image: url('/assets/bg/city_bg.webp');">
+<div class="relative bg-cover bg-center bg-fixed font-poppins" style="background-image: url('/assets/bg/city_bg.webp');">
     <!-- Container for centering the text -->
     <div
         class="flex justify-center items-center min-h-[25rem] text-justify relative bg-white bg-opacity-70 transition duration-300">
         <div class="p-5 flex flex-col gap-2 w-full md:w-[90%]">
-            <h2 class="text-[#3D94AC] text-2xl md:text-3xl lg:text-4xl text-center font-semibold">
+            <h2 class="text-[#3D94AC] text-2xl md:text-3xl lg:text-4xl text-center font-poppins font-semibold">
                 Exebution Booth Design Company <br />
                 In<span class="text-[#2799D0]"> {{ $page->city->name ?? $page->country->name}}</span>
             </h2>
