@@ -1,4 +1,4 @@
-<div class="pb-10 font-lato">
+<div class="pb-10 font-poppines">
     <h2 class="text-[#3D94AC] text-center text-xl md:text-2xl lg:text-3xl font-semibold py-5 md:py-10 uppercase">
         Popular Trade Show In United States
     </h2>

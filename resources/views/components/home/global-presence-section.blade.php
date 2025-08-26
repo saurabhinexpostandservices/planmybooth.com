@@ -24,7 +24,7 @@
        </script>
 
        <div class="relative py-10 md:pb-20 xl:py-5 h-auto font-poppins">
-           <section class="overflow-hidden py-12 px-4 sm:px-10 text-white h-[120vh] md:h-[50vh] xl:h-[90vh]"
+           <section class="overflow-hidden py-12 px-4 sm:px-10 text-white h-[120vh] md:h-[50vh] xl:h-[65vh]"
                style="background: linear-gradient(45deg, #145D76, #145D76); clip-path: polygon(0% 30%, 100% 20%, 100% 80%, 0% 100%);">
            </section>
 

@@ -1,9 +1,4 @@
- /* ******How-We-Work Section-css****** */
- body {
-     /* padding-top: 122px; */
-     /* Adjust this based on your actual header height */
- }
-
+ /* ******How-We-Work Section-css****** *
  /* Add hover animation for 3D rotation */
  .hover-rotateY:hover {
      transform: rotateY(180deg);
@@ -38,8 +33,4 @@
 
 
  /* for text editor */
-
- body {
-     font-family: Arial, sans-serif;
- }
 
