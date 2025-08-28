@@ -5,7 +5,7 @@
                 class="text-[#124E65] text-2xl md:text-3xl lg:text-4xl font-semibold text-center w-full md:w-[80%] mx-auto font-serif">
                 Choose a Country to <span class="bg-[#64CCC5] text-white px-2">Find Your Ideal Stand</span> Builder
             </h2>
-            <p class="text-center text-base md:text-xl py-5">
+            <p class="text-center text-base md:text-xl text-gray-700 py-5">
                 Explore top exhibition stand builders in more than 50 countries
             </p>
         </div>

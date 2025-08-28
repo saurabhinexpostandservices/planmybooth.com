@@ -11,7 +11,7 @@
             <div class="w-28">
                 <img class="w-full" src="/assets/icons/chat1.gif" alt="chat" />
             </div>
-            <div class="text-white flex flex-col">
+            <div class="text-white flex flex-col gap-2">
                 <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-serif">
                     Tell Us About Your Requirements
                 </h2>
@@ -25,7 +25,7 @@
             <div class="w-28">
                 <img class="w-full rounded-full" src="/assets/icons/connection.gif" alt="connection" />
             </div>
-            <div class="text-white flex flex-col">
+            <div class="text-white flex flex-col gap-2">
                 <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-serif">
                     We Connect With the Right Service Provider
                 </h2>

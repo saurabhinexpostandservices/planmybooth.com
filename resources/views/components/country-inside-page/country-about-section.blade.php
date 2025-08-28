@@ -19,8 +19,12 @@ h1 {
 }
 
 h2 {
-    font-size: 2rem;     /* ~32px */
-    font-weight: 600;
+   font-size: 2rem;
+   color: #364153;
+   font-weight: 400;
+   font-family: 'Georgia', serif;
+   font-style: normal;
+   margin-bottom: 1rem;
 }
 
 h3 {
@@ -44,8 +48,13 @@ h6 {
 }
 
 main p {
-    font-size: 1rem;         /* ~16px - standard paragraph */
-    margin-bottom: 1rem;     /* spacing after paragraphs */
+   font-size: 16px;
+   line-height: 24px;
+   color: #364153;
+   font-weight: 400;
+   font-family: 'Poppins', sans-serif;
+   font-style: normal;
+   margin-bottom: 1rem;
 }
 
 main ol,
