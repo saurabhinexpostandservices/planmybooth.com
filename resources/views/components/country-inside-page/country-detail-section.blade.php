@@ -3,8 +3,8 @@
     <div
         class="flex justify-center items-center min-h-[25rem] text-justify relative bg-white bg-opacity-70 transition duration-300">
         <div class="p-5 flex flex-col gap-2 w-full md:w-[90%]">
-            <h2 class="text-[#3D94AC] text-2xl md:text-3xl lg:text-4xl text-center font-poppins font-semibold">
-                Exebution Booth Design Company <br />
+            <h2 class="text-[#3D94AC] text-2xl md:text-3xl lg:text-4xl text-center font-poppins font-semibold mb-2">
+                Exebution Booth Design Company 
                 In<span class="text-[#2799D0]"> {{ $page->city->name ?? $page->country->name}}</span>
             </h2>
             <p>
