@@ -6,7 +6,7 @@
     <section class="w-full md:w-[90%] mx-auto flex flex-col justify-center items-center">
         <h1 class="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-wide text-center font-serif font-bold">
             {{ $page->title }}
-            <p class="text-[#EF4444]">{{ $page?->country?->name }}</p>
+            <p style="color: #EF4444 ;">{{ $page?->country?->name }}</p>
         </h1>
 
         <div class="w-full md:w-[80%]">
@@ -17,10 +17,10 @@
                     <img class="w-full" alt="chat" src="/assets/icons/chat1.gif" width="100" height="50" />
                 </div>
                 <div class="text-white flex flex-col gap-3">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif font-semibold">
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif font-semibold" style="color: white ; margin:0;">
                         Tell Us About Your Requirements
                     </h2>
-                    <p>
+                    <p  style="color: white">
                         Fill out the inquiry form given and tell us about your event, stand size, stand design, and
                         budget.
                     </p>
@@ -34,10 +34,10 @@
                         height="50" />
                 </div>
                 <div class="text-white flex flex-col gap-3">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif font-semibold">
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-serif font-semibold" style="color: white ; margin:0;">
                         We Connect With the Right Service Provider
                     </h2>
-                    <p>
+                    <p style="color: white ;">
                         We will connect you with the best exhibition stand contractor based on your specifications.
                     </p>
                 </div>

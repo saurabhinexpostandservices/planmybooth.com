@@ -622,8 +622,27 @@
                             file)</span>
                         <input type="file" id="design_upload" name="attachment[]" class="sr-only" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.zip,.cad,image/*">
                     </label>
+                    <div id="design-upload-list" class="w-full mt-3"></div>
                     <p class="error-message" id="design_upload-error"></p>
                 </div>
+                <script>
+                    // Show attached files after selection
+                    document.getElementById('design_upload').addEventListener('change', function (e) {
+                        const fileList = e.target.files;
+                        const listDiv = document.getElementById('design-upload-list');
+                        listDiv.innerHTML = '';
+                        if (fileList.length > 0) {
+                            const ul = document.createElement('ul');
+                            ul.className = "list-disc list-inside text-sm text-gray-700";
+                            for (let i = 0; i < fileList.length; i++) {
+                                const li = document.createElement('li');
+                                li.textContent = fileList[i].name + ' (' + Math.round(fileList[i].size / 1024) + ' KB)';
+                                ul.appendChild(li);
+                            }
+                            listDiv.appendChild(ul);
+                        }
+                    });
+                </script>
 
                 <div class="form-field-group">
                     <label for="additional_comments">Additional comments</label>
