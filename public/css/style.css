@@ -22,15 +22,3 @@
  }
 
 
- @media (min-width: 768px) {
-     /* Large screens */
-
-     body {
-         /* padding-top: 120px; */
-         /* Adjust based on header height */
-     }
- }
-
-
- /* for text editor */
-

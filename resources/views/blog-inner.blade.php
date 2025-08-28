@@ -3,12 +3,12 @@
     <x-slot name="meta_description">{{ $post->meta_description }}</x-slot>
     <x-slot name="featured_image">{{ $post->featured_image }}</x-slot>
 
- <div class="relative bg-bottom bg-no-repeat bg-fixed font-poppins" id="blogPage"
+ <div class="relative bg-bottom bg-no-repeat bg-fixed" id="blogPage"
     style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
 
 
  <!-- Banner Section -->
-  <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10 font-poppins"
+  <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10"
       style="background-image: url('/assets/banner/home_banner.webp')">
      <div
             class="bg-[#176B87]/90 flex justify-center items-center min-h-[20rem] mt-[-80px] sm:min-h-[20rem] md:min-h-[25rem] text-center transition-all px-3 sm:px-5">
@@ -67,92 +67,4 @@
         });
     });
 </script>
-
-@push('styles')
-<style>
-/* ================================
-   Global Typography Styles
-================================= */
-h1 {
-    font-size: 2.5rem;   /* ~40px */
-    font-weight: 700;
-}
-
-h2 {
-    font-size: 2rem;     /* ~32px */
-    font-weight: 600;
-}
-
-h3 {
-    font-size: 1.75rem;  /* ~28px */
-    font-weight: 600;
-}
-
-h4 {
-    font-size: 1.5rem;   /* ~24px */
-    font-weight: 500;
-}
-
-h5 {
-    font-size: 1.25rem;  /* ~20px */
-    font-weight: 500;
-}
-
-h6 {
-    font-size: 1rem;     /* ~16px */
-    font-weight: 500;
-}
-
-main p {
-    font-size: 1rem;         /* ~16px - standard paragraph */
-    margin-bottom: 1rem;     /* spacing after paragraphs */
-}
-
-main ol,
-main ul {
-    padding-left: 1.5rem;
-    list-style: inherit !important;
-}
-
-/* ================================
-   Mobile Styles (max-width: 767px)
-================================= */
-@media (max-width: 767px) {
-    h1 {
-        font-size: 2rem !important;   /* ~32px */
-        font-weight: 700;
-        text-align: center !important;
-    }
-
-    h2 {
-        font-size: 1.5rem !important; /* ~24px */
-        font-weight: 600;
-        text-align: start !important;
-    }
-
-    h3 {
-        font-size: 1.25rem;  /* ~20px */
-        font-weight: 600;
-        text-align: center !important;
-    }
-
-    h4 {
-        font-size: 1rem;     /* ~16px */
-        font-weight: 500;
-    }
-
-    h5 {
-        font-size: 0.875rem; /* ~14px */
-        font-weight: 500;
-    }
-
-    h6 {
-        font-size: 0.75rem;  /* ~12px */
-        font-weight: 500;
-    }
-}
-</style>
-@endpush
-
-
 </x-layout.public>
