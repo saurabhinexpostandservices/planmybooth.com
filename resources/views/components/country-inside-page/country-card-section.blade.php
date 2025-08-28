@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center py-10 font-poppins">
-    <div class="flex flex-col gap-5 w-full md:w-[90%] border-2 rounded-xl bg-[#F7F7F7]">
+    <div class="flex flex-col gap-5 w-full md:w-[90%] border-2 rounded-xl bg-[#DAFFFB]">
         <h2 class="p-5 text-xl md:text-2xl lg:text-3xl text-zinc-500 font-semibold">
             Exhibition Stand Manufacturers In <span class="text-[#AE2333]">
                 @if ($page->type === 'country')

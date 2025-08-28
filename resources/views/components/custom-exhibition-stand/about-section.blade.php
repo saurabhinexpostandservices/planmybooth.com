@@ -6,7 +6,7 @@
             Custom Exhibition <span class="bg-[#64CCC5] text-white px-2">Stand Builders</span> Worldwide
         </h2>
         <div>
-            <p class="text-base md:text-lg text-gray-700">
+            <p class="text-gray-700">
                 If you are searching for custom 
                 <a href="/" class="text-[#3D94AC]">
                     exhibition stand builders
@@ -21,7 +21,7 @@
                 send you 5 quotations directly. You can evaluate and assess
                 which one to select.
             </p>
-            <p class="text-base md:text-lg text-gray-700">
+            <p class="text-gray-700">
                 Whether you are exhibiting in the United States, UAE, Germany,
                 Singapore, Thailand, Qatar, Australia, Canada, United Kingdom,
                 France, Italy, Indonesia, Belgium, India, or any other country,

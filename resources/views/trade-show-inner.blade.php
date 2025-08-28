@@ -4,13 +4,13 @@
     <x-slot name="featured_image">{{ $show?->logo }}</x-slot>
 
     <!-- Banner Section -->
-    <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10 font-lato"
+    <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10 font-poppins"
         style="background-image: url('/assets/banner/home_banner.webp')">
         <div
             class="bg-[#176B87]/90 flex justify-center items-center min-h-[30rem] mt-[-80px] sm:min-h-[30rem] md:min-h-[40rem] text-center transition-all px-3 sm:px-5">
             <div class="text-white max-w-[90%] md:max-w-[75%] mx-auto">
                 <h1
-                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-md font-bold break-words whitespace-normal leading-tight">
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-md font-serif font-bold break-words whitespace-normal leading-tight">
                     {{ \Illuminate\Support\Str::words($show->meta_title, 15, '...') }}
                 </h1>
                 <p class="text-lg sm:text-xl md:text-2xl pt-3 sm:pt-5">
@@ -58,7 +58,6 @@
             width="300" height="150">
     </div>
 
-
     {{-- Body-Section --}}
     <div class=' mb-10 md:mb-5 flex flex-col gap-3 bg-[#EFEFEF] bg-opacity-50'>
         <div class='flex flex-col lg:flex-row p-5 gap-5'>
@@ -66,7 +65,7 @@
                 <section>
                     <div class='flex flex-col gap-3 lg:px-10'>
                         <h1
-                            class='text-[#3D94AC] text-center md:text-start text-2xl md:text-3xl lg:text-4xl font-semibold py-5 md:py-10'>
+                            class='text-[#3D94AC] text-center md:text-start text-2xl md:text-3xl lg:text-4xl font-serif font-semibold py-5 md:py-10'>
                             {{ $show->title }}
                         </h1>
                         {!! $show->content !!}
@@ -86,8 +85,6 @@
             <x-inside-tradeshow-page.available-stand-builder />
         </div>
     </div>
-
-
 
     <!-- Countdown Timer Script -->
 
