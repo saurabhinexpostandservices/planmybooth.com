@@ -10,9 +10,9 @@
     <div class="container mx-auto px-5 md:px-20 grid lg:grid-cols-2 gap-10 md:gap-14 items-center">
 
         <!-- Left Content -->
-        <div class="space-y-6 ">
+        <div class="space-y-6 text-gray-700">
 
-            <p class="text-base md:text-lg text-gray-700">
+            <p>
                 Plan My Booth is your ultimate platform for connecting with top exhibition stand design companies
                 worldwide. Whether you're exhibiting in the USA, Europe, or Asia, we link you with industry-leading
                 stand builders. Our carefully curated list features experienced booth builders with proven track
@@ -20,12 +20,12 @@
                 experience.
             </p>
 
-            <p class="text-base md:text-lg text-gray-700">
+            <p>
                 Share your requirements with us, and we’ll help you find the perfect match. With our seamless platform,
                 you can easily discover, compare, and connect with top exhibition stand builders worldwide.
             </p>
 
-            <ul class="space-y-3 text-gray-700 text-base">
+            <ul class="space-y-3 text-base">
                 <li class="flex items-start gap-2">
                     <span class="text-[#f31054]">✔</span>
                     Custom booth designs from top contractors.

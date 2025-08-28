@@ -310,7 +310,7 @@
                         <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
                             class="relative">
                         <div id="city-suggestions"
-                            class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                            class="absolute z-10 mt-20 bg-white border border-gray-200 rounded shadow-md w-fit hidden">
                         </div>
                         <p class="error-message" id="city-error"></p>
                     </div>
