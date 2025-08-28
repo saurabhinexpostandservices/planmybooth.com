@@ -18,7 +18,7 @@
         @endif
         <!-- Section 1: Event Details -->
         <div>
-            <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Tell us about your Event</h2>
+            <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Tell us about your Event</div>
             <div class="grid grid-cols-1 gap-4 p">
                 <!-- Name of Event -->
                 <div class="flex flex-col">
@@ -116,7 +116,7 @@
 
             <!-- Section 2: Stand Details -->
             <div class="mt-6">
-                <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Stand Details</h2>
+                <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Stand Details</div>
                 <div class="grid grid-cols-1 gap-4">
 
                     <!-- Stand Size -->
@@ -178,7 +178,7 @@
 
         <!-- Section 4: Contact Details -->
         <div>
-            <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Contact Details</h2>
+            <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Contact Details</div>
             <div class="grid grid-cols-1 gap-4">
                 <!-- Name -->
                 <div class="flex flex-col">

@@ -10,10 +10,10 @@
             class="bg-[#176B87]/90 flex justify-center items-center min-h-[30rem] mt-[-80px] sm:min-h-[30rem] md:min-h-[40rem] text-center transition-all px-3 sm:px-5">
             <div class="text-white max-w-[90%] md:max-w-[75%] mx-auto">
                 <h1
-                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-md font-bold break-words whitespace-normal leading-tight">
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-md font-bold break-words whitespace-normal leading-tight" style="color: #fff">
                     {{ \Illuminate\Support\Str::words($show->meta_title, 15, '...') }}
                 </h1>
-                <p class="text-lg sm:text-xl md:text-2xl pt-3 sm:pt-5">
+                <p class="text-lg sm:text-xl md:text-2xl pt-3 sm:pt-5" style="color: #fff">
                     {{ date('d M, Y', strtotime($show?->start_date)) }} -
                     {{ date('d M, Y', strtotime($show?->end_date)) }}
                     <br />

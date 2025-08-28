@@ -32,11 +32,11 @@
                         <div class="flex flex-col">
                             <div class="flex flex-col-reverse md:flex-row justify-between">
                                 <a href="#">
-                                    <h3 class="text-lg md:text-xl font-semibold hover:text-blue-500">
+                                    <h3 style="margin: 0" class="text-lg md:text-xl font-semibold hover:text-blue-500">
                                         {{ $standbuilder?->title }}</h3>
                                 </a>
                                 <span
-                                    class="w-full md:w-fit px-3 pt-2 bg-blue-100 text-blue-800 hover:bg-blue-300 hover:text-white text-sm rounded-md duration-500 ease-in-out cursor-pointer capitalize">
+                                    class="block w-full md:w-fit px-3 pt-2 bg-blue-100 text-blue-800 hover:bg-blue-300 hover:text-white text-sm rounded-md duration-500 ease-in-out cursor-pointer capitalize">
                                     @if ($page?->type == 'city')
                                         {{ $page?->city?->name }} , {{ $page?->country?->name }}
                                     @else
