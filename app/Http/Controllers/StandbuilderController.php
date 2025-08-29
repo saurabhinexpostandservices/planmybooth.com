@@ -14,7 +14,7 @@ class StandbuilderController extends Controller
     {
         try {
             $query = Standbuilder::where('status', 'published');
-            $standbuilders = $query->paginate(10);
+            $standbuilders = $query->inRandomOrder()->paginate(10);
             return view('stand-builders', compact('standbuilders'));
         } catch (\Throwable $th) {
             abort(404);

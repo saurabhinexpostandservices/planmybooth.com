@@ -108,6 +108,7 @@ class PublicController extends Controller
                 $query->orWhereJsonContains('services_cities', (string)$cityId);
             }
             })
+            ->inRandomOrder()
             ->paginate(10);
 
         return view('country', compact('page', 'standbuilders'));
@@ -133,6 +134,7 @@ class PublicController extends Controller
 
         $standbuilders = Standbuilder::where('status', 'published')
             ->whereJsonContains('services_cities', (string)$city->id)
+            ->inRandomOrder()
             ->paginate(10);
 
         return view('city', compact('page', 'standbuilders'));
