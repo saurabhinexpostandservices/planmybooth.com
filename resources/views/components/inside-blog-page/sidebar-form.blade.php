@@ -18,7 +18,7 @@
         @endif
         <!-- Section 1: Event Details -->
         <div>
-            <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Tell us about your Event</h2>
+            <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Tell us about your Event</div>
             <div class="grid grid-cols-1 gap-4 p">
                 <!-- Name of Event -->
                 <div class="flex flex-col">
@@ -116,7 +116,7 @@
 
             <!-- Section 2: Stand Details -->
             <div class="mt-6">
-                <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Stand Details</h2>
+                <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Stand Details</div>
                 <div class="grid grid-cols-1 gap-4">
 
                     <!-- Stand Size -->
@@ -148,7 +148,11 @@
                 <!-- File Upload -->
                 <div class="flex flex-col pt-3">
                     <label for="fileUpload" class="block text-white font-semibold mb-2">File Upload</label>
+<<<<<<< HEAD
                        <div class="form-field-group">
+=======
+                    <div class="form-field-group">
+>>>>>>> 6de163e8c6151ade56d6f1d52aac054312da52c6
                     <label for="design_upload"
                         class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#0087b8] hover:bg-[#e0f2f7] transition-colors duration-200">
                         <svg class="w-12 h-12 text-[#0087b8] mb-4" fill="none" stroke="currentColor"
@@ -183,6 +187,10 @@
                         }
                     });
                 </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6de163e8c6151ade56d6f1d52aac054312da52c6
                 </div>
             </div>
         </div>
@@ -200,7 +208,7 @@
 
         <!-- Section 4: Contact Details -->
         <div>
-            <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Contact Details</h2>
+            <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Contact Details</div>
             <div class="grid grid-cols-1 gap-4">
                 <!-- Name -->
                 <div class="flex flex-col">
