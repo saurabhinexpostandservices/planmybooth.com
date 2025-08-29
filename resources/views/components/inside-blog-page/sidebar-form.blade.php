@@ -148,8 +148,9 @@
                 <!-- File Upload -->
                 <div class="flex flex-col pt-3">
                     <label for="fileUpload" class="block text-white font-semibold mb-2">File Upload</label>
+                       <div class="form-field-group">
                     <label for="design_upload"
-                        class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#0087b8] bg-white transition-colors duration-200">
+                        class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#0087b8] hover:bg-[#e0f2f7] transition-colors duration-200">
                         <svg class="w-12 h-12 text-[#0087b8] mb-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -161,6 +162,27 @@
                             file)</span>
                         <input type="file" id="design_upload" name="attachment[]" class="sr-only" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.zip,.cad,image/*">
                     </label>
+                    <div id="design-upload-list" class="w-full mt-3"></div>
+                    <p class="error-message" id="design_upload-error"></p>
+                </div>
+                <script>
+                    // Show attached files after selection
+                    document.getElementById('design_upload').addEventListener('change', function (e) {
+                        const fileList = e.target.files;
+                        const listDiv = document.getElementById('design-upload-list');
+                        listDiv.innerHTML = '';
+                        if (fileList.length > 0) {
+                            const ul = document.createElement('ul');
+                            ul.className = "list-disc list-inside text-sm text-gray-700";
+                            for (let i = 0; i < fileList.length; i++) {
+                                const li = document.createElement('li');
+                                li.textContent = fileList[i].name + ' (' + Math.round(fileList[i].size / 1024) + ' KB)';
+                                ul.appendChild(li);
+                            }
+                            listDiv.appendChild(ul);
+                        }
+                    });
+                </script>
                 </div>
             </div>
         </div>
