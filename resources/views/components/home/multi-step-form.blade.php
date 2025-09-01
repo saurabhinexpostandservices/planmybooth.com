@@ -298,9 +298,9 @@
                         <select id="needs" name="needs"
                             class="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#0087b8] focus:border-[#0087b8] sm:text-sm">
                             <option value="">Select an option</option>
-                            <option value="stands">Stands</option>
-                            <option value="hostesses">Hostesses</option>
-                            <option value="stand_with_hostesses">Stands with Hostesses</option>
+                            <option value="stands" {{ old('needs') == 'stands' ? 'selected' : '' }}>Stands</option>
+                            <option value="hostesses" {{ old('needs') == 'hostesses' ? 'selected' : '' }}>Hostesses</option>
+                            <option value="stand_with_hostesses" {{ old('needs') == 'stand_with_hostesses' ? 'selected' : '' }}>Stands with Hostesses</option>
                         </select>
                         <p class="error-message" id="needs-error"></p>
                     </div>
@@ -308,7 +308,7 @@
                         <label for="city">Where do you need it? (City Name) <span
                                 class="text-red-600">*</span></label>
                         <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
-                            class="relative">
+                            class="relative" value="{{ old('city')}}">
                         <div id="city-suggestions"
                             class="absolute z-10 mt-20 bg-white border border-gray-200 rounded shadow-md w-fit hidden">
                         </div>
@@ -413,7 +413,7 @@
 
                     <div class="form-field-group">
                         <label for="budget">Budget <span class="text-red-600">*</span></label>
-                        <input type="text" id="budget" name="budget" placeholder="e.g., 50 dollars" required>
+                        <input type="text" id="budget" name="budget" placeholder="e.g., 50 dollars" value="{{ old('budget')}}" required>
                         <p class="error-message" id="budget-error"></p>
                     </div>
                 </div>
@@ -421,7 +421,7 @@
                     <label for="trade_show_event">In which trade show do you exhibit? <span
                             class="text-red-600">*</span></label>
                     <input type="text" id="trade_show_event" name="trade_show_event"
-                        placeholder="Select an event" required autocomplete="off">
+                        placeholder="Select an event" value="{{ old('trade_show_event')}}" required autocomplete="off">
                     <div id="trade-show-suggestions"
                         class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
                     </div>
@@ -521,22 +521,22 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="form-field-group">
                             <label for="company_name">Contact name <span class="text-red-600">*</span></label>
-                            <input type="text" id="contact_name" name="name" placeholder="Contact name" required>
+                            <input type="text" id="contact_name" name="name" value="{{ old('name')}}" placeholder="Contact name" required>
                             <p class="error-message" id="contact_name-error"></p>
                         </div>
                         <div class="form-field-group">
                             <label for="email">Email <span class="text-red-600">*</span></label>
-                            <input type="email" id="email" name="email" placeholder="email" required>
+                            <input type="email" id="email" name="email" value="{{ old('email')}}" placeholder="email" required>
                             <p class="error-message" id="email-error"></p>
                         </div>
                              <div class="form-field-group">
                             <label for="company_name">Company name <span class="text-red-600">*</span></label>
-                            <input type="text" id="company_name" name="company_name" placeholder="Company name" required>
+                            <input type="text" id="company_name" name="company_name" value="{{ old('company_name')}}" placeholder="Company name" required>
                             <p class="error-message" id="company_name-error"></p>
                         </div>
                         <div class="form-field-group">
                             <label for="phone_number">Phone number <span class="text-red-600">*</span></label>
-                            <input type="tel" id="phone_number" name="phone" placeholder="Phone number"
+                            <input type="tel" id="phone_number" name="phone" value="{{ old('phone') }}" placeholder="Phone number"
                                 required>
                             <p class="error-message" id="phone_number-error"></p>
                         </div>
@@ -646,10 +646,11 @@
 
                 <div class="form-field-group">
                     <label for="additional_comments">Additional comments</label>
-                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments"></textarea>
+                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments">{{ old('additional_comments')}}</textarea>
                 </div>
                 <input type="hidden" name="page_url" value="{{ request()->url() }}" />
-                <input type="hidden" name="ip" value="{{ request()->ip() }}" />
+                <input type="hidden" id="client_ip" name="client_ip">
+
             
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
@@ -708,8 +709,8 @@
             <!-- Step 5: Thank You Page -->
             <div class="form-step" data-step="5">
                 <div class="text-center py-20">
-                    <h3 class="text-4xl font-bold text-gray-800 mb-4">Thank you!</h3>
-                    <p class="text-xl text-gray-600">In 48h we will send you a selection of the best proposals</p>
+                    <h3 class="text-4xl font-bold text-gray-800 mb-4">Launching your request into cyberspace 🚀</h3>
+                    <p class="text-xl text-gray-600">Hold tight, the internet hamsters are running!</p>
                 </div>
             </div>
         </form>
@@ -854,5 +855,15 @@
 
         // Initialize form by showing the first step
         showStep(0);
+    </script>
+    <script>
+        fetch("https://api.ipify.org?format=json")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("client_ip").value = data.ip;
+        })
+        .catch(error => {
+            console.error("Error fetching IP:", error);
+        });
     </script>
 @endpush

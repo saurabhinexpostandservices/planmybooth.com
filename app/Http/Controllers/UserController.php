@@ -46,14 +46,30 @@ class UserController extends Controller
     }
 
     public function register(Request $request){
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => [
+                    'required',
+                    'email',
+                    'unique:users,email',
+                    function ($attribute, $value, $fail) {
+                        $publicProviders = [
+                            'gmail.com', 'hotmail.com', 'yahoo.com', 'rediffmail.com', 'outlook.com',
+                            'aol.com', 'icloud.com', 'mail.com', 'zoho.com', 'protonmail.com', 'yandex.com',
+                            'gmx.com', 'msn.com', 'live.com', 'me.com', 'ymail.com', 'rocketmail.com'
+                        ];
+                        $domain = strtolower(substr(strrchr($value, "@"), 1));
+                        if (in_array($domain, $publicProviders)) {
+                            $fail('Please use your company or business email address.');
+                        }
+                    }
+            ],
             'password' => 'required|string|min:8|confirmed',
             'phone' => 'sometimes|nullable|string',
             'company_name' => 'required|string'
         ]);
 
+      
         try {
             $user = User::create([
             'name' => $request->name,
@@ -78,13 +94,19 @@ class UserController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
+        try {
+            if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
-             return redirect()->route('profile')->with('message', 'login successful');
+            return redirect()->route('profile')->with('message', 'login successful');
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors([
+            'email' => 'An error occurred during login. Please try again.',
+            ]);
         }
 
         return redirect()->back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Email or password did not match.',
         ]);
     }
 

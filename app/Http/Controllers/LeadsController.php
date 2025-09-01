@@ -36,13 +36,38 @@ class LeadsController extends Controller
      */
     public function store(Request $request)
     {
+        $ip = $request->input('client_ip');
+    
+        // Check if this IP submitted within last 1 hour
+        $recentSubmission = Lead::where('ip', $ip)
+            ->where('created_at', '>=', now()->subHour())
+            ->first();
+
+        if ($recentSubmission) {
+            return redirect()->back()->withErrors(['error' => 'You can submit the form only once per hour.']);
+        }
         // Check if user is logged in
         $user = auth()->user();
 
         // If not authenticated, register the user using submitted data
         if (!$user) {
             $request->validate([
-                'email' => 'required|email|unique:users,email',
+                'email' => [
+                    'required',
+                    'email',
+                    'unique:users,email',
+                    function ($attribute, $value, $fail) {
+                        $publicProviders = [
+                            'gmail.com', 'hotmail.com', 'yahoo.com', 'rediffmail.com', 'outlook.com',
+                            'aol.com', 'icloud.com', 'mail.com', 'zoho.com', 'protonmail.com', 'yandex.com',
+                            'gmx.com', 'msn.com', 'live.com', 'me.com', 'ymail.com', 'rocketmail.com'
+                        ];
+                        $domain = strtolower(substr(strrchr($value, "@"), 1));
+                        if (in_array($domain, $publicProviders)) {
+                            $fail('Please use your company or business email address.');
+                        }
+                    }
+                ],
                 'name' => 'required|string|max:255',
                 'phone' => 'nullable|string|max:20',
                 'company_name' => 'required|string|max:255'
