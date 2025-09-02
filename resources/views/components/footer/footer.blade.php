@@ -24,7 +24,7 @@
                 <!-- Column 2 -->
                 <div class="w-full md:w-[25%]">
                     <div class="footer-col2 md:flex flex-col justify-center items-center">
-                        <h4 class="text-white font-serif">Quick Links</h4>
+                        <h4 class="text-white font-serif" style="color: #fff">Quick Links</h4>
                         <ul class="flex flex-col gap-2 py-5 md:p-5 text-sm text-start pl-10">
                             <li><a class="hover:text-[#DAE7EB]" href="/">Home</a></li>
                             <li><a class="hover:text-[#DAE7EB]" href="{{ route('stand-builders') }}">Custom
@@ -40,7 +40,7 @@
                 <!-- Column 3 -->
                 <div class="w-full md:w-[35%]">
                     <div class="footer-col3 md:flex flex-col justify-center items-center">
-                        <h4 class="text-white font-serif">Reach Us</h4>
+                        <h4 class="text-white font-serif" style="color: #fff">Reach Us</h4>
                         <ul class="flex flex-col gap-2 text-center py-5 md:p-5 text-sm">
                             <li>
                                 <a href="#"
