@@ -362,4 +362,6 @@
             </p>
         </div>
     </div>
+
+    <x-home.multi-step-form />
 </x-layout.public>
