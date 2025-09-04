@@ -174,12 +174,72 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('login') }}" onclick="closeMobileMenu()">
-                        <button
-                            class="bg-[#145D76] font-semibold text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-5 py-3">
-                            Log In
-                        </button>
-                    </a>
+                    @if (Auth::check())
+                        <!-- Profile Dropdown for Mobile -->
+                        <div class="relative">
+                            <button onclick="toggleMobileDropdown()" id="mobileProfileButton"
+                                class="flex items-center gap-2 px-4 py-2 rounded-full bg-[#64CCC5] shadow text-white font-semibold w-full">
+                                <span class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#145D76] text-sm font-bold">
+                                    {{ strtoupper(Auth::user()->name[0]) }}
+                                </span>
+                                <span class="ml-2">{{ Auth::user()->name }}</span>
+                                <svg class="w-4 h-4 text-white ml-auto" fill="none" stroke="currentColor"
+                                    stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div id="mobileDropdownMenu"
+                                class="hidden mt-2 w-full bg-white rounded-xl shadow-lg py-2 z-50">
+                                <a href="{{ route('profile.request') }}"
+                                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8m-4-4v8" />
+                                    </svg>
+                                    My Requests
+                                </a>
+                                <a href="{{ route('profile') }}"
+                                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M5.121 17.804A8.966 8.966 0 0112 15c2.21 0 4.21.805 5.879 2.132M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    My Profile
+                                </a>
+                                <a href="{{ route('auth.logout') }}"
+                                    class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m0-8V7a2 2 0 114 0v1" />
+                                    </svg>
+                                    Logout
+                                </a>
+                            </div>
+                        </div>
+                        <script>
+                            function toggleMobileDropdown() {
+                                const menu = document.getElementById('mobileDropdownMenu');
+                                menu.classList.toggle('hidden');
+                            }
+                            // Optional: Close the dropdown when clicking outside
+                            window.addEventListener('click', function(e) {
+                                const button = document.getElementById('mobileProfileButton');
+                                const menu = document.getElementById('mobileDropdownMenu');
+                                if (button && menu && !button.contains(e.target) && !menu.contains(e.target)) {
+                                    menu.classList.add('hidden');
+                                }
+                            });
+                        </script>
+                    @else
+                        <a href="{{ route('login') }}" onclick="closeMobileMenu()">
+                            <button
+                                class="bg-[#145D76] font-semibold text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-5 py-3 w-full">
+                                Log In
+                            </button>
+                        </a>
+                    @endif
                 </li>
 
             </ul>

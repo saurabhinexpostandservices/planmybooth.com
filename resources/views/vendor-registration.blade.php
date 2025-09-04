@@ -16,6 +16,16 @@
             <p class="text-lg md:text-xl lg:text-2xl text-white text-center">
                 Be with your ideal exhibition stand experts and grow your business at the show floor
             </p>
+
+              <div>
+        {{-- <x-inside-tradeshow-page.three-step-form /> --}}
+        <a href="{{ route('contact-us') }}">
+            <button
+                class="md:mt-4 px-2 xl:px-4 py-1 xl:py-2 duration-500 bg-[#64CCC5] border-2 border-white text-white text-xs xl:text-sm font-medium rounded-lg">
+                Request Quotes
+            </button>
+        </a>
+    </div>
         </section>
 
         <section class="bg-[#202A30]">
