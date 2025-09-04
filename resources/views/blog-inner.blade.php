@@ -6,7 +6,7 @@
     <div class="relative bg-bottom bg-no-repeat bg-fixed" id="blogPage"
         style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
 
-
+        
         <!-- Banner Section -->
         <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10"
             style="background-image: url('/assets/banner/home_banner.webp')">
