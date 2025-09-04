@@ -7,6 +7,8 @@
 
     <!-- FAQ Item -->
     <div class="space-y-4 pt-10">
+
+      {{-- Question-1 --}}
       <div class="faq-item border-b">
         <button class="faq-question w-full text-left py-4 text-lg font-semibold text-[#124E65] flex justify-between items-center">
           What services does Plan My Booth offer as an exhibition stand design company?
@@ -16,7 +18,8 @@
           Plan My Booth is a trusted exhibition stand design company that connects clients with proven and verified exhibition stand builders worldwide, enabling seamless collaboration with top-notch exhibition stand contractors. The platform empowers exhibitors to share project specifications—such as booth size, location, budget, and optional files—and receive proposals from industry-leading partners. Clients benefit from custom booth design, AR/LED integration, smart space planning, and full end-to-end project management support.
         </div>
       </div>
-
+   
+      {{-- Question-2 --}}
       <div class="faq-item border-b">
         <button class="faq-question w-full text-left py-4 text-lg font-semibold text-[#124E65] flex justify-between items-center">
           Can I still rent a trade show booth through Plan My Booth? How does it compare?
@@ -26,7 +29,8 @@
           While Plan My Booth primarily focuses on linking you with reputable exhibition stand builders worldwide, it also offers solutions that align with trade show booth rental needs. By leveraging local and specialized exhibition stand builders, the platform helps you access rental-friendly designs—such as modular or pop-up structures—along with broader options like AR/LED features and tailored project support.
         </div>
       </div>
-
+   
+      {{-- Question-3 --}}
       <div class="faq-item border-b">
         <button class="faq-question w-full text-left py-4 text-lg font-semibold text-[#124E65] flex justify-between items-center">
           How does Plan My Booth ensure the credibility of exhibition stand contractors?
@@ -36,7 +40,8 @@
           Plan My Booth partners strictly with top exhibition stand builders who are vetted for experience, track record, and positive client feedback. This ensures you're matched with credible exhibition stand contractors—whether for custom exhibition stand projects, trade show booth rentals, or complex installations.
         </div>
       </div>
-
+   
+      {{-- Question-4 --}}
       <div class="faq-item border-b">
         <button class="faq-question w-full text-left py-4 text-lg font-semibold text-[#124E65] flex justify-between items-center">
           What global coverage does Plan My Booth offer?
@@ -46,7 +51,8 @@
           Whether your exhibit is in Asia, Europe, or the USA, Plan My Booth connects you with exhibition stand builders worldwide. This global reach allows exhibitors to work with region-specific professionals skilled in both stand rental and full-service project delivery.
         </div>
       </div>
-
+   
+      {{-- Question-5 --}}
       <div class="faq-item border-b">
         <button class="faq-question w-full text-left py-4 text-lg font-semibold text-[#124E65] flex justify-between items-center">
           What steps are involved in working with Plan My Booth?
@@ -67,7 +73,8 @@
           </div>
         </div>
       </div>
-
+   
+      {{-- Question-6 --}}
       <div class="faq-item border-b">
         <button class="faq-question w-full text-left py-4 text-lg font-semibold text-[#124E65] flex justify-between items-center">
           What types of booth features can Plan My Booth facilitate?
@@ -88,7 +95,8 @@
           </div>
         </div>
       </div>
-
+   
+      {{-- Question-7 --}}
       <div class="faq-item border-b">
         <button class="faq-question w-full text-left py-4 text-lg font-semibold text-[#124E65] flex justify-between items-center">
           Why should I choose Plan My Booth over self-sourcing an exhibition stand builder?

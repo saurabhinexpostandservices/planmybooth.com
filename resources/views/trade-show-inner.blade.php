@@ -64,10 +64,10 @@
             <section class='w-full lg:w-2/3 mx-auto'>
                 <section>
                     <div class='flex flex-col gap-3 lg:px-10'>
-                        <h1
+                        <h2
                             class='text-[#3D94AC] text-center md:text-start text-2xl md:text-3xl lg:text-4xl  font-semibold py-5 md:py-10'>
                             {{ $show->title }}
-                        </h1>
+                        </h2>
                         {!! $show->content !!}
                     </div>
                 </section>
