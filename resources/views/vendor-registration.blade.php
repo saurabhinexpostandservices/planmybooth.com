@@ -5,11 +5,11 @@
         {{-- heading-section --}}
         <section
             class="flex flex-col justify-center items-center gap-5 md:gap-10 min-h-[30rem] md:min-h-[40rem] text-center bg-gradient-to-b from-[#176B87] to-[#176B87]/70 [transition:background_0.3s,_border-radius_0.3s,_opacity_0.3s] mt-[-100px] p-5 md:p-10 font-poppins">
-            <h2
+            <h1
                 class="text-white text-center
         font-semibold text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif pt-16">
                 Limited-Time Offer To Have The Best Exhibiting Partner
-            </h2>
+            </h1>
             <div class="w-28">
                 <img class="w-full rounded-full" src="/assets/icons/connection.gif" alt="connection" />
             </div>

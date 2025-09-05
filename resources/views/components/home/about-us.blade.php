@@ -11,6 +11,8 @@
 
         <!-- Left Content -->
         <div class="space-y-6 text-gray-700">
+            <h2 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl font-semibold font-serif">
+               About Us</h2>
 
             <p>
                 Plan My Booth is your ultimate platform for connecting with top exhibition stand design companies
