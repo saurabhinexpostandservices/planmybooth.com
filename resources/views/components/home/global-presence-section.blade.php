@@ -61,7 +61,7 @@
                    </div>
                    <div class="md:w-1/3 mx-auto">
                        <img src="{{ asset('assets/booths/Kryshna_Enzetech.webp') }}"
-                           class="rounded-lg shadow-lg w-full" />
+                           class="rounded-lg shadow-lg w-full" alt="booth-sample" />
                    </div>
                </div>
 
