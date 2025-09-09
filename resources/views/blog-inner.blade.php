@@ -2,7 +2,7 @@
     <x-slot name="title">{{ $post->meta_title }}</x-slot>
     <x-slot name="meta_description">{{ $post->meta_description }}</x-slot>
     <x-slot name="featured_image">{{ $post->featured_image }}</x-slot>
-
+    <x-slot name="markup_schema">{!! json_encode(json_decode($post?->markup_schema), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}}</x-slot>
     <div class="relative bg-bottom bg-no-repeat bg-fixed" id="blogPage"
         style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
 
@@ -33,14 +33,7 @@
 
                     <!-- Blog Content -->
                     <section>
-                        <div class="text-xs md:text-sm flex pt-5 gap-5">
-                            <p class="flex items-center">
-                                <a href="{{ route('blogs') }}">Blog</a> <span class="ml-2">&rarr;</span>
-                            </p>
-                            <p>
-                                <a href="{{ route('blogs.inner', $post->slug) }}">{{ $post->meta_title }}</a>
-                            </p>
-                        </div>
+                        
                         <div class="flex flex-col gap-3">
                             <h1
                                 class="text-[#2E627D] text-center md:text-start text-xl md:text-2xl lg:text-3xl font-serif font-semibold py-5">

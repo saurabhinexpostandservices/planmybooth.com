@@ -21,26 +21,26 @@
         <section id="blogs-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 m-5 md:m-10 lg:m-20">
             @foreach ($posts as $item)
             <a href="{{ route('blogs.inner', $item?->slug) }}"
-                class="group overflow-hidden duration-500 text-white block">
-                <div class="relative w-full h-48 overflow-hidden rounded-t-lg">
+                class="group overflow-hidden duration-500 text-white block shadow">
+                <div class="relative w-full h-60 overflow-hidden rounded-t-lg">
                     <img src="{{$item?->featured_image}}"
                         class="transition-all duration-300 ease-in-out transform group-hover:scale-110 w-full" alt="Blog Image">
                 </div>
                 <div
-                    class="flex flex-col p-4 h-60 bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-500 ease-in-out">
+                    class="flex flex-col px-4 pt-4 pb-8 bg-[#1F4A5A] rounded-b-lg group-hover:bg-[#2896CB] transition-all duration-500 ease-in-out">
                     <div class="flex justify-between items-center">
                         <span
                             class="text-xs p-1 px-2 text-white bg-[#2896CB] group-hover:bg-[#1F4A5A] rounded-2xl">By: {{ $item?->author?->name }}</span>
-                        <span class="text-xs text-white">Published on:<br>{{ date('d M, Y', strtotime($item->created_at)) }}</br> </span>
+                        {{ date('d M, Y', strtotime($item->created_at)) }}</br> </span>
                     </div>
                     <h2
                         class="text-lg font-bold mt-5 group-hover:text-white transition-all duration-300 ease-in-out">
                         {{ $item?->title }}
                     </h2>
-                    <p
+                    {{-- <p
                         class="text-sm mt-2 group-hover:text-white opacity-90 group-hover:opacity-100 transition-all duration-300 ease-in-out">
                         {{ $item?->meta_description }}
-                    </p>
+                    </p> --}}
                 </div>
             </a>
             @endforeach

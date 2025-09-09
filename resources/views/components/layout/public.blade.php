@@ -49,6 +49,15 @@
         @else
         @endif --}}
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    {{-- dynamic markup schema --}}
+    @if(!empty($markup_schema))
+<script type="application/ld+json">
+            {!! $markup_schema !!}
+</script>
+    @endif
+
+    {{-- /dynamic markup schema --}}
+
 </head>
 
 <style>

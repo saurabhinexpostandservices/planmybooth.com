@@ -2,6 +2,7 @@
     <x-slot name="title">{{ $show?->meta_title }}</x-slot>
     <x-slot name="meta_description">{{ $show?->meta_description }}</x-slot>
     <x-slot name="featured_image">{{ $show?->logo }}</x-slot>
+    <x-slot name="markup_schema">{!! json_encode(json_decode($show?->markup_schema), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}}</x-slot>
 
     <!-- Banner Section -->
     <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10"
