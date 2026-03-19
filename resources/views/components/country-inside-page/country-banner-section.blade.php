@@ -1,9 +1,10 @@
 
 <div class="relative bg-bottom bg-no-repeat bg-fixed font-poppins" id="blogPage"
     style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
-<div class="bg-[#2F556A] flex flex-col mt-[-80px] min-h-[30rem] md:min-h-[50rem] md:flex-row gap-5 py-20 p-5 md:p-10 justify-center items-center font-poppins">
+<div class="bg-[#2F556A] flex flex-col mt-[-80px] min-h-[30rem] md:min-h-[50rem] md:flex-row gap-5 py-20 p-5 md:p-10 justify-center items-center">
     <!-- First Section -->
     <section class="w-full md:w-[90%] mx-auto flex flex-col justify-center items-center">
+        <h1 class="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-wide text-center font-serif font-bold">
         <h1 class="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-wide text-center font-serif font-bold">
             {{ $page->title }}
             <p style="color: #EF4444 ;">{{ $page?->country?->name }}</p>
@@ -45,7 +46,7 @@
         </div>
         <div>
             {{-- <x-inside-tradeshow-page.three-step-form /> --}}
-            <a href="{{ route('contact-us')}}" class="cursor-pointer">
+            <a href="{{ route('contact-us') }}">
                 <button
                     class="cursor-pointer mt-4 px-2 xl:px-4 py-1 xl:py-2 duration-500 bg-[#269BD2] border-2 border-[#2791C4] text-white text-xs xl:text-sm font-medium rounded hover:bg-[#305468]">
                     Request Quotes

@@ -1,19 +1,20 @@
 <div class="relative bg-cover bg-center bg-fixed font-poppins" style="background-image: url('/assets/bg/city_bg.webp');">
+<div class="relative bg-cover bg-center bg-fixed font-poppins" style="background-image: url('/assets/bg/city_bg.webp');">
     <!-- Container for centering the text -->
     <div
         class="flex justify-center items-center min-h-[25rem] text-justify relative bg-white bg-opacity-70 transition duration-300">
-        <div class="p-5 flex flex-col gap-2 w-full md:w-[90%]">
-            <h2 class="text-[#3D94AC] text-2xl md:text-3xl lg:text-4xl text-center font-poppins font-semibold mb-2">
-                Exebution Booth Design Company 
-                In<span class="text-[#2799D0]"> {{ $page->city->name ?? $page->country->name}}</span>
+        <div class="p-5 flex flex-col gap-5 w-full md:w-[90%]">
+            <h2 class="text-[#3D94AC] text-2xl md:text-3xl lg:text-4xl text-center font-semibold font-serif">
+                Exebution Booth Design Company <br />
+                In<span class="text-[#2799D0]"> United States</span>
             </h2>
             <p>
                 After registering with planmybooth.com you can save up to 30% on your next trade show booth design in
                 {{ $page->city->name ?? $page->country->name}}. Moreover, you can also get quotations from the best 5 exhibition stand builders available
                 in {{ $page->city->name ?? $page->country->name}}, purely based on your stand specifications.
             </p>
-            <h4 class="text-lg md:text-xl lg:text-2xl text-zinc-600 font-semibold">
-                Exhibition Stand Design <span class="text-black">{{ $page->city->name ?? $page->country->name}}</span>
+            <h4 class="text-lg md:text-xl lg:text-2xl text-zinc-600 font-semibold font-serif">
+                Exhibition Stand Design <span class="text-black">United States</span>
             </h4>
             <p>
                 An exhibition booth design in {{ $page->city->name ?? $page->country->name}}, will not only be used to display your company’s products,
