@@ -252,7 +252,7 @@
             </div>
         @endif
         <!-- Progress Bar -->
-       <div class="progress-bar-container">
+        <div class="progress-bar-container">
             <div class="progress-step-wrapper">
                 <div class="progress-step active" data-step="1">1</div>
                 <span class="progress-text">Basic Info</span>
@@ -304,16 +304,7 @@
                         </select>
                         <p class="error-message" id="needs-error"></p>
                     </div>
-                    <div class="form-field-group">
-                        <label for="city">Where do you need it? (City Name) <span
-                                class="text-red-600">*</span></label>
-                        <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
-                            class="relative">
-                        <div id="city-suggestions"
-                            class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
-                        </div>
-                        <p class="error-message" id="city-error"></p>
-                    </div>
+
                     <script>
                         // Static city autocomplete
                         const cityInput = document.getElementById('city');
@@ -417,15 +408,27 @@
                         <p class="error-message" id="budget-error"></p>
                     </div>
                 </div>
-                <div class="form-field-group" style="position: relative;">
-                    <label for="trade_show_event">In which trade show do you exhibit? <span
-                            class="text-red-600">*</span></label>
-                    <input type="text" id="trade_show_event" name="trade_show_event"
-                        placeholder="Select an event" required autocomplete="off">
-                    <div id="trade-show-suggestions"
-                        class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="form-field-group">
+                        <label for="city">Where do you need it? (City Name) <span
+                                class="text-red-600">*</span></label>
+                        <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
+                            class="relative">
+                        <div id="city-suggestions"
+                            class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                        </div>
+                        <p class="error-message" id="city-error"></p>
                     </div>
-                    <p class="error-message" id="trade_show_event-error"></p>
+                    <div class="form-field-group" style="position: relative;">
+                        <label for="trade_show_event">In which trade show do you exhibit? <span
+                                class="text-red-600">*</span></label>
+                        <input type="text" id="trade_show_event" name="trade_show_event"
+                            placeholder="Select an event" required autocomplete="off">
+                        <div id="trade-show-suggestions"
+                            class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                        </div>
+                        <p class="error-message" id="trade_show_event-error"></p>
+                    </div>
                 </div>
                 <script>
                     // Static trade show autocomplete
@@ -505,8 +508,87 @@
                             tradeShowSuggestions.classList.add('hidden');
                         }
                     });
+
+
+                    // Static city autocomplete
+                    const cityInput = document.getElementById('city');
+                    const suggestionsBox = document.getElementById('city-suggestions');
+
+                    // Dynamically fetch cities from API and select city ID
+                    let cities_form = [];
+                    let cities_map = {}; // { "Berlin, Germany": 123, ... }
+
+                    // Fetch cities from API on page load
+                    fetch("{{ route('api.get-cities') }}")
+                        .then(response => response.json())
+                        .then(data => {
+                            // Assuming API returns [{id: 1, name: "Berlin", country: "Germany"}, ...]
+                            cities_form = data.map(city => `${city.name}`);
+                            cities_map = {};
+                            data.forEach(city => {
+                                cities_map[`${city.name}`] = city.id;
+                            });
+                        });
+
+                    // Store selected city ID in a hidden input
+                    let cityIdInput = document.getElementById('city_id');
+                    if (!cityIdInput) {
+                        cityIdInput = document.createElement('input');
+                        cityIdInput.type = 'hidden';
+                        cityIdInput.id = 'city_id';
+                        cityIdInput.name = 'city_id';
+                        cityInput.parentNode.appendChild(cityIdInput);
+                    }
+
+                    let debounceTimeout = null;
+
+                    cityInput.addEventListener('input', function() {
+                        const query = this.value.trim().toLowerCase();
+                        suggestionsBox.innerHTML = '';
+                        suggestionsBox.classList.add('hidden');
+                        if (debounceTimeout) clearTimeout(debounceTimeout);
+                        if (query.length < 2) return;
+
+                        debounceTimeout = setTimeout(() => {
+                            const filtered = cities_form.filter(city =>
+                                city.toLowerCase().includes(query)
+                            ).slice(0, 5);
+
+                            if (filtered.length > 0) {
+                                suggestionsBox.innerHTML = filtered.map(city =>
+                                    `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-city="${city.split(',')[0]}">${city}</div>`
+                                ).join('');
+                                suggestionsBox.classList.remove('hidden');
+                            }
+                        }, 200);
+                    });
+
+                    suggestionsBox.addEventListener('click', function(e) {
+                        if (e.target && e.target.dataset.city) {
+                            const selectedCity = e.target.dataset.city;
+                            cityInput.value = selectedCity;
+
+                            // 💡 Set city_id from map
+                            const matchedId = cities_map[selectedCity];
+                            if (matchedId) {
+                                cityIdInput.value = matchedId;
+                            }
+
+                            suggestionsBox.innerHTML = '';
+                            suggestionsBox.classList.add('hidden');
+                        }
+                    });
+
+
+                    // Hide suggestions when clicking outside
+                    document.addEventListener('click', function(e) {
+                        if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                            suggestionsBox.innerHTML = '';
+                            suggestionsBox.classList.add('hidden');
+                        }
+                    });
                 </script>
-       
+
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
@@ -529,18 +611,18 @@
                             <input type="email" id="email" name="email" placeholder="email" required>
                             <p class="error-message" id="email-error"></p>
                         </div>
-                             <div class="form-field-group">
+                        <div class="form-field-group">
                             <label for="company_name">Company name <span class="text-red-600">*</span></label>
-                            <input type="text" id="company_name" name="company_name" placeholder="Company name" required>
+                            <input type="text" id="company_name" name="company_name" placeholder="Company name"
+                                required>
                             <p class="error-message" id="company_name-error"></p>
                         </div>
                         <div class="form-field-group">
                             <label for="phone_number">Phone number <span class="text-red-600">*</span></label>
-                            <input type="tel" id="phone_number" name="phone" placeholder="Phone number"
-                                required>
+                            <input type="tel" id="phone_number" name="phone" placeholder="Phone number" required>
                             <p class="error-message" id="phone_number-error"></p>
                         </div>
-                    
+
                     </div>
 
                     <div class="form-field-group">
@@ -620,7 +702,8 @@
                         <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
                         <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
                             file)</span>
-                        <input type="file" id="design_upload" name="attachment[]" class="sr-only" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.zip,.cad,image/*">
+                        <input type="file" id="design_upload" name="attachment[]" class="sr-only" multiple
+                            accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.zip,.cad,image/*">
                     </label>
                     <p class="error-message" id="design_upload-error"></p>
                 </div>
@@ -631,7 +714,7 @@
                 </div>
                 <input type="hidden" name="page_url" value="{{ request()->url() }}" />
                 <input type="hidden" name="ip" value="{{ request()->ip() }}" />
-            
+
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
