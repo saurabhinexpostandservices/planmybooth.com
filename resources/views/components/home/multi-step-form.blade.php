@@ -4,7 +4,7 @@
             background-color: white;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            padding: 30px;
+            padding: 10px 20px;
             width: 100%;
             max-width: 80%;
             margin: 0 auto;
@@ -27,7 +27,7 @@
         .progress-bar-container {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10%;
+            margin-bottom: 5%;
             position: relative;
             padding-bottom: 10px;
         }
@@ -234,7 +234,7 @@
 <div class="bg-[#124E65] py-5 md:py-10">
     <div class="form-container">
         <h2
-            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-full md:w-[90%] mx-auto font-serif">
+            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 w-full md:w-[90%] mx-auto font-serif">
             Your Stand Request</h2>
         @if (session('contact_message'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
@@ -257,12 +257,12 @@
                 <div class="progress-step active" data-step="1">1</div>
                 <span class="progress-text">Basic Info</span>
             </div>
-            <div class="progress-step-wrapper">
+            {{-- <div class="progress-step-wrapper">
                 <div class="progress-step" data-step="2">2</div>
                 <span class="progress-text">Features</span>
-            </div>
+            </div> --}}
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="3">3</div>
+                <div class="progress-step" data-step="2">2</div>
                 <span class="progress-text">Contact Info</span>
             </div>
             {{-- <div class="progress-step-wrapper">
@@ -278,11 +278,11 @@
                 <span class="progress-text">Employees</span>
             </div> --}}
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="7">4</div>
-                <span class="progress-text">Design Upload</span>
+                <div class="progress-step" data-step="3">3</div>
+                <span class="progress-text">Files Upload</span>
             </div>
             <div class="progress-step-wrapper">
-                <div class="progress-step" data-step="8">5</div>
+                <div class="progress-step" data-step="4">4</div>
                 <span class="progress-text">Confirmation</span>
             </div>
         </div>

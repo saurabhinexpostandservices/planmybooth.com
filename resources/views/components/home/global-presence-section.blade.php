@@ -23,8 +23,8 @@
            }
        </script>
 
-       <div class="relative py-10 md:pb-20 xl:py-5 h-auto font-poppins">
-           <section class="overflow-hidden py-12 px-4 sm:px-10 text-white h-[120vh] md:h-[50vh] xl:h-[90vh]"
+       <div class="relative py-10 md:pb-20 h-auto font-poppins">
+           <section class="overflow-hidden py-10 md:py-20 px-4 sm:px-10 text-white h-[120vh] md:h-[50vh] xl:h-[65vh]"
                style="background: linear-gradient(45deg, #145D76, #145D76); clip-path: polygon(0% 30%, 100% 20%, 100% 80%, 0% 100%);">
            </section>
 
@@ -47,7 +47,7 @@
 
                <!-- Tab Contents -->
                <div id="tab1"
-                   class="tab-content text-white flex flex-col md:flex-row items-center gap-10 max-w-6xl mx-auto  border border-[#374151] rounded-2xl p-5 md:py-10">
+                   class="tab-content text-white flex flex-col md:flex-row items-center gap-10 max-w-6xl mx-auto  border border-[#374151] rounded-2xl p-5 lg:mt-5">
                    <div class="md:w-1/2 mx-auto">
                        <h2 class="text-2xl md:text-3xl font-bold mb-4">Exhibition Stand <span class="bg-white text-[#124E65] px-2">Design & Build</span></h2>
                        <p class="mb-6 leading-relaxed">

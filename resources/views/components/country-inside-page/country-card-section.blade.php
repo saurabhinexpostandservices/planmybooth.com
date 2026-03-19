@@ -1,6 +1,6 @@
-<div class="flex justify-center items-center py-10 font-lato">
+<div class="flex justify-center items-center py-10 font-poppins">
     <div class="flex flex-col gap-5 w-full md:w-[90%] border-2 rounded-xl bg-[#F7F7F7]">
-        <h2 class="p-5 text-xl md:text-2xl lg:text-3xl text-zinc-500 font-semibold">
+        <h2 class="p-5 text-xl md:text-2xl lg:text-3xl text-zinc-500 font-semibold font-serif">
             Exhibition Stand Manufacturers In <span class="text-[#AE2333]">
                 @if ($page->type === 'country')
                     {{ $page?->country?->name}}
@@ -41,7 +41,7 @@
                                     @endif
                                 </span>
                             </div>
-                            <h4 class="text-xs md:text-sm text-red-600">{{ $standbuilder?->title }}</h4>
+                            <h4 class="text-xs md:text-sm text-red-600 font-serif">{{ $standbuilder?->title }}</h4>
                         </div>
                         <p class="text-zinc-500 text-xs md:text-sm">
                             {{ Str::limit(strip_tags($standbuilder?->description), 200) }}</p>

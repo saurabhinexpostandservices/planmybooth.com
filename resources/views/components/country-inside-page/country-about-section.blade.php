@@ -1,4 +1,4 @@
-<div class="relative bg-cover bg-center font-lato" style="background-image: url('/assets/bg/city_bg.webp');">
+<div class="relative bg-cover bg-center font-poppins" style="background-image: url('/assets/bg/city_bg.webp');">
     <!-- Container for centering the text -->
     <div
         class="flex justify-center items-center min-h-[25rem] text-justify relative bg-white bg-opacity-70 transition-all duration-300">
