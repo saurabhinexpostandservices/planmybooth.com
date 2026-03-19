@@ -7,7 +7,7 @@
                 class="text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-serif  ">
                 What Is A Custom Exhibition Stand Design?
             </h3>
-            <div class="text-base md:text-xl ">
+            <div>
                 <p class="text-gray-700">
                     Custom exhibition stand designs are specifically built according to your company and exhibition.
                     Since
@@ -28,7 +28,7 @@
             <h3 class="text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-serif ">
                 Why Should You Choose Custom Built Exhibition Stands?
             </h3>
-            <p class="text-base md:text-xl text-center text-gray-900 ">
+            <p class=" text-center text-gray-900 ">
                 Selecting a custom trade show display offers various benefits for your business:
             </p>
             <div class="flex flex-col lg:flex-row gap-5 justify-center items-center">
@@ -68,7 +68,7 @@
                 class="md:w-[90%] mx-auto text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-serif ">
                 How To Choose The Right Custom Exhibition Stand Builder In Your Area?
             </h3>
-            <p class="text-base md:text-xl text-gray-900 ">
+            <p class="text-gray-900 ">
                 Selecting the right custom trade show booth manufacturer is essential to design efficacious custom-built
                 exhibition stands. Below, we have accumulated some points that will help you design your custom
                 exhibits.

@@ -5,17 +5,27 @@
         {{-- heading-section --}}
         <section
             class="flex flex-col justify-center items-center gap-5 md:gap-10 min-h-[30rem] md:min-h-[40rem] text-center bg-gradient-to-b from-[#176B87] to-[#176B87]/70 [transition:background_0.3s,_border-radius_0.3s,_opacity_0.3s] mt-[-100px] p-5 md:p-10 font-poppins">
-            <h2
+            <h1
                 class="text-white text-center
         font-semibold text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif pt-16">
                 Limited-Time Offer To Have The Best Exhibiting Partner
-            </h2>
+            </h1>
             <div class="w-28">
                 <img class="w-full rounded-full" src="/assets/icons/connection.gif" alt="connection" />
             </div>
             <p class="text-lg md:text-xl lg:text-2xl text-white text-center">
                 Be with your ideal exhibition stand experts and grow your business at the show floor
             </p>
+
+              <div>
+        {{-- <x-inside-tradeshow-page.three-step-form /> --}}
+        <a href="{{ route('contact-us') }}">
+            <button
+                class="md:mt-4 px-2 xl:px-4 py-1 xl:py-2 duration-500 bg-[#64CCC5] border-2 border-white text-white text-xs xl:text-sm font-medium rounded-lg">
+                Request Quotes
+            </button>
+        </a>
+    </div>
         </section>
 
         <section class="bg-[#202A30]">
@@ -43,7 +53,7 @@
                         </p>
 
                         <!-- List -->
-                        <ul role="list" class="mb-8 space-y-4 text-left px-5 xl:px-10">
+                        <ul role="list" class="mb-8 space-y-4 text-left p-5 xl:p-10">
                             <li class="flex items-center space-x-3 border-b border-black pb-2">
                                 <!-- Icon -->
                                 <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
@@ -156,7 +166,7 @@
                             </li>
 
                         </ul>
-                        <a href="http://localhost:5173/auth/register"
+                        <a href="https://account.planmybooth.com/auth/register"
                             class="bg-[#124E65] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3 w-fit mx-auto font-semibold">Select
                             Plan</a>
                     </div>
@@ -183,7 +193,7 @@
                         </p>
 
                         <!-- List -->
-                        <ul role="list" class="mb-8 space-y-4 text-left px-5 xl:px-10">
+                        <ul role="list" class="mb-8 space-y-4 text-left p-5 xl:p-10">
                             <li class="flex items-center space-x-3 border-b border-black pb-2">
                                 <!-- Icon -->
                                 <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
@@ -390,7 +400,7 @@
                         </li> --}}
 
                         </ul>
-                        <a href="http://localhost:5173/auth/register"
+                        <a href="https://account.planmybooth.com/auth/register"
                             class="bg-[#124E65] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3 w-fit mx-auto font-semibold">Select
                             Plan</a>
                     </div>
@@ -417,7 +427,7 @@
                         </p>
 
                         <!-- List -->
-                        <ul role="list" class="mb-8 space-y-4 text-left px-5">
+                        <ul role="list" class="mb-8 space-y-4 text-left p-5 md:p-10">
                             <li class="flex items-center space-x-3 border-b border-black pb-2">
                                 <!-- Icon -->
                                 <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
@@ -689,7 +699,7 @@
                             <span>Upload videos to profile</span>
                         </li> --}}
                         </ul>
-                        <a href="http://localhost:5173/auth/register"
+                        <a href="https://account.planmybooth.com/auth/register"
                             class="bg-[#124E65] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3 w-fit mx-auto font-semibold">
                             Select Plan
                         </a>

@@ -1,4 +1,4 @@
-<div class="py-10 font-lato">
+<div class="py-10">
     <!-- Heading Section -->
     <div class="flex flex-col gap-3 py-5 md:py-10">
         <h2 class="text-white text-center text-xl md:text-2xl lg:text-3xl">

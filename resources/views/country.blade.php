@@ -8,6 +8,8 @@
     <x-slot name="featured_image">
         {{ $page?->featured_image}}
     </x-slot>
+    <x-slot name="markup_schema">{!! json_encode(json_decode($page?->markup_schema), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}}</x-slot>
+
 
 
     <x-country-inside-page.country-banner-section :page="$page" />

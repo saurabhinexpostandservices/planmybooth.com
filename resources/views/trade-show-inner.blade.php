@@ -2,18 +2,19 @@
     <x-slot name="title">{{ $show?->meta_title }}</x-slot>
     <x-slot name="meta_description">{{ $show?->meta_description }}</x-slot>
     <x-slot name="featured_image">{{ $show?->logo }}</x-slot>
+    <x-slot name="markup_schema">{!! json_encode(json_decode($show?->markup_schema), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}}</x-slot>
 
     <!-- Banner Section -->
-    <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10 font-lato"
+    <div class="relative bg-[#F6F6F7] bg-cover bg-center mb-10"
         style="background-image: url('/assets/banner/home_banner.webp')">
         <div
             class="bg-[#176B87]/90 flex justify-center items-center min-h-[30rem] mt-[-80px] sm:min-h-[30rem] md:min-h-[40rem] text-center transition-all px-3 sm:px-5">
             <div class="text-white max-w-[90%] md:max-w-[75%] mx-auto">
                 <h1
-                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-md font-bold break-words whitespace-normal leading-tight">
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-shadow-md font-bold break-words whitespace-normal leading-tight" style="color: #fff">
                     {{ \Illuminate\Support\Str::words($show->meta_title, 15, '...') }}
                 </h1>
-                <p class="text-lg sm:text-xl md:text-2xl pt-3 sm:pt-5">
+                <p class="text-lg sm:text-xl md:text-2xl pt-3 sm:pt-5" style="color: #fff">
                     {{ date('d M, Y', strtotime($show?->start_date)) }} -
                     {{ date('d M, Y', strtotime($show?->end_date)) }}
                     <br />
@@ -58,17 +59,16 @@
             width="300" height="150">
     </div>
 
-
     {{-- Body-Section --}}
     <div class=' mb-10 md:mb-5 flex flex-col gap-3 bg-[#EFEFEF] bg-opacity-50'>
         <div class='flex flex-col lg:flex-row p-5 gap-5'>
             <section class='w-full lg:w-2/3 mx-auto'>
                 <section>
                     <div class='flex flex-col gap-3 lg:px-10'>
-                        <h1
-                            class='text-[#3D94AC] text-center md:text-start text-2xl md:text-3xl lg:text-4xl font-semibold py-5 md:py-10'>
+                        <h2
+                            class='text-[#3D94AC] text-center md:text-start text-2xl md:text-3xl lg:text-4xl  font-semibold py-5 md:py-10'>
                             {{ $show->title }}
-                        </h1>
+                        </h2>
                         {!! $show->content !!}
                     </div>
                 </section>
@@ -83,11 +83,9 @@
             <x-inside-tradeshow-page.related-upcoming-trade-shows />
         </div> --}}
         <div class="bg-black">
-            <x-inside-tradeshow-page.available-stand-builder />
+            {{-- <x-inside-tradeshow-page.available-stand-builder /> --}}
         </div>
     </div>
-
-
 
     <!-- Countdown Timer Script -->
 

@@ -108,6 +108,7 @@ class PublicController extends Controller
                 $query->orWhereJsonContains('services_cities', (string)$cityId);
             }
             })
+            ->inRandomOrder()
             ->paginate(10);
 
         return view('country', compact('page', 'standbuilders'));
@@ -133,6 +134,7 @@ class PublicController extends Controller
 
         $standbuilders = Standbuilder::where('status', 'published')
             ->whereJsonContains('services_cities', (string)$city->id)
+            ->inRandomOrder()
             ->paginate(10);
 
         return view('city', compact('page', 'standbuilders'));
@@ -148,14 +150,37 @@ class PublicController extends Controller
         }
     }
 
-    public function get_shows(){
-       try {
-         $shows = Show::select('title', 'id')->distinct()->orderBy('title')->get();
-         return $shows;
-       } catch (\Throwable $th) {
-        //throw $th;
-         return [];
-       }
+    public function get_shows(Request $request)
+    {
+        try {
+            $query = Show::query()
+                ->select('title', 'id')
+                ->distinct();
+
+            // Apply filters if provided
+            if ($request->filled('industry')) {
+                $query->where('industry', $request->industry);
+            }
+
+            if ($request->filled('country')) {
+                $query->where('country', $request->country);
+            }
+
+            if ($request->filled('city')) {
+                $query->where('city', $request->city);
+            }
+
+            if ($request->filled('title')) {
+                $query->where('title', 'like', '%' . $request->title . '%');
+            }
+
+            $shows = $query->orderBy('title')->get();
+
+            return $shows;
+        } catch (\Throwable $th) {
+            return [];
+        }
     }
+
 
 }

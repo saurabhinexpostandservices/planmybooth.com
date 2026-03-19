@@ -284,9 +284,9 @@
                         <label for="city">Where do you need it? (City Name) <span
                                 class="text-red-600">*</span></label>
                         <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
-                            class="relative">
+                            class="relative" value="{{ old('city')}}">
                         <div id="city-suggestions"
-                            class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                            class="absolute z-10 mt-20 bg-white border border-gray-200 rounded shadow-md w-fit hidden">
                         </div>
                         <p class="error-message" id="city-error"></p>
                     </div>
@@ -607,12 +607,31 @@
                         <input type="file" id="design_upload" name="attachment[]" class="sr-only" multiple
                             accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.zip,.cad,image/*">
                     </label>
+                    <div id="design-upload-list" class="w-full mt-3"></div>
                     <p class="error-message" id="design_upload-error"></p>
                 </div>
+                <script>
+                    // Show attached files after selection
+                    document.getElementById('design_upload').addEventListener('change', function (e) {
+                        const fileList = e.target.files;
+                        const listDiv = document.getElementById('design-upload-list');
+                        listDiv.innerHTML = '';
+                        if (fileList.length > 0) {
+                            const ul = document.createElement('ul');
+                            ul.className = "list-disc list-inside text-sm text-gray-700";
+                            for (let i = 0; i < fileList.length; i++) {
+                                const li = document.createElement('li');
+                                li.textContent = fileList[i].name + ' (' + Math.round(fileList[i].size / 1024) + ' KB)';
+                                ul.appendChild(li);
+                            }
+                            listDiv.appendChild(ul);
+                        }
+                    });
+                </script>
 
                 <div class="form-field-group">
                     <label for="additional_comments">Additional comments</label>
-                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments"></textarea>
+                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments">{{ old('additional_comments')}}</textarea>
                 </div>
                 <input type="hidden" name="page_url" value="{{ request()->url() }}" />
                 <input type="hidden" name="ip" value="{{ request()->ip() }}" />
@@ -627,8 +646,8 @@
             <!-- Step 4: Thank You Page -->
             <div class="form-step" data-step="4">
                 <div class="text-center py-20">
-                    <h3 class="text-4xl font-bold text-gray-800 mb-4">Thank you!</h3>
-                    <p class="text-xl text-gray-600">In 48h we will send you a selection of the best proposals</p>
+                    <h3 class="text-4xl font-bold text-gray-800 mb-4">Launching your request into cyberspace 🚀</h3>
+                    <p class="text-xl text-gray-600">Hold tight, the internet hamsters are running!</p>
                 </div>
             </div>
         </form>

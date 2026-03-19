@@ -9,6 +9,7 @@
         <x-custom-exhibition-stand.about-section />
         <x-custom-exhibition-stand.card-section :standbuilders="$standbuilders" />
         <x-custom-exhibition-stand.dought-section />
+        <x-custom-exhibition-stand.faq-section />
         <x-home.multi-step-form />
     </div>
 </x-layout.public>  

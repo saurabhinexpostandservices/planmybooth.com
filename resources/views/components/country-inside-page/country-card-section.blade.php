@@ -1,11 +1,11 @@
-<div class="flex justify-center items-center py-10 font-poppins">
+<div class="flex justify-center items-center py-10 font-lato">
     <div class="flex flex-col gap-5 w-full md:w-[90%] border-2 rounded-xl bg-[#F7F7F7]">
-        <h2 class="p-5 text-xl md:text-2xl lg:text-3xl text-zinc-500 font-semibold font-serif">
+        <h2 class="p-5 text-xl md:text-2xl lg:text-3xl text-zinc-500 font-semibold">
             Exhibition Stand Manufacturers In <span class="text-[#AE2333]">
                 @if ($page->type === 'country')
-                    {{ $page?->country?->name}}
+                    {{ $page?->country?->name }}
                 @else
-                    {{ $page?->city?->name}}
+                    {{ $page?->city?->name }}
                 @endif
             </span>
         </h2>
@@ -21,27 +21,30 @@
             @foreach ($standbuilders as $standbuilder)
                 <section
                     class="flex flex-col md:flex-row bg-white md:p-5 hover:scale-95 transition duration-500 ease-in-out">
-                    <div class="px-5 md:px-0 flex justify-center items-center">
+                    <div class="relative px-5 md:px-0 flex justify-center items-center">
                         <img class="w-[200px] h-[150px] md:w-[250px] md:h-[180px] object-contain"
                             src="{{ $standbuilder?->logo }}" alt="{{ $standbuilder?->title }}" />
+
+                        <img class="w-1/3 mx-auto rounded-full absolute -right-8 top-2 rotate-[45] animate-bounce"
+                            src="/assets/icons/gold.png" alt="gold" />
                     </div>
                     <div class="w-full px-5 flex flex-col gap-3 md:w-[70%]">
                         <div class="flex flex-col">
                             <div class="flex flex-col-reverse md:flex-row justify-between">
                                 <a href="#">
-                                    <h3 class="text-lg md:text-xl font-semibold hover:text-blue-500">
+                                    <h3 style="margin: 0" class="text-lg md:text-xl font-semibold hover:text-blue-500">
                                         {{ $standbuilder?->title }}</h3>
                                 </a>
                                 <span
-                                    class="w-full md:w-fit px-3 pt-2 bg-blue-100 text-blue-800 hover:bg-blue-300 hover:text-white text-sm rounded-md duration-500 ease-in-out cursor-pointer capitalize">
+                                    class="block w-full md:w-fit px-3 pt-2 bg-blue-100 text-blue-800 hover:bg-blue-300 hover:text-white text-sm rounded-md duration-500 ease-in-out cursor-pointer capitalize">
                                     @if ($page?->type == 'city')
-                                        {{ $page?->city?->name  }},{{ $page?->country?->name }}
+                                        {{ $page?->city?->name }} , {{ $page?->country?->name }}
                                     @else
                                         {{ $page?->country->name }}
                                     @endif
                                 </span>
                             </div>
-                            <h4 class="text-xs md:text-sm text-red-600 font-serif">{{ $standbuilder?->title }}</h4>
+                            <h4 class="text-xs md:text-sm text-red-600">{{ $standbuilder?->title }}</h4>
                         </div>
                         <p class="text-zinc-500 text-xs md:text-sm">
                             {{ Str::limit(strip_tags($standbuilder?->description), 200) }}</p>
@@ -53,7 +56,8 @@
                             </a>
                             <button
                                 class="uppercase bg-[#2792C5] hover:bg-white text-white hover:text-[#2792C5] p-1 border-2 border-[#2792C5] w-full md:w-[40%] text-sm font-semibold rounded-lg transition duration-500 ease-in-out">
-                                <a href="{{ route('stand-builder.show', $standbuilder?->username) }}"> Request for booth quotations </a>
+                                <a href="{{ route('stand-builder.show', $standbuilder?->username) }}"> Request for
+                                    booth quotations </a>
                             </button>
                         </div>
                     </div>
