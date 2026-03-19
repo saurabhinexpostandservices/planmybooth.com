@@ -10,7 +10,7 @@
                      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Trade Show</th>
                      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">City</th>
                      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Year</th>
-                     <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Supplier</th>
+                     <!-- <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Supplier</th> -->
                  </tr>
             </thead>
             <tbody>
@@ -37,13 +37,13 @@
                             <span class="md:hidden font-semibold text-gray-600">Date: </span>
                             {{ $lead->created_at ? $lead->created_at->format('d M, Y') : '-' }}
                         </td>
-                        <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
+                        <!-- <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
                             data-label="Supplier">
                             <span class="md:hidden font-semibold text-gray-600">Supplier: </span>
                             <a href="#">
                                 {{ $lead->supplier_status ?? 'Incomplete request' }}
                             </a>
-                        </td>
+                        </td> -->
                     </tr>
                 @endforeach
             </tbody>

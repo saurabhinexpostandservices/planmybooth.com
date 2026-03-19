@@ -17,19 +17,19 @@
             <div class="hidden md:flex justify-center items-center col-span-5 ">
                 <ul class="flex justify-center items-center gap-2 lg:gap-5 font-poppins">
                     <li class="text-[15px] hover:text-white font-semibold">
-                        <a href="/">Home</a>
+                        <a href="/">Email</a>
                     </li>
                     <li class="text-[15px] hover:text-white font-semibold">
-                        <a href="{{ route('stand-builders') }}">Custom Exhibition Stand</a>
+                        <a href="{{ route('stand-builders') }}">Register</a>
                     </li>
                     <li class="text-[15px] hover:text-white font-semibold">
-                        <a href="{{ route('shows') }}">Trade Shows</a>
+                        <a href="{{ route('shows') }}">Get Free Quote</a>
                     </li>
                     <li class="text-[15px] hover:text-white font-semibold">
                         <a href="{{ route('blogs') }}">Blogs</a>
                     </li>
                     <li class="text-[15px] hover:text-white font-semibold">
-                        <a href="{{ route('vendor-registration') }}">Vendor Registration</a>
+                        <a href="{{ route('vendor-registration') }}">Chat on Whatsapp</a>
                     </li>
                 </ul>
             </div>
@@ -150,18 +150,18 @@
             <ul class="flex flex-col gap-4">
 
                 <li class="text-lg hover:text-sky-600">
-                    <a href="/" onclick="closeMobileMenu()">Home</a>
+                    <a href="/" onclick="closeMobileMenu()">email</a>
                 </li>
 
                 <li class="text-lg hover:text-sky-600">
                     <a href="{{ route('stand-builders') }}" onclick="closeMobileMenu()">
-                        Custom Exhibition Stand
+                        Ragister
                     </a>
                 </li>
 
                 <li class="text-lg hover:text-sky-600">
                     <a href="{{ route('shows') }}" onclick="closeMobileMenu()">
-                        Trade Shows
+                        Get Free Quote
                     </a>
                 </li>
 
