@@ -10,7 +10,7 @@ use App\Models\City;
 class Standbuilder extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'username',
         'title',
@@ -20,14 +20,26 @@ class Standbuilder extends Model
         'city_id',
         'website',
         'email',
+        'vat_number',
         'phone',
         'logo',
+
+        // --- Ye 5 lines add kardo ---
+        'instagram',
+        'facebook',
+        'pinterest',
+        'linkedin',
+        'twitter',
+        // ----------------------------
+
+        'gallery',
+        'video',
         'cover_image',
         'services',
-        'services_continents',
+        'services_cities',
         'priorty',
         'status',
-        'author_id'
+        'author_id',
     ];
 
     protected $casts = [

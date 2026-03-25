@@ -4,26 +4,27 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('standbuilders', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->string('title');
-            $table->longText('description');
-            $table->string('founded_year');
-            $table->foreignId('country_id')->constrained('countries')->onDelete('cascade');
-            $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
+            $table->string('username')->nullable();
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('founded_year')->nullable();
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('cascade');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
             $table->string('website')->nullable();
-            $table->string('email');
-            $table->string('vat_number');
+            $table->string('email')->nullable();
+            $table->string('vat_number')->nullable();
             $table->string('phone')->nullable();
             $table->string('logo')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('pinterest')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('twitter')->nullable();
             $table->json('gallery')->nullable();
             $table->string('video')->nullable();
             $table->string('cover_image')->nullable();
@@ -36,9 +37,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('standbuilders');
