@@ -1,35 +1,49 @@
 <div class="max-w-4xl w-full p-6 bg-white rounded shadow font-poppins">
 
-    <form action="{{ route('api.lead.create') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
+    <form action="{{ route('api.lead-store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
         @csrf
         <!-- Success Message -->
-        @if (session('success'))
+        @if (session('contact_message'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                 <strong class="font-bold">Success!</strong>
-                <span class="block sm:inline">{{ session('success') }}</span>
+                <span class="block sm:inline">{{ session('contact_message') }}</span>
             </div>
         @endif
         <!-- Error Message -->
-        @if (session('error'))
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">Error!</strong>
-                <span class="block sm:inline">{{ session('error') }}</span>
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
+                <ul class="list-disc list-inside">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
         @endif
         <!-- Section 1: Event Details -->
         <div>
-            <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Tell us about your Event</h2>
+            <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Tell us about your Event</div>
             <div class="grid grid-cols-1 gap-4 p">
                 <!-- Name of Event -->
-                <div class="flex flex-col mb-4">
+                <div class="flex flex-col">
                     <label for="eventName" class="block text-gray-700 font-semibold mb-2">Name of Event <span
                             class="text-red-500 font-bold">*</span></label>
                     <input class="p-2 border rounded w-full bg-white" type="text" id="trade_show_event" name="trade_show_event" placeholder="Select an event"
-                        required autocomplete="off">
+                        required autocomplete="off" value="{{ old('trade_show_event') }}">
                     <div id="trade-show-suggestions"
                         class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
-                    </div>
+                    </div> 
                     <p class="error-message" id="trade_show_event-error"></p>
+                </div>
+                 <!-- Name of City -->
+                <div class="flex flex-col">
+                    <label for="cityName" class="block text-gray-700 font-semibold mb-2">City<span
+                            class="text-red-500 font-bold">*</span></label>
+                    <input class="p-2 border rounded w-full bg-white" type="text" id="city" name="city" placeholder="City"
+                        required autocomplete="off" value="{{ old('city') }}">
+                    <div id="city-suggestions"
+                        class="absolute z-10 bg-white border border-gray-200 rounded shadow-md mt-1 w-full hidden">
+                    </div>
+                    <p class="error-message" id="city-error"></p>
                 </div>
                 <script>
                     // Static trade show autocomplete
@@ -105,7 +119,7 @@
 
             <!-- Section 2: Stand Details -->
             <div class="mt-6">
-                <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Stand Details</h2>
+                <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Stand Details</div>
                 <div class="grid grid-cols-1 gap-4">
 
                     <!-- Stand Size -->
@@ -137,8 +151,9 @@
                 <!-- File Upload -->
                 <div class="flex flex-col pt-3">
                     <label for="fileUpload" class="block text-white font-semibold mb-2">File Upload</label>
+                    <div class="form-field-group">
                     <label for="design_upload"
-                        class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#0087b8] bg-white transition-colors duration-200">
+                        class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#0087b8] hover:bg-[#e0f2f7] transition-colors duration-200">
                         <svg class="w-12 h-12 text-[#0087b8] mb-4" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -148,8 +163,29 @@
                         <span class="text-lg font-semibold text-gray-700">Upload your own design</span>
                         <span class="text-sm text-gray-500 mt-1">We accept pdf, jpg, cad or zip files (100 MB max per
                             file)</span>
-                        <input type="file" id="design_upload" name="design_upload" class="sr-only">
+                        <input type="file" id="design_upload" name="attachment[]" class="sr-only" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.doc,.docx,.zip,.cad,image/*">
                     </label>
+                    <div id="design-upload-list" class="w-full mt-3"></div>
+                    <p class="error-message" id="design_upload-error"></p>
+                </div>
+                <script>
+                    // Show attached files after selection
+                    document.getElementById('design_upload').addEventListener('change', function (e) {
+                        const fileList = e.target.files;
+                        const listDiv = document.getElementById('design-upload-list');
+                        listDiv.innerHTML = '';
+                        if (fileList.length > 0) {
+                            const ul = document.createElement('ul');
+                            ul.className = "list-disc list-inside text-sm text-gray-700";
+                            for (let i = 0; i < fileList.length; i++) {
+                                const li = document.createElement('li');
+                                li.textContent = fileList[i].name + ' (' + Math.round(fileList[i].size / 1024) + ' KB)';
+                                ul.appendChild(li);
+                            }
+                            listDiv.appendChild(ul);
+                        }
+                    });
+                </script>
                 </div>
             </div>
         </div>
@@ -158,8 +194,8 @@
 
         <div class="my-6 flex flex-col">
             <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Enter your message..."
-                class="mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200">{{ old('message') }}</textarea>
+            <textarea id="message" name="additional_comments" rows="4" placeholder="Enter your message..."
+                class="mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200">{{ old('additional_comments') }}</textarea>
             @error('message')
                 <p class="my-1 text-red-500">{{ $message }}</p>
             @enderror
@@ -167,13 +203,13 @@
 
         <!-- Section 4: Contact Details -->
         <div>
-            <h2 class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Contact Details</h2>
+            <div class="text-xl font-semibold mb-4 bg-[#CBD5E1] p-2">Contact Details</div>
             <div class="grid grid-cols-1 gap-4">
                 <!-- Name -->
                 <div class="flex flex-col">
                     <label for="name" class="block text-gray-700 font-semibold mb-2">Contact Name <span
                             class="text-red-500 font-bold">*</span></label>
-                      <input type="text" id="contact_name" name="contact_name" placeholder="contact name" required
+                      <input type="text" id="contact_name" name="name" placeholder="contact name" required
                         class="p-2 border rounded" value="{{ old('name') }}">
                     @error('fullname')
                         <p class="my-1 text-red-500">{{ $message }}</p>
@@ -196,7 +232,7 @@
                     <label for="phone" class="block text-gray-700 font-semibold mb-2">Phone Number <span
                             class="text-red-500 font-bold">*</span></label>
                    
-                        <input type="tel" id="phone_number" name="phone_number" class="p-2 border rounded" placeholder="phone number">
+                        <input type="tel" id="phone_number" name="phone" class="p-2 border rounded" placeholder="phone number" value="{{ old('phone')}}">
 
                     @error('phone')
                         <p class="my-1 text-red-500">{{ $message }}</p>
@@ -206,14 +242,25 @@
                 <!-- Company Name -->
                 <div class="flex flex-col">
                     <label for="address" class="block text-gray-700 font-semibold mb-2">Company Name</label>
-                    <input type="text" id="company_name" name="contact_name" placeholder="company name"
+                    <input type="text" id="company_name" name="company_name" placeholder="company name"
                         class="p-2 border rounded" value="{{ old('company_name') }}">
                     @error('company_name')
                         <p class="my-1 text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
-
+            <input type="hidden" name="page_url" value="{{ request()->url() }}" />
+            <input type="hidden" id="client_ip" name="client_ip">
+            <script>
+                fetch("https://api.ipify.org?format=json")
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("client_ip").value = data.ip;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching IP:", error);
+                    });
+            </script>
             <!-- Submit Button -->
             <div class="flex justify-center py-5">
                 <button type="submit"

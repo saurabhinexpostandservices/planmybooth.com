@@ -1,7 +1,7 @@
 <div class="px-[5%] py-10 mt-[2%] lg:pt-10 font-poppins bg-[#124E65]">
     <div class="">
         <h2
-            class="text-white text-xl md:text-3xl lg:text-4xl pt-10 font-semibold w-full md:w-[80%] text-center mx-auto font-serif">
+            class="text-white text-xl md:text-3xl lg:text-4xl pt-10 font-semibold w-full md:w-[80%] text-center mx-auto font-[Poppins]">
             Our
             4-Step
             Process to

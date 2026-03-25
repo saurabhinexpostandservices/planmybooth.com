@@ -1,4 +1,4 @@
-<form action="{{ route('api.lead.create') }}" method="POST" enctype="multipart/form-data"
+<form action="{{ route('api.lead-store') }}" method="POST" enctype="multipart/form-data"
     class="space-y-2 w-full bg-[#1A6D88] p-8 rounded-lg shadow-md ">
     @csrf
 
@@ -21,7 +21,7 @@
 
     <!-- Section 1: Contact Details -->
     <div>
-        <h2 class="text-xl font-serif font-semibold mb-4 bg-[#64CCC5] p-2">Contact Details</h2>
+        <h2 class="text-xl font-[Poppins] font-semibold mb-4 bg-[#64CCC5] p-2">Contact Details</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
@@ -51,7 +51,7 @@
             <div class="flex flex-col">
                 <label for="address" class="block text-white font-semibold mb-2">Company Name <span
                         class="text-red-500 font-bold">*</span></label>
-                <input type="text" id="company_name" name="contact_name" placeholder="company name" required
+                <input type="text" id="company_name" name="company_name" placeholder="company name" required
                     class="p-2 border rounded bg-white" value="{{ old('company_name') }}">
                 @error('company_name')
                     <p class="my-1 text-red-500">{{ $message }}</p>
@@ -74,7 +74,7 @@
 
     <!-- Section 2: Event Details -->
     <div>
-        <h2 class="text-xl font-serif font-semibold mb-4 bg-[#64CCC5] p-2 mt-7">Tell us about your Event</h2>
+        <h2 class="text-xl font-[Poppins] font-semibold mb-4 bg-[#64CCC5] p-2 mt-7">Tell us about your Event</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <!-- Name of Event -->
@@ -245,7 +245,7 @@
 
     <!-- Section 3: Stand Details -->
     <div class="flex flex-col">
-        <h2 class="text-xl font-serif font-semibold mb-4 bg-[#64CCC5] p-2">Stand Details</h2>
+        <h2 class="text-xl font-[Poppins] font-semibold mb-4 bg-[#64CCC5] p-2">Stand Details</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <!-- Stand Size -->

@@ -1,6 +1,6 @@
 <div class="relative bg-white font-poppins py-10 md:py-20">
 
-    <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-[90%] mx-auto font-serif">
+    <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-[90%] mx-auto font-[Poppins]">
         Top Exhibition Stand Builder & 
         <span class="bg-[#64CCC5] text-white px-2">
             Exhibition Stand Contractors
@@ -10,9 +10,11 @@
     <div class="container mx-auto px-5 md:px-20 grid lg:grid-cols-2 gap-10 md:gap-14 items-center">
 
         <!-- Left Content -->
-        <div class="space-y-6 ">
+        <div class="space-y-6 text-gray-700">
+            <h2 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl font-semibold font-[Poppins]">
+               About Us</h2>
 
-            <p class="text-base md:text-lg text-gray-700">
+            <p>
                 Plan My Booth is your ultimate platform for connecting with top exhibition stand design companies
                 worldwide. Whether you're exhibiting in the USA, Europe, or Asia, we link you with industry-leading
                 stand builders. Our carefully curated list features experienced booth builders with proven track
@@ -20,12 +22,12 @@
                 experience.
             </p>
 
-            <p class="text-base md:text-lg text-gray-700">
+            <p>
                 Share your requirements with us, and we’ll help you find the perfect match. With our seamless platform,
                 you can easily discover, compare, and connect with top exhibition stand builders worldwide.
             </p>
 
-            <ul class="space-y-3 text-gray-700 text-base">
+            <ul class="space-y-3 text-base">
                 <li class="flex items-start gap-2">
                     <span class="text-[#f31054]">✔</span>
                     Custom booth designs from top contractors.
@@ -45,11 +47,11 @@
             </ul>
 
             <div class="flex gap-4 pt-5">
-                <a href="#"
+                <a href="{{ route('about-us') }}"
                     class="bg-[#176B87] text-white font-semibold px-6 py-2 rounded hover:bg-[#64CCC5] hover:text-black transition duration-500">
                     Learn More
                 </a>
-                <a href="#"
+                <a href="{{ route('contact-us') }}"
                     class="bg-[#64CCC5] text-black hover:text-white font-semibold px-6 py-2 rounded hover:bg-[#141414] transition duration-500">
                     Explore Services
                 </a>

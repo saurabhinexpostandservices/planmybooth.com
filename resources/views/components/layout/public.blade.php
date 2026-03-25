@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta http-equiv="Content-Language" content="en">
+    <link rel="icon" type="image/svg" href="{{ asset('assets/logo/favicon.svg') }}">
     {{-- start dynamic meta data --}}
     <title>{{ $title ?? 'Planmybooth' }}</title>
     <meta name="description" content="{{ $meta_description ?? 'Planmybooth-blog' }}">
@@ -49,6 +49,15 @@
         @else
         @endif --}}
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    {{-- dynamic markup schema --}}
+    @if(!empty($markup_schema))
+<script type="application/ld+json">
+            {!! $markup_schema !!}
+</script>
+    @endif
+
+    {{-- /dynamic markup schema --}}
+
 </head>
 
 <style>

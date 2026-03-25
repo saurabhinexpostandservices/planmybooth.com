@@ -10,19 +10,28 @@ class ShowController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        /**
-         * Need some updates
-         * Most nearest show
-         * seach by users Or filters
-         */
         try {
             $query = Show::where('status', 'published');
-            $shows = $query->paginate(10);
+
+            // 🔍 Filter by title if provided
+            if ($request->filled('title')) {
+                $query->where('title', 'like', '%' . $request->title . '%');
+            }
+
+            // 📅 Order by nearest show first
+            $query->orderBy('start_date', 'asc');
+
+            // 📄 Paginate results
+            $shows = $query->paginate(10)->appends($request->query());
+
             return view('trade-show', compact('shows'));
+
         } catch (\Throwable $th) {
-            abort(404);
+            // If error, send empty data
+            $shows = collect();
+            return view('trade-show', compact('shows'));
         }
     }
 

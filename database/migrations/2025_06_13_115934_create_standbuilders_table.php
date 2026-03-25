@@ -21,13 +21,16 @@ return new class extends Migration
             $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
             $table->string('website')->nullable();
             $table->string('email');
+            $table->string('vat_number');
             $table->string('phone')->nullable();
             $table->string('logo')->nullable();
+            $table->json('gallery')->nullable();
+            $table->string('video')->nullable();
             $table->string('cover_image')->nullable();
             $table->json('services')->nullable();
-            $table->json('services_continents')->nullable();
+            $table->json('services_cities')->nullable();
             $table->string('priorty')->default('0');
-            $table->enum('status', ['draft', 'published'])->default('published');
+            $table->enum('status', ['draft', 'published'])->default('draft');
             $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

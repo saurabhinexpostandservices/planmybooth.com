@@ -5,10 +5,11 @@
     <x-slot name="featured_image"></x-slot>
 
     <x-home.banner />
+    <x-home.multi-step-form />
     <x-home.about-us />
     <x-home.global-presence-section />
     <x-home.why-choose-us />
     <x-home.how-we-work />
     <x-home.country :countries="$countries" />
-    <x-home.multi-step-form />
+    <x-home.faq-home />
 </x-layout.public>

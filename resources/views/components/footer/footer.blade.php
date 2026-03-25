@@ -1,4 +1,4 @@
-<div class="footer-wrapper font-lato">
+<div class="footer-wrapper font-poppins">
     <div class="px-[5%] pt-[10%] md:pt-[5%]">
         <div class="footer-content">
             <div class="flex flex-col md:flex-row flex-wrap gap-10 md:gap-5 justify-between">
@@ -8,7 +8,7 @@
                     <div class="footer-col1">
                         <div class="flex items-center justify-center md:justify-start md:ml-5">
                             <a href="{{ route('home') }}">
-                                 <img class="rounded-t-3xl" src="{{ asset('./assets/images/logo.svg') }}"
+                                <img class="rounded-t-3xl" src="{{ asset('./assets/images/logo.svg') }}"
                                     alt="planmybooth-header-logo" width="150" height="100">
                             </a>
                         </div>
@@ -18,17 +18,19 @@
                             hiring the perfect exhibition stand design company in your city.
                         </p>
                     </div>
-                    
+
                 </div>
 
                 <!-- Column 2 -->
                 <div class="w-full md:w-[25%]">
                     <div class="footer-col2 md:flex flex-col justify-center items-center">
-                        <h4 class="text-white font-serif">Quick Links</h4>
+                        <h4 class="text-white font-[Poppins]" style="color: #fff">Quick Links</h4>
                         <ul class="flex flex-col gap-2 py-5 md:p-5 text-sm text-start pl-10">
                             <li><a class="hover:text-[#DAE7EB]" href="/">Home</a></li>
                             <li><a class="hover:text-[#DAE7EB]" href="{{ route('stand-builders') }}">Custom
                                     Exhibition Stand</a></li>
+                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('shows') }}">Trade Shows</a></li>
+                            <li><a class="hover:text-[#DAE7EB]" href="{{ route('blogs') }}">Blogs</a></li>
                             <li><a class="hover:text-[#DAE7EB]" href="{{ route('privacy-policy') }}">Privacy
                                     Policy</a></li>
                             <li><a class="hover:text-[#DAE7EB]" href="{{ route('about-us') }}">About Us</a></li>
@@ -40,7 +42,7 @@
                 <!-- Column 3 -->
                 <div class="w-full md:w-[35%]">
                     <div class="footer-col3 md:flex flex-col justify-center items-center">
-                        <h4 class="text-white font-serif">Reach Us</h4>
+                        <h4 class="text-white font-[Poppins]" style="color: #fff">Reach Us</h4>
                         <ul class="flex flex-col gap-2 text-center py-5 md:p-5 text-sm">
                             <li>
                                 <a href="#"

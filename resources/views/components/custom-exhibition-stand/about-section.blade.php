@@ -2,11 +2,11 @@
     <!-- Container for centering the text -->
     <div class="flex flex-col gap-5 p-5 py-10 md:pt-16 md:w-[90%] justify-center items-center min-h-[25rem] mx-auto">
 
-        <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-serif">
+        <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-[Poppins]">
             Custom Exhibition <span class="bg-[#64CCC5] text-white px-2">Stand Builders</span> Worldwide
         </h2>
         <div>
-            <p class="text-base md:text-lg text-gray-700">
+            <p class="text-gray-700">
                 If you are searching for custom 
                 <a href="/" class="text-[#3D94AC]">
                     exhibition stand builders
@@ -21,7 +21,7 @@
                 send you 5 quotations directly. You can evaluate and assess
                 which one to select.
             </p>
-            <p class="text-base md:text-lg text-gray-700">
+            <p class="text-gray-700">
                 Whether you are exhibiting in the United States, UAE, Germany,
                 Singapore, Thailand, Qatar, Australia, Canada, United Kingdom,
                 France, Italy, Indonesia, Belgium, India, or any other country,

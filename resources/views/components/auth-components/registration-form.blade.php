@@ -1,5 +1,5 @@
  <!-- Create Account Form -->
- <div id="create-account-form" class="p-8 bg-white rounded shadow-lg w-96 md:w-1/2 mx-auto mt-10 border">
+ <div id="create-account-form" class="p-8 bg-white rounded shadow-lg w-80 md:w-1/2 mx-auto mt-10 border">
      <h1 class="text-2xl font-semibold mb-6 text-center">Create Account</h1>
      <form id="register" method="POST" action="{{ route('auth.register') }}">
          @csrf
@@ -18,10 +18,20 @@
          @endif
     
          <div class="mb-4">
-             <label for="name" class="block text-sm font-medium mb-1">Fullname</label>
+             <label for="name" class="block text-sm font-medium mb-1">Full Name</label>
              <input type="text" id="fullname" name="name"
                  class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                  placeholder="Enter fullname" required value={{ old('name') }}>
+             @error('name')
+                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
+             @enderror
+         </div>
+
+         <div class="mb-4">
+             <label for="company_name" class="block text-sm font-medium mb-1">Company Name</label>
+             <input type="text" id="company_name" name="company_name"
+                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                 placeholder="Enter company name" required value={{ old('company_name') }}>
              @error('name')
                  <p class="text-red-500 text-xs italic">{{ $message }}</p>
              @enderror

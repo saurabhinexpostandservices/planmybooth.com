@@ -1,12 +1,13 @@
 
 <div class="relative bg-bottom bg-no-repeat bg-fixed font-poppins" id="blogPage"
-    style="background-image: url('{{ asset('assets/banner/city_bg.webp') }}');">
-<div class="bg-[#2F556A] flex flex-col mt-[-80px] min-h-[30rem] md:min-h-[50rem] md:flex-row gap-5 md:p-10 lg:p-20 justify-center items-center font-lato">
+    style="background-image: url('{{ asset('assets/banner/home_banner.webp') }}');">
+<div class="bg-[#2F556A]/80 flex flex-col mt-[-80px] min-h-[30rem] md:min-h-[50rem] md:flex-row gap-5 py-20 p-5 md:p-10 justify-center items-center">
     <!-- First Section -->
     <section class="w-full md:w-[90%] mx-auto flex flex-col justify-center items-center">
-        <h1 class="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-wide text-center font-bold">
+        <h1 class="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-wide text-center font-[Poppins] font-bold">
+        <h1 class="text-white text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-wide text-center font-[Poppins] font-bold">
             {{ $page->title }}
-            <p class="text-[#EF4444]">{{ $page?->country?->name }}</p>
+            <p style="color: #EF4444 ;">{{ $page?->country?->name }}</p>
         </h1>
 
         <div class="w-full md:w-[80%]">
@@ -17,10 +18,10 @@
                     <img class="w-full" alt="chat" src="/assets/icons/chat1.gif" width="100" height="50" />
                 </div>
                 <div class="text-white flex flex-col gap-3">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-semibold">
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-[Poppins] font-semibold" style="color: white ; margin:0;">
                         Tell Us About Your Requirements
                     </h2>
-                    <p>
+                    <p  style="color: white">
                         Fill out the inquiry form given and tell us about your event, stand size, stand design, and
                         budget.
                     </p>
@@ -34,10 +35,10 @@
                         height="50" />
                 </div>
                 <div class="text-white flex flex-col gap-3">
-                    <h2 class="text-lg md:text-xl lg:text-2xl font-semibold">
+                    <h2 class="text-lg md:text-xl lg:text-2xl font-[Poppins] font-semibold" style="color: white ; margin:0;">
                         We Connect With the Right Service Provider
                     </h2>
-                    <p>
+                    <p style="color: white ;">
                         We will connect you with the best exhibition stand contractor based on your specifications.
                     </p>
                 </div>
@@ -45,9 +46,9 @@
         </div>
         <div>
             {{-- <x-inside-tradeshow-page.three-step-form /> --}}
-            <a href="">
+            <a href="{{ route('contact-us') }}">
                 <button
-                    class="mt-4 px-2 xl:px-4 py-1 xl:py-2 duration-500 bg-[#269BD2] border-2 border-[#2791C4] text-white text-xs xl:text-sm font-medium rounded hover:bg-[#305468]">
+                    class="cursor-pointer mt-4 px-2 xl:px-4 py-1 xl:py-2 duration-500 bg-[#269BD2] border-2 border-[#2791C4] text-white text-xs xl:text-sm font-medium rounded hover:bg-[#305468]">
                     Request Quotes
                 </button>
             </a>

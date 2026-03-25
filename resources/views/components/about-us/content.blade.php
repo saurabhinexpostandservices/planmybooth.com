@@ -1,7 +1,7 @@
   <div class="container mx-auto p-5 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 md:px-10 justify-center items-center gap-5 ">
             <div class="flex flex-col">
-                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Who We Are</h3>
+                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Who <span class="bg-[#64CCC5] text-white px-2"> We Are </span></h3>
                 <p>
                     Plan My Booth is a leading global online platform that connect international exhibitors, exhibition
                     stan
@@ -23,15 +23,15 @@
             </div>
 
             {{-- <div class="flex justify-center items-center ">
-                <img class="p-5" src="{{ asset('assets/about-us/about-1.avif') }}" alt="why-choose-us" width="500"
+                  <img class="p-5" src="{{ asset('assets/about-us/about-1.avif') }}" alt="why-choose-us" width="500"
                     height="500">
-            </div> --}}
+                 </div> --}}
             
         </div>
 
         <div class="flex flex-col md:flex-row-reverse md:px-10 justify-center items-center gap-5 ">
             <div class="flex flex-col md:w-[50%]">
-                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">What We Do</h3>
+                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">What <span class="bg-[#64CCC5] text-white px-2"> We Do</span></h3>
                 <p>
                     We assist exhibitors save money on exhibitions by providing direct access to reputable exhibition
                     stand
@@ -74,7 +74,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 md:px-10 justify-center items-center gap-5 ">
             <div class="flex flex-col">
-                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Why We Do It
+                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Why <span class="bg-[#64CCC5] text-white px-2"> We Do It</span>
                 </h3>
                 <p>
                     No matter their size, we at Plan My Booth thinks all exhibitors should have access to high-quality
@@ -97,7 +97,6 @@
                 </div>
             </div>
 
-
             {{-- <div class="flex justify-center items-center ">
                 <img class="p-5" src="{{ asset('assets/about-us/about-2.avif') }}" alt="why-choose-us" width="500"
                     height="500">
@@ -105,7 +104,7 @@
         </div>
         <div class="grid grid-cols-1 md:p-10 justify-center items-center gap-5">
             <div class="flex flex-col ">
-                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Our Mission
+                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Our <span class="bg-[#64CCC5] text-white px-2"> Mission</span>
                 </h3>
                 <p>
                     Our mission is to assist exhibitors, <strong>exhibition stand builders</strong>, organizers, etc
@@ -118,7 +117,7 @@
             </div>
 
             <div class="">
-                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Our Values</h3>
+                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Our <span class="bg-[#64CCC5] text-white px-2"> Values</span></h3>
                 <ul class="list-disc ml-4">
                     <li>Transparency: We guarantee open communication and fair business practices between exhibitors &
                         suppliers.</li>
@@ -139,9 +138,9 @@
             </div>
 
             <div class="">
-                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Why Join Plan
+                <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Why Join <span class="bg-[#64CCC5] text-white px-2"> Plan
                     My
-                    Booth?</h3>
+                    Booth?</span></h3>
                 <p>
                     Direct access to the top exhibition stand builders, proposal comparison, cost savings, and more are
                     all

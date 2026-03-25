@@ -3,7 +3,7 @@
          <h2 class="text-2xl font-semibold text-gray-700 mb-6">Your request history</h2>
 
          <table class="min-w-full bg-white shadow rounded-lg">
-             <thead class="hidden md:table-header-group">
+            <thead class="hidden md:table-header-group">
                  <tr class="border-b">
                      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Ref.</th>
                      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Type</th>
@@ -12,8 +12,8 @@
                      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Year</th>
                      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-600">Supplier</th>
                  </tr>
-             </thead>
-             <tbody>
+            </thead>
+            <tbody>
                 @foreach ($leads as $lead)
                     <tr class="block md:table-row hover:bg-gray-50 border-b md:border-0">
                         <td class="block md:table-cell px-6 py-4 text-[#0087B8] hover:text-[#006b91] hover:underline cursor-pointer"
@@ -23,15 +23,15 @@
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Type">
                             <span class="md:hidden font-semibold text-gray-600">Type: </span>
-                            {{ $lead->services ?? '-' }}
+                            {{ $lead->service ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Trade Show">
                             <span class="md:hidden font-semibold text-gray-600">Trade Show: </span>
-                            {{ $lead->show->title ?? '-' }}
+                            {{ $lead->show ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="City">
                             <span class="md:hidden font-semibold text-gray-600">City: </span>
-                            {{ $lead->city->name ?? '-' }}
+                            {{ $lead->city ?? '-' }}
                         </td>
                         <td class="block md:table-cell px-6 py-4 text-gray-700" data-label="Year">
                             <span class="md:hidden font-semibold text-gray-600">Date: </span>
@@ -47,7 +47,6 @@
                     </tr>
                 @endforeach
             </tbody>
-
          </table>
      </div>
  </div>

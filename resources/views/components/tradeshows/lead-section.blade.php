@@ -17,43 +17,46 @@
             <span class="text-sm lg:text-base">Place</span>
             <span class="text-sm lg:text-base">Category</span>
         </div>
+        @if($shows->count())
+            @foreach ($shows as $item)
+                <div
+                    class="grid grid-cols-2 md:grid-cols-[60px_2fr_2fr_2fr_1fr] gap-4 lg:text-center items-center border-b-4 last:border-none p-4">
+                    <div class="md:hidden font-semibold text-gray-500">Rank:</div>
+                    <div class="text-[#124E65] font-bold">{{ $loop->index + 1 }}</div>
 
-        @foreach ($shows as $item)
-            <div
-                class="grid grid-cols-2 md:grid-cols-[60px_2fr_2fr_2fr_1fr] gap-4 lg:text-center items-center border-b-4 last:border-none p-4">
-                <div class="md:hidden font-semibold text-gray-500">Rank:</div>
-                <div class="text-[#124E65] font-bold">{{ $loop->index + 1 }}</div>
+                    <div class="md:hidden font-semibold text-gray-500">Event Name:</div>
+                    <div class="flex items-center space-x-2 md:col-span-1">
+                        <img src="{{ $item->logo }}" alt="{{ $item->title }} logo"
+                            class="w-10 h-10 rounded-full" />
+                        <span class="text-sm xl:text-base truncate">{{ Str::limit(strip_tags($item->title), 30) }}</span>
+                    </div>
 
-                <div class="md:hidden font-semibold text-gray-500">Event Name:</div>
-                <div class="flex items-center space-x-2 md:col-span-1">
-                    <img src="http://127.0.0.1:8002/{{ $item->logo }}" alt="{{ $item->title }} logo"
-                        class="w-10 h-10 rounded-full" />
-                    <span class="text-sm xl:text-base truncate">{{ Str::limit(strip_tags($item->title), 30) }}</span>
+                    <div class="md:hidden font-semibold text-gray-500">Event Date:</div>
+                    <div class="text-sm xl:text-base text-gray-700 truncate">
+                        {{ date('d M, Y', strtotime($item->start_date)) }} -
+                        {{ date('d M, Y', strtotime($item->end_date)) }}
+                    </div>
+
+                    <div class="md:hidden font-semibold text-gray-500">Place:</div>
+                    <div class="text-sm xl:text-base text-gray-700 truncate">{{ $item?->city?->name }}, {{ $item?->country?->name }}</div>
+
+                    <div class="md:hidden font-semibold text-gray-500">Action:</div>
+                    <div class="text-xs xl:text-sm">
+                        <a href="{{ route('shows.inner', $item?->slug)}}"
+                            class="bg-[#315F72] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3">
+                            Details
+                        </a>
+                    </div>
                 </div>
+            @endforeach
 
-                <div class="md:hidden font-semibold text-gray-500">Event Date:</div>
-                <div class="text-sm xl:text-base text-gray-700 truncate">
-                    {{ date('d M, Y', strtotime($item->start_date)) }} -
-                    {{ date('d M, Y', strtotime($item->end_date)) }}
-                </div>
-
-                <div class="md:hidden font-semibold text-gray-500">Place:</div>
-                <div class="text-sm xl:text-base text-gray-700 truncate">{{ $item?->city?->name }}, {{ $item?->country?->name }}</div>
-
-                <div class="md:hidden font-semibold text-gray-500">Action:</div>
-                <div class="text-xs xl:text-sm">
-                    <a href="{{ route('shows.inner', $item?->slug)}}"
-                        class="bg-[#315F72] text-white text-center uppercase transition-all duration-700 ease-in-out rounded-lg px-11 py-3">
-                        Details
-                    </a>
-                </div>
+            <!-- Pagination -->
+            <div class="flex justify-center items-center p-5 md:p-10 text-sm">
+                {{ $shows->links() }}
             </div>
-        @endforeach
-
-        <!-- Pagination -->
-        <div class="flex justify-center items-center p-5 md:p-10 text-sm">
-            {{ $shows->links() }}
-        </div>
+        @else
+            <p class="text-center my-10 text-red-600">No shows found !</p>
+        @endif
     </div>
 
 </div>

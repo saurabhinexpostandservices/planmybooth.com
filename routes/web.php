@@ -8,8 +8,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LeadsController;
 
-
-/**
+/*
  * //////////////////////////////////////////////////////////
  * ====================== Static Routes =====================
  * //////////////////////////////////////////////////////////
@@ -30,6 +29,7 @@ Route::get('/vendor-registration', function() {
 Route::get('/contact-us', function() {
     return view('contact-us');
 })->name('contact-us');
+Route::get('/location-we-serve', [PublicController::class, 'countryPage'])->name('location-we-serve');
 
 Route::get('/privacy-policy', function() {
     return view('privacy-policy');

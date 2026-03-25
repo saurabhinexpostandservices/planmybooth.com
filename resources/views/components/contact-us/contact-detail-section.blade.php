@@ -1,5 +1,6 @@
-<div class="w-full p-5 md:p-10 lg:p-14 flex flex-col gap-5 font-poppins ">
-    <h3 class="text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl font-serif font-semibold">
+<div>
+    <div class="w-full p-5 md:p-10 lg:p-14 flex flex-col gap-5 font-poppins ">
+    <h3 class="text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl font-[Poppins] font-semibold">
         For Quick Response, Please Call Us.
     </h3>
     <ul class="py-3 text-sm md:text-base xl:text-lg">
@@ -53,4 +54,5 @@
             </li>
         </ul>
     </div>
+</div>
 </div>
