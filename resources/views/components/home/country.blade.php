@@ -2,7 +2,7 @@
     <div class="px-[5%] py-10 md:py-20">
         <div>
             <h2
-                class="text-[#124E65] text-2xl md:text-3xl lg:text-4xl font-semibold text-center w-full md:w-[80%] mx-auto font-serif">
+                class="text-[#124E65] text-2xl md:text-3xl lg:text-4xl font-semibold text-center w-full md:w-[80%] mx-auto font-[Poppins]">
                 Choose a Country to <span class="bg-[#64CCC5] text-white px-2">Find Your Ideal Stand</span> Builder
             </h2>
             <p class="text-center text-base md:text-xl text-gray-700 py-5">
@@ -31,9 +31,9 @@
 
         <!-- Vendor Registration Button -->
         <div class="mx-auto text-center p-5 px-16">
-            <a href="{{ route('vendor-registration') }}"
+            <a href="{{ route('location-we-serve') }}"
                 class="bg-[#176B87] text-white rounded-lg px-8 py-3 font-semibold hover:bg-[#64CCC5] hover:text-black transition duration-500">
-                Vendor Registration
+                Explore More
             </a>
         </div>
     </div>

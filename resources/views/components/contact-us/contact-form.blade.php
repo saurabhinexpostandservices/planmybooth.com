@@ -21,7 +21,7 @@
 
     <!-- Section 1: Contact Details -->
     <div>
-        <h2 class="text-xl font-serif font-semibold mb-4 bg-[#64CCC5] p-2">Contact Details</h2>
+        <h2 class="text-xl font-[Poppins] font-semibold mb-4 bg-[#64CCC5] p-2">Contact Details</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
@@ -74,7 +74,7 @@
 
     <!-- Section 2: Event Details -->
     <div>
-        <h2 class="text-xl font-serif font-semibold mb-4 bg-[#64CCC5] p-2 mt-7">Tell us about your Event</h2>
+        <h2 class="text-xl font-[Poppins] font-semibold mb-4 bg-[#64CCC5] p-2 mt-7">Tell us about your Event</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <!-- Name of Event -->
@@ -245,7 +245,7 @@
 
     <!-- Section 3: Stand Details -->
     <div class="flex flex-col">
-        <h2 class="text-xl font-serif font-semibold mb-4 bg-[#64CCC5] p-2">Stand Details</h2>
+        <h2 class="text-xl font-[Poppins] font-semibold mb-4 bg-[#64CCC5] p-2">Stand Details</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <!-- Stand Size -->

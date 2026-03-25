@@ -234,7 +234,7 @@
 <div class="bg-[#124E65] py-5 md:py-10">
     <div class="form-container">
         <h2
-            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 w-full md:w-[90%] mx-auto font-serif">
+            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 w-full md:w-[90%] mx-auto font-[Poppins]">
             Your Stand Request</h2>
         @if (session('contact_message'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
@@ -323,9 +323,9 @@
                             <!-- Currency Dropdown -->
                             <select id="currency"
                                 class="px-3 py-2 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                                <option value="$">USD ($)</option>
+                                <option value="$" selected>USD ($)</option>
                                 <option value="€">EUR (€)</option>
-                                <option value="₹" selected>INR (₹)</option>
+                                
                             </select>
                         </div>
 

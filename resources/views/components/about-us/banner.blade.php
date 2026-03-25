@@ -1,6 +1,6 @@
    <section
        class="flex flex-col justify-center items-center gap-5 md:gap-10 min-h-[55rem] md:min-h-[45rem] text-center bg-[#176B87]/90 mt-[-100px] p-5 pt-20 md:p-10 font-poppins">
-       <h2 class="text-white text-center font-semibold text-2xl md:text-3xl lg:text-4xl font-serif md:w-[80%]">
+       <h2 class="text-white text-center font-semibold text-2xl md:text-3xl lg:text-4xl font-[Poppins] md:w-[80%]">
            Your Global Online Portal to Find the Best Exhibition Stand Builders, Supplier, Organizers
        </h2>
 
@@ -10,7 +10,7 @@
                    <img class="w-full" src="/assets/icons/chat1.gif" alt="chat" />
                </div>
                <div class="text-white flex flex-col gap-2">
-                   <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-serif">
+                   <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-[Poppins]">
                        Tell Us About Your Requirements
                    </h2>
                    <p>
@@ -25,7 +25,7 @@
                    <img class="w-full rounded-full" src="/assets/icons/connection.gif" alt="connection" />
                </div>
                <div class="text-white flex flex-col gap-2">
-                   <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-serif">
+                   <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-[Poppins]">
                        We Connect With the Right Service Provider
                    </h2>
                    <p>

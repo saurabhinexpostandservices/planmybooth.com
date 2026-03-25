@@ -22,10 +22,10 @@
                 <section
                     class="flex flex-col md:flex-row bg-white md:p-5 hover:scale-95 transition duration-500 ease-in-out">
                     <div class="relative px-5 md:px-0 flex justify-center items-center">
-                        <img class="w-[200px] h-[150px] md:w-[250px] md:h-[180px] object-contain"
+                        <img class="w-[200px] h-[150px] p-5 object-contain"
                             src="{{ $standbuilder?->logo }}" alt="{{ $standbuilder?->title }}" />
 
-                        <img class="w-1/3 mx-auto rounded-full absolute -right-8 top-2 rotate-[45] animate-bounce"
+                        <img class="w-1/3 mx-auto rounded-full absolute -left-8 top-2 rotate-[45]"
                             src="/assets/icons/gold.png" alt="gold" />
                     </div>
                     <div class="w-full px-5 flex flex-col gap-3 md:w-[70%]">

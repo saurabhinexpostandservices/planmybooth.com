@@ -10,9 +10,8 @@
     </x-slot>
     <x-slot name="markup_schema">{!! json_encode(json_decode($page?->markup_schema), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}}</x-slot>
 
-
-
     <x-country-inside-page.country-banner-section :page="$page" />
+    <x-home.multi-step-form />
     <x-country-inside-page.country-about-section :page="$page" />
     <x-country-inside-page.country-card-section :page="$page"  :standbuilders="$standbuilders" />
     <x-country-inside-page.country-detail-section :page="$page" />

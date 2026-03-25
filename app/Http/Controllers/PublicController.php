@@ -74,6 +74,28 @@ class PublicController extends Controller
         return view('home', compact('countries'));
     }
 
+   public function countryPage(Request $request)
+{
+    $countries = Page::where('status', 'published')
+        ->where('type', 'country')
+        ->select('slug', 'country_id', 'featured_image')
+        ->with(['country' => function ($query) {
+            $query->select('id', 'name')->orderBy('name');
+        }])
+        ->get()
+        ->sortBy(fn($page) => $page->country?->name)
+        ->values()
+        ->map(function ($page) {
+            return [
+                'slug' => $page->slug,
+                'country' => $page->country?->name,
+                'featured_image' => $page->featured_image
+            ];
+        });
+
+    return view('countryPage', compact('countries'));
+}
+
     public function country($slug)
     {
         /**

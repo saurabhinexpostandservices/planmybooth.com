@@ -3,7 +3,7 @@
     <!-- Desktop Navbar -->
 
     <!-- Bottom-Bar -->
-    <div class="bg-transparent transition-colors duration-300 text-white w-full p-2">
+    <div class="bg-[#145D76] transition-colors duration-300 text-white w-full p-2">
         <div class="flex items-center justify-between md:grid md:grid-cols-7">
             <!-- Logo -->
             <div class="flex items-center pl-5">
@@ -14,12 +14,16 @@
             </div>
 
             <!-- Main Website Links -->
-            <div class="hidden md:flex justify-center items-center col-span-5 ">
+            <div class="hidden md:flex justify-center items-center col-span-4 ">
                 <ul class="flex justify-center items-center gap-2 lg:gap-5 font-poppins">
                     <li class="text-[15px] hover:text-white font-semibold">
-                        <a href="/">Home</a>
+                        <a href="mailto:enquiry@planmybooth.com"
+                            class="flex gap-2 items-center justify-start pl-10 md:pl-5 xl:pl-16 hover:text-[#DAE7EB]">
+                            <i class="fas fa-envelope text-2xl"></i>
+                            <span>enquiry@planmybooth.com</span>
+                        </a>
                     </li>
-                    <li class="text-[15px] hover:text-white font-semibold">
+                    {{-- <li class="text-[15px] hover:text-white font-semibold">
                         <a href="{{ route('stand-builders') }}">Custom Exhibition Stand</a>
                     </li>
                     <li class="text-[15px] hover:text-white font-semibold">
@@ -27,14 +31,17 @@
                     </li>
                     <li class="text-[15px] hover:text-white font-semibold">
                         <a href="{{ route('blogs') }}">Blogs</a>
-                    </li>
+                    </li> --}}
                     <li class="text-[15px] hover:text-white font-semibold">
-                        <a href="{{ route('vendor-registration') }}">Vendor Registration</a>
+                        <a href={{ route('contact-us') }} id="create-account"
+                            class="bg-white font-semibold text-[#145D76] text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-2">
+                           Get A Free Quote
+                        </a>
                     </li>
                 </ul>
             </div>
 
-            <nav role="navigation" class="hidden md:flex items-center justify-center gap-5">
+            <nav role="navigation" class=" items-center justify-center gap-5 col-span-2">
                 <!-- Log In Button -->
                 <div class="flex justify-end items-center py-2 text-sm">
                     <a href="#">
@@ -58,14 +65,7 @@
                                 <!-- Dropdown Menu -->
                                 <div id="dropdownMenu"
                                     class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-50">
-                                    {{-- <a href="/home" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
-                            </svg>
-                            Home
-                        </a> --}}
+
                                     <a href="{{ route('profile.request') }}"
                                         class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
                                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2"
@@ -95,12 +95,22 @@
                                 </div>
                             </div>
                         @else
-                            <a href="{{ route('login') }}"
-                                class="bg-white font-semibold text-[#145D76] text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-3">
-                                Log In
-                            </a>
-                        @endif
+                            <div class="hidden md:flex justify-center items-center">
+                                <a href="https://account.planmybooth.com/auth/login"
+                                    class="bg-white font-semibold mr-2 text-[#145D76] text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-2">
+                                    Vendors
+                                </a>
 
+                                <a href={{ route('login') }} id="create-account"
+                                    class="bg-white font-semibold text-[#145D76] text-center uppercase transition-all duration-700 ease-in-out rounded-lg p-2">
+                                    Exhibitors
+                                </a>
+
+                            </div>
+                        @endif
+                        <a class="absolute right-15 md:relative md:right-0  md:mx-5 hover:scale-110 duration-500" rel="nofollow" href="https://api.whatsapp.com/send?phone=48790896679"><img
+                                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/whatsapp-white-icon.png"
+                                alt="whatsapp" width="32" height="32" decoding="async" loading="lazy"></a>
                     </a>
                 </div>
 
@@ -122,6 +132,7 @@
                 <!-- Profile Dropdown End -->
 
             </nav>
+
             <!-- Open Menu Button -->
             <button class="text-2xl top-4 right-4 z-50 text-white md:hidden px-5" onclick="openMobileMenu()"
                 aria-label="Open Mobile Menu">
@@ -179,7 +190,8 @@
                         <div class="relative">
                             <button onclick="toggleMobileDropdown()" id="mobileProfileButton"
                                 class="flex items-center gap-2 px-4 py-2 rounded-full bg-[#64CCC5] shadow text-white font-semibold w-full">
-                                <span class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#145D76] text-sm font-bold">
+                                <span
+                                    class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#145D76] text-sm font-bold">
                                     {{ strtoupper(Auth::user()->name[0]) }}
                                 </span>
                                 <span class="ml-2">{{ Auth::user()->name }}</span>

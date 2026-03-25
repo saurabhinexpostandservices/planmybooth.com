@@ -1,7 +1,7 @@
 <!-- FAQ Section -->
 <section class="bg-gray-50 py-16 px-4 font-poppins">
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-[#124E65] text-2xl md:text-3xl lg:text-4xl font-semibold text-center w-full md:w-[80%] mx-auto font-serif">
+    <h2 class="text-[#124E65] text-2xl md:text-3xl lg:text-4xl font-semibold text-center w-full md:w-[80%] mx-auto font-[Poppins]">
       Frequently Asked <span class="bg-[#64CCC5] text-white px-2">Questions</span>
     </h2>
 

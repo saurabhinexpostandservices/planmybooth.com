@@ -23,7 +23,7 @@
 
                         <!-- Content Section -->
                         <div class="p-4 w-full md:w-2/3">
-                            <h1 class="text-xl font-bold font-serif my-2">{{ $standbuilder->title }}</h1>
+                            <h1 class="text-xl font-bold font-[Poppins] my-2">{{ $standbuilder->title }}</h1>
                             <span class="text-xs p-1 text-white bg-[#AE2333] rounded-2xl px-2">Founded :
                                 {{ $standbuilder?->founded_year }}</span>
                             <p class="text-sm text-gray-600 my-5"><i class="fa fa-map-marker text-[#AE2333]"
@@ -52,7 +52,7 @@
 
                     <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>
                         <h3
-                            class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-serif font-semibold">
+                            class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-[Poppins] font-semibold">
                             Description</h3>
                         <div>
                             {!! $standbuilder->description !!}
@@ -61,7 +61,7 @@
 
                     <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>
                         <h3
-                            class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-serif font-semibold">
+                            class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-[Poppins] font-semibold">
                             SERVICES</h3>
                         <div>
                             <ul class="grid grid-cols-2 gap-5">
@@ -83,7 +83,7 @@
 
                                 @if (!empty($galleryImages) && is_array($galleryImages))
                                      <h3
-                                        class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-serif font-semibold">
+                                        class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-[Poppins] font-semibold">
                                         Portfolio
                                     </h3>
                                     <div>
@@ -99,7 +99,7 @@
                         <div class='flex flex-col gap-3 lg:px-10 bg-white p-5'>  
                             @if(!empty($standbuilder->video))
                             <h3
-                                class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-serif font-semibold">
+                                class="text-[#2E627D] text-xl md:text-2xl lg:text-3xl xl:text-4xl border-b-4 pb-2 font-[Poppins] font-semibold">
                                 Video
                             </h3>
                             <div class="w-full flex justify-center">

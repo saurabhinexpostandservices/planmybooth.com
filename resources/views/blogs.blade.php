@@ -9,7 +9,7 @@
         {{-- heading-section --}}
         <section
             class="flex flex-col justify-center items-center gap-5 md:gap-10 min-h-[30rem] md:min-h-[40rem] text-center bg-[#176B87]/90 mt-[-100px] p-5">
-            <h2 class="text-white font-serif font-bold text-2xl md:text-3xl lg:text-4xl">
+            <h2 class="text-white font-[Poppins] font-bold text-2xl md:text-3xl lg:text-4xl">
                 Blog Section
             </h2>
             <p class="text-lg md:text-xl text-white">

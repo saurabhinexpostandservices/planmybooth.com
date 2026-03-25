@@ -7,7 +7,7 @@
     <div
         class="bg-gradient-to-b from-[#176B87] to-[#176B87]/70 [transition:background_0.3s,_border-radius_0.3s,_opacity_0.3s] min-h-[55rem] md:min-h-[45rem] mt-[-100px] flex flex-col gap-5 p-5 md:p-10 justify-center items-center font-poppins">
         <h2
-            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl py-10 text-center md:w-[90%] mx-auto font-semibold font-serif text-white">
+            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl py-10 text-center md:w-[90%] mx-auto font-semibold font-[Poppins] text-white">
             Plan My Booth: General Terms and Conditions & Privacy Policy
         </h2>
 
@@ -17,7 +17,7 @@
                    <img class="w-full" src="/assets/icons/chat1.gif" alt="chat" />
                </div>
                <div class="text-white flex flex-col gap-2">
-                   <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-serif">
+                   <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-[Poppins]">
                        Tell Us About Your Requirements
                    </h2>
                    <p>
@@ -32,7 +32,7 @@
                    <img class="w-full rounded-full" src="/assets/icons/connection.gif" alt="connection" />
                </div>
                <div class="text-white flex flex-col gap-2">
-                   <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-serif">
+                   <h2 class="text-lg md:text-xl lg:text-2xl font-semibold font-[Poppins]">
                        We Connect With the Right Service Provider
                    </h2>
                    <p>
@@ -57,7 +57,7 @@
         <p class="text-[#124E65]">Effective Date: 20-Mar-2025</p>
 
         <div class="flex flex-col pb-5">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Introduction</h3>
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Introduction</h3>
             <p>
                 Plan My Booth ("Company") welcomes you. We at Plan My Booth ("Company") is dedicated to safeguarding
                 your
@@ -72,7 +72,7 @@
         </div>
 
         <div class="flex flex-col pb-5">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Object and Scope
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Object and Scope
             </h3>
 
             <p>
@@ -106,7 +106,7 @@
         </div>
 
         <div class="flex flex-col pb-5">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Intellectual and
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Intellectual and
                 Industrial Property Rights</h3>
             <p>
                 Plan My Booth holds the intellectual and industrial property rights over the Group’s Domains and their
@@ -123,7 +123,7 @@
         </div>
 
         <div class="flex flex-col pb-5">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Access,
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Access,
                 Registration,
                 and User Responsibilities</h3>
             <ul class="list-disc ml-8 flex flex-col gap-2">
@@ -155,7 +155,7 @@
         </div>
 
         <div class="flex flex-col pb-5">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Communications and
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Communications and
                 User-Provided Information</h3>
             <p>By submitting information through Group Domains, users are affirming that-</p>
             <ul class="list-disc ml-8 flex flex-col gap-2">
@@ -172,7 +172,7 @@
         </div>
 
         <div class="flex flex-col gap-5 pb-5">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl pt-5 font-semibold font-serif">Warranties and
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl pt-5 font-semibold font-[Poppins]">Warranties and
                 Liability</h3>
             <p>Plan My Booth does not guarantee the accuracy, reliability, or legality of content or services provided
                 through the Group’s Domains. Specifically, Plan My Booth is not responsible for:
@@ -205,7 +205,7 @@
         </div>
 
         <div class="flex flex-col pb-5 gap-2">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">External Links and
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">External Links and
                 Third-Party Services</h3>
             <ul class="list-disc ml-8 flex flex-col gap-2">
                 <li>
@@ -231,11 +231,11 @@
             </p>
         </div>
 
-        <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl py-10 font-semibold font-serif text-[#124E65]">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl py-10 font-semibold font-[Poppins] text-[#124E65]">
             Data Collection and Privacy Policy</h2>
 
         <div class="flex flex-col">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl pb-5 font-semibold font-serif">Collection and Use
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl pb-5 font-semibold font-[Poppins]">Collection and Use
                 of
                 Personal Data</h3>
             <p>
@@ -262,7 +262,7 @@
         </div>
 
         <div class="flex flex-col">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">User Information
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">User Information
                 Protection</h3>
             <p>We implement industry-standard security measures to protect your data. However, no system is entirely
                 secure,
@@ -278,7 +278,7 @@
 
         <div class="flex flex-col">
 
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Website Navigation
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Website Navigation
                 Data
             </h3>
             <p>Plan My Booth collects anonymous usage data to improve website functionality. This anonymous usage data
@@ -293,7 +293,7 @@
         </div>
 
         <div class="flex flex-col">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Cookies</h3>
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Cookies</h3>
             <p>Our websites use cookies to enhance user experience and track preferences, such as:</p>
             <ul class="list-disc ml-8 flex flex-col gap-2 pb-5">
                 <li>Last visit date and time.</li>
@@ -303,7 +303,7 @@
             <p>Users can disable cookies in browser settings, but this may affect website functionality.</p>
         </div>
         <div class="flex flex-col">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">User Rights</h3>
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">User Rights</h3>
             <p>Users have the right to:</p>
             <ul class="list-disc ml-8 flex flex-col gap-2 pb-5">
                 <li><b>Access</b> their personal data.</li>
@@ -319,7 +319,7 @@
         </div>
 
         <div class="flex flex-col">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Modifications and
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Modifications and
                 Duration</h3>
             <p>
                 Plan My Booth reserves the right to modify these General Conditions at any time by publishing updates on
@@ -334,7 +334,7 @@
         </div>
 
         <div class="flex flex-col">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Governing Law and
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Governing Law and
                 Jurisdiction</h3>
             <p>
                 These General Conditions are governed by applicable Indian law. Any disputes arising from the
@@ -344,7 +344,7 @@
         </div>
 
         <div class="flex flex-col">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Contact Information
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Contact Information
             </h3>
             <p>For any questions or concerns regarding these terms, please reach out to us:</p>
             <ul class="list-disc ml-8 flex flex-col gap-2 pb-5">
@@ -355,7 +355,7 @@
         </div>
 
         <div class="flex flex-col">
-            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-serif">Final Notes</h3>
+            <h3 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl py-5 font-semibold font-[Poppins]">Final Notes</h3>
             <p>This agreement guarantees openness about your privacy, rights, and obligations when utilising Plan My
                 Booth's
                 services. You attest that you agree to these conditions by using our websites going forward

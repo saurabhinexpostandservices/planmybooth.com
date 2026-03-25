@@ -1,6 +1,6 @@
 <div class="relative bg-white font-poppins py-10 md:py-20">
 
-    <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-[90%] mx-auto font-serif">
+    <h2 class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 my-10 md:mb-16 w-[90%] mx-auto font-[Poppins]">
         Top Exhibition Stand Builder & 
         <span class="bg-[#64CCC5] text-white px-2">
             Exhibition Stand Contractors
@@ -11,7 +11,7 @@
 
         <!-- Left Content -->
         <div class="space-y-6 text-gray-700">
-            <h2 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl font-semibold font-serif">
+            <h2 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl font-semibold font-[Poppins]">
                About Us</h2>
 
             <p>

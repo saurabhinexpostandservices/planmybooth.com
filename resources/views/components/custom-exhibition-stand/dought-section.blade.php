@@ -4,7 +4,7 @@
         class="flex flex-col py-10 justify-center items-center min-h-[25rem] text-justify relative bg-[#DAFFFB] transition-all">
         <section class="p-5 flex flex-col gap-5 w-full md:w-[90%]">
             <h3
-                class="text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-serif  ">
+                class="text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-[Poppins]  ">
                 What Is A Custom Exhibition Stand Design?
             </h3>
             <div>
@@ -25,7 +25,7 @@
         </section>
 
         <section class="p-5 pt-10 flex flex-col gap-5 w-full md:w-[80%]">
-            <h3 class="text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-serif ">
+            <h3 class="text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-[Poppins] ">
                 Why Should You Choose Custom Built Exhibition Stands?
             </h3>
             <p class=" text-center text-gray-900 ">
@@ -65,7 +65,7 @@
 
         <section class="p-5 md:py-10 flex flex-col gap-5 w-full md:w-[90%]">
             <h3
-                class="md:w-[90%] mx-auto text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-serif ">
+                class="md:w-[90%] mx-auto text-[#124E65] text-xl md:text-2xl lg:text-3xl xl:text-4xl text-center font-semibold font-[Poppins] ">
                 How To Choose The Right Custom Exhibition Stand Builder In Your Area?
             </h3>
             <p class="text-gray-900 ">

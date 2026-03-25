@@ -1,7 +1,7 @@
 <div class="relative bg-bottom bg-no-repeat bg-fixed font-poppins bg-white" {{-- style="background-image: url('{{ asset('assets/bg/city_bg.webp') }}');" --}}>
     <div class="grid grid-cols-1 md:grid-cols-2 md:p-10">
         <div class="flex flex-col p-5 ">
-            <h2 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl md:py-5 font-semibold font-serif text-center">
+            <h2 class="text-[#124E65] text-xl md:text-3xl lg:text-4xl md:py-5 font-semibold font-[Poppins] text-center">
                 Why Choose <span class="bg-[#64CCC5] text-white px-2">Plan My Booth?</span></h2>
             <p
                 class="text-justify p-5 md:p-0 pb-10 text-gray-700 md:bg-transparent bg-white">
@@ -14,7 +14,7 @@
             </p>
         </div>
         <div class="flex justify-center items-center ">
-            <img class="p-5" src="{{ asset('assets/booths/vid.gif') }}" alt="why-choose-us" width="600"
+            <img class="p-5" src="{{ asset('assets/booths/booth-building.gif') }}" alt="why-choose-us" width="600"
                 height="500">
         </div>
     </div>
