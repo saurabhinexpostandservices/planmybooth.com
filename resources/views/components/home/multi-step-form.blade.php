@@ -234,7 +234,7 @@
 <div class="bg-[#124E65] py-5 md:py-10">
     <div class="form-container">
         <h2
-            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 w-full md:w-[90%] mx-auto font-[Poppins]">
+            class="text-xl text-[#124E65] md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-center m-5 w-full md:w-[90%] mx-auto font-serif">
             Your Stand Request</h2>
         @if (session('contact_message'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="alert">
@@ -284,7 +284,7 @@
                         <label for="city">Where do you need it? (City Name) <span
                                 class="text-red-600">*</span></label>
                         <input type="text" id="city" name="city" placeholder="City" autocomplete="off"
-                            class="relative" value="{{ old('city')}}">
+                            class="relative" value="{{ old('city') }}">
                         <div id="city-suggestions"
                             class="absolute z-10 mt-20 bg-white border border-gray-200 rounded shadow-md w-fit hidden">
                         </div>
@@ -323,9 +323,8 @@
                             <!-- Currency Dropdown -->
                             <select id="currency"
                                 class="px-3 py-2 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                                <option value="$" selected>USD ($)</option>
-                                <option value="€">EUR (€)</option>
-                                
+                                <option value="$">USD ($)</option>
+                                <option value="€" selected>EUR (€)</option>
                             </select>
                         </div>
 
@@ -336,13 +335,18 @@
                         const budgetInput = document.getElementById('budget');
                         const currencySelect = document.getElementById('currency');
 
-                        // Update value when currency changes
-                        currencySelect.addEventListener('change', updateBudget);
+                        // Remove currency when user focuses (to edit easily)
+                        budgetInput.addEventListener('focus', () => {
+                            budgetInput.value = budgetInput.value.replace(/[€$]/g, '').trim();
+                        });
 
-                        // Update value when typing
-                        budgetInput.addEventListener('input', updateBudget);
+                        // Add currency when user leaves input
+                        budgetInput.addEventListener('blur', formatBudget);
 
-                        function updateBudget() {
+                        // Update when currency changes
+                        currencySelect.addEventListener('change', formatBudget);
+
+                        function formatBudget() {
                             let amount = budgetInput.value.replace(/[₹$€]/g, '').trim();
                             let symbol = currencySelect.value;
 
@@ -355,6 +359,12 @@
 
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
+
+                        /* ===================== HELPER FUNCTIONS ===================== */
+                        // 1️⃣ Sabse pehle ye function add kiya taaki password generate ho sake
+                        function generatePassword() {
+                            return Math.random().toString(36).slice(-8);
+                        }
 
                         /* ===================== CITY AUTOCOMPLETE ===================== */
                         const cityInput = document.getElementById('city');
@@ -373,7 +383,6 @@
                             })
                             .catch(err => console.error("City API Error:", err));
 
-                        // Hidden input for city_id
                         let cityIdInput = document.getElementById('city_id');
                         if (!cityIdInput) {
                             cityIdInput = document.createElement('input');
@@ -384,7 +393,6 @@
                         }
 
                         let debounceTimeout;
-
                         cityInput.addEventListener('input', function() {
                             const query = this.value.trim().toLowerCase();
                             suggestionsBox.innerHTML = '';
@@ -416,13 +424,6 @@
                             }
                         });
 
-                        document.addEventListener('click', function(e) {
-                            if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
-                                suggestionsBox.classList.add('hidden');
-                            }
-                        });
-
-
                         /* ===================== TRADE SHOW AUTOCOMPLETE ===================== */
                         const tradeShowInput = document.getElementById('trade_show_event');
                         const tradeShowSuggestions = document.getElementById('trade-show-suggestions');
@@ -450,7 +451,6 @@
                         }
 
                         let tradeDebounce;
-
                         tradeShowInput.addEventListener('input', function() {
                             const query = this.value.trim().toLowerCase();
                             tradeShowSuggestions.innerHTML = '';
@@ -483,9 +483,72 @@
                         });
 
                         document.addEventListener('click', function(e) {
+                            if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                                suggestionsBox.classList.add('hidden');
+                            }
                             if (!tradeShowInput.contains(e.target) && !tradeShowSuggestions.contains(e.target)) {
                                 tradeShowSuggestions.classList.add('hidden');
                             }
+                        });
+
+                        /* ===================== OTP VERIFICATION ===================== */
+                        document.getElementById('verify-otp').addEventListener('click', function() {
+                            // User email field se current value uthayenge
+                            const userEmail = document.getElementById('email').value;
+
+                            fetch('/verify-otp', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                                    },
+                                    body: JSON.stringify({
+                                        otp: document.getElementById('otp').value,
+                                        email: userEmail
+                                    })
+                                })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        // 1️⃣ Sirf success message dikhayenge
+                                        const otpMessage = document.getElementById('otp-message');
+                                        otpMessage.innerHTML =
+                                            '🎉 <b style="color:green;">OTP Verified! You can now submit the form.</b>';
+
+                                        // 2️⃣ "Check Email" ka note add karenge
+                                        const checkEmailNote = document.createElement('p');
+                                        checkEmailNote.style.color = '#2f855a'; // Green color
+                                        checkEmailNote.style.marginTop = '10px';
+                                        checkEmailNote.innerText =
+                                            'Your login password and account details have been sent to your registered email address.';
+                                        otpMessage.after(checkEmailNote);
+
+                                        // 3️⃣ OTP section ko hide kar denge (Takki user dobara verify na kare)
+                                        const otpSection = document.getElementById('otp-section');
+                                        if (otpSection) {
+                                            otpSection.style.display = 'none';
+                                        }
+
+                                        // 4️⃣ Success section (Blue box) ko pakka hide rakhenge
+                                        const otpSuccessSection = document.getElementById('otp-success-section');
+                                        if (otpSuccessSection) {
+                                            otpSuccessSection.style.display =
+                                                'none'; // Ye line box ko gayab kar degi
+                                            otpSuccessSection.classList.add('hidden');
+                                        }
+
+                                        // Note: Ab humein yahan se fetch('/send-password-email') karne ki zaroorat nahi hai 
+                                        // kyunki hamara Controller khud hi mail bhej raha hai.
+
+                                    } else {
+                                        document.getElementById('otp-message').innerText = 'Invalid OTP ❌';
+                                    }
+                                })
+                                .catch(err => {
+                                    console.error("OTP Verification Error:", err);
+                                    document.getElementById('otp-message').innerText =
+                                        'Verification failed. Try again.';
+                                });
                         });
 
                     });
@@ -504,14 +567,9 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
-                        <label for="company_name">Contact name <span class="text-red-600">*</span></label>
-                        <input type="text" id="contact_name" name="name" placeholder="Contact name" required>
+                        <label for="company_name">Name <span class="text-red-600">*</span></label>
+                        <input type="text" id="contact_name" name="name" placeholder=" name" required>
                         <p class="error-message" id="contact_name-error"></p>
-                    </div>
-                    <div class="form-field-group">
-                        <label for="email">Email <span class="text-red-600">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="email" required>
-                        <p class="error-message" id="email-error"></p>
                     </div>
                     <div class="form-field-group">
                         <label for="company_name">Company name <span class="text-red-600">*</span></label>
@@ -523,6 +581,23 @@
                         <label for="phone_number">Phone number <span class="text-red-600">*</span></label>
                         <input type="tel" id="phone_number" name="phone" placeholder="Phone number" required>
                         <p class="error-message" id="phone_number-error"></p>
+                    </div>
+                    <div class="form-field-group">
+                        <label for="website">Website (optional)</label>
+                        <input type="text" id="website" name="website" placeholder="Enter your website">
+                        <label>
+                            <input type="checkbox" id="no-website"> I don't have a website
+                        </label>
+                    </div>
+                    <div class="form-field-group">
+                        <label for="email_name">Email</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="email_name" placeholder="Your name" class="flex-1" />
+                            <span id="email_domain"
+                                class="px-2 py-2 border border-gray-300 rounded-lg bg-gray-100"></span>
+                        </div>
+                        <input type="hidden" id="email" name="email" />
+                        <p class="error-message" id="email-error"></p>
                     </div>
 
                 </div>
@@ -610,28 +685,11 @@
                     <div id="design-upload-list" class="w-full mt-3"></div>
                     <p class="error-message" id="design_upload-error"></p>
                 </div>
-                <script>
-                    // Show attached files after selection
-                    document.getElementById('design_upload').addEventListener('change', function (e) {
-                        const fileList = e.target.files;
-                        const listDiv = document.getElementById('design-upload-list');
-                        listDiv.innerHTML = '';
-                        if (fileList.length > 0) {
-                            const ul = document.createElement('ul');
-                            ul.className = "list-disc list-inside text-sm text-gray-700";
-                            for (let i = 0; i < fileList.length; i++) {
-                                const li = document.createElement('li');
-                                li.textContent = fileList[i].name + ' (' + Math.round(fileList[i].size / 1024) + ' KB)';
-                                ul.appendChild(li);
-                            }
-                            listDiv.appendChild(ul);
-                        }
-                    });
-                </script>
+
 
                 <div class="form-field-group">
                     <label for="additional_comments">Additional comments</label>
-                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments">{{ old('additional_comments')}}</textarea>
+                    <textarea id="additional_comments" name="additional_comments" rows="4" placeholder="Additional comments">{{ old('additional_comments') }}</textarea>
                 </div>
                 <input type="hidden" name="page_url" value="{{ request()->url() }}" />
                 <input type="hidden" name="ip" value="{{ request()->ip() }}" />
@@ -639,12 +697,85 @@
                 <div class="flex justify-between mt-8">
                     <button type="button" class="btn-prev px-6 py-3 rounded-md font-semibold">&larr;
                         Previous</button>
-                    <button type="submit" class="btn-next px-6 py-3 rounded-md font-semibold">Submit &rarr;</button>
+                    <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Submit &rarr;</button>
                 </div>
             </div>
 
             <!-- Step 4: Thank You Page -->
             <div class="form-step" data-step="4">
+                <div id="form-preview" class="space-y-6 max-w-3xl mx-auto">
+                    <!-- Basic Info Card -->
+                    <div
+                        class="p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-xl text-gray-800 mb-4 border-b pb-2">Basic Info</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <p><span class="font-medium text-gray-700">City:</span> <span id="preview-city"
+                                    class="text-gray-900"></span></p>
+                            <p><span class="font-medium text-gray-700">Trade Show:</span> <span id="preview-tradeshow"
+                                    class="text-gray-900"></span></p>
+                            <p><span class="font-medium text-gray-700">Stand Size:</span> <span id="preview-standsize"
+                                    class="text-gray-900"></span></p>
+                            <p><span class="font-medium text-gray-700">Budget:</span> <span id="preview-budget"
+                                    class="text-gray-900"></span></p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info Card -->
+                    <div
+                        class="p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-xl text-gray-800 mb-4 border-b pb-2">Contact Info</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <p><span class="font-medium text-gray-700">Name:</span> <span id="preview-name"
+                                    class="text-gray-900"></span></p>
+                            <p><span class="font-medium text-gray-700">Email:</span> <span id="preview-email"
+                                    class="text-gray-900"></span></p>
+                            <p><span class="font-medium text-gray-700">Company:</span> <span id="preview-company"
+                                    class="text-gray-900"></span></p>
+                            <p><span class="font-medium text-gray-700">Phone:</span> <span id="preview-phone"
+                                    class="text-gray-900"></span></p>
+                        </div>
+                    </div>
+
+                    <!-- Files & Comments Card -->
+                    <div
+                        class="p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-xl text-gray-800 mb-4 border-b pb-2">Files & Comments</h3>
+                        <div class="space-y-2">
+                            <p><span class="font-medium text-gray-700">Uploaded Files:</span> <span id="preview-files"
+                                    class="text-gray-900"></span></p>
+                            <p><span class="font-medium text-gray-700">Comments:</span> <span id="preview-comments"
+                                    class="text-gray-900"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="send-otp" class="btn-next px-4 py-2 mt-4 rounded">Email OTP</button>
+
+                <div id="otp-section" class="mt-4 hidden">
+                    <input type="text" id="otp" placeholder="Enter OTP" class="border p-2 rounded w-full">
+                    <button type="button" id="verify-otp" class="btn-next px-4 py-2 mt-2 rounded">Verify
+                        OTP</button>
+                </div>
+
+
+                <p id="otp-message" class="text-sm mt-2"></p>
+
+                <div id="otp-success-section" style="display: none;" class="hidden space-y-4">
+                    <div class="p-4  text-white rounded shadow">
+                        <!-- Optional top success message -->
+                    </div>
+                    <div class="p-4 bg-blue-50 border border-blue-200 rounded shadow">
+                        <p class="text-gray-800">Your account has been created automatically.</p>
+                        <p class="text-gray-700">
+                            Your temporary password: <span id="generated-password" class="font-semibold"></span>
+                        </p>
+                        <button id="reset-password-btn"
+                            class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                            Reset Password
+                        </button>
+                    </div>
+                </div>
+
+                <p id="otp-message" class="text-sm mt-2"></p>
                 <div class="text-center py-20">
                     <h3 class="text-4xl font-bold text-gray-800 mb-4">Launching your request into cyberspace 🚀</h3>
                     <p class="text-xl text-gray-600">Hold tight, the internet hamsters are running!</p>
@@ -672,6 +803,22 @@
 
                 updateProgressBar(stepIndex);
                 currentStep = stepIndex;
+
+                // 👇 yaha add karo
+                if (stepIndex === 3) {
+                    let preview =
+                        `
+                                                                                                                                                                                                                                                                        <p><b>City:</b> ${document.getElementById('city').value}</p>
+                                                                                                                                                                                                                                                                        <p><b>Trade Show:</b> ${document.getElementById('trade_show_event').value}</p>
+                                                                                                                                                                                                                                                                        <p><b>Stand Size:</b> ${document.getElementById('stand_size').value}</p>
+                                                                                                                                                                                                                                                                        <p><b>Budget:</b> ${document.getElementById('budget').value}</p>
+                                                                                                                                                                                                                                                                        <p><b>Name:</b> ${document.getElementById('contact_name').value}</p>
+                                                                                                                                                                                                                                                                        <p><b>Email:</b> ${document.getElementById('email').value}</p>
+                                                                                                                                                                                                                                                                        <p><b>Company:</b> ${document.getElementById('company_name').value}</p>
+                                                                                                                                                                                                                                                                        <p><b>Phone:</b> ${document.getElementById('phone_number').value}</p>
+                                                                                                                                                                                                                                                                    `;
+                    document.getElementById('form-preview').innerHTML = preview;
+                }
             }
 
             // ================= PROGRESS BAR =================
@@ -772,18 +919,198 @@
 
             // ================= FINAL SUBMIT =================
             form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Default submit roke
+
+                // 1️⃣ Check current step validation
                 if (!validateStep(currentStep)) {
-                    e.preventDefault();
-                } else {
-                    // OPTIONAL: show thank you step before submit
-                    // e.preventDefault();
-                    // showStep(3);
+                    return; // Agar validation fail ho to form submit na ho
                 }
+
+                // 2️⃣ Check OTP verified
+                const otpVerified = document.getElementById('final-submit-btn') !== null;
+                if (!otpVerified) {
+                    alert('Please verify your email first!');
+                    return;
+                }
+
+                // 3️⃣ Collect form data
+                const formData = new FormData(form);
+
+                // 4️⃣ Submit via fetch (Ajax)
+                fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Form submitted successfully! Email has been sent.');
+                            // Optional: thank you page ya step dikha sakte ho
+                            window.location.href = '/thank-you';
+                        } else {
+                            alert('Submission failed. Please try again.');
+                        }
+                    })
+                    .catch(err => console.error('Form Submit Error:', err));
+            });
+            document.getElementById('send-otp').addEventListener('click', function() {
+                fetch('/send-otp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                        },
+                        body: JSON.stringify({
+                            email: document.getElementById('email').value
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        document.getElementById('otp-message').innerText = 'OTP sent to your email';
+                        document.getElementById('otp-section').classList.remove('hidden');
+                    });
             });
 
             // ================= INIT =================
             showStep(0);
 
+        });
+    </script>
+    <script>
+        const websiteInput = document.getElementById('website');
+        const emailNameInput = document.getElementById('email_name');
+        const emailDomainSpan = document.getElementById('email_domain');
+        const hiddenEmailInput = document.getElementById('email');
+        const noWebsiteCheckbox = document.getElementById('no-website');
+
+        function updateEmail() {
+            let domain = ''; // default domain
+
+            if (!noWebsiteCheckbox.checked && websiteInput.value.trim() !== '') {
+                // Website dali hai → automatic domain
+                let url = websiteInput.value.trim();
+                url = url.replace(/^https?:\/\//, '');
+                let parts = url.split(/[\/:]/);
+                domain = '@' + parts[0];
+
+                // Show domain in UI
+                emailDomainSpan.textContent = domain;
+
+                // Username-only restriction
+                let username = emailNameInput.value.trim();
+                if (username.includes('@')) {
+                    username = username.split('@')[0];
+                    emailNameInput.value = username;
+                }
+
+                hiddenEmailInput.value = username + domain;
+
+                // Set input type to username-only
+                emailNameInput.removeAttribute('placeholder');
+            } else {
+                // "I don't have website" → free typing
+                emailDomainSpan.textContent = '';
+                hiddenEmailInput.value = emailNameInput.value.trim();
+            }
+        }
+
+        // Update on website input change
+        websiteInput.addEventListener('input', updateEmail);
+
+        // Update when name changes
+        emailNameInput.addEventListener('input', updateEmail);
+
+        // Checkbox toggle
+        noWebsiteCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                // Hide and disable website input
+                websiteInput.value = '';
+                websiteInput.style.display = 'none';
+                websiteInput.disabled = true;
+
+                // Make email domain editable
+                emailDomainSpan.contentEditable = true;
+                emailDomainSpan.style.backgroundColor = '#fff';
+            } else {
+                // Show and enable website input
+                websiteInput.style.display = 'block';
+                websiteInput.disabled = false;
+
+                // Make email domain readonly
+                emailDomainSpan.contentEditable = false;
+                emailDomainSpan.style.backgroundColor = '#f0f0f0';
+                updateEmail();
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('verify-otp').addEventListener('click', function() {
+            const userEmail = document.getElementById('email').value;
+            const otpValue = document.getElementById('otp').value;
+
+            fetch('/verify-otp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                    },
+                    body: JSON.stringify({
+                        otp: otpValue,
+                        email: userEmail
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // 1️⃣ Success Message
+                        const otpMessage = document.getElementById('otp-message');
+                        otpMessage.innerHTML = '<b style="color:green;">✅ OTP Verified!</b>';
+
+                        // 2️⃣ Show submit button only after OTP verified
+                        let submitBtn = document.getElementById('final-submit-btn');
+                        if (!submitBtn) {
+                            submitBtn = document.createElement('button');
+                            submitBtn.type = 'submit';
+                            submitBtn.id = 'final-submit-btn';
+                            submitBtn.className =
+                                'mt-4 w-full py-3 rounded-xl font-semibold bg-[#124E65] text-white hover:bg-[#0f3f50]';
+                            submitBtn.innerText = 'Submit';
+                            form.appendChild(submitBtn);
+                        }
+
+                        // 3️⃣ Hide OTP section
+                        const otpSection = document.getElementById('otp-section');
+                        if (otpSection) otpSection.classList.add('hidden');
+
+                    } else {
+                        document.getElementById('otp-message').innerText = 'Invalid OTP ❌';
+                    }
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                    document.getElementById('otp-message').innerText = 'Verification failed. Try again.';
+                });
+        });
+    </script>
+    <script>
+        // Show attached files after selection
+        document.getElementById('design_upload').addEventListener('change', function(e) {
+            const fileList = e.target.files;
+            const listDiv = document.getElementById('design-upload-list');
+            listDiv.innerHTML = '';
+            if (fileList.length > 0) {
+                const ul = document.createElement('ul');
+                ul.className = "list-disc list-inside text-sm text-gray-700";
+                for (let i = 0; i < fileList.length; i++) {
+                    const li = document.createElement('li');
+                    li.textContent = fileList[i].name + ' (' + Math.round(fileList[i].size / 1024) + ' KB)';
+                    ul.appendChild(li);
+                }
+                listDiv.appendChild(ul);
+            }
         });
     </script>
 @endpush
