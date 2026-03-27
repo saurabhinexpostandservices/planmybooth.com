@@ -78,6 +78,7 @@ Route::post('/send-otp', [App\Http\Controllers\OtpController::class, 'sendOtp'])
 Route::post('/verify-otp', [App\Http\Controllers\OtpController::class, 'verifyOtp']);
 Route::post('/send-password-email', [App\Http\Controllers\OtpController::class, 'sendPasswordEmail']);
 Route::post('/reset-password', [App\Http\Controllers\OtpController::class, 'resetPassword']);
+Route::post('/submit-form', [App\Http\Controllers\OtpController::class, 'submitForm']);
 
 
 /**

@@ -283,7 +283,7 @@
                     <div class="form-field-group">
                         <label for="city">Where do you need it? (City Name) <span class="text-red-600">*</span></label>
                         <input type="text" id="city" name="city" placeholder="City" autocomplete="off" class="relative"
-                            value="{{ old('city')}}">
+                            value="{{ old('city') }}">
                         <div id="city-suggestions"
                             class="absolute z-10 mt-20 bg-white border border-gray-200 rounded shadow-md w-fit hidden">
                         </div>
@@ -323,8 +323,7 @@
                             <select id="currency"
                                 class="px-3 py-2 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                                 <option value="$">USD ($)</option>
-                                <option value="€">EUR (€)</option>
-                                <option value="₹" selected>INR (₹)</option>
+                                <option value="€" selected>EUR (€)</option>
                             </select>
                         </div>
 
@@ -335,13 +334,18 @@
                         const budgetInput = document.getElementById('budget');
                         const currencySelect = document.getElementById('currency');
 
-                        // Update value when currency changes
-                        currencySelect.addEventListener('change', updateBudget);
+                        // Remove currency when user focuses (to edit easily)
+                        budgetInput.addEventListener('focus', () => {
+                            budgetInput.value = budgetInput.value.replace(/[€$]/g, '').trim();
+                        });
 
-                        // Update value when typing
-                        budgetInput.addEventListener('input', updateBudget);
+                        // Add currency when user leaves input
+                        budgetInput.addEventListener('blur', formatBudget);
 
-                        function updateBudget() {
+                        // Update when currency changes
+                        currencySelect.addEventListener('change', formatBudget);
+
+                        function formatBudget() {
                             let amount = budgetInput.value.replace(/[₹$€]/g, '').trim();
                             let symbol = currencySelect.value;
 
@@ -352,198 +356,7 @@
                     </script>
                 </div>
 
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
 
-                        /* ===================== HELPER FUNCTIONS ===================== */
-                        // 1️⃣ Sabse pehle ye function add kiya taaki password generate ho sake
-                        function generatePassword() {
-                            return Math.random().toString(36).slice(-8);
-                        }
-
-                        /* ===================== CITY AUTOCOMPLETE ===================== */
-                        const cityInput = document.getElementById('city');
-                        const suggestionsBox = document.getElementById('city-suggestions');
-
-                        let cities_form = [];
-                        let cities_map = {};
-
-                        fetch("{{ route('api.get-cities') }}")
-                            .then(res => res.json())
-                            .then(data => {
-                                cities_form = data.map(city => city.name);
-                                data.forEach(city => {
-                                    cities_map[city.name] = city.id;
-                                });
-                            })
-                            .catch(err => console.error("City API Error:", err));
-
-                        let cityIdInput = document.getElementById('city_id');
-                        if (!cityIdInput) {
-                            cityIdInput = document.createElement('input');
-                            cityIdInput.type = 'hidden';
-                            cityIdInput.id = 'city_id';
-                            cityIdInput.name = 'city_id';
-                            cityInput.parentNode.appendChild(cityIdInput);
-                        }
-
-                        let debounceTimeout;
-                        cityInput.addEventListener('input', function () {
-                            const query = this.value.trim().toLowerCase();
-                            suggestionsBox.innerHTML = '';
-                            suggestionsBox.classList.add('hidden');
-
-                            clearTimeout(debounceTimeout);
-                            if (query.length < 2) return;
-
-                            debounceTimeout = setTimeout(() => {
-                                const filtered = cities_form
-                                    .filter(city => city.toLowerCase().includes(query))
-                                    .slice(0, 5);
-
-                                if (filtered.length) {
-                                    suggestionsBox.innerHTML = filtered.map(city =>
-                                        `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-city="${city}">${city}</div>`
-                                    ).join('');
-                                    suggestionsBox.classList.remove('hidden');
-                                }
-                            }, 200);
-                        });
-
-                        suggestionsBox.addEventListener('click', function (e) {
-                            if (e.target.dataset.city) {
-                                const selectedCity = e.target.dataset.city;
-                                cityInput.value = selectedCity;
-                                cityIdInput.value = cities_map[selectedCity] || '';
-                                suggestionsBox.classList.add('hidden');
-                            }
-                        });
-
-                        /* ===================== TRADE SHOW AUTOCOMPLETE ===================== */
-                        const tradeShowInput = document.getElementById('trade_show_event');
-                        const tradeShowSuggestions = document.getElementById('trade-show-suggestions');
-
-                        let tradeShows = [];
-                        let tradeShowsMap = {};
-
-                        fetch("{{ route('api.get-shows') }}")
-                            .then(res => res.json())
-                            .then(data => {
-                                tradeShows = data.map(show => show.title);
-                                data.forEach(show => {
-                                    tradeShowsMap[show.title] = show.id;
-                                });
-                            })
-                            .catch(err => console.error("Trade Show API Error:", err));
-
-                        let tradeShowIdInput = document.getElementById('trade_show_id');
-                        if (!tradeShowIdInput) {
-                            tradeShowIdInput = document.createElement('input');
-                            tradeShowIdInput.type = 'hidden';
-                            tradeShowIdInput.id = 'trade_show_id';
-                            tradeShowIdInput.name = 'show_id';
-                            tradeShowInput.parentNode.appendChild(tradeShowIdInput);
-                        }
-
-                        let tradeDebounce;
-                        tradeShowInput.addEventListener('input', function () {
-                            const query = this.value.trim().toLowerCase();
-                            tradeShowSuggestions.innerHTML = '';
-                            tradeShowSuggestions.classList.add('hidden');
-
-                            clearTimeout(tradeDebounce);
-                            if (query.length < 2) return;
-
-                            tradeDebounce = setTimeout(() => {
-                                const filtered = tradeShows
-                                    .filter(show => show.toLowerCase().includes(query))
-                                    .slice(0, 5);
-
-                                if (filtered.length) {
-                                    tradeShowSuggestions.innerHTML = filtered.map(show =>
-                                        `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-show="${show}">${show}</div>`
-                                    ).join('');
-                                    tradeShowSuggestions.classList.remove('hidden');
-                                }
-                            }, 200);
-                        });
-
-                        tradeShowSuggestions.addEventListener('click', function (e) {
-                            if (e.target.dataset.show) {
-                                const selectedShow = e.target.dataset.show;
-                                tradeShowInput.value = selectedShow;
-                                tradeShowIdInput.value = tradeShowsMap[selectedShow] || '';
-                                tradeShowSuggestions.classList.add('hidden');
-                            }
-                        });
-
-                        document.addEventListener('click', function (e) {
-                            if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
-                                suggestionsBox.classList.add('hidden');
-                            }
-                            if (!tradeShowInput.contains(e.target) && !tradeShowSuggestions.contains(e.target)) {
-                                tradeShowSuggestions.classList.add('hidden');
-                            }
-                        });
-
-                        /* ===================== OTP VERIFICATION ===================== */
-                        document.getElementById('verify-otp').addEventListener('click', function () {
-                            // User email field se current value uthayenge
-                            const userEmail = document.getElementById('email').value;
-
-                            fetch('/verify-otp', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                                },
-                                body: JSON.stringify({
-                                    otp: document.getElementById('otp').value,
-                                    email: userEmail
-                                })
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if (data.success) {
-                                        // 1️⃣ Sirf success message dikhayenge
-                                        const otpMessage = document.getElementById('otp-message');
-                                        otpMessage.innerHTML = '🎉 <b style="color:green;">OTP Verified! Congratulations!</b>';
-
-                                        // 2️⃣ "Check Email" ka note add karenge
-                                        const checkEmailNote = document.createElement('p');
-                                        checkEmailNote.style.color = '#2f855a'; // Green color
-                                        checkEmailNote.style.marginTop = '10px';
-                                        checkEmailNote.innerText = 'Your login password and account details have been sent to your registered email address.';
-                                        otpMessage.after(checkEmailNote);
-
-                                        // 3️⃣ OTP section ko hide kar denge (Takki user dobara verify na kare)
-                                        const otpSection = document.getElementById('otp-section');
-                                        if (otpSection) {
-                                            otpSection.style.display = 'none';
-                                        }
-
-                                        // 4️⃣ Success section (Blue box) ko pakka hide rakhenge
-                                        const otpSuccessSection = document.getElementById('otp-success-section');
-                                        if (otpSuccessSection) {
-                                            otpSuccessSection.style.display = 'none'; // Ye line box ko gayab kar degi
-                                            otpSuccessSection.classList.add('hidden');
-                                        }
-
-                                        // Note: Ab humein yahan se fetch('/send-password-email') karne ki zaroorat nahi hai 
-                                        // kyunki hamara Controller khud hi mail bhej raha hai.
-
-                                    } else {
-                                        document.getElementById('otp-message').innerText = 'Invalid OTP ❌';
-                                    }
-                                })
-                                .catch(err => {
-                                    console.error("OTP Verification Error:", err);
-                                    document.getElementById('otp-message').innerText = 'Verification failed. Try again.';
-                                });
-                        });
-
-                    });
-                </script>
 
                 <div class="flex justify-end mt-8">
                     <button type="button" class="btn-next px-6 py-3 rounded-md font-semibold">Next
@@ -558,14 +371,9 @@
                 <h3 class="text-2xl font-semibold text-gray-700 mb-6">Your Contact Information</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="form-field-group">
-                        <label for="company_name">Contact name <span class="text-red-600">*</span></label>
-                        <input type="text" id="contact_name" name="name" placeholder="Contact name" required>
+                        <label for="company_name">Name <span class="text-red-600">*</span></label>
+                        <input type="text" id="contact_name" name="name" placeholder=" name" required>
                         <p class="error-message" id="contact_name-error"></p>
-                    </div>
-                    <div class="form-field-group">
-                        <label for="email">Email <span class="text-red-600">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="email" required>
-                        <p class="error-message" id="email-error"></p>
                     </div>
                     <div class="form-field-group">
                         <label for="company_name">Company name <span class="text-red-600">*</span></label>
@@ -576,6 +384,23 @@
                         <label for="phone_number">Phone number <span class="text-red-600">*</span></label>
                         <input type="tel" id="phone_number" name="phone" placeholder="Phone number" required>
                         <p class="error-message" id="phone_number-error"></p>
+                    </div>
+                    <div class="form-field-group">
+                        <label for="website">Website (optional)</label>
+                        <input type="text" id="website" name="website" placeholder="Enter your website">
+                        <label>
+                            <input type="checkbox" id="no-website"> I don't have a website
+                        </label>
+                    </div>
+                    <div class="form-field-group">
+                        <label for="email_name">Email</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="email_name" placeholder="Your name" class="flex-1" />
+                            <span id="email_domain"
+                                class="px-2 py-2 border border-gray-300 rounded-lg bg-gray-100"></span>
+                        </div>
+                        <input type="hidden" id="email" name="email" />
+                        <p class="error-message" id="email-error"></p>
                     </div>
 
                 </div>
@@ -663,29 +488,12 @@
                     <div id="design-upload-list" class="w-full mt-3"></div>
                     <p class="error-message" id="design_upload-error"></p>
                 </div>
-                <script>
-                    // Show attached files after selection
-                    document.getElementById('design_upload').addEventListener('change', function (e) {
-                        const fileList = e.target.files;
-                        const listDiv = document.getElementById('design-upload-list');
-                        listDiv.innerHTML = '';
-                        if (fileList.length > 0) {
-                            const ul = document.createElement('ul');
-                            ul.className = "list-disc list-inside text-sm text-gray-700";
-                            for (let i = 0; i < fileList.length; i++) {
-                                const li = document.createElement('li');
-                                li.textContent = fileList[i].name + ' (' + Math.round(fileList[i].size / 1024) + ' KB)';
-                                ul.appendChild(li);
-                            }
-                            listDiv.appendChild(ul);
-                        }
-                    });
-                </script>
+
 
                 <div class="form-field-group">
                     <label for="additional_comments">Additional comments</label>
                     <textarea id="additional_comments" name="additional_comments" rows="4"
-                        placeholder="Additional comments">{{ old('additional_comments')}}</textarea>
+                        placeholder="Additional comments">{{ old('additional_comments') }}</textarea>
                 </div>
                 <input type="hidden" name="page_url" value="{{ request()->url() }}" />
                 <input type="hidden" name="ip" value="{{ request()->ip() }}" />
@@ -748,51 +556,10 @@
 
                 <div id="otp-section" class="mt-4 hidden">
                     <input type="text" id="otp" placeholder="Enter OTP" class="border p-2 rounded w-full">
-                    <button type="button" id="verify-otp" class="btn-next px-4 py-2 mt-2 rounded">Verify OTP</button>
+                    <button type="button" id="verify-otp" class="btn-next px-4 py-2 mt-2 rounded">
+                        Submit</button>
                 </div>
-                <script>
-                    document.getElementById('verify-otp').addEventListener('click', function () {
-                        const userEmail = document.getElementById('email').value;
-                        const otpValue = document.getElementById('otp').value;
 
-                        fetch('/verify-otp', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-                            },
-                            body: JSON.stringify({
-                                otp: otpValue,
-                                email: userEmail
-                            })
-                        })
-                            .then(res => res.json())
-                            .then(data => {
-                                if (data.success) {
-                                    // 1. Success Message dikhayein
-                                    const otpMessage = document.getElementById('otp-message');
-                                    otpMessage.innerHTML = '<b style="color:green;">✅ OTP Verified! Congratulations!</b>';
-
-                                    // 2. User ko batayein ki details email par bhej di gayi hain
-                                    const checkEmailNote = document.createElement('p');
-                                    checkEmailNote.className = 'text-sm mt-2 text-green-700';
-                                    checkEmailNote.innerText = 'Your login password has been sent to your registered email address.';
-                                    otpMessage.after(checkEmailNote);
-
-                                    // 3. OTP section ko hide kar dein
-                                    const otpSection = document.getElementById('otp-section');
-                                    if (otpSection) otpSection.classList.add('hidden');
-
-                                } else {
-                                    document.getElementById('otp-message').innerText = 'Invalid OTP ❌';
-                                }
-                            })
-                            .catch(err => {
-                                console.error("Error:", err);
-                                document.getElementById('otp-message').innerText = 'Verification failed. Try again.';
-                            });
-                    });
-                </script>
 
                 <p id="otp-message" class="text-sm mt-2"></p>
 
@@ -813,23 +580,74 @@
                 </div>
 
                 <p id="otp-message" class="text-sm mt-2"></p>
-                <div class="text-center py-20">
+                <!-- <div class="text-center py-20">
                     <h3 class="text-4xl font-bold text-gray-800 mb-4">Launching your request into cyberspace 🚀</h3>
                     <p class="text-xl text-gray-600">Hold tight, the internet hamsters are running!</p>
-                </div>
+                </div> -->
             </div>
         </form>
     </div>
 </div>
 
+<!-- ✅ YAHAN ADD KARO MODAL -->
+<div id="otpSuccessModal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center animate-scaleIn">
+
+        <h2 class="text-2xl font-bold text-green-600 mb-3">
+            🎉 OTP Verified!
+        </h2>
+
+        <p class="text-gray-600 text-sm leading-relaxed">
+            Your account has been successfully verified.<br><br>
+            Please check your email 📧 for your login ID and password.<br><br>
+            <br><br>
+            <span class="font-medium text-gray-800">Thank you for your time 🙏</span>
+        </p>
+
+        <button id="modalOkBtn" class="mt-6 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">
+            OK
+        </button>
+
+    </div>
+</div>
+
+<style>
+    @keyframes scaleIn {
+        from {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .animate-scaleIn {
+        animation: scaleIn 0.3s ease;
+    }
+</style>
+
 @push('scripts')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const okBtn = document.getElementById('modalOkBtn');
+
+            if (okBtn) {
+                okBtn.addEventListener('click', function () {
+                    location.reload();
+                });
+            }
+        });
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
             const form = document.getElementById('multiStepForm');
             const formSteps = document.querySelectorAll('.form-step');
             const progressSteps = document.querySelectorAll('.progress-step');
-
             let currentStep = 0;
 
             // ================= SHOW STEP =================
@@ -841,18 +659,18 @@
                 updateProgressBar(stepIndex);
                 currentStep = stepIndex;
 
-                // 👇 yaha add karo
+                // Preview update on step 4
                 if (stepIndex === 3) {
-                    let preview = `
-                                                                                                                                                        <p><b>City:</b> ${document.getElementById('city').value}</p>
-                                                                                                                                                        <p><b>Trade Show:</b> ${document.getElementById('trade_show_event').value}</p>
-                                                                                                                                                        <p><b>Stand Size:</b> ${document.getElementById('stand_size').value}</p>
-                                                                                                                                                        <p><b>Budget:</b> ${document.getElementById('budget').value}</p>
-                                                                                                                                                        <p><b>Name:</b> ${document.getElementById('contact_name').value}</p>
-                                                                                                                                                        <p><b>Email:</b> ${document.getElementById('email').value}</p>
-                                                                                                                                                        <p><b>Company:</b> ${document.getElementById('company_name').value}</p>
-                                                                                                                                                        <p><b>Phone:</b> ${document.getElementById('phone_number').value}</p>
-                                                                                                                                                    `;
+                    const preview = `
+                                                                                            <p><b>City:</b> ${document.getElementById('city').value}</p>
+                                                                                            <p><b>Trade Show:</b> ${document.getElementById('trade_show_event').value}</p>
+                                                                                            <p><b>Stand Size:</b> ${document.getElementById('stand_size').value}</p>
+                                                                                            <p><b>Budget:</b> ${document.getElementById('budget').value}</p>
+                                                                                            <p><b>Name:</b> ${document.getElementById('contact_name').value}</p>
+                                                                                            <p><b>Email:</b> ${document.getElementById('email').value}</p>
+                                                                                            <p><b>Company:</b> ${document.getElementById('company_name').value}</p>
+                                                                                            <p><b>Phone:</b> ${document.getElementById('phone_number').value}</p>
+                                                                                        `;
                     document.getElementById('form-preview').innerHTML = preview;
                 }
             }
@@ -861,33 +679,24 @@
             function updateProgressBar(stepIndex) {
                 progressSteps.forEach((step, index) => {
                     step.classList.remove('active', 'completed');
-
-                    if (index < stepIndex) {
-                        step.classList.add('completed');
-                    } else if (index === stepIndex) {
-                        step.classList.add('active');
-                    }
+                    if (index < stepIndex) step.classList.add('completed');
+                    else if (index === stepIndex) step.classList.add('active');
                 });
             }
 
             // ================= VALIDATION =================
             function validateStep(stepIndex) {
                 let isValid = true;
-
                 const currentFormStep = formSteps[stepIndex];
-                const inputs = currentFormStep.querySelectorAll(
-                    'input[required], textarea[required], select[required]');
+                const inputs = currentFormStep.querySelectorAll('input[required], textarea[required], select[required]');
 
                 currentFormStep.querySelectorAll('.error-message').forEach(el => el.textContent = '');
 
                 inputs.forEach(input => {
                     const errorEl = document.getElementById(input.id + '-error');
-
-                    if (input.type === 'checkbox') {
-                        if (!input.checked) {
-                            isValid = false;
-                            if (errorEl) errorEl.textContent = 'This field is required';
-                        }
+                    if (input.type === 'checkbox' && !input.checked) {
+                        isValid = false;
+                        if (errorEl) errorEl.textContent = 'This field is required';
                     } else if (input.value.trim() === '') {
                         isValid = false;
                         if (errorEl) errorEl.textContent = 'This field is required';
@@ -906,22 +715,19 @@
                     }
                 });
 
-                // EXTRA VALIDATION
+                // Extra validation for step 0
                 if (stepIndex === 0) {
-                    const city = document.getElementById('city');
-                    const trade = document.getElementById('trade_show_event');
-
-                    if (!city.value.trim()) {
+                    if (!document.getElementById('city').value.trim()) {
                         isValid = false;
                         document.getElementById('city-error').textContent = 'City is required';
                     }
-
-                    if (!trade.value.trim()) {
+                    if (!document.getElementById('trade_show_event').value.trim()) {
                         isValid = false;
                         document.getElementById('trade_show_event-error').textContent = 'Trade show is required';
                     }
                 }
 
+                // Step 1 privacy checkbox
                 if (stepIndex === 1) {
                     const privacy = document.getElementById('privacy_policy');
                     if (privacy && !privacy.checked) {
@@ -936,10 +742,8 @@
             // ================= NEXT BUTTON =================
             document.querySelectorAll('.btn-next').forEach(btn => {
                 btn.addEventListener('click', function () {
-                    if (validateStep(currentStep)) {
-                        if (currentStep < formSteps.length - 1) {
-                            showStep(currentStep + 1);
-                        }
+                    if (validateStep(currentStep) && currentStep < formSteps.length - 1) {
+                        showStep(currentStep + 1);
                     }
                 });
             });
@@ -947,42 +751,393 @@
             // ================= PREVIOUS BUTTON =================
             document.querySelectorAll('.btn-prev').forEach(btn => {
                 btn.addEventListener('click', function () {
-                    if (currentStep > 0) {
-                        showStep(currentStep - 1);
-                    }
+                    if (currentStep > 0) showStep(currentStep - 1);
                 });
             });
 
             // ================= FINAL SUBMIT =================
             form.addEventListener('submit', function (e) {
-                if (!validateStep(currentStep)) {
-                    e.preventDefault();
-                } else {
-                    // OPTIONAL: show thank you step before submit
-                    // e.preventDefault();
-                    // showStep(3);
+                e.preventDefault();
+
+                if (!validateStep(currentStep)) return;
+
+                const otpSection = document.getElementById('otp-section');
+                if (!otpSection || otpSection.classList.contains('hidden')) {
+                    alert('Please verify your email first!');
+                    return;
                 }
+
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Form submitted successfully! Email has been sent.');
+                            window.location.href = '/thank-you';
+                        } else {
+                            alert('Submission failed. Please try again.');
+                        }
+                    })
+                    .catch(err => console.error('Form Submit Error:', err));
             });
+
+            // ================= SEND OTP =================
             document.getElementById('send-otp').addEventListener('click', function () {
+                const email = document.getElementById('email').value.trim();
+                if (!email) {
+                    alert('Enter email first');
+                    return;
+                }
+
                 fetch('/send-otp', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
                     },
-                    body: JSON.stringify({
-                        email: document.getElementById('email').value
-                    })
+                    body: JSON.stringify({ email })
                 })
                     .then(res => res.json())
                     .then(data => {
                         document.getElementById('otp-message').innerText = 'OTP sent to your email';
                         document.getElementById('otp-section').classList.remove('hidden');
-                    });
+                    })
+                    .catch(err => console.error('OTP Error:', err));
             });
 
             // ================= INIT =================
             showStep(0);
+
+        });
+    </script>
+    <script>
+        const websiteInput = document.getElementById('website');
+        const emailNameInput = document.getElementById('email_name');
+        const emailDomainSpan = document.getElementById('email_domain');
+        const hiddenEmailInput = document.getElementById('email');
+        const noWebsiteCheckbox = document.getElementById('no-website');
+
+        function updateEmail() {
+            let domain = '';
+
+            if (!noWebsiteCheckbox.checked && websiteInput.value.trim() !== '') {
+                // Website dali hai → automatic domain
+                let url = websiteInput.value.trim().replace(/^https?:\/\//, '');
+                let parts = url.split(/[\/:]/);
+                domain = '@' + parts[0];
+
+                emailDomainSpan.textContent = domain;
+
+                // Username-only restriction
+                let username = emailNameInput.value.trim();
+                if (username.includes('@')) username = username.split('@')[0];
+                emailNameInput.value = username;
+
+                hiddenEmailInput.value = username + domain;
+            } else {
+                // "I don't have website" → free typing
+                emailDomainSpan.textContent = '';
+                hiddenEmailInput.value = emailNameInput.value.trim();
+            }
+        }
+
+        // Event listeners
+        websiteInput.addEventListener('input', updateEmail);
+        emailNameInput.addEventListener('input', updateEmail);
+
+        noWebsiteCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                websiteInput.value = '';
+                websiteInput.style.display = 'none';
+                websiteInput.disabled = true;
+
+                emailDomainSpan.contentEditable = true;
+                emailDomainSpan.style.backgroundColor = '#fff';
+                updateEmail();
+            } else {
+                websiteInput.style.display = 'block';
+                websiteInput.disabled = false;
+
+                emailDomainSpan.contentEditable = false;
+                emailDomainSpan.style.backgroundColor = '#f0f0f0';
+                updateEmail();
+            }
+        });
+
+        // Initial call to set correct state
+        updateEmail();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('multiStepForm');
+
+            document.getElementById('verify-otp').addEventListener('click', function () {
+                const userEmail = document.getElementById('email').value;
+                const otpValue = document.getElementById('otp').value;
+
+                fetch('/verify-otp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                    },
+                    body: JSON.stringify({ otp: otpValue, email: userEmail })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        const otpMessage = document.getElementById('otp-message');
+
+                        if (data.success) {
+
+                            // OTP section hide
+                            const otpSection = document.getElementById('otp-section');
+                            if (otpSection) otpSection.style.display = 'none';
+
+                            // Modal show
+                            document.getElementById('otpSuccessModal').classList.remove('hidden');
+                            document.getElementById('otpSuccessModal').classList.add('flex');
+
+                        } else {
+                            otpMessage.innerText = 'Invalid OTP ❌';
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Error:", err);
+                        document.getElementById('otp-message').innerText = 'Verification failed. Try again.';
+                    });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadInput = document.getElementById('design_upload');
+            const listDiv = document.getElementById('design-upload-list');
+
+            uploadInput.addEventListener('change', function (e) {
+                const files = e.target.files;
+                listDiv.innerHTML = ''; // Clear previous list
+
+                if (files.length > 0) {
+                    const ul = document.createElement('ul');
+                    ul.className = "list-disc list-inside text-sm text-gray-700";
+
+                    Array.from(files).forEach(file => {
+                        const li = document.createElement('li');
+                        li.textContent = `${file.name} (${Math.round(file.size / 1024)} KB)`;
+                        ul.appendChild(li);
+                    });
+
+                    listDiv.appendChild(ul);
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* ===================== HELPER FUNCTIONS ===================== */
+            // 1️⃣ Sabse pehle ye function add kiya taaki password generate ho sake
+            function generatePassword() {
+                return Math.random().toString(36).slice(-8);
+            }
+
+            /* ===================== CITY AUTOCOMPLETE ===================== */
+            const cityInput = document.getElementById('city');
+            const suggestionsBox = document.getElementById('city-suggestions');
+
+            let cities_form = [];
+            let cities_map = {};
+
+            fetch("{{ route('api.get-cities') }}")
+                .then(res => res.json())
+                .then(data => {
+                    cities_form = data.map(city => city.name);
+                    data.forEach(city => {
+                        cities_map[city.name] = city.id;
+                    });
+                })
+                .catch(err => console.error("City API Error:", err));
+
+            let cityIdInput = document.getElementById('city_id');
+            if (!cityIdInput) {
+                cityIdInput = document.createElement('input');
+                cityIdInput.type = 'hidden';
+                cityIdInput.id = 'city_id';
+                cityIdInput.name = 'city_id';
+                cityInput.parentNode.appendChild(cityIdInput);
+            }
+
+            let debounceTimeout;
+            cityInput.addEventListener('input', function () {
+                const query = this.value.trim().toLowerCase();
+                suggestionsBox.innerHTML = '';
+                suggestionsBox.classList.add('hidden');
+
+                clearTimeout(debounceTimeout);
+                if (query.length < 2) return;
+
+                debounceTimeout = setTimeout(() => {
+                    const filtered = cities_form
+                        .filter(city => city.toLowerCase().includes(query))
+                        .slice(0, 5);
+
+                    if (filtered.length) {
+                        suggestionsBox.innerHTML = filtered.map(city =>
+                            `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-city="${city}">${city}</div>`
+                        ).join('');
+                        suggestionsBox.classList.remove('hidden');
+                    }
+                }, 200);
+            });
+
+            suggestionsBox.addEventListener('click', function (e) {
+                if (e.target.dataset.city) {
+                    const selectedCity = e.target.dataset.city;
+                    cityInput.value = selectedCity;
+                    cityIdInput.value = cities_map[selectedCity] || '';
+                    suggestionsBox.classList.add('hidden');
+                }
+            });
+
+            /* ===================== TRADE SHOW AUTOCOMPLETE ===================== */
+            const tradeShowInput = document.getElementById('trade_show_event');
+            const tradeShowSuggestions = document.getElementById('trade-show-suggestions');
+
+            let tradeShows = [];
+            let tradeShowsMap = {};
+
+            fetch("{{ route('api.get-shows') }}")
+                .then(res => res.json())
+                .then(data => {
+                    tradeShows = data.map(show => show.title);
+                    data.forEach(show => {
+                        tradeShowsMap[show.title] = show.id;
+                    });
+                })
+                .catch(err => console.error("Trade Show API Error:", err));
+
+            let tradeShowIdInput = document.getElementById('trade_show_id');
+            if (!tradeShowIdInput) {
+                tradeShowIdInput = document.createElement('input');
+                tradeShowIdInput.type = 'hidden';
+                tradeShowIdInput.id = 'trade_show_id';
+                tradeShowIdInput.name = 'show_id';
+                tradeShowInput.parentNode.appendChild(tradeShowIdInput);
+            }
+
+            let tradeDebounce;
+            tradeShowInput.addEventListener('input', function () {
+                const query = this.value.trim().toLowerCase();
+                tradeShowSuggestions.innerHTML = '';
+                tradeShowSuggestions.classList.add('hidden');
+
+                clearTimeout(tradeDebounce);
+                if (query.length < 2) return;
+
+                tradeDebounce = setTimeout(() => {
+                    const filtered = tradeShows
+                        .filter(show => show.toLowerCase().includes(query))
+                        .slice(0, 5);
+
+                    if (filtered.length) {
+                        tradeShowSuggestions.innerHTML = filtered.map(show =>
+                            `<div class="px-4 py-2 cursor-pointer hover:bg-[#e0f2f7]" data-show="${show}">${show}</div>`
+                        ).join('');
+                        tradeShowSuggestions.classList.remove('hidden');
+                    }
+                }, 200);
+            });
+
+            tradeShowSuggestions.addEventListener('click', function (e) {
+                if (e.target.dataset.show) {
+                    const selectedShow = e.target.dataset.show;
+                    tradeShowInput.value = selectedShow;
+                    tradeShowIdInput.value = tradeShowsMap[selectedShow] || '';
+                    tradeShowSuggestions.classList.add('hidden');
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!cityInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+                    suggestionsBox.classList.add('hidden');
+                }
+                if (!tradeShowInput.contains(e.target) && !tradeShowSuggestions.contains(e.target)) {
+                    tradeShowSuggestions.classList.add('hidden');
+                }
+            });
+
+            /* ===================== OTP VERIFICATION ===================== */
+            document.getElementById('verify-otp').addEventListener('click', function () {
+                // User email field se current value uthayenge
+                const userEmail = document.getElementById('email').value;
+
+                fetch('/verify-otp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                    },
+                    body: JSON.stringify({
+                        otp: document.getElementById('otp').value,
+                        email: userEmail
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            // 1️⃣ Success message dikhayenge
+                            const otpMessage = document.getElementById('otp-message');
+                            otpMessage.innerHTML =
+                                '🎉 <b style="color:green;">OTP Verified! You can now submit the form.</b>';
+
+                            // 2️⃣ "Check Email" ka note add karenge
+                            // const checkEmailNote = document.createElement('p');
+                            // checkEmailNote.style.color = '#2f855a'; // Green color
+                            // checkEmailNote.style.marginTop = '10px';
+                            // checkEmailNote.innerText =
+                            //     'Your login password and account details have been sent to your registered email address.';
+                            // otpMessage.after(checkEmailNote);
+
+                            // 3️⃣ OTP section ko hide kar denge
+                            const otpSection = document.getElementById('otp-section');
+                            if (otpSection) {
+                                otpSection.style.display = 'none';
+                            }
+
+                            // 4️⃣ Success section ko hide kar denge
+                            const otpSuccessSection = document.getElementById('otp-success-section');
+                            if (otpSuccessSection) {
+                                otpSuccessSection.style.display = 'none';
+                                otpSuccessSection.classList.add('hidden');
+                            }
+
+                            // 5️⃣ Submit button show karenge dynamically
+                            let submitBtn = document.getElementById('final-submit-btn');
+                            if (!submitBtn) {
+                                submitBtn = document.createElement('button');
+                                submitBtn.type = 'submit';
+                                submitBtn.id = 'final-submit-btn';
+                                submitBtn.className = 'btn-next px-6 py-3 rounded-md font-semibold mt-4';
+                                submitBtn.innerText = 'Submit →';
+                                const form = document.getElementById('multi-step-form');
+                                if (form) form.appendChild(submitBtn);
+                            }
+
+                        } else {
+                            document.getElementById('otp-message').innerText = 'Invalid OTP ❌';
+                        }
+                    })
+                    .catch(err => {
+                        console.error("OTP Verification Error:", err);
+                        document.getElementById('otp-message').innerText =
+                            'Verification failed. Try again.';
+                    });
+            });
 
         });
     </script>

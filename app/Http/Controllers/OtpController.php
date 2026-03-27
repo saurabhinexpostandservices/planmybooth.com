@@ -37,37 +37,40 @@ class OtpController extends Controller
             $password = substr(str_shuffle('abcdefghijklmnopqrstuvwxyz0123456789'), 0, 8);
 
             // 3. Database mein User create ya update karo (Password store ho raha hai)
-            \App\Models\User::updateOrCreate(
+            $user = \App\Models\User::updateOrCreate(
                 ['email' => $request->email], // Email se dhoondo
                 [
                     'name' => $request->name ?? 'User', // Name save karo
-                    'phone' => $request->phone,           // Phone save karo
+                    'phone' => $request->phone,         // Phone save karo
                     'password' => \Illuminate\Support\Facades\Hash::make($password), // Password Hash karke store karo
                 ]
             );
 
-            // 4. Login URL
+            // 🔑 4. User ko login karao
+            \Illuminate\Support\Facades\Auth::login($user);
+
+            // 5. Login URL
             $resetUrl = url('/login');
 
-            // 5. HTML Email Content
+            // 6. HTML Email Content
             $htmlContent = "
-            <div style='font-family: Arial, sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;'>
-                <h2 style='color: #2d3748;'>🎉 Congratulations!</h2>
-                <p>Your account has been created successfully. You can now login with these details:</p>
-                <div style='background: #f7fafc; padding: 15px; border-radius: 5px; border: 1px solid #e2e8f0;'>
-                    <p><strong>Email:</strong> {$request->email}</p>
-                    <p><strong>Temporary Password:</strong> <code style='color: #e53e3e; font-size: 1.1em;'>{$password}</code></p>
-                </div>
-                <br>
-                <p>Please click the button below to login. We recommend changing your password after first login:</p>
-                <a href='{$resetUrl}' style='background-color: #3182ce; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;'>Login Now</a>
-                <br><br>
-                <hr style='border: none; border-top: 1px solid #eee;'>
-                <p style='color: #718096; font-size: 12px;'>If you didn't request this, please ignore this email.</p>
+        <div style='font-family: Arial, sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;'>
+            <h2 style='color: #2d3748;'>🎉 Congratulations!</h2>
+            <p>Your account has been created successfully. You can now login with these details:</p>
+            <div style='background: #f7fafc; padding: 15px; border-radius: 5px; border: 1px solid #e2e8f0;'>
+                <p><strong>Email:</strong> {$request->email}</p>
+                <p><strong>Temporary Password:</strong> <code style='color: #e53e3e; font-size: 1.1em;'>{$password}</code></p>
             </div>
+            <br>
+            <p>Our Top Stand Builder will connect with you soon. <br/> Please click the button below to login. We recommend changing your password after first login:</p>
+            <a href='{$resetUrl}' style='background-color: #3182ce; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold;'>Login Now</a>
+            <br><br>
+            <hr style='border: none; border-top: 1px solid #eee;'>
+            <p style='color: #718096; font-size: 12px;'>If you didn't request this, please ignore this email.</p>
+        </div>
         ";
 
-            // 6. Mail bhejo
+            // 7. Mail bhejo
             \Illuminate\Support\Facades\Mail::send([], [], function ($message) use ($request, $htmlContent) {
                 $message->to($request->email)
                     ->subject('Account Created - Your Login Details')

@@ -37,7 +37,7 @@ class LeadsController extends Controller
     public function store(Request $request)
     {
         $ip = $request->input('client_ip');
-    
+
         // Check if this IP submitted within last 1 hour
         $recentSubmission = Lead::where('ip', $ip)
             ->where('created_at', '>=', now()->subHour())
@@ -58,9 +58,23 @@ class LeadsController extends Controller
                     'unique:users,email',
                     function ($attribute, $value, $fail) {
                         $publicProviders = [
-                            'gmail.com', 'hotmail.com', 'yahoo.com', 'rediffmail.com', 'outlook.com',
-                            'aol.com', 'icloud.com', 'mail.com', 'zoho.com', 'protonmail.com', 'yandex.com',
-                            'gmx.com', 'msn.com', 'live.com', 'me.com', 'ymail.com', 'rocketmail.com'
+                            'gmail.com',
+                            'hotmail.com',
+                            'yahoo.com',
+                            'rediffmail.com',
+                            'outlook.com',
+                            'aol.com',
+                            'icloud.com',
+                            'mail.com',
+                            'zoho.com',
+                            'protonmail.com',
+                            'yandex.com',
+                            'gmx.com',
+                            'msn.com',
+                            'live.com',
+                            'me.com',
+                            'ymail.com',
+                            'rocketmail.com'
                         ];
                         $domain = strtolower(substr(strrchr($value, "@"), 1));
                         if (in_array($domain, $publicProviders)) {
@@ -79,7 +93,7 @@ class LeadsController extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'phone' => $request->input('phone'), // optional
-                'company_name' =>  $request->input('company_name'),
+                'company_name' => $request->input('company_name'),
                 'password' => Hash::make($password),
             ]);
 
@@ -109,7 +123,7 @@ class LeadsController extends Controller
         $lead = Lead::create([
             'author_id' => $user->id,
             'show' => $request->input('trade_show_event'),
-            'city' => $request->input('city'), 
+            'city' => $request->input('city'),
             'stand_size' => $request->input('stand_size'),
             'service' => $request->input('needs'),
             'message' => $request->input('additional_comments'),
