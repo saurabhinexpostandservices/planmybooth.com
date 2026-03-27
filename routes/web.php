@@ -60,6 +60,8 @@ Route::get('/stand-builders', [StandbuilderController::class, 'index'])->name('s
 
 Route::get('/trade-shows', [ShowController::class, 'index'])->name('shows');
 
+Route::get('/location-we-serve', [PublicController::class, 'countryPage'])->name('location-we-serve');
+
 /**
  * /////////////////////////////////////////////////////////
  * ====================== Dynamic Routes ===================
@@ -91,6 +93,8 @@ Route::get('/api/pages', [PublicController::class, 'fetch_city_for_search'])->na
 Route::get('/api/countries', [PublicController::class, 'fetch_country_for_home'])->name('api.home-countries');
 Route::get('/api/get-cities', [PublicController::class, 'get_cities'])->name('api.get-cities');
 Route::get('/api/get-shows', [PublicController::class, 'get_shows'])->name('api.get-shows');
+
+
 
 
 /**

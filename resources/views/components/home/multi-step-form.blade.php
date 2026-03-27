@@ -552,7 +552,9 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" id="send-otp" class="btn-next px-4 py-2 mt-4 rounded">Email OTP</button>
+                <button type="button" id="send-otp" class="btn-next px-4 py-2 mt-4 rounded text-center block mx-auto">
+                    Email OTP
+                </button>
 
                 <div id="otp-section" class="mt-4 hidden">
                     <input type="text" id="otp" placeholder="Enter OTP" class="border p-2 rounded w-full">
@@ -661,17 +663,22 @@
 
                 // Preview update on step 4
                 if (stepIndex === 3) {
-                    const preview = `
-                                                                                            <p><b>City:</b> ${document.getElementById('city').value}</p>
-                                                                                            <p><b>Trade Show:</b> ${document.getElementById('trade_show_event').value}</p>
-                                                                                            <p><b>Stand Size:</b> ${document.getElementById('stand_size').value}</p>
-                                                                                            <p><b>Budget:</b> ${document.getElementById('budget').value}</p>
-                                                                                            <p><b>Name:</b> ${document.getElementById('contact_name').value}</p>
-                                                                                            <p><b>Email:</b> ${document.getElementById('email').value}</p>
-                                                                                            <p><b>Company:</b> ${document.getElementById('company_name').value}</p>
-                                                                                            <p><b>Phone:</b> ${document.getElementById('phone_number').value}</p>
-                                                                                        `;
-                    document.getElementById('form-preview').innerHTML = preview;
+                    document.getElementById('preview-city').textContent = document.getElementById('city').value;
+                    document.getElementById('preview-tradeshow').textContent = document.getElementById('trade_show_event').value;
+                    document.getElementById('preview-standsize').textContent = document.getElementById('stand_size').value;
+                    document.getElementById('preview-budget').textContent = document.getElementById('budget').value;
+
+                    document.getElementById('preview-name').textContent = document.getElementById('contact_name').value;
+                    document.getElementById('preview-email').textContent = document.getElementById('email').value;
+                    document.getElementById('preview-company').textContent = document.getElementById('company_name').value;
+                    document.getElementById('preview-phone').textContent = document.getElementById('phone_number').value;
+
+                    // Files & Comments
+                    const files = document.getElementById('design_upload').files;
+                    document.getElementById('preview-files').textContent = files.length > 0
+                        ? Array.from(files).map(f => f.name).join(', ')
+                        : 'No files uploaded';
+                    document.getElementById('preview-comments').textContent = document.getElementById('comments').value || '-';
                 }
             }
 

@@ -12,66 +12,99 @@ use App\Models\Show;
 
 class PublicController extends Controller
 {
-    public function fetch_city_for_search(Request $request){
+    public function fetch_city_for_search(Request $request)
+    {
         $pages = Page::where('status', 'published')
-        ->where('type', 'city')
-        ->select('slug', 'city_id')
-        ->with(['city' => function ($query) {
-            $query->select('id', 'name');
-        }])
-        ->get()
-        ->sortBy(fn($page) => $page->city?->name)
-        ->values()
-        ->map(function ($page) {
-            return [
-                'slug' => $page->slug,
-                'city' => $page->city?->name,
-            ];
-        });
+            ->where('type', 'city')
+            ->select('slug', 'city_id')
+            ->with([
+                'city' => function ($query) {
+                    $query->select('id', 'name');
+                }
+            ])
+            ->get()
+            ->sortBy(fn($page) => $page->city?->name)
+            ->values()
+            ->map(function ($page) {
+                return [
+                    'slug' => $page->slug,
+                    'city' => $page->city?->name,
+                ];
+            });
 
         return $pages;
     }
 
-    public function fetch_country_for_home(Request $request) {
+    public function fetch_country_for_home(Request $request)
+    {
         $pages = Page::where('status', 'published')
-        ->where('type', 'country')
-        ->select('slug', 'country_id', 'featured_image')
-        ->with(['country' => function ($query) {
-            $query->select('id', 'name')->orderBy('name');
-        }])
-        ->get()
-        ->sortBy(fn($page) => $page->country?->name)
-        ->values()
-        ->map(function ($page) {
-            return [
-                'slug' => $page->slug,
-                'country' => $page->country?->name,
-                'featured_image' => $page->featured_image
-            ];
-        });
+            ->where('type', 'country')
+            ->select('slug', 'country_id', 'featured_image')
+            ->with([
+                'country' => function ($query) {
+                    $query->select('id', 'name')->orderBy('name');
+                }
+            ])
+            ->get()
+            ->sortBy(fn($page) => $page->country?->name)
+            ->values()
+            ->map(function ($page) {
+                return [
+                    'slug' => $page->slug,
+                    'country' => $page->country?->name,
+                    'featured_image' => $page->featured_image
+                ];
+            });
 
         return $pages;
     }
 
-    public function home(Request $request){
+    public function home(Request $request)
+    {
         $countries = Page::where('status', 'published')
-        ->where('type', 'country')
-        ->select('slug', 'country_id', 'featured_image')
-        ->with(['country' => function ($query) {
-            $query->select('id', 'name')->orderBy('name');
-        }])
-        ->get()
-        ->sortBy(fn($page) => $page->country?->name)
-        ->values()
-        ->map(function ($page) {
-            return [
-                'slug' => $page->slug,
-                'country' => $page->country?->name,
-                'featured_image' => $page->featured_image
-            ];
-        });
+            ->where('type', 'country')
+            ->select('slug', 'country_id', 'featured_image')
+            ->with([
+                'country' => function ($query) {
+                    $query->select('id', 'name')->orderBy('name');
+                }
+            ])
+            ->get()
+            ->sortBy(fn($page) => $page->country?->name)
+            ->values()
+            ->map(function ($page) {
+                return [
+                    'slug' => $page->slug,
+                    'country' => $page->country?->name,
+                    'featured_image' => $page->featured_image
+                ];
+            });
 
         return view('home', compact('countries'));
+    }
+
+    public function countryPage(Request $request)
+    {
+        $countries = Page::where('status', 'published')
+            ->where('type', 'country')
+            ->select('slug', 'country_id', 'featured_image')
+            ->with([
+                'country' => function ($query) {
+                    $query->select('id', 'name')->orderBy('name');
+                }
+            ])
+            ->get()
+            ->sortBy(fn($page) => $page->country?->name)
+            ->values()
+            ->map(function ($page) {
+                return [
+                    'slug' => $page->slug,
+                    'country' => $page->country?->name,
+                    'featured_image' => $page->featured_image
+                ];
+            });
+
+        return view('components.country.country-page', compact('countries'));
     }
 
     public function country($slug)
@@ -104,9 +137,9 @@ class PublicController extends Controller
         // Fetch all standbuilders that provide service in any of these cities
         $standbuilders = Standbuilder::where('status', 'published')
             ->where(function ($query) use ($cityIds) {
-            foreach ($cityIds as $cityId) {
-                $query->orWhereJsonContains('services_cities', (string)$cityId);
-            }
+                foreach ($cityIds as $cityId) {
+                    $query->orWhereJsonContains('services_cities', (string) $cityId);
+                }
             })
             ->inRandomOrder()
             ->paginate(10);
@@ -115,7 +148,8 @@ class PublicController extends Controller
     }
 
 
-    public function city($slug){
+    public function city($slug)
+    {
 
         $page = Page::where('slug', $slug)
             ->where('status', 'published')
@@ -133,14 +167,15 @@ class PublicController extends Controller
         }
 
         $standbuilders = Standbuilder::where('status', 'published')
-            ->whereJsonContains('services_cities', (string)$city->id)
+            ->whereJsonContains('services_cities', (string) $city->id)
             ->inRandomOrder()
             ->paginate(10);
 
         return view('city', compact('page', 'standbuilders'));
     }
 
-    public function get_cities(){
+    public function get_cities()
+    {
         try {
             $cities = City::select('name', 'id')->distinct()->orderBy('name')->get();
             return $cities;
